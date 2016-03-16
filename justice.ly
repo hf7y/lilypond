@@ -1,297 +1,122 @@
 \version "2.18.2"
 
-arpeggioTwelveE = {
-	\new Voice {
-		\voiceOne
-		\autochange
-		\relative c {
-			e8 g b c d e g e d c b g |
-			e8 g b c d e g e d c b g |
-			e8 g b c d e g e d c b g |
-			e8 g b c d e g e d c b g |
-		}
-	}
-}
-
-arpeggioTwelveD = {
-	\new Voice {
-		\voiceOne
-		\autochange
-		\relative c {
-			d8 f a c d e g e d c a f |
-			d8 f a c d e g e d c a f |
-			d8 f a c d e g e d c a f |
-			d8 f a c d e g e d c a f |
-		}
-	}
-}
-
-
-arpeggioTenE = {
-	\new Voice {
-		\voiceOne
-		\autochange
-		\relative c {
-			e8 g b c d e d c b g |
-			e8 g b c d e d c b g |
-			e8 g b c d e d c b g |
-			e8 g b c d e d c b g |
-		}
-	}
-}
-
-arpeggioTenD = {
-	\new Voice {
-		\voiceOne
-		\autochange
-		\relative c {
-			d8 f a c d e d c a f |
-			d8 f a c d e d c a f |
-			d8 f a c d e d c a f |
-			d8 f a c d e d c a f |
-		}
-	}
-}
-
-arpeggioEightE = {
-	\new Voice {
-		\voiceOne
-		\autochange
-		\relative c {
-			e8 g b c d c b g |
-			e8 g b c d c b g |
-			e8 g b c d c b g |
-			e8 g b c d c b g |
-		}
-	}
-}
-
-arpeggioEightD = {
-	\new Voice {
-		\voiceOne
-		\autochange
-		\relative c {
-			d8 f a c d c a f |
-			d8 f a c d c a f |
-			d8 f a c d c a f |
-			d8 f a c d c a f |
-		}
-	}
-}
-
-A  = {
-	\time 3/2
-	<<
-		\arpeggioTwelveE	
-	
-		\new Voice {
-			\voiceTwo
-			\autochange
-			\relative c {
-				c1.~|
-				c1.~|
-				c1.~|
-				c1.|
-			}
-		}
-	>>
-	
-	<<
-		\arpeggioTwelveE	
-	
-		\new Voice {
-			\voiceTwo
-			\autochange
-			\relative c, {
-				c1.~|
-				c1.~|
-				c1.~|
-				c1.|
-			}
-		}
-	>>
-	
-	<<
-		\arpeggioTwelveD	
-	
-		\new Voice {
-			\voiceTwo
-			\autochange
-			\relative c {
-				c1.~|
-				c1.~|
-				c1.~|
-				c1.|
-			}
-		}
-	>>
-	
-	<<
-		\arpeggioTwelveD	
-	
-		\new Voice {
-			\voiceTwo
-			\autochange
-			\relative c, {
-				c1.~|
-				c1.~|
-				c1.~|
-				c1.|
-			}
-		}
-	>>
-
-	<<
-		\arpeggioTwelveE	
-	
-		\new Voice {
-			\voiceTwo
-			\autochange
-			\relative c,, {
-				c1.~|
-				c1.~|
-				c1.~|
-				c1.|
-			}
-		}
-	>>
-}
-
-
-B  = {
-	\time 5/4
-	<<
-		\arpeggioTenE	
-	
-		\new Voice {
-			\voiceTwo
-			\autochange
-			\relative c {
-				c2.~ c2~|
-				c2.~ c2~|
-				c2.~ c2~|
-				c2.~ c2|
-			}
-		}
-	>>
-	
-	<<
-		\arpeggioTenE	
-	
-		\new Voice {
-			\voiceTwo
-			\autochange
-			\relative c, {
-				c2.~ c2~|
-				c2.~ c2~|
-				c2.~ c2~|
-				c2.~ c2|
-			}
-		}
-	>>
-	
-	<<
-		\arpeggioTenD	
-	
-		\new Voice {
-			\voiceTwo
-			\autochange
-			\relative c {
-				c2.~ c2~|
-				c2.~ c2~|
-				c2.~ c2~|
-				c2.~ c2|
-			}
-		}
-	>>
-	
-	<<
-		\arpeggioTenD	
-	
-		\new Voice {
-			\voiceTwo
-			\autochange
-			\relative c, {
-				c2.~ c2~|
-				c2.~ c2~|
-				c2.~ c2~|
-				c2.~ c2|
-			}
-		}
-	>>
-
-	<<
-	
-		\arpeggioTenE	
-		\new Voice {
-			\voiceTwo
-			\autochange
-			\relative c,, {
-				c2.~ c2~|
-				c2.~ c2~|
-				c2.~ c2~|
-				c2.~ c2|
-			}
-		}
-	>>
-}
-
-C = {
+intro =	{
 	\time 4/4
-	<<
-		\arpeggioEightE
-		\new Voice {
+
+	\repeat volta 2	<<
+		\autochange
+		\new Voice
+		{
+			\voiceOne
+			\relative c''
+			{
+				d1\( | e | a, | c\) |
+				d1\( | e | g, | c\) |
+			}
+		
+		}
+	
+		\autochange
+		\new Voice
+		{
 			\voiceTwo
-			\autochange
-			\relative c, {
-				c1~
-				c1~|
-				c1~|
-				c1 |
+			\relative c
+			{
+				c1\laissezVibrer | s | s | s |
+				s | s | s | s |
 			}
 		}
 	>>
 
 	<<
-		\arpeggioEightD
-		\new Voice {
+		\autochange
+		\new Voice
+		{
+			\voiceOne
+			\relative c''
+			{
+				d1\( | e | a, | c\) |
+				d1\( | e | g, | c\) |
+			}
+		
+		}
+	
+		\autochange
+		\new Voice
+		{
 			\voiceTwo
-			\autochange
-			\relative c, {
-				c1~
-				c1~|
-				c1~|
-				c1 |
+			\relative c
+			{
+				<c d>1\laissezVibrer | s | s | s |
+				s | s | s | s |
 			}
 		}
 	>>
+	\bar "||"
 
 	<<
-		\arpeggioEightE	
-		\new Voice {
+		\autochange
+		\new Voice
+		{
+			\voiceOne
+			\relative c''
+			{
+				d1\( | e | a, | c\) |
+				d1\( | e | g, | c\) |
+			}
+		
+		}
+	
+		\autochange
+		\new Voice
+		{
 			\voiceTwo
-			\autochange
-			\relative c,, {
-				c1~
-				c1~|
-				c1~|
-				c1 |
+			\relative c
+			{
+				<c e>1\laissezVibrer | s | s | s |
+				d\laissezVibrer | s | s | s |
 			}
 		}
 	>>
+	\bar "||"
+
+	<<
+		\autochange
+		\new Voice
+		{
+			\voiceOne
+			\relative c''
+			{
+				d1\( | e | a, | c\) |
+				d1\( | e | g, | c\) |
+			}
+		
+		}
+	
+		\autochange
+		\new Voice
+		{
+			\voiceTwo
+			\relative c
+			{
+				c1\laissezVibrer | s | s | s |
+				s | s | s | s |
+			}
+		}
+	>>
+	\bar "||"
 }
 
-\score
-{
+\score {
 	\new PianoStaff <<
 		\new Staff = "up" {
 			\clef "treble"
-			\A \B \C
+			\intro
 		}
-		\new Staff = "down" {
+
+		\new Staff = "down"
+		{
 			\clef "bass"
 		}
 	>>
 }
-
-
