@@ -153,9 +153,9 @@ AOne = {
 
 		\new Voice {
 		\change Staff = "down"
-			c1~   | c     | s   | s  | s               | %14-18
-			s     | f     | s   | s  | s               | %19-22
-			b,    | s     | s   |                        %23-26
+			c1~   | c     | s   | s  | s               | 
+			s     | f     | s   | s  | s               |
+			b,    | s     | s   |                      
 		}
 	>>	
 
@@ -173,14 +173,15 @@ AOne = {
 			s     | f,    | s   | s  | s               |
 			b     | s     | s   |
 		}
-	>>
+	>> %14-26
 
 	<<
 		\new Voice {
 		\change Staff = "up"
 			c'~   | c'~   | c'\laissezVibrer| %27-29
 			d'~   | d'\laissezVibrer |        %30-31
-			e'~   | e'\laissezVibrer |        %32-33
+			\change Staff = "down"
+			\tuplet 5/4 { e16( g b \change Staff = "up" c' d' } e'2.)~   | e'1\laissezVibrer |        %32-33
 		}
 	>>
 	
@@ -214,7 +215,8 @@ AOne = {
 
 		\new Voice {
 		\change Staff = "up"
-			e'''1~| e'''  | d'~ | d'~| d'\laissezVibrer|
+			e'''1~| e'''  | \change Staff = "down" 
+			                d16( f a \change Staff = "up" c' d'2.)~| d'1~| d'\laissezVibrer|
 			s     | b''   | c'~ | c'~| c'\laissezVibrer|
 			f'    | s     | s   |
 		}
@@ -223,35 +225,51 @@ AOne = {
 	<<
 		\new Voice {
 		\change Staff = "up"
-			e'~   | e'~   | e'\laissezVibrer|
-			d'~   | d'\laissezVibrer |
+			\change Staff = "down" \tuplet 5/4 { e16( g b \change Staff = "up" c' d' }    e'2.)~ | e'1~ | e'\laissezVibrer|
+			\change Staff = "down" \tuplet 6/4 { d16( f a \change Staff = "up" c' d' e' } d'2.)~ | d'1~ | d'1\laissezVibrer |
 			c'~   | c'\laissezVibrer |
 		}
 	>>
 
-	\bar "||" %End Measures 34-66
+	\bar "||" %End Measures 34-67
 	
 	<<	
 		\new Voice {
 		\change Staff = "up"
-			c''~ | d'~  | d'  |     %67-69
-			bes' | e'~  | e'  |     %70-72
-			r8 fis''2..~|fis''1|    %73-74
+			c'' | \change Staff = "down" \tuplet 6/4 {d16( f a \change Staff = "up" c' d' e' } \tuplet 3/2 { g'16 e'  d')~ } d'8~ d'2~  | d'1  |     %68-70
+			bes' | \change Staff = "down" \tuplet 6/4 {e16( g b \change Staff = "up" c' d' e' } \tuplet 3/2 { g' e'8~) } e'8~ e'2~ | e'1  |     %70-72
+			r8 fis''2..~|fis''1|    
 
-			c'''~| d'~  | d'  |     %75-77
-			bes''| e'~  | e   |     %78-80 
-			r8 fis'''2..~|fis'''1|  %81-82
+			c''' \change Staff = "down" \tuplet 6/4 {d16( f a \change Staff = "up" c' d' e' } 
+			\tuplet 6/4 { g' e' d' c' \change Staff = "down" a f } \tuplet 6/4 {d16 f a \change Staff = "up" c' d'8)~ } d'4~ | d'1  |     %76-78
+			bes''| \appoggiatura {e'16 g'} e'1~   | e'1   |    
+			r8 fis'''2..~|fis'''1|
 
-			c'~   | c'~ |           %83-84
-			d'~   | d'  |           %85-86
-			e'    |                 %87
+			c'~   | c' |        
+			\change Staff = "down"
+			\tuplet 6/4 { d16( f a \change Staff = "up" c' d' e' }
+			\tuplet 6/4 { g' e' d' c' \change Staff = "down" a f }
+			
+			\tuplet 6/4 { d16 f a \change Staff = "up" c' d' e' }
+			\tuplet 6/4 { g' e' d' c' \change Staff = "down" a f } |
+			
+			\tuplet 6/4 { d16 f a \change Staff = "up" c' d' e' }
+			\tuplet 3/2 { g' e' d')~ } d'8~ d'2                       |      
+			
+			\change Staff = "down"
+			\tuplet 6/4 { e16 g b \change Staff = "up" c' d' e' }
+			\tuplet 6/4 { g' e' d' c' \change Staff = "down" b g }
+			
+			\tuplet 6/4 { e16 g b \change Staff = "up" c' d' e' }
+			\tuplet 6/4 { g' e' d' c' \change Staff = "down" b g }
+			|            
 
 		}
 		\new Voice {
 		\change Staff = "down"
-			c1   | r    | r   |
-			r4 f2.~|f1  | r   |
-			b    | r    |
+			c1   | s    | s   |
+			r4 f2.~|f1  | s   |
+			b    | s    |
 	
 			c,1  | r    | r   |
 			r4 f,2.~|f,1| r   |
@@ -259,19 +277,62 @@ AOne = {
 		}
 	>>
 	
-	\bar "." %End measures 67-87
+	\bar "." %End measures 67-88
+}
+
+subP = \markup { \dynamic p \teeny \italic subito }
+dRiff = { f16 a c d e g e d c a f) | d( f a c d e g e d c a f) | }
+
+BOne = {
+	\time 6/8
+	
+	<<
+		\new Voice {
+		
+			\autochange
+			\relative c {
+			d16(^\f \dRiff
+			d16(    \dRiff 
+		
+			d16(^\p \dRiff 
+			d16(    \dRiff
+			
+			d16(\<  \dRiff 
+
+			d16(\!^\subP \dRiff
+			d16(    \dRiff
+		
+			d16( \dRiff
+			d16( \dRiff  
+			
+			d16( \dRiff
+
+			}
+		}
+		
+		\new Voice {
+
+			\change Staff = "down"
+			s2.\sustainOn s2.*3
+			s2.\sustainOff\sustainOn s2.*3
+		}
+	>>
+
+	
 }
 
 \score {
 	\new PianoStaff <<
 		\new Staff = "up" {
 			\clef "treble"
-			\AOne	
+		%	\AOne
+			
 		}
 
 		\new Staff = "down" {
 			\clef "bass"
-			s1*87
+		%	s1*88
+			\BOne
 		}
 	>>
 }
