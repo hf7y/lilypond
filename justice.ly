@@ -1,5 +1,4 @@
 \version "2.18.2"
-
 % Justice - Zachary Viet Pine
 % Solo Piano
 % New Draft March 16, 2016
@@ -282,31 +281,50 @@ AOne = {
 
 subP = \markup { \dynamic p \teeny \italic subito }
 dRiff = { f16 a c d e g e d c a f) | d( f a c d e g e d c a f) | }
-
+dRiffer = {\autoBeamOff g'16 e d c a f \autoBeamOn| d( f a c d e g e d c a f) }
 BOne = {
 	\time 6/8
 	
 	<<
 		\new Voice {
+			\change Staff = "up"
+			\voiceOne
+			s2.*8
+			
+			\relative c'' {
+				d2.(\p | e | a, | c) |
+				d2.( | s | a  | s ) |
+				
+				d2.(\pp | e | a, | c) |
+				d2.     | s | s  | s  |
+				
+				d2.(    | e4. a~ | a,2. | c)  |
+				d2.~(    | d4. a~ | a2.) | s2. 
+
+				d2.(    | e  | a, | c)  |
+				d2.    | s | s | s | 
+			}
+		}
+
+		\new Voice {
 		
 			\autochange
 			\relative c {
-			d16(^\f \dRiff
-			d16(    \dRiff 
-		
-			d16(^\p \dRiff 
-			d16(    \dRiff
-			
-			d16(\<  \dRiff 
+				d16(^\f \dRiff || d16(    \dRiff  ||
+				d16(^\p \dRiff || d16(\<  \dRiff || %end mm 1-8
+	
+				r4.\!\stemDown \dRiffer || d16(    \dRiff ||
+				d16( \dRiff             || r4. \dRiffer ||
 
-			d16(\!^\subP \dRiff
-			d16(    \dRiff
-		
-			d16( \dRiff
-			d16( \dRiff  
-			
-			d16( \dRiff
-
+				
+				d16( \dRiff || d16(    \dRiff ||
+				d16( \dRiff || d16(    \dRiff ||
+				
+				d16( \dRiff || d16(    \dRiff ||
+				d16( \dRiff || d16(    \dRiff ||
+				
+				d16( \dRiff || d16(    \dRiff ||
+				d16( \dRiff || d16(    \dRiff ||
 			}
 		}
 		
@@ -315,17 +333,28 @@ BOne = {
 			\change Staff = "down"
 			s2.\sustainOn s2.*3
 			s2.\sustainOff\sustainOn s2.*3
+	
+			s2.\sustainOff | s\sustainOn | s2.*2 ||
+			s2.\sustainOff\sustainOn | s |  s2.\sustainOff | s2.\sustainOn |
+				
+			s2.\sustainOff\sustainOn | s | s2.*2 ||
+			s2.\sustainOff\sustainOn | s2. | s | s2. |
+
+			s2.
+			s 
 		}
 	>>
+	\bar "||"
 
-	
+
+	:
 }
 
 \score {
 	\new PianoStaff <<
 		\new Staff = "up" {
 			\clef "treble"
-		%	\AOne
+			%\AOne
 			
 		}
 
@@ -335,4 +364,6 @@ BOne = {
 			\BOne
 		}
 	>>
+	\midi {}
 }
+
