@@ -347,23 +347,166 @@ BOne = {
 	\bar "||"
 
 
-	:
+
 }
+
+topVoiceforB = {
+	\change Staff = "up"
+	\relative c'' {
+
+		%5 mm of Riff
+		s2. | s | s | s | s |
+
+		%5 mm of Melody+Riff
+
+		d2. | e | a,| c | d |
+
+		%3 mm of Riff 
+
+		s | s | s |
+
+		%5 mm of Melody and Riff Fragments
+		e2. | a,| c | d | e |
+
+		%5 mm of M+R Frag Inverted
+
+		r8    a16 c	d e g r		r8.   f,16|
+		r4		r8.   e'16	d c a f   |
+		d   f a8~	a4~		a8.   f16 |
+		r8.     c'16	r e g e		r c r r   |
+		d,  f a c       d e g e         d c a f   |
+
+		%3 mm of M+R+Bass C
+		e2. | a, | c |
+
+		%3 mm of Riff
+		s   | s | s |
+
+		%3 mm of Melody and Riff
+		d   | e | a, |
+
+		%2 mm of Riff
+		c   | d |
+		
+		%END B.AA
+	}
+}
+
+midVoiceforB = {
+	\relative c {
+		%5 mm of Riff
+		\repeat unfold 5 {
+			d16 f a c d e g e d c a f
+		}
+
+		%5 mm of Melody+Riff
+		
+		\voiceTwo
+		d16 f a c d e g e d c a f |
+		d16 f a c d e g e d c a f |
+		d16 f a c d e g e d c a f |
+		d16 f a c d e g e d c a f |
+		d16 f a c d e g e d c a f |
+
+		%3 mm of Riff 
+
+		d16 f a c d e g e d c a f |
+		d16 f a c d e g e d c a f |
+		d16 f a c d e g e d c a f |
+
+		%5 mm of Melody and Riff Fragments
+		r8    a16 c	d e g r		r8.   f,16|
+		r4		r8.   e'16	d c a f   |
+		d   f a8~	a4~		a8.   f16 |
+		r8.     c'16	r e g e		r c r r   |
+		d,  f a c       d e g e         d c a f   |
+
+		%5 mm of M+R Frag Inverted
+		d2. | e | a | c | d |	
+
+		%3 mm of M+R+Bass C
+		r8    a16 c 	d   \change Staff = "down" r8. d16 c a             f         |
+		r8    a16 c     d   \change Staff = "down" r8.	        	r8.  f16       |
+		\change Staff = "down" 	r4		d16 r8. d16 r8.                                       |
+
+		%3 mm of Riff
+		\repeat unfold 3 {
+			d,16 f a c d e g e d c a f
+		}
+
+		%3 mm of Melody and Riff
+		\repeat unfold 3 {
+			d16 f a c d e g e d c a f
+		}
+
+		%2 mm of Riff
+		\repeat unfold 2 {
+			d16 f a c d e g e d c a f
+		}
+		
+		%END B.AA 
+	}
+}
+
+lowVoiceforB = {
+	\relative c, {
+		s2.*23
+
+		%3 mm Bass C
+		r4		r16 c8.		                r4	|
+		r4		r16 c8.		                r4	|
+		r4		r16 \ottava #-1 c,8. \ottava #0	r4	|
+
+		s2.*8
+	}
+}
+
+
+
+FreshWrite = {
+	\time 6/8
+	<<
+		\new Voice {
+			\midVoiceforB
+		}
+		
+		\new Voice {
+			\change Staff = "up"
+			\topVoiceforB
+			\voiceOne
+		}
+
+		\new Voice {
+			\change Staff = "down"
+			\voiceTwo
+			\lowVoiceforB
+		}
+	>>
+
+}
+
 
 \score {
 	\new PianoStaff <<
 		\new Staff = "up" {
 			\clef "treble"
-			%\AOne
-			
+			%AOne
+			\time 6/8
+			\topVoiceforB
 		}
 
 		\new Staff = "down" {
 			\clef "bass"
-		%	s1*88
-			\BOne
+		
+			%1*88
+			\time6/8
+			<< 
+				\autochange
+			%\midVoiceforB 
+				\\
+			%\lowVoiceforB
+			>>
 		}
 	>>
-	\midi {}
 }
 
