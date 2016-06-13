@@ -1,120 +1,273 @@
 \version "2.18.2"
 
-ud = #(define-music-function
-		(parser location dur note)
-		(ly:pitch? ly:duration?)
-	#{
-		
-	#})
-opening = <<
-
+global = {
 	\tempo 4 = 60
-	\new Voice = "tactus" {
-		\change Staff = "tactus"
-		s1 * 4 
-		s1 * 4 
+}
 
-		\relative c''' {
-			\ottava #1
-			r8 c8 r4. r8 a a' | r4 r4 b,8 r8 b'8 b,8 | 
-			r4 r4. r8 a16 a' g, g' | r16 g, g' g, r16 fis' fis, d' d, b' r16 \change Staff = "tactus" b, g' g, f' f, |
-			
-			r8 c'16 c'16 r4. r4. | r4 r8 d,16 d' fis, fis' r8 gis, gis' | 
-			r4 r4. r8 \tuplet 3/2 { a,16 a' a, a' a, a' }  | r8 \tuplet 3/2 { r8 bes,16 } \tuplet 3/2 { r16 b' b, } r4 r4. |
-
-			r8 \tuplet 3/2 { c,,16 c' e, } \tuplet 3/2 { r16 fis' fis, a' a, b' } r8 r8 c, c' | 
-			r4 r8 \tuplet 3/2 { d,16 d' fis, fis' a, a' } r16 cis, cis' e, e' g, |
-			r4 r4. r8 a,32 a' r16 e32 e' r16 |
-			r1 |
-
-			r4 r4 d,32 d' r16 fis,32 fis' r16 a,32 a' r16 c,32 c' r16 |
-			e,32 e, g'16 g,32 bes' r16 b32 b, d' d, fis'16 fis,32 a' a,16 b' r8. b,,,32 b' r16 b'32 b' |
-			\repeat tremolo 8 { c,,,,32 c' } 
-			\repeat tremolo 8 { c32 c' } 
-			\repeat tremolo 8 { c32 c' } 
-			<< { c2 \trill } \\ { r4 d,8 d } >>
-
-			< c c' >4 < b b'> 4. d4. | 
-			< c c' >4 < b b'> 4. e4. | 
-			< c c' >4 < b b'> 4. < a a' >4. | 
-			< c c' >4 < b b'> 4. s4. |
-
-			\ottava #0
-			c,,,4 b4. d4. |
-			c4 b4. e4. |
-			c4 b4. a4. |
-			c4 b4. g4. |
-		}
-	}
-
-	\new Voice = "sixteenths" {
-		\change Staff = "up"
-		\voiceOne
-		\relative c'' {
-			s1 | s1 | r4 r4. r16 a8. s8 | r1 | 
-			s1 *4
-
-			r16 c8. s2. | r4 r16 b8. s2 | r4 r4. r16 a8. s8 | s1 |
-			r16 c,8. s2. | r4 r16 b'8. s2 | r4 r4. r16 a8. s8 | s1 |
-			r16 c,,8. s2. | r4 r16 b'8. s2 | r4 r4. r16 a'16 r16 cis,32 cis' r16 b32 b' | s1 | \bar "||"
-
-			r4 r4 r16 a32 a' r16 d,,32 d' r16 c,32 c' r16 d,32 d' |
-			\tuplet 3/2 { r8 c c, } s4. r8 e, e' |
-			r16 c,16 e, e' r4 < a, a' >8 \tuplet 3/2 { r16 a cis, } \tuplet 3/2 { cis' e, e' } \tuplet 3/2 { g, g' a, }
-			c'8 c,8 b''8 s4 \tuplet 3/2 { r16 g, b } \change Staff = "down" \tuplet 3/2 { b, d d, } \tuplet 3/2 { f f, g, }
+middleCRX = {
+	\autochange 
+	\relative c' {
+		c4\(( b4. d4. )   |
+		c4  ( b4. e4. )   |
+		c4  ( b4. \appoggiatura { a16 } a'4. )   | %first abberation%
+		c,4 ( b4. g4. \)) |
 		
-			\ottava #-1
+		\time 5/4 c2\(( b4. \appoggiatura { d16 } d'4. )   |
+		\time 4/4 c4  ( b4. e4. )   |
+		          c4  ( \appoggiatura { b,16 } b'4. a4. )   | 
+		c,4 ( b4. g4. \)) |
+	 
 
-			c,2~ c8 d4. | 
-			c2~ c8 e4. | 
-			c2~ c8 a4. | 
-			c2~ c8 g''4. | 
+		\time 5/4 c,2 \(( \appoggiatura { b16 } b'4. \appoggiatura { d16 } d'4. ) |
+		\time 4/4 c4   ( b4. e4. ) |	
+		c4 ( b4. \appoggiatura { a,,16 a' } a'4. ) |
+		c4 ( b4. \appoggiatura { g,16 } g'4. \)) |
 	}
-			}
+}
 
-	
-	\new Voice = "cbtheme" {
+polywbasso = <<
+	\new Voice {
 		\change Staff = "up"
-		\voiceTwo
-		\relative c' {
-			c4\(  b4. d4. | c4 b4. e4. | c4 b4. a4. | c4  b4. g4.\) |
-			c4\(  b4. d4. | c4 b4. e4. | c4 b4. a4. | c4  b4. g4.\) |
-			
-			c4\(  b4. d4. | c4 b4. e4. | c4 b4. a4. | c4  b4. g4.\) |
-			c,4\(  b'4. d4. | c4 b4. e4. | c4 b4. a4. | c4  b4. g4.\) |
-			c,,4\(  b''4. d4. | c,4 b4. e'4. | c'4 b4. a,4. | c'4  b4. g4.\) |
-			
-			c'4\(  b4. s4. | c,4 b'4. e,,,4. | c4 b'4. a,4. | c4  b''4. g'4.\) |
-			
+		\relative c'' {
+			\ottava #1
+
+			\time 6/4 c2.\(( b4. \appoggiatura { d16 } d'4. )   |
+			\time 4/4 c4  ( b4. e4. )   |
+			\time 9/8 c4  ( \appoggiatura { b,16 } b'2 a4. )   | 
+			\time 7/8 c,8 ( b4. g4. \)) |
+		
+			\ottava #0
+				\time 6/4 c,2. \(( \appoggiatura { b16 } b'4. 
+				\ottava #1 
+					\appoggiatura { d16 } d'4. ) |
+			\time 4/4 c4  ( b4. e4. ) |	
+			\time 9/8 c4 ( b2 \appoggiatura { \change Staff = "down" \once \stemUp a,,16 a' } \change Staff = "up"  a'4. ) |
+			\time 7/8 \grace { s16 } c8 ( b4. \appoggiatura { g,16 } g'4. \)) |
 		}
 	}
 
-	\new Voice = "basso" {
+	\new Voice {
 		\change Staff = "down"
-		s1 * 20
-		\relative c { 
-			r4 r8 c4 r4. |
-			r4 r8 c4 r4. |
-			r4 r8 f,4 r4. |
-			r4 r8 g8 g, r4. |
+		\relative c {
+			\time 6/4 c4 r2 r8 c4 r4. 
+			\time 4/4 c4 r8 c4 r4.
+			\time 9/8 c4 r8 c4. r4.
+			\time 7/8 c8 r8 c4 r4.
+
+
+			\time 6/4 c4 r2 r8 c4 r4. 
+			\time 4/4 c4 r8 c4 r4.
+				  c4 r8 c4. r4.
+			\appoggiatura { c,16 } c'8 r8 c8 c8 a'4. 
+
 		}
 	}
 >>
 
+pwbmidc = <<
+
+	\new Voice {
+		\change Staff = "up"
+		\relative c''' {
+			\time 7/4 c2 c, \(( \appoggiatura { b16 } b'4. \appoggiatura { d16 } d'4. ) |
+			\time 4/4 c,4  ( b4. e4. ) |	
+			\time 9/8 c4 ( b2 \appoggiatura { a,16 a' } \change Staff = "up"  a'4. ) |
+			\time 7/8 c8 ( b4. \ottava #2 \appoggiatura { g16 } g'4. \)) |
+		}
+	}
+
+	\new Voice  {
+		\change Staff = "down"
+		%\stemUp
+		\relative c' {
+			\time 7/4 r1 s4. d4.
+			\time 4/4 r4 s4. e4.
+			\time 9/8 r4 s2  a,4.
+			\time 7/8 r8 s4. g4.
+		}
+	}
+
+	\new Voice {
+		\change Staff = "down"
+		%\stemDown
+		\relative c, {
+			\time 7/4 s1 r8 f8 f s4. 
+			\time 4/4 s4 r8 f8 f s4.
+			\time 9/8 s4 r8 f,8 f' f' s4.
+			\time 7/8 s8 r8 f,8 f, s4.
+		}
+	}
+>>
+
+lyricm = <<
+
+	\bar "||"
+	\new Voice {
+		\change Staff = "up"
+		\stemUp
+		\relative c'''' {
+			\ottava #2
+			\time 4/4 c1 \laissezVibrer
+			s1
+			c1 \laissezVibrer
+			s1
+
+			b1 \laissezVibrer
+			s1
+
+			r4 b2. \laissezVibrer
+			s1
+
+			r2 d2 \laissezVibrer
+			s1
+
+			r4 \appoggiatura { d,16 } d'2. \laissezVibrer
+			s1
+
+			\appoggiatura { c,16 } c'2. \appoggiatura { b,16 } b'4 \laissezVibrer
+			s1
+
+			r8 \appoggiatura { e,,16 } e'8 
+			r8 \appoggiatura { e16 } e'8 \laissezVibrer
+			s2
+
+			\appoggiatura { c,16 } c'4 \appoggiatura { b,16 b' }  b,4. a'4. \laissezVibrer
+			
+			\appoggiatura { c,,16 } c'2. \appoggiatura { c16 } c'4 \laissezVibrer
+			r2 \appoggiatura { b16 } b'2 \laissezVibrer
+
+			r8 \appoggiatura { g,16 } g'8 ~ g4. \appoggiatura { c,,16 } c'4 \appoggiatura { b16 } b'8 |
+			\appoggiatura { d,,16 } d'8 \appoggiatura { c,16 } c'8 
+				\appoggiatura { b,16 b' } b,4 r16 \appoggiatura { e16 } e,16 \appoggiatura { c'16 } c,16
+				\appoggiatura { b'16 } b,16 \appoggiatura { a''16 a, } a,16 \appoggiatura { c''16 c, } c,16 
+					\appoggiatura { b'''16 b, b, } b,16 \appoggiatura { g16 g' g' } g'16 |
+
+		}
+	}
+
+	\new Voice {
+		\change Staff = "mid"
+		\relative c' {
+			\time 4/4 
+			r1
+			r2 r4 r16 b( a c | 
+			b8. ) e,16 ( a8. e16 g2)~ | 
+			g1 \laissezVibrer |
+
+			r1
+			r2 r4 r16 b( a c | 
+			b8 e) r2 a,8( d) |
+			r1 |
+
+			r1
+			r2 r4 r16 b( a c | 
+			b8 e) r2 a,8( d) |
+			r2. r8 g,16( fis') |
+
+			r1
+			r2 r4 r16 b,( a c | 
+			b4 e4) r4 a,8( d) |
+			r2. r8 g,16( fis') |
+
+			r16 b,( a c ) r8 b16( a c4) r4 |
+			r2 r8 b( a c |
+			b16 e ) r8 a,16 ( d ) r g, ( g' ) r r8 \appoggiatura { e16 } e'4
+
+			r4 < b, b' >8 < a, a'> < c c' > 
+				< b b' >16 < e' e' > < a,, a' > < d d' > < g, g' > < g, g' >
+		}
+	}
+
+	\new Voice {
+		\change Staff = "down"
+		\stemDown
+		\relative c, {
+			\ottava #-1
+			\time 4/4 c1 \laissezVibrer
+			s1
+			c1 \laissezVibrer
+			s1
+	
+			c1 \laissezVibrer
+			s1
+
+			c1 \laissezVibrer
+			s1
+			
+			f1 \laissezVibrer
+			s1
+
+			\appoggiatura { f,16 } f'4
+			\appoggiatura { f,16 } f'4. ~ f4. \laissezVibrer 
+			s1
+
+			r4 \appoggiatura { f,16 } f'2. \laissezVibrer
+			s1
+
+			\appoggiatura { f,16 } f'4 
+			\appoggiatura { f,16 } f'4. ~ f4. \laissezVibrer 
+		
+			r4 r8 f,8 f8 r4.
+
+			r4 \appoggiatura { f16 } f'4. ~ f4. \laissezVibrer
+
+			r4 g,2.
+
+			r4 r8 \appoggiatura { g16 } g'4 r4. | 
+			g,4 r8 g8 f
+		}
+	}
+
+>>
+
+fin = <<
+	\new Voice {
+		\change Staff = "up"
+			\relative c'''' {
+				\ottava #2
+				< c c'>4  b4. d4. | 
+				< c c'>4  b4. e,4. | 
+				\ottava #1
+				c4 b4. a,4. |
+				\ottava #0
+				c4 b4. g4. | 
+				
+				c4 b4. d4. |
+				c4 b4. e4. |
+				c4 b4. a4. |
+				c4 b4. g4. |
+			}
+	}
+
+	\new Voice {
+		\change Staff = "down"
+		\relative c,, {
+			\ottava #-1
+			c1 | r4 b'4.~ b4. | 
+			\ottava #0
+			r4 r4. a'4. | r4 r4. r4. | 
+		}
+	}
+>>
 \score {
 	\new PianoStaff <<
-		\new Staff = "tactus" {
-			\clef "treble"
-		}
-
 		\new Staff = "up" {
 			\clef "treble"
-			\opening
+			\middleCRX
+			\polywbasso
+			\pwbmidc
+			s1 * 20
+			\fin
+		}
+
+		\new Staff = "mid" {
+			\clef "bass"
+			s1*24 s4*9
+			\lyricm
 		}
 
 		\new Staff = "down" {
 			\clef "bass"
-			s1* 40
 		}
 	>>
 
