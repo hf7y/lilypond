@@ -1,275 +1,398 @@
 \version "2.18.2"
 
-global = {
-	\tempo 4 = 60
-}
-
-middleCRX = {
-	\autochange 
-	\relative c' {
-		c4\(( b4. d4. )   |
-		c4  ( b4. e4. )   |
-		c4  ( b4. \appoggiatura { a16 } a'4. )   | %first abberation%
-		c,4 ( b4. g4. \)) |
-		
-		\time 5/4 c2\(( b4. \appoggiatura { d16 } d'4. )   |
-		\time 4/4 c4  ( b4. e4. )   |
-		          c4  ( \appoggiatura { b,16 } b'4. a4. )   | 
-		c,4 ( b4. g4. \)) |
-	 
-
-		\time 5/4 c,2 \(( \appoggiatura { b16 } b'4. \appoggiatura { d16 } d'4. ) |
-		\time 4/4 c4   ( b4. e4. ) |	
-		c4 ( b4. \appoggiatura { a,,16 a' } a'4. ) |
-		c4 ( b4. \appoggiatura { g,16 } g'4. \)) |
-	}
-}
-
-polywbasso = <<
-	\new Voice {
-		\change Staff = "up"
-		\relative c'' {
-			\ottava #1
-
-			\time 6/4 c2.\(( b4. \appoggiatura { d16 } d'4. )   |
-			\time 4/4 c4  ( b4. e4. )   |
-			\time 9/8 c4  ( \appoggiatura { b,16 } b'2 a4. )   | 
-			\time 7/8 c,8 ( b4. g4. \)) |
-		
-			\ottava #0
-				\time 6/4 c,2. \(( \appoggiatura { b16 } b'4. 
-				\ottava #1 
-					\appoggiatura { d16 } d'4. ) |
-			\time 4/4 c4  ( b4. e4. ) |	
-			\time 9/8 c4 ( b2 \appoggiatura { \change Staff = "down" \once \stemUp a,,16 a' } \change Staff = "up"  a'4. ) |
-			\time 7/8 \grace { s16 } c8 ( b4. \appoggiatura { g,16 } g'4. \)) |
-		}
-	}
-
-	\new Voice {
-		\change Staff = "down"
-		\relative c {
-			\time 6/4 c4 r2 r8 c4 r4. 
-			\time 4/4 c4 r8 c4 r4.
-			\time 9/8 c4 r8 c4. r4.
-			\time 7/8 c8 r8 c4 r4.
-
-
-			\time 6/4 c4 r2 r8 c4 r4. 
-			\time 4/4 c4 r8 c4 r4.
-				  c4 r8 c4. r4.
-			\appoggiatura { c,16 } c'8 r8 c8 c8 a'4. 
-
-		}
-	}
->>
-
-pwbmidc = <<
-
+intro = <<
 	\new Voice {
 		\change Staff = "up"
 		\relative c''' {
-			\time 7/4 c2 c, \(( \appoggiatura { b16 } b'4. \appoggiatura { d16 } d'4. ) |
-			\time 4/4 c,4  ( b4. e4. ) |	
-			\time 9/8 c4 ( b2 \appoggiatura { a,16 a' } \change Staff = "up"  a'4. ) |
-			\time 7/8 c8 ( b4. \ottava #2 \appoggiatura { g16 } g'4. \)) |
-		}
-	}
+			c4 r2. |
+			c4 r2. |
+			c4 r2. |
+			c4 r2. |
 
-	\new Voice  {
-		\change Staff = "down"
-		%\stemUp
-		\relative c' {
-			\time 7/4 r1 s4. d4.
-			\time 4/4 r4 s4. e4.
-			\time 9/8 r4 s2  a,4.
-			\time 7/8 r8 s4. g4.
+			\time 7/8
+			c8 r2. |
+			\time 4/4
+			c4 r2. |
+			c4 r2. |
+			\time 9/8
+			c4. r2. |
+
+			\time 4/4
+			c4 r2. |
+			c4 r2. |
+			c4 r2. |
+			c4 r2. |
+
+			\time 7/8
+			c8 r2. |
+			\time 4/4
+			c,4 r2. |
+			c4 r2. |
+			\time 9/8
+			c4. r2. |
+
+			\time 4/4
+			c4 r2. |
+			c4 r2. |
+			c4 r2. |
+			c4 r2. |
+
+			\time 7/8
+			c8 r2. |
+			\time 4/4
+			c,4 r8 c8 r2 |
+			c4 r8 c'8 r2 |
+			\time 9/8
+			c,4. r8 c''8 r2 |
 		}
 	}
 
 	\new Voice {
 		\change Staff = "down"
-		%\stemDown
 		\relative c, {
-			\time 7/4 s1 r8 f8 f s4. 
-			\time 4/4 s4 r8 f8 f s4.
-			\time 9/8 s4 r8 f,8 f' f' s4.
-			\time 7/8 s8 r8 f,8 f, s4.
+			r4 \tuplet 4/3 { b2 d2 } |
+			r4 \tuplet 4/3 { b2 e2 } |
+			r4 \tuplet 5/3 { b2. a2 } |
+			r4 \tuplet 4/3 { b2 g2 } |
+
+			\time 7/8
+			r8 \tuplet 4/3 { b2 d2 } |
+			\time 4/4
+			r4 \tuplet 4/3 { b2 e2 } |
+			r4 \tuplet 5/3 { b2. a'2 } |
+			\time 9/8
+			r4. \tuplet 4/3 { b,2 g'2 } |
+			
+			\time 4/4
+			r4 \tuplet 4/3 { b2 d2 } |
+			r4 \tuplet 4/3 { b2 e2 } |
+			r4 \tuplet 5/3 { b2. a2 } |
+			r4 \tuplet 4/3 { b2 g2 } |
+
+			\time 7/8
+			r8 \tuplet 4/3 { b2 d2 } |
+			\time 4/4
+			r4 \tuplet 4/3 { b2 e2 } |
+			r4 \tuplet 5/3 { b2. a'2 } |
+			\time 9/8
+			r4. \tuplet 4/3 { b,2 g'2 } |
+			
+			\time 4/4
+			r4 \tuplet 4/3 { b2 d2 } |
+			r4 \tuplet 4/3 { b2 e2 } |
+			r4 \tuplet 5/3 { b2. a2 } |
+			r4 \tuplet 4/3 { b2 g2 } |
+
+			\time 7/8
+			r8 \tuplet 4/3 { b2 d2 } |
+			\time 4/4
+			r4 \tuplet 4/3 { b2 e2 } |
+			r4 \tuplet 5/3 { b2. a,2 } |
+			\time 9/8
+			r4. \tuplet 4/3 { b2 g,2 } |
+			
 		}
 	}
 >>
 
-lyricm = <<
-
-	\bar "||"
+crossing = <<
 	\new Voice {
 		\change Staff = "up"
-		\stemUp
 		\relative c'''' {
-			\ottava #2
-			\time 4/4 c1 \laissezVibrer
-			s1
-			c1 \laissezVibrer
-			s1
+			\time 4/4
+			c4 r8 c8 r2 |
+			c4 r8 c8 r2 |
+			c4 r8 c8 r2 |
+			c4 r8 c8 r2 |
 
-			b1 \laissezVibrer
-			s1
+			\time 7/8
+			c8 r8 c,8 r2 |
+			\time 4/4
+			c4 r8 c8 r2 |
+			c4 r8 c8 r2 |
+			\time 9/8
+			c4. r8 c,8 r2 |
+			\time 4/4
 
-			r4 b2. \laissezVibrer
-			s1
+			c4 r8 c8 r2 |
+			c4 r8 c8 r2 |
+			c4 r8 c8 r2 |
+			c4 r8 c8 r2 |
 
-			r2 d2 \laissezVibrer
-			s1
-
-			r4 \appoggiatura { d,16 } d'2. \laissezVibrer
-			s1
-
-			\appoggiatura { c,16 } c'2. \appoggiatura { b,16 } b'4 \laissezVibrer
-			s1
-
-			r8 \appoggiatura { e,,16 } e'8 
-			r8 \appoggiatura { e16 } e'8 \laissezVibrer
-			s2
-
-			\appoggiatura { c,16 } c'4 \appoggiatura { b,16 b' }  b,4. a'4. \laissezVibrer
+			\time 7/8
+			c8 r8 c,8 r2 |
+			\time 4/4
+			c4 r8 c8 r2 |
+			c4 r8 c8 r2 |
+			\time 9/8
+			c4. r8 
+			\change Staff = "down"
+			\stemDown
+			c,8 \change Staff = "up" r2 |
+			\time 4/4
 			
-			\appoggiatura { c,,16 } c'2. \appoggiatura { c16 } c'4 \laissezVibrer
-			r2 \appoggiatura { b16 } b'2 \laissezVibrer
+			\change Staff = "down"
+			c4 r8 c8[ c8] r4. |
+			c4 r8 c8[ c8] r4. |
+			c4 r8 c8[ c8] r4. |
+			c4 r8 c8[ c,8] r4. |
+			
+			\oneVoice
+			\time 7/8
+			c'8 r8 c,8[ c ] r4. |
+			\time 4/4
+			c'4 r8 c,8[ c, ] r4. |
+			c''4 r8 c,8[ c ] r4. |
+			\time 9/8
+			c'4. r8 c,8[ c, ]r4. |
+			\time 4/4
 
-			r8 \appoggiatura { g,16 } g'8 ~ g4. \appoggiatura { c,,16 } c'4 \appoggiatura { b16 } b'8 |
-			\appoggiatura { d,,16 } d'8 \appoggiatura { c,16 } c'8 
-				\appoggiatura { b,16 b' } b,4 r16 \appoggiatura { e16 } e,16 \appoggiatura { c'16 } c,16
-				\appoggiatura { b'16 } b,16 \appoggiatura { a''16 a, } a,16 \appoggiatura { c''16 c, } c,16 
-					\appoggiatura { b'''16 b, b, } b,16 \appoggiatura { g16 g' g' } g'16 |
-
-		}
-	}
-
-	\new Voice {
-		\change Staff = "mid"
-		\relative c' {
-			\time 4/4 
-			r1
-			r2 r4 r16 b( a c | 
-			b8. ) e,16 ( a8. e16 g2)~ | 
-			g1 \laissezVibrer |
-
-			r1
-			r2 r4 r16 b( a c | 
-			b8 e) r2 a,8( d) |
-			r1 |
-
-			r1
-			r2 r4 r16 b( a c | 
-			b8 e) r2 a,8( d) |
-			r2. r8 g,16( fis') |
-
-			r1
-			r2 r4 r16 b,( a c | 
-			b4 e4) r4 a,8( d) |
-			r2. r8 g,16( fis') |
-
-			r16 b,( a c ) r8 b16( a c4) r4 |
-			r2 r8 b( a c |
-			b16 e ) r8 a,16 ( d ) r g, ( g' ) r r8 \appoggiatura { e16 } e'4
-
-			r4 < b, b' >8 < a, a'> < c c' > 
-				< b b' >16 < e' e' > < a,, a' > < d d' > < g, g' > < g, g' >
-		}
-	}
-
-	\new Voice {
-		\change Staff = "down"
-		\stemDown
-		\relative c, {
 			\ottava #-1
-			\time 4/4 c1 \laissezVibrer
-			s1
-			c1 \laissezVibrer
-			s1
-	
-			c1 \laissezVibrer
-			s1
-
-			c1 \laissezVibrer
-			s1
+			c'4 r8 c8[ c8] r4. |
+			c4 r8 c8[ c8] r4. |
+			c4 r8 c8[ c8] r4. |
+			c4 r8 c8[ c,8] r4. |
 			
-			f1 \laissezVibrer
-			s1
-
-			\appoggiatura { f,16 } f'4
-			\appoggiatura { f,16 } f'4. ~ f4. \laissezVibrer 
-			s1
-
-			r4 \appoggiatura { f,16 } f'2. \laissezVibrer
-			s1
-
-			\appoggiatura { f,16 } f'4 
-			\appoggiatura { f,16 } f'4. ~ f4. \laissezVibrer 
-		
-			r4 r8 f,8 f8 r4.
-
-			r4 \appoggiatura { f16 } f'4. ~ f4. \laissezVibrer
-
-			r4 g,2.
-
-			r4 r8 \appoggiatura { g16 } g'4 r4. | 
-			g,4 r8 g8 f
+			\oneVoice
+			\time 7/8
+			c'8 r8 c,8[ c ] r4. |
+			\time 4/4
+			c'4 r8 c,8[ c ] r4. |
+			c'4 r8 c,8[ c ] r4. |
+			\time 9/8
+			c'4. r8 c,8[ c ]r4. |
+			
+			\ottava #0 
 		}
-	}
-
->>
-
-fin = <<
-	\new Voice {
-		\change Staff = "up"
-			\relative c'''' {
-				\ottava #2
-				< c c'>4  b4. d4. | 
-				< c c'>4  b4. e,4. | 
-				\ottava #1
-				c4 b4. a,4. |
-				\ottava #0
-				c4 b4. g4. | 
-				
-				c4 b4. d4. |
-				c4 b4. e4. |
-				c4 b4. a4. |
-				c4 b4. g4. |
-			}
 	}
 
 	\new Voice {
 		\change Staff = "down"
 		\relative c,, {
-			\ottava #-1
-			c1 | r4 b'4.~ b4. | 
+			\time 4/4
+			\ottava #-1 
+			r4 \tuplet 4/3 { b2 d2 }
+			r4 \tuplet 4/3 { b2 e2 }
+			r4 \tuplet 5/3 { b2. a'2 }
+			r4 \tuplet 4/3 { b,2 g'2 }
+
 			\ottava #0
-			r4 r4. a'4. | r4 r4. r4. | 
+			\time 7/8
+			r8 \tuplet 4/3 { b2 d2 }
+			\time 4/4
+			r4 \tuplet 4/3 { b2 e2 }
+			r4 \tuplet 5/3 { b2. a'2 }
+			\time 9/8
+			r4. \tuplet 4/3 { b,2 g'2 }
+			\time 4/4
+		
+			r4 \tuplet 4/3 { b2 d2 }
+			r4 \tuplet 4/3 { b2 e2 }
+			r4 \tuplet 5/3 { b2. a'2 }
+			r4 \tuplet 4/3 { b,2 g'2 }
+
+			\time 7/8
+			r8 \tuplet 4/3 { b2 d2 }
+			\time 4/4
+			r4 \tuplet 4/3 { b2 e2 }
+			r4 \tuplet 5/3 { b2. a2 }
+			\time 9/8
+			r4. 
+			\voiceOne
+			\tuplet 4/3 { b2 g2 }
+			\time 4/4
+
+			\oneVoice
+			\change Staff = "up"
+			r4 \tuplet 4/3 { b2 d2 }
+			r4 \tuplet 4/3 { b2 e2 }
+			r4 \tuplet 5/3 { b2. a'2 }
+			r4 \tuplet 4/3 { b,2 g'2 }
+
+			\time 7/8
+			r8 \tuplet 4/3 { b2 d2 }
+			\time 4/4
+			r4 \tuplet 4/3 { b2 e2 }
+			r4 \tuplet 5/3 { b2. a'2 }
+			\time 9/8
+			r4. \tuplet 4/3 { b,2 g'2 }
+			\time 4/4
+			
+			\ottava #1
+			r4 \tuplet 4/3 { b2 d2 }
+			r4 \tuplet 4/3 { b2 e2 }
+			r4 \tuplet 5/3 { b2. a'2 }
+			r4 \tuplet 4/3 { b,2 g'2 }
+
+			\time 7/8
+			r8 \tuplet 4/3 { b2 d2 }
+			\time 4/4
+			r4 \tuplet 4/3 { b2 e2 }
+			r4 \tuplet 5/3 { b2. a'2 }
+			\time 9/8
+			r4. 
+			\tuplet 4/3 { b,2 g'2 }
+			\ottava #0 
 		}
 	}
 >>
+
+melody = <<
+	\new Voice {
+		\autochange {
+			\time 11/8
+				c,,8[ 
+				b''' 
+				c, 
+				b''
+				c
+				d'' c'] s2 |
+			\time 9/8
+				\tuplet 7/5 { c,,8 b''' c, b'' c e'' c' } s2 |
+			\time 7/8
+				\tuplet 7/6 { c,,16 b''' c, b'' c a' c'} s2 |
+		}
+
+			\time 5/8
+				\tuplet 7/4 { 
+					\change Staff = "down" c,,32 
+					\change Staff = "up" b''' 
+					\change Staff = "down" c, 
+					\change Staff = "up" b'' 
+					\change Staff = "down" c 
+					\change Staff = "up" g'
+					c' } s2 |
+	
+		\autochange {
+				\tuplet 3/2 { c,,32 b''' c, b'' c d'' } s2 |
+			\time 7/8
+				c,,16[ b''' c, b'' c e''] s2 |
+			\time 9/8
+				\tuplet 6/5 { c,,8 b''' c, b'' c a' } s2 |
+		}
+
+			\time 11/8
+				\tuplet 12/7 { 
+					\change Staff = "down" c,,4 
+					\change Staff = "up" b''' 
+					\change Staff = "down" c, 
+					\change Staff = "up" b'' 
+					\change Staff = "down" c 
+					\change Staff = "up" g' } s2 |
+			
+				\tuplet 10/7 { 
+					\change Staff = "down" c,,4 
+					\change Staff = "up" b'''
+					\change Staff = "down" c, 
+					\change Staff = "up" d' 
+					\change Staff = "down" c } s2 |
+		\autochange {
+			\time 9/8
+				c,,8[ b''' c, < b'' e'' > < c c'> ] s2|
+			\time 7/8
+				\tuplet 5/3 { c,,8 b''' c, a'' c } s2 |
+			\time 5/8
+				\tuplet 5/4 { c,,32 b''' c, g'' c } s2 |
+		}
+				c,,32[ \change Staff = "up" b''' \change Staff = "down" < c, c > \change Staff = "up" < b'' d'' >] s2 |
+
+			\time 7/8
+				\tuplet 4/3 { 
+					\change Staff =	"down" c,,8
+					\change Staff = "up" b'''8
+					\change Staff = "down" < c, c >8 
+					\change Staff = "up" < b'' e'' > } s2 |
+		\autochange {
+			\time 9/8
+				\tuplet 8/5 { c,,4 b'''4 < c, c > a'' } s2 |
+			\time 11/8
+				\tuplet 8/7 { c,,4 b'''4 c,4 g'' } s2 |
+			
+				\tuplet 9/7 { c,,4. < b''' d''' >  < c, c >4. } s2 |
+			\time 9/8
+				\tuplet 6/5 { c,,4 < b''' e''' >4 < c, c>4 } s2 |
+			\time 7/8
+				< c,, c, >8 [ < b''' a'''> < c c' >] s2 |
+			\time 5/8
+				\tuplet 3/2  { < c,, c, >16 < b''' g''' > < c c' > } s2 |
+		
+				< c,, c,>16 [ < b''' d''' >]  s2 |
+			\time 7/8
+				\tuplet 4/3 { c,,4 < b''' e'''> } s2 |
+		}
+			\time 9/8
+				\tuplet 6/5 { 
+					\change Staff = "down" c,,4. 
+					\change Staff = "up" < b''' a'''> } s2  |
+		\autochange {
+			\time 11/8 
+				\tuplet 8/7 { c,,2 < b''' g'''> } s2 |
+		}
+	}
+
+	\new Voice { 
+		\change Staff = "up"
+			s8 * 7 b'4 a'4
+			s8 * 5 c''4 b'4
+			s8 * 3 e'4 \change Staff = "down" a4 \change Staff = "up"
+			s8 * 1 e'4 \change Staff = "down" g4
+			s8 * 1 g4 \change Staff = "up" g'4
+			s8 * 3 \change Staff = "down" b4 \change Staff = "up" a'4
+			s8 * 5 \change Staff = "down" c'2
+			s8 * 7 e4 a4
+			
+			s8 * 7 \change Staff = "up" d''4 \change Staff = "down"  g4
+			s8 * 5 \change Staff = "up" g'2 \change Staff = "down"
+			s8 * 3 \change Staff = "up" b'4 \change Staff = "down"  a4
+			s8 * 1 \change Staff = "up" c''4 \change Staff = "down"  b4
+			s8 * 1 \change Staff = "up" e'4 a'4 \change Staff = "down"
+			s8 * 3 \change Staff = "up" d'4 g'4 \change Staff = "down"
+			s8 * 5 \change Staff = "up" e'2 \change Staff = "down"
+			s8 * 7 f4 \change Staff = "up" g'4 \change Staff = "down"
+			
+			s8 * 7 \change Staff = "up" a'4 \change Staff = "down" b4
+			s8 * 5 \change Staff = "up" g'2 \change Staff = "down"
+			s8 * 3 \change Staff = "up" g''4 e'4
+			s8 * 1 f''4 g'4
+			s8 * 1 \change Staff = "down" a,4 \change Staff = "up"  b'4
+			s8 * 3 \change Staff = "down" g2
+			s8 * 5 \change Staff = "up" d'2
+			s8 * 7 e'2
+	}
+>>
+
+fin = {
+	\time 4/4
+	\autochange {
+		c,,4 \tuplet 5/3 {  b'''2. a2 } |
+		c,4  \tuplet 4/3 { b''2 g } |
+		c4 \tuplet 4/3 {  b'2 d' } |
+		c'4 \tuplet 4/3 { b2 e' } |
+		c''4 \tuplet 5/3 { b,2. a2 } |
+		c'''4 \tuplet 4/3 { b,,2 g } |
+		c'1
+	}
+}	
 \score {
 	\new PianoStaff <<
 		\new Staff = "up" {
 			\clef "treble"
-			\middleCRX
-			\polywbasso
-			\pwbmidc
-			s1 * 20
+			\intro
+			\bar "||"
+			\crossing
+			\bar "||"
+			\melody
+			\bar "||"
 			\fin
-		}
-
-		\new Staff = "mid" {
-			\clef "bass"
-			s1*24 s4*9
-			\lyricm
 		}
 
 		\new Staff = "down" {
 			\clef "bass"
+			s1 * 56 
 		}
 	>>
 
 	\midi {}
+
 }
+

@@ -1,5 +1,4 @@
 \version "2.18.2"
-\include "roman_numeral_analysis_tool.ily"
 
 theme = <<
 	\tempo 4. = 128
@@ -119,158 +118,91 @@ variii = <<
 >>
 
 variv = <<
-	\set PianoStaff.connectArpeggios = ##t	
 	\time 6/4
 	\new Voice {
-		\override TupletBracket.bracket-visibility = ##f
-	%	\override TupletNumber.outside-staff-priority = #1
-		\tupletDown
-		\tieUp
-		\slurDown
-
 		\change Staff = "up"
 		\relative c' {
 			< e cis'>2                    < e cis'>4   < e cis' >  < g e'>  < e cis' > |
-			< cis a' >2                   < e cis'>4   < cis a' > \tuplet 3/2 {  < d b' >( < e cis' > < fis d' >) }
+			< cis a' >2                   < e cis'>4   < cis a' > \tuplet 3/2 { < d b' > < e cis' > < fis d' > }
 			
 			< b, e cis'~>4 < d fis cis' > < e g cis>4 < e g cis > < g b e> < e g cis > | 
-			< a, cis a'~>4 < b d   a'   > < e g cis>4 < cis e a > \tuplet 3/2 { < d b' >4(< d a' > < cis g' >) } | \time 2/4 
-				\tuplet 3/2 { < d fis>( < e g > < d a'>) } | \tuplet 3/2 { < d g >( < c e > < b fis' >) } |
-				\tuplet 3/2 { < b g' >( < c aes' > < bes bes'>) } | \tuplet 3/2 { < fis' c' >(< f d' >< e e'>)} | \time 6/4
-			< d fis'>2\arpeggio  < e e'>4 < fis d' > < fis d'> < g e' > | < fis a d >2 < fis a d>4 < f a cis > < e a cis> < e g cis > |
+			< a, cis a'~>4 < b d   a'   > < e g cis>4 < cis e a > 
+			<<		
+				{
+					\tuplet 3/2 { b' a g   } 
+				} 
+				{
+					\tuplet 3/2 { d cis b } 
+				}
+			>>
+			\time 2/4
+			<<
+			%cross staff beaming
+			
+				{	
+					\override Stem.cross-staff = ##t
+					\override Stem.length = #18
+					\override Stem.Y-offset = #-5
+					\tuplet 3/2 { fis' g a } | \tuplet 3/2 { d, e fis } |
+				
+					\override Stem.length = #10
+					\override Stem.Y-offset = #-22\change Staff = "down"
+					\tuplet 3/2 { b, cis d } | 
+					
+					\change Staff = "up" \tuplet 3/2 { b' a g   } | \time 6/4
+				}
+				\\			 
+				 {
+					\change Staff = "down"
+					\crossStaff {
+					\tuplet 3/2 { a, b cis } | \tuplet 3/2 { fis, g a }
+					\tuplet 3/2 { d, e fis } | \tuplet 3/2 { d' cis b } | \time 6/4
+					}
+				}
+			>>
+			< e cis'> 2 < e cis'>4 < e cis' > < g e'> < e cis' > | < cis a' >2 < e cis'>4 < cis a' > \tuplet 3/2 { < d b' > < e cis' > < fis d' > }
 		}
 	}
 
 	\new Voice {
-		\override TupletBracket.bracket-visibility = ##f
-		%\override TupletNumber.avoid-slur =#'inside
-		\tupletUp
-		\slurUp 
-
 		\change Staff = "down"
 		\relative c {
-			d4 cis' a fis d cis | b a' fis d \tuplet 3/2 { \once \stemDown < a fis'>(< b g'>  < cis a' >) } |		                                                
-			d4 cis' a fis d cis | b a' fis d  
-			
-			<< { \tuplet 3/2 { < b g'>(< bes f'>< a bes'>) } | \stemDown
-				\tuplet 3/2 { < d a'>( < cis g'> < c fis>) } | 
-				\tuplet 3/2 { < b g'>( < ais e'> < a dis>) } |
-				\tuplet 3/2 { < g e'>( < ges es'> < f d'>) } |
-				\tuplet 3/2 { < es c' a'>(\arpeggio < d bes' as'>\arpeggio < cis a' g'>)\arpeggio } | \stemNeutral
-			<< { r4 cis'' } \\ { < d,, a' fis' >2\arpeggio } >>  
-			
-			}
-
-			\new Lyrics \lyricmode {
-				\override Lyrics.LyricText.font-size = #-3
-				\override Lyrics.LyricText.self-alignment-X = #0
-				\tuplet 3/2 {
-					\markup                \rN { IV 6 }4
-					\markup                \rN { fVI       }
-					\markup                \rN {  V  f9  7 }
-					\markup                \rN {  I        } 
-					\markup                \rN {  I   4  2 } 
-					\markup { \concat {    \rN {  V   4  2 }  " /" } }
-					\markup                \rN {  IV  6    }
-					\markup { \concat {"[" \rN { sIV f5 f3 } } }
-					\markup { \concat {    \rN {  V   4  2 } "] /" } } 
-					\markup                \rN {  iii 6    }
-					\markup { \concat {"[" \rN {  IV  4  2 } } }
-					\markup { \concat {    \rN {  V   4  3 } "] / " \flat "II"} } 
-					\markup                \rN { fii o }
-					\markup                \rN { fVI  6 5 } 
-					\markup                \rN {  V   6 5 }
-				}
-				\markup                \rN {  I       }  
-			}
-			>> < d' a'>4 < d fis > < fis, d' > < e cis' > | < d d' >2 < a' a'>4 < a a' > < a a' > < a a' > |  
+			d4 cis' a fis d cis | b a' fis d \tuplet 3/2 { < a fis'>(< b g'>  < cis a' >) } |		                                                
+			d4 cis' a fis d cis | b a' fis d  \tuplet 3/2 { < a fis'>(< b g'>  < cis a' >) } | 
+				\voiceTwo
+				\tuplet 3/2 { < a fis'>(< b g'>  < cis a' >) } | \tuplet 3/2 { < a fis'>(< b g'>  < cis a' >) } |
+				\tuplet 3/2 { < a fis'>(< b g'>  < cis a' >) } | \tuplet 3/2 { < a fis'>(< b g'>  < cis a' >) } | 
+			d4 cis' a fis d cis | b a' fis d
 		}
 	}
 >>
 
 %Begin B section
 varv = <<
-	\tempo 4. = 80
+	\key d \minor
 	\new Voice {
 		\change Staff = "up"
-		\relative c' {
-			\key d \minor
-			\grace {s8} d4.    f     a     c     | e,    g     bes       cis     |
-			d8 f d f a f a c a f a f | d f d b d b gis b gis e gis e | 
-			c4(  b   a)      a'2.\trill      | d4( c   b)       d2.\trill           |
-			\grace{c16 e}c2. \grace{a16 c}a2.|\grace{c16 b}a2. \grace {g16 fis} a4. fis |
-
-			g4.     b         d     fis   | a,4.     c       e       g       | 
-			\tuplet 4/3 { a4( fis d bes) } \tuplet 4/3 { a'( e c a) } |
-			\tuplet 4/3 { f'( d a f) } \tuplet 4/3 { e'( cis a e) }
-			\tuplet 4/3 { d'( a f d) } \tuplet 4/3 {  es'( g, f' a,) } 
-			g1.~\trill g4. g'4.~\trill g2.~| g1. |
-
-			\voiceOne
-			f4( e d) d4:16 a2: | g'4( f e) e2.:
-		}
 	}
 
+	\key d \minor
+	\new Voice {
+		\change Staff = "down"
+	}
+>>
+varvi = <<
+	\time 5/4
+	\new Voice {
+		\change Staff = "up"
+	}
+
+	\key d \minor
 	\new Voice {
 		\change Staff = "down"
 		\relative c {
-			\time 12/8
-			\key d \minor
-			\grace{d16 f}d4. r~ r2.  | \grace{a16 cis}a4. r~ r2.     | 
-			\grace{d16 f}d4. r \grace{a16 b }a4. r|\grace{d16 f}d4.\grace{gis,16 b}gis4.~ gis2.
-			a4.    c     e     g     | b,    d         f       gis   |
-			a8 c a c e c e g e c e c | a c a fis a fis d fis d a c a |
-			b4(  a   g)  b2.         | e4  cis   a     g'    fis e   |
-			r1.                      | r                             |
-			r
-			g,8[ b d fis] a,[ cis e gis] b,[ dis fis ais] 
-			des,[ f as c] es,[g   bes d] f,[ a   c   e  ] 
-			g,[b\chup d fis]\chdown a,[cis\chup e g]\chdown a,[ cis \chup e g ]
-			
-			\voiceTwo
-			a4( g f) f2.:16 | bes4( a g) a4: g2: |
-		
-
-
-			
-
-		}
-	}
-
-	\new Voice {
-		\change Staff = "down"
-		\relative c, {
-			s1.*16
-
-			d4. f a c | e, g bes cis |
-		}
-	}
-
->>
-varvi = <<
-	\time 4/4
-	\new Voice {
-		\change Staff = "up"
-		\relative c''' {
-			r4.         a16 c  a8 f16 a f4    | r8 d~\trill d16 e f g a8-. \appoggiatura {g } f4.~\trill |
-			f16 r8 e16  \appoggiatura {e} d4 e8 r8 e16-. d8. |
-
-
-%			r2.        a8 c | a4  f8 a  f2   | r4.  d8 d e  f g | a4   g8 f  g f4.        |
-%			r4. r8  e4 e4 e4| e4  e8 d  e d4.| r4.  r8 d d  d d | cis4 e4    a,2          | 
-%			r2.        c8 c | c4  c8 c  d2   | r4. d,8 d e  f g | a4   g8 f  g f4.        |
-%			r4. r8 g'4 g4   | g4  g8 f  g f4.| r4.  r8 d d  d d | cis4.   a4.      g8 f~  |  
-			
-		}
-	}
-
-	\new Voice {
-		\change Staff = "down"
-		\relative c' {
-	%		\tuplet 5/4 { d,,4 fis a cis e } | \tuplet 5/4 { g, b d fis a | }
-%			\tuplet 5/4 { d,,4 fis a cis e } | \tuplet 5/4 { g, b d fis a | }
-%			\tuplet 5/4 { d,,4 fis a cis e } | \tuplet 5/4 { g, b d fis a | }
-%			\tuplet 5/4 { d,,4 fis a cis e } | \tuplet 5/4 { g, b d fis a | }
+			d4 fis a cis e | e, g b d fis |
+			d4 fis a cis e | e, g b d fis |
+			d4 fis a cis e | e, g b d fis |
+			d4 fis a cis e | e, g b d fis |
 				
 		}
 	}
@@ -372,6 +304,7 @@ varx = <<
 				\mark "Var. IV"
 				\variv \bar "." \break
 	
+				\key d \minor
 				\mark "Var. V"
 				\varv \bar "||" \break
 				\mark "Var. VI"
@@ -392,6 +325,7 @@ varx = <<
 				\key d \major
 				s1*40 s1*6
 	
+				\key d \minor
 				s1*40
 	
 				\key d\major
