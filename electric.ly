@@ -1,49 +1,51 @@
 \version "2.18.2"
+\include "tupletposition.ly"
 
 intro = <<
 	\new Voice {
 		\change Staff = "up"
 		\relative c''' {
 			c4 r2. |
-			c4 r2. |
+			r8 c r2. |
 			c4 r2. |
 			c4 r2. |
 
 			\time 7/8
 			c8 r2. |
 			\time 4/4
-			c4 r2. |
+			r8 c r2. |
 			c4 r2. |
 			\time 9/8
 			c4. r2. |
 
 			\time 4/4
 			c4 r2. |
-			c4 r2. |
-			c4 r2. |
-			c4 r2. |
+			r8 c r2. |
+			r16 c8 r16 r2. |
+			r8 c r2. |
 
 			\time 7/8
 			c8 r2. |
 			\time 4/4
-			c,4 r2. |
-			c4 r2. |
+			r8 c, r2. |
+			r16 c8. r2. |
 			\time 9/8
-			c4. r2. |
+			c4 r2. c,8~ |
 
 			\time 4/4
-			c4 r2. |
-			c4 r2. |
-			c4 r2. |
-			c4 r2. |
+			c8 r2. c8~ |
+			c8 r2 r8. c8.~|
+			c16 r2 r8. c4 |
+			r2 r8 c'4 r8 |
+			
 
 			\time 7/8
-			c8 r2. |
+			r4.. c4 r8. |
 			\time 4/4
-			c,4 r8 c8 r2 |
-			c4 r8 c'8 r2 |
+			r16 r4 c'4 r4.. |
+			c4 r4. c4 r8  |
 			\time 9/8
-			c,4. r8 c''8 r2 |
+			r8. c4 r4 \ottava #1 c'4 r8. |
 		}
 	}
 
@@ -101,29 +103,31 @@ crossing = <<
 		\relative c'''' {
 			\time 4/4
 			c4 r8 c8 r2 |
-			c4 r8 c8 r2 |
+			c4 r16 c8. r2 |
 			c4 r8 c8 r2 |
 			c4 r8 c8 r2 |
 
 			\time 7/8
-			c8 r8 c,8 r2 |
+			c8
+			\ottava #0
+			r8 c,8 r2 |
 			\time 4/4
-			c4 r8 c8 r2 |
+			c4 r16 c8. r2 |
 			c4 r8 c8 r2 |
 			\time 9/8
-			c4. r8 c,8 r2 |
+			c4. r16 c,8. r2 |
 			\time 4/4
 
+			c4 r8. c16 r2 |
+			c4 r16 c8. r2 |
 			c4 r8 c8 r2 |
-			c4 r8 c8 r2 |
-			c4 r8 c8 r2 |
-			c4 r8 c8 r2 |
+			r8 c r8 c8 r2 |
 
 			\time 7/8
 			c8 r8 c,8 r2 |
 			\time 4/4
-			c4 r8 c8 r2 |
-			c4 r8 c8 r2 |
+			r8 c r8. c16 r2 |
+			r8 c r8 c8 r2 |
 			\time 9/8
 			c4. r8 
 			\change Staff = "down"
@@ -135,7 +139,7 @@ crossing = <<
 			c4 r8 c8[ c8] r4. |
 			c4 r8 c8[ c8] r4. |
 			c4 r8 c8[ c8] r4. |
-			c4 r8 c8[ c,8] r4. |
+			c4 r8 c8.[ c,16] r4. |
 			
 			\oneVoice
 			\time 7/8
@@ -144,23 +148,23 @@ crossing = <<
 			c'4 r8 c,8[ c, ] r4. |
 			c''4 r8 c,8[ c ] r4. |
 			\time 9/8
-			c'4. r8 c,8[ c, ]r4. |
+			c'4. r8 c,4 c,8 r4 |
 			\time 4/4
 
 			\ottava #-1
-			c'4 r8 c8[ c8] r4. |
-			c4 r8 c8[ c8] r4. |
-			c4 r8 c8[ c8] r4. |
-			c4 r8 c8[ c,8] r4. |
+			r8 c'8 r8 c8[ c8] r4. |
+			c4 r8 c16[ c8.] r4. |
+			c4 r8 c16[ c8.] r4. |
+			c4 r16 c8.[ c,8] r4. |
 			
 			\oneVoice
 			\time 7/8
 			c'8 r8 c,8[ c ] r4. |
 			\time 4/4
-			c'4 r8 c,8[ c ] r4. |
+			r16 c'8. r8 c,8.[ c16 ] r4. |
 			c'4 r8 c,8[ c ] r4. |
 			\time 9/8
-			c'4. r8 c,8[ c ]r4. |
+			c'4. r8 c,8[ c] r4. |
 			
 			\ottava #0 
 		}
@@ -237,10 +241,11 @@ crossing = <<
 	}
 >>
 
-melody = <<
+melody = << %m57
 	\new Voice {
 		\autochange {
 			\time 11/8
+				\override Beam.positions = #'(2 . 3)	
 				c,,8[ 
 				b''' 
 				c, 
@@ -248,76 +253,116 @@ melody = <<
 				c
 				d'' c'] s2 |
 			\time 9/8
+				\override Beam.positions = #'(3.8 . 4.1)	
+				\override TupletNumber.X-offset = #7.4
+				\override TupletNumber.Y-offset = #2.8
 				\tuplet 7/5 { c,,8 b''' c, b'' c e'' c' } s2 |
 			\time 7/8
+				\override Beam.positions = #'(3.6 . 4.1)	
+				\override TupletNumber.X-offset = #6.5
+				\override TupletNumber.Y-offset = #1.9
 				\tuplet 7/6 { c,,16 b''' c, b'' c a' c'} s2 |
 		}
 
 			\time 5/8
+				\change Staff = "down"
+				\autochange 
 				\tuplet 7/4 { 
-					\change Staff = "down" c,,32 
-					\change Staff = "up" b''' 
-					\change Staff = "down" c, 
-					\change Staff = "up" b'' 
-					\change Staff = "down" c 
-					\change Staff = "up" g'
+				\override TupletNumber.X-offset = #5.3
+				\override TupletNumber.Y-offset = #1
+					c,,32 
+					b''' 
+					c, 
+					b'' 
+					c 
+					g'
 					c' } s2 |
 	
 		\autochange {
-				\tuplet 3/2 { c,,32 b''' c, b'' c d'' } s2 |
+				\override Beam.positions = #'(2 . 4.1)	
+				\override TupletNumber.X-offset = #4.3
+				\override TupletNumber.Y-offset = #4
+				\tuplet 6/4 { c,,32 b''' c, b'' c d'' } s2 |
 			\time 7/8
+				\once \change Staff = "down"
+				\override Beam.positions = #'(3 . 5)	
 				c,,16[ b''' c, b'' c e''] s2 |
 			\time 9/8
-				\tuplet 6/5 { c,,8 b''' c, b'' c a' } s2 |
+				\once \change Staff = "down"
+				\override Beam.positions = #'(2 . 4)	
+				\override TupletNumber.X-offset = #5.9
+				\override TupletNumber.Y-offset = #4.1
+				\tuplet 6/5 {  c,,8 b''' c, b'' c a' } s2 |
 		}
 
+		\autochange {
 			\time 11/8
-				\tuplet 12/7 { 
-					\change Staff = "down" c,,4 
-					\change Staff = "up" b''' 
-					\change Staff = "down" c, 
-					\change Staff = "up" b'' 
-					\change Staff = "down" c 
-					\change Staff = "up" g' } s2 |
+				\tuplet 12/7 {
+				
+				\revert TupletNumber.X-offset
+				\revert TupletNumber.Y-offset
+				\override TupletBracket.edge-height = #'(0 . 0)
+				\override TupletBracket.positions   = #'(2.5 . 4.5)
+					c,,4 
+					b''' 
+					c, 
+					b'' 
+					c 
+					g' } s2 |
 			
 				\tuplet 10/7 { 
-					\change Staff = "down" c,,4 
-					\change Staff = "up" b'''
-					\change Staff = "down" c, 
-					\change Staff = "up" d' 
-					\change Staff = "down" c } s2 |
+					c,,4 
+					b'''
+					c, 
+					d'' 
+					c } s2 |
+		}
 		\autochange {
 			\time 9/8
+				\override Beam.positions = #'(3 . 5)	
 				c,,8[ b''' c, < b'' e'' > < c c'> ] s2|
 			\time 7/8
-				\tuplet 5/3 { c,,8 b''' c, a'' c } s2 |
+				\tuplet 5/3 { 
+				\override Beam.positions = #'(0 . 3)	
+				\correctTupletNumber #0.4 c,,8 b''' c, a'' c } s2 |
 			\time 5/8
+				\override Beam.positions = #'(2 . 3)	
 				\tuplet 5/4 { c,,32 b''' c, g'' c } s2 |
 		}
 				c,,32[ \change Staff = "up" b''' \change Staff = "down" < c, c > \change Staff = "up" < b'' d'' >] s2 |
 
 			\time 7/8
 				\tuplet 4/3 { 
-					\change Staff =	"down" c,,8
+				\correctTupletNumber #0.6
+				\change Staff =	"down" c,,8
 					\change Staff = "up" b'''8
 					\change Staff = "down" < c, c >8 
 					\change Staff = "up" < b'' e'' > } s2 |
 		\autochange {
 			\time 9/8
-				\tuplet 8/5 { c,,4 b'''4 < c, c > a'' } s2 |
+				\tuplet 8/5 { 
+				\override TupletBracket.edge-height = #'(-0.5 . 0.5)
+				\override TupletBracket.positions   = #'(3 . 5)
+				c,,4 b'''4 < c, c > a'' } s2 |
 			\time 11/8
+				\override TupletBracket.edge-height = #'(0.5 . -0.5)
 				\tuplet 8/7 { c,,4 b'''4 c,4 g'' } s2 |
-			
-				\tuplet 9/7 { c,,4. < b''' d''' >  < c, c >4. } s2 |
+				\tuplet 8/7 { c,,4 b'''4 c,4 g'' } s2 |
+				\override TupletBracket.edge-height = #'(0 . 0)
 			\time 9/8
 				\tuplet 6/5 { c,,4 < b''' e''' >4 < c, c>4 } s2 |
 			\time 7/8
+				\override Beam.positions = #'(4 . 5.5)	
 				< c,, c, >8 [ < b''' a'''> < c c' >] s2 |
 			\time 5/8
+				\override Beam.positions = #'(5.5 . 6)	
+				\once \override TupletNumber.X-offset = #2.7
+				\once \override TupletNumber.Y-offset = #3.6
 				\tuplet 3/2  { < c,, c, >16 < b''' g''' > < c c' > } s2 |
-		
+				\override Beam.positions = #'(4 . 4.5)	
 				< c,, c,>16 [ < b''' d''' >]  s2 |
 			\time 7/8
+				\override TupletBracket.edge-height = #'(0.5 . -0.5)
 				\tuplet 4/3 { c,,4 < b''' e'''> } s2 |
 		}
 			\time 9/8
@@ -335,13 +380,13 @@ melody = <<
 			s8 * 7 b'4 a'4
 			s8 * 5 c''4 b'4
 			s8 * 3 e'4 \change Staff = "down" a4 \change Staff = "up"
-			s8 * 1 e'4 \change Staff = "down" g4
+			s8 * 1 e'4 g4
 			s8 * 1 g4 \change Staff = "up" g'4
 			s8 * 3 \change Staff = "down" b4 \change Staff = "up" a'4
 			s8 * 5 \change Staff = "down" c'2
 			s8 * 7 e4 a4
 			
-			s8 * 7 \change Staff = "up" d''4 \change Staff = "down"  g4
+			s8 * 7 \change Staff = "up" d'4 \change Staff = "down"  g4
 			s8 * 5 \change Staff = "up" g'2 \change Staff = "down"
 			s8 * 3 \change Staff = "up" b'4 \change Staff = "down"  a4
 			s8 * 1 \change Staff = "up" c''4 \change Staff = "down"  b4
@@ -363,12 +408,35 @@ melody = <<
 
 fin = {
 	\time 4/4
+	\revert TupletNumber.X-offset
+	\revert TupletNumber.Y-offset
 	\autochange {
+		\override TupletBracket.X-positions = #'(0 . 5.5)
+		\override TupletBracket.shorten-pair = #'(-0.7 . -1.5)
+		\override TupletBracket.edge-height = #'(0.9 . -0.5)
+		\override TupletBracket.positions   = #'(-2.7 . -3.35)
 		c,,4 \tuplet 5/3 {  b'''2. a2 } |
+		\override TupletBracket.edge-height = #'(0.8 . -0.5)
+		\override TupletBracket.positions   = #'(-2.5 . -3.5)
 		c,4  \tuplet 4/3 { b''2 g } |
+		\override TupletBracket.X-positions = #'(0 . 5.5)
+		\override TupletBracket.shorten-pair = #'(-0.5 . -1)
+		\override TupletBracket.edge-height = #'(-0.5 . -0.5)
+		\override TupletBracket.positions   = #'(-4.5 . -4.5)
 		c4 \tuplet 4/3 {  b'2 d' } |
+		\override TupletBracket.shorten-pair = #'(-0.5 . -0.7)
+		\override TupletBracket.edge-height = #'(-0.5 . 0.5)
+		\override TupletBracket.positions   = #'(4 . 4.5)
 		c'4 \tuplet 4/3 { b2 e' } |
+		\override TupletBracket.X-positions = #'(0 . 7)
+		\override TupletBracket.shorten-pair = #'(-0 . -0.5)
+		\override TupletBracket.edge-height = #'(-0.5 . -0.5)
+		\override TupletBracket.positions   = #'(3.5 . 4)
 		c''4 \tuplet 5/3 { b,2. a2 } |
+		\override TupletBracket.X-positions = #'(0 . 6)
+		\override TupletBracket.shorten-pair = #'(0.1 . -0.9)
+		\override TupletBracket.edge-height = #'(0.9 . 0.5)
+		\override TupletBracket.positions   = #'(2.3 . 3.4)
 		c'''4 \tuplet 4/3 { b,,2 g } |
 		c'1
 	}
@@ -384,6 +452,7 @@ fin = {
 			\melody
 			\bar "||"
 			\fin
+			\bar "|."
 		}
 
 		\new Staff = "down" {
@@ -391,8 +460,5 @@ fin = {
 			s1 * 56 
 		}
 	>>
-
-	\midi {}
-
 }
 
