@@ -74,6 +74,36 @@ verseGuitarTwo = { <<
 
 >> }
 
+verseGuitarThree = { <<
+	\new Voice {
+		\stemDown
+		\slurDown
+		\relative c' {
+			a1 a1 |
+			d4 s8 d d s4 d8~ d s4 d8 d4 s8 gis, |
+			a4 s8 a a s4 a8~ a s4 a8 a4 s |
+			d4 s8 d d s4 d8~ d s4 d8 d4 a8 ais 
+				
+			b4 s8 b b s4 b8~ b s4 b8 b4    s     |
+			e4 s8 e e s4 e8~ e2 r2 |
+		}
+	}
+	\new Voice {
+		\stemUp
+		\relative c'' {
+			r4 < gis cis  e >2. < gis cis  e >4.< gis cis  e>4-> < gis cis  e >4-> < gis cis e >8 |
+			s4 < fis cis' e >8 s s < fis cis' e >4 s < fis cis' e> s8 s4 < fis cis' e > |
+			s4 < gis cis  e >8 s s < gis cis  e >4 s < gis cis  e> s8 s4 < gis cis  e > |
+			s4 < fis cis' e >8 s s < fis cis' e >4 s < fis cis' e> s8 s8 < fis cis' e > s4 |
+	
+			s4 < a   d  fis >8 s s < a   d  fis >4 s < a   d  fis > s8 s4 < a   d  fis > |
+			s4 < gis d' fis >8 s s < gis d' fis >4 < gis d' fis >8~ < gis d' fis >2 r2 |
+		}
+	}
+
+>> }
+
+
 melodyGuitar = { 
 	<<
 	\repeat volta 2
@@ -99,7 +129,7 @@ melodyGuitar = {
 			a,4 gis'8 a, a gis'4 r8 |
 			a,4 gis'8 a, a gis'4 r8 |
 			\bar "||"
-			a4 gis'8 a, a gis'4 r8 |
+			a,4 gis'8 a, a gis'4 r8 |
 			a,4 gis'8 a, a gis'4 r8 |
 			a,4 gis'8 a, a gis'4 r8 |
 			a,4 gis'8 a, a gis'4 r8 |
@@ -117,7 +147,9 @@ melodyGuitar = {
 			a,4 gis'8 a, a gis'4 r8 |
 			a,4 gis'8 a, a gis'4 r8 |
 			a,4 gis'8 a, a gis'4 r8 |
-			\bar "||"
+
+			a,4 gis'8 a, a gis'4 r8 |
+			e,4 gis'8 e, e gis'4 r8 |
 		}
 	}
 
@@ -194,6 +226,24 @@ lyricsVoxTwo = \lyricmode {
 	blue -- ber -- ry pie dreams
 	blue -- ber -- ry pie dreams and de -- ri -- va -- tives
 }
+
+verseVoxThree = {
+	\relative c' {
+		r2 cis,8 cis b e | fis2. r4 |
+		r2 cis8 cis4 b8 | cis2. r4 |
+		r2 \tuplet 3/2 { gis'4 gis fis' } | b,2. r4 |
+		r4 cis cis b8 e | cis ( b a4 ) r2 | 
+		r2.. a'8~ | a gis fis cis fis4 e4 |
+		r1 | cis4 cis cis8 e4 e, | a1 |
+	}
+}
+
+lyricsVoxThree = \lyricmode {
+	Me -- lan -- cho -- ly March Ho -- ney in May
+	Shim -- me -- ring dew may -- hem ra -- di -- ates
+	Eve -- ry -- bo -- dy's dan -- cing
+	while I'm hi -- ding a -- way.
+}
 \score { <<
 	\new Staff {
 		\new Voice = "baritone" {
@@ -201,14 +251,16 @@ lyricsVoxTwo = \lyricmode {
 			\clef "baritone"
 			\autoBeamOff
 			\verseVox
-			\bar "||"
 			\verseVoxTwo
+			s1 * 33
+			\verseVoxThree
 		}
 	}
 
 	\new Lyrics \lyricsto "baritone" {
 		\lyricsVox
 		\lyricsVoxTwo
+		\lyricsVoxThree
 	}
 
 	\new Staff {
@@ -218,5 +270,7 @@ lyricsVoxTwo = \lyricmode {
 		\verseGuitarTwo
 		\bar "||"
 		\melodyGuitar
+		\bar "||"
+		\verseGuitarThree
 	}
 >> }
