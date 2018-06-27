@@ -1,199 +1,163 @@
-\version "2.18.2"
+\version "2.19.80"
 \paper {
 	#(set-paper-size "letter")
+	top-margin = 1\in
+	left-margin = 1\in
+	right-margin = 1\in
+	bottom-margin = 1\in
 }
 
 \header {
-	title = "Improv for Violin and Piano"
+	title = "Improvization for Violin and Piano"
 	composer = "Z. V. Pine"
+	tagline = ""
 }
-oldViolin = {
-	\key d \major
-	\relative c'' {
-		fis2(~ fis8. d16 ) a(\< d f a)\! |
-		c2 d4--( e--) | 
-		fis2~ \tuplet 3/2 { fis4 dis8 } \tuplet 3/2 { b8( fis dis) } |
-		\tuplet 3/2 { a'4 g8( } \tuplet 3/2 { e8 b g) } \tuplet 3/2 { fis'4 e8( } \tuplet 3/2 { b8 g e) }
-	}
-}
-
-oldPiano = <<
-	\new Voice {
-		\key d \major
-		\change Staff = "up"
-		\slurUp
-		\relative c' {
-			r8 d( fis a \stemUp d[ fis] a) r8
-		}
-		\relative c' {
-			r8 e( g c \stemUp e[ g] c) r8
-		}
-		\relative c {
-			r8 \change Staff = "down" fis( b \change Staff = "up" dis \stemUp fis[ b] dis) r8
-		}
-		\relative c' {
-			r8 \change Staff = "down" g( b \change Staff = "up" e \stemUp g[ b] e) s8
-		}
-	}
-
-	\new Voice {
-		\key d \major
-		\change Staff = "down"
-		\slurDown
-		\relative c {
-			a( fis' a \change Staff = "up" \stemDown d fis[\< a] d\!) s8
-		}
-		\relative c {
-			\change Staff = "down"
-			g( g' c \change Staff = "up" \stemDown e g[ c] e)
-			\change Staff = "down" s8
-		}
-		\relative c, {
-			fis( b dis fis b[ \change Staff = "up" \stemDown dis] fis)
-			\change Staff = "down" r8
-		}
-		\relative c, {
-			\change Staff = "down"
-			e( b' e g b[ \change Staff = "up" \stemDown  e] g)
-			\change Staff = "down" r8
-		}
-	}
->>
 
 violin = {
-	\tempo 4 = 60
-	\relative c'' {
-		\repeat volta 2 {
-			g1\(
-			f1
-			e1\)
+	\set Score.timing = ##f
+	 \relative c''' {
+		aes1~\f->\< aes\fermata
+		g1\!~ g\>
+		fis1\p\! f~ f\fermata
+		e1~ e
+		\bar ""
 
-			g1\(
-			f1\fermata
-			\grace { \change Staff = "up" c16 } \change Staff = "violin" e1\)
-		}
+		g f~ f\fermata  e\< \bar ""
+		g\!\sp f~ f\fermata  e\f\< \bar ""
+		g\!\sp f~ f\fermata  e~ e es~\< es\! \bar ""
 
-		aes2\(
-		g2
-		f1\fermata
-		\grace { \change Staff = "up" c16 } \change Staff = "violin" e1\)
+		aes!1~\f->\< aes\fermata
+		g1\!\sp~ g\>
+		fis1\fermata\! f~^\markup { \italic pizz. } f\fermata 
+		e1~^\markup { \italic pizz. }  e es\<^\markup { \italic arco }
+		\bar "" 
 
-		aes2\(\fermata
-		\grace { \change Staff = "down" b,16 } \change Staff = "violin" g'2
-		f1\fermata
-		\grace { \change Staff = "up" c16 } \change Staff = "violin" e1\)
+		\ottava #1
+		aes'!1~\f->\!\< aes~ aes\fermata
+		g1\!\sp~ g\>
+		fis1\fermata\! f~^\markup { \italic pizz. } f\fermata 
+		e1~^\markup { \italic pizz. } e es\>^\markup { \italic arco }
+		\bar ""
 
-		{
-			g1\(
-			f1
-			e1\)
+		\ottava #0
+		aes,\!\fermata^\markup { \italic { pizz.}  } 
+		g fis\fermata f\fermata e es
 
-			g1\(
-			f1\fermata
-			\grace { \change Staff = "down" c,16 } \change Staff = "violin" e'2\< es\!\)\fermata
-		}
+		\bar ""
+		aes,\pp\fermata g fis\fermata f e es^\markup { \italic arco }\>
+		\bar ""
+
+		\repeat tremolo 32 g,32\!^\markup { \italic { sul pont. } }\spp
+		\repeat tremolo 32 f'32
+		\repeat tremolo 32 e32 \bar ""
+		\repeat tremolo 32 g32\p
+		\repeat tremolo 32 f'32
+		\repeat tremolo 32 e32 \bar ""
+
+		\repeat tremolo 32 g32\f
+		\ottava #1
+		\repeat tremolo 32 f'32
+		\repeat tremolo 32 e32 \bar ""
+
+		\ottava #0
+		aes,!1~\ff\fermata aes~ aes
+		g~ g
+		fis~\fermata
+		f~ f\fermata
+		e~ e~ e es~ es\> r4\!
+
+		\bar ""
+
+		g'1\flageolet\p^\markup { \italic ritardando }
+		f\fermata
+		e
+
+		g,\flageolet
+		f\fermata
+		e
+
+		\ottava #0
+		g,\flageolet\pp
+		f\fermata
+		e
+
+		g,\flageolet
+		f\fermata
+		e
+		\bar "|."
 	}
-	\bar "||"
-	\relative c'' {
-		\grace { \change Staff = "down" b,,8 g' } \change Staff = "violin" g''1 \sp\flageolet\(
-		f1
-		e1\)
+}
 
-		g,1\flageolet\(
-		f1\fermata
-		\grace { \change Staff = "up" c16 } \change Staff = "violin" e1\)
+basso = {
+	\relative c, {
+		\new CueVoice {
+			\slurDown
+			g4( b g' b g' b \change Staff = "up" g' b )
+			\stemDown
+			s1 * 4 s2... c16 s1 s1
+			s1 * 2 s2... c,16 s1
+			\change Staff = "down"
+			s1 * 2 s2... c,16 s1
+			s1 * 2 s2... c,16 s1 s1 s1 s1
+
+			s4 r4 g'( b g' b \change Staff = "up" g' b )
+			s1 s1 s2.. a16 c
+			s1 s2.. g16 c s1 s1 s1
+
+			\change Staff = "down"
+			s4 r4 g,,,( b g' b g' b \change Staff = "up" g' b g' b )
+			s1 s1 s2. a,16 c a'16 c
+			s1 s2. g,16 c g'16 c s1 s1 s1
+
+			s2. b,4 s1 s2.. a16 c s2.. g16 c
+			\stemUp
+			s1 s1 s2 g'4 b, s1 s2. s16 c'16 a c, 
+			s2. g''16 c, g c, s1 s1 
 	
-		aes'2\(\f\fermata
-		\grace { \change Staff = "down" b,,,8 g' } \change Staff = "violin" g''2
-		fis2\fermata
-		\grace { \change Staff = "down" a,,,8 c' } \change Staff = "violin" f'2\fermata
-		\grace { \change Staff = "down" g,,,8 c' } \change Staff = "violin" e'1\)
+			\change Staff = "down"
+			\stemDown
+			r8 \repeat unfold 7 { b,,,16[ g'] }			
+			r8 \repeat unfold 7 { c,16[ a'] }			
+			r8 \repeat unfold 7 { c,16[ g'] }			
+			r16 \repeat unfold 5 { b,16[ g' b] }			
+			r16 \repeat unfold 5 { c,16[ a' c] }			
+			r16 \repeat unfold 5 { c,16[ g' c] }
+			r4 \repeat unfold 3 { b,16 [ g' b g' ] }
+			r4 \repeat unfold 3 { c,,16 [ a' c a' ] }
+			r4 \repeat unfold 3 { c,,16 [ g' c g' ] }
 
-		aes2\(\fermata
-		\grace { \change Staff = "down" g,,,8 
-			\change Staff = "up" b'' } \change Staff = "violin" g'2
-		fis2\fermata
-		\grace { \change Staff = "down" \ottava #-1 a,,,,8
-			\change Staff = "up" c''' } \change Staff = "violin" f2\fermata
-		\grace { \change Staff = "down" g,,,,8 \ottava #0 
-			\change Staff = "up" c''' } \change Staff = "violin" e2\< es\!\)
+			s4 r4 \ottava #-1 b,,, g' b \ottava #0 g' b g' b \change Staff = "up"  g' b g'
+			s1 \bar "" s1 
+			\change Staff = "down"
+			s4. r4 a,,, 16 c a' c \change Staff = "up"   a' c
+			\change Staff = "down"
+			s1 s4. \ottava #-1 g,,,,16 c g' \ottava #0 c g' c \change Staff = "up" g' c  g' c
+			s1 s1 s1 s1 s1 s4
+			\change Staff = "down"
+			\ottava #-1
+			s1 s2... c,,,,16 s1
+			s1 s2... c16 s1
+			s1 s2... c16 s1
+			s1 s2... c16 s1
+			\ottava #0
+		}
 	}
-	\bar "||"
-	\relative c'' {
-		g,1\(\spp
-		f'''1\fermata
-		\grace { \change Staff = "up" \ottava #1 c'4 \ottava #0 } \change Staff = "violin" e,2\< es\>\)
-
-		g,1\(\flageolet\!\spp
-		f'1\fermata
-		\grace { \change Staff = "up" \ottava #1 g'4 c,4 \ottava #0 } \change Staff = "violin" e,2\< es\>\)
-
-		aes,,,2\(\p^\markup { \italic pizz. }\fermata
-		\grace { \change Staff = "up" b4 } \change Staff = "violin" g2
-		fis'2\fermata
-		\grace { \change Staff = "up" a4 } \change Staff = "violin" f2\fermata
-		\grace { \change Staff = "up" c'4  g } \change Staff = "violin" e2
-			^\markup { \italic arco } es\<\)
-
-		aes2\(\!-.\fermata
-		\grace { \change Staff = "up" b4 } \change Staff = "violin" g2-.
-		fis'2-.\fermata
-		\grace { \change Staff = "up" a4 } \change Staff = "violin" f2-.\fermata
-		\grace { \change Staff = "up" c'4  g } \change Staff = "violin" e2-.\< es\)
-	}
-	\bar "||"
-	\relative c'' {
-		aes,2\(\!\fermata\sp
-		\grace { \change Staff = "down" b,4 } \change Staff = "violin" g'2
-		fis'2\fermata
-		\grace { \change Staff = "down" c,4 a' } \change Staff = "violin" f'2\fermata
-		\grace { \change Staff = "down" g,,8 c' } \change Staff = "violin" e'2\< es\!\)
-
-		aes2\(\fermata\sf
-		\grace { \change Staff = "down" \ottava #-1 b,,,,8 
-			\change Staff = "up" g''' } \change Staff = "violin" g'2
-		fis'2\fermata
-		\grace { \change Staff = "down" a,,,,,8
-			\change Staff = "up" c''' } \change Staff = "violin" f'2\fermata
-		\grace { \change Staff = "down" g,,,,,8
-			\change Staff = "up" c'''' } \change Staff = "violin" e'2 es\)
-	}
-	\relative c''''' {
-		g1\flageolet\(
-		f1\fermata
-		\grace { \change Staff = "down" c,,,,,,2 } \change Staff = "violin" e''''''1\)
-
-		g,1\flageolet\(
-		f1\fermata
-		\grace { \change Staff = "down" c,,,,,2 } \change Staff = "violin" e'''''1\)
-
-		g,1\flageolet\(
-		f1\fermata
-		\grace { \change Staff = "down" c,,,,2 } \change Staff = "violin" e''''1\)
-
-		g,1\flageolet\(
-		f1\fermata
-		\grace { \change Staff = "down" c,,,2 } \change Staff = "violin" e'''2 g,2\fermata\)
-	}
-	\bar "|."
-
 }
 
 \score {
 	\new StaffGroup <<
+		\set Score.proportionalNotationDuration = #(ly:make-moment 1/4)
 		\new Staff = "violin" {
 			\violin
 		}
 
 		\new PianoStaff <<
 			\new Staff = "up" {
-				\clef "treble"
-				s1 * 60
+				s1 * 91 s4
 			}
-
 			\new Staff = "down" {
 				\clef "bass"
-				s1 * 60
+				\basso
 			}
 		>>
 	>>
