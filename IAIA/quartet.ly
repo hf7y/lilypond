@@ -3,155 +3,7 @@
 %Started Fri June 10 14:28 CDT 2018
 %Revised Sun June 17 00:02 EDT 2018 at Walden School
 
-topGliss = \once \set glissandoMap = #'((1 . 1) (0 . 2))
-
-hh = #(define-music-function 
-  (parser location notes)
-  (ly:music?)\g\g
-  #{
-    \temporary \override NoteHead.style = #'harmonic-black
-    \temporary \override Glissando.thickness = #3
-  %%\temporary \override Glissando.bound-details.left.padding = #-0.1
-    \revert NoteColumn.glissando-skip
-    #notes
-    \revert Glissando.bound-details
-    \revert NoteHead.style
-    \revert Glissando.thickness
-  #})
-HH = #(define-music-function 
-  (parser location notes)
-  (ly:music?)
-  #{
-    \temporary \override NoteHead.style = #'harmonic-black
-    \temporary \override Glissando.thickness = #4
-  %%\temporary \override Glissando.bound-details.left.padding = #-0.1
-    \temporary \override Glissando.bound-details.right.padding = #-4
-    \override Glissando.bound-details.right.arrow = ##f
-    \revert NoteColumn.glissando-skip
-    #notes
-    \revert Glissando.bound-details.left.padding
-    \revert Glissando.bound-details.right.padding
-    \override Glissando.bound-details.right.arrow = ##t
-    \revert NoteHead.style
-    \revert Glissando.thickness
-
-  #})
-hH = #(define-music-function 
-  (parser location notes)
-  (ly:music?)
-  #{
-    \temporary \override NoteHead.style = #'harmonic-black
-    \temporary \override Glissando.thickness = #4
-  %%\temporary \override Glissando.bound-details.left.padding = #-0.1
-    \temporary \override Glissando.bound-details.right.padding = #-1
-    \override Glissando.bound-details.right.arrow = ##f
-    \revert NoteColumn.glissando-skip
-    #notes
-    \revert Glissando.bound-details.left.padding
-    \revert Glissando.bound-details.right.padding
-    \override Glissando.bound-details.right.arrow = ##t
-    \revert NoteHead.style
-    \revert Glissando.thickness
-  #})
-
-noHead = #(define-music-function (music)(ly:music?)
-  #{
-    \temporary \override NoteHead.transparent = ##t
-    \temporary \override NoteColumn.glissando-skip = ##t
-    \temporary \override NoteHead.no-ledgers = ##t
-    $music
-    \revert NoteHead.no-ledgers
-    \revert NoteHead.transparent
-    \revert NoteColumn.glissando-skip
-  #})
-
-noAcc = \once \override Accidental #'stencil = ##f
-
-#(define (square grob)
-  (let ((duration (ly:grob-property grob 'duration-log)))
-    (if (>= duration 2)
-      (grob-interpret-markup grob
-        #{
-        \markup \filled-box #'(-0.62 . 0.62) #'(-0.46 . 0.46) #0
-        #})
-      (grob-interpret-markup grob
-        #{
-        \markup
-        \override #'(box-padding . 0)
-        \override #'(thickness . 2)
-        \box {
-          \transparent
-          \filled-box #'(-0.4 . 0.4) #'(-0.3 . 0.3) #0
-        }
-        #}))))
-
-spannerStyle = {
-  \override TextSpanner.style = #'line
-  \override TextSpanner.thickness = #2
-  \override TextSpanner.bound-details.right.arrow = ##t
-  \override TextSpanner.bound-details.left.padding = #0
-  \override TextSpanner.bound-details.right.padding = #1
-  \override Glissando.thickness = #3
-  \override TextSpanner #'(bound-details left-broken text) = ##f 
-  \override TextSpanner #'(bound-details right-broken text) = ##f
-
-  \override Glissando.bound-details.right.arrow = ##t
-  \override Hairpin.to-barline = ##f
-
-  \set harmonicDots = ##t
-}
-
-square = \once \override NoteHead.stencil = #square
-sq = \square
-hm = \harmonic
-
-
-I = ^\markup {\halign #2 \concat {\teeny I}}
-II = ^\markup {\halign #2 \concat {\teeny II}}
-III = ^\markup {\halign #2 \concat {\teeny III}}
-IV = ^\markup {\halign #2 \concat {\teeny IV}}
-
-textin = {
-  \once \override Staff.TextScript.outside-staff-priority = #240 
-}
-sept = ^\markup {\small 7th \small par.}
-
-ord = ^\markup {\italic N}
-ordl = \once \override TextSpanner.bound-details.left.text =
-  \markup {N}
-ordr = \once \override TextSpanner.bound-details.right.text =
-  \markup {N}
-
-pont = ^\markup {\italic S.P.}
-pontl = \once \override TextSpanner.bound-details.left.text = 
-  \markup {S.P.} 
-pontr = \once \override TextSpanner.bound-details.right.text = 
-  \markup {S.P.} 
-
-tasto = ^\markup {\italic S.T.}
-tastol = \once \override TextSpanner.bound-details.left.text = 
-  \markup {S.T.} 
-tastor = \once \override TextSpanner.bound-details.right.text = 
-  \markup {S.T.} 
-
-feathr = #(define-music-function (music)(ly:music?)
-  #{
-    \override Beam.grow-direction = #RIGHT
-    \featherDurations #(ly:make-moment 2/3)
-    { $music }
-    \override Beam.grow-direction = #'()
-  #})
-feathl = #(define-music-function (music)(ly:music?)
-  #{
-    \override Beam.grow-direction = #LEFT
-    \featherDurations #(ly:make-moment 2/3)
-    { $music }
-    \override Beam.grow-direction = #'()
-  #})
-
-moltoleg = \markup { \italic \tiny "molto legato" }
-
-n = \once \override Hairpin #'circled-tip = ##t
+\include "definitions.ily"
 
 \header {
   title = "IA, IA"
@@ -161,17 +13,18 @@ n = \once \override Hairpin #'circled-tip = ##t
 }%end header
 
 %A Section 
-violinOneA = \relative c'' {
+violinOneA = \relative c'' { 
   r1. r2. |
   r1. r2. |
-  r1. \pontl <fis b\harmonic>2.\pp\< ~ \startTextSpan |
-  <fis b\hm>2.\! ~ \tastol\pontr \n<fis b\harmonic>1.\> \stopTextSpan\startTextSpan |
+  r1. \pontl <fis b\hm>2.\pp\< ~ \startTextSpan |
+  <fis b\hm>2.\! ~ \tastol\pontr \n<fis b\hm>1.\> \stopTextSpan\startTextSpan |
 
   <fis b\hm>2. r1.\! \stopTextSpan |
-  r2. \tastol \n\HH b,4\<\glissando \startTextSpan \noHead {4 4 4 4 4 |
-  \pontl\tastor \n4\pp\>\stopTextSpan\startTextSpan 4 4 4 4 4 4 \hh 4\stopTextSpan 4\! } |
-  r2 \feathr { \n<aih\hm e>16\sept[(\< s <aih\hm e> <aih\hm e>] } 
-    \pontr \n<aih\hm e>1.:32\p\>)\startTextSpan <aih\hm e>2.:32\stopTextSpan | 
+  r2. \tastol \n\hH b,4\<\glissando \startTextSpan \noHead {4 4 4 4 4 |
+  \pontl\tastor \n b4\pp\> \stopTextSpan\startTextSpan 4 4 4 4 4 
+    4 4 \hh 4\! \stopTextSpan } |
+  r2 \feathr { \n<e, bes'\hm>16\sept[(\< s <e bes'\hm> <e bes'\hm>] } 
+    \pontr \n<e bes'\hm>1.:32\p\>)\startTextSpan <e bes'\hm>2.:32\stopTextSpan | 
 
   r2.\! r2 \feathl { \n<f bes\hm>16\ord[(\< s <f bes\hm> <f bes\hm>] } |
   \pontr <f bes\hm>1.\mp \startTextSpan ~ \n<f bes\hm>2)\>\stopTextSpan r4\! |
@@ -201,11 +54,11 @@ violinTwoA= \relative c'' {
   << { \n<bes f'\hm>1.\> r2.\! }
      { s2. s2. \stopTextSpan s2. } >> |
 
-  \pontr \textin <c fih\hm>1.(\sept\pp\< \startTextSpan  \textin <c fih\hm>2_\moltoleg
-    \feathr { <c fih\hm>16[ s <c fih\hm> <c fih\hm>] } |
-  \feathl { <c fih\hm>16[\p\>\stopTextSpan <c fih\hm> s <c fih\hm>] }
-    <c fih\hm>2 \topGliss <c fih\hm>1.\! \glissando ~ |
-  \tastor \n <c f!\hm>1.\>)\startTextSpan r2.\!\stopTextSpan |
+  \pontr \textin <c ges'\hm>1.(\sept\pp\< \startTextSpan  \textin <c ges'\hm>2
+    \feathr { <c ges'\hm>16[ s <c ges'\hm> <c ges'\hm>] } |
+  \feathl { <c ges'\hm>16[\p\>\stopTextSpan <c ges'\hm> s <c ges'\hm>] }
+    <c ges'\hm>2 \topGliss \once \tieDown <c ges'\hm>1.\! \glissando ~ |
+  \tastor \n <c f\hm>1.\>)\startTextSpan r2.\!\stopTextSpan |
   r2.\! \pontr fis'1.:32\< \startTextSpan fis2.:32 \stopTextSpan |
 
   fis1.:32\p\< |
@@ -249,12 +102,12 @@ violaA = \relative c {
   \feathr { \textin dis16^\moltoleg[(\!\stopTextSpan s dis 16 dis] } 
     \pontr dis2:32)\startTextSpan 
     << { \n dis2.:32\>} {s2 s8\stopTextSpan}>> r2.\! |
-  \n <c fih\hm>2.\sept\< ~ <c fih\hm>1.\f ~ |
-  \n <c fih\hm>1.\> r2.\! |
+  \n <c fis\hm>2.\sept\< ~ <c fis\hm>1.\f ~ |
+  \n <c fis\hm>1.\> r2.\! |
 
   r2. \tastol\ordr \n \HH gis'4\< \startTextSpan \glissando \noHead { 4 \hh 4 } 
     \topGliss \HH <gis fis>4 \glissando \noHead { 4 \hh 4 } |
-  <gis fis>2. \stopTextSpan ~ <gis fis>4\glissando
+  <gis fis>2. \stopTextSpan ~ <gis fis>4
     \feathl { <e a\hm>16^\moltoleg[(\pp\> <e a\hm>16 s <e a\hm>]} <e a\hm>4 
     \pontr <e a\hm>2.\! \startTextSpan ~ |
   <e a\hm>2.)\stopTextSpan\< \glissando \topGliss <f! c'\hm>2.\glissando ~
@@ -280,7 +133,7 @@ celloA = \relative c {
   <c f,>2. r1.\! |
   r1. r2 \feathl \n \hh { \textin aes16\tasto_\moltoleg[(\< aes s aes] } |
   \ordr \HH aes4\pp \startTextSpan \glissando \noHead { 4 4 4 4 4 4 4 \hh 4\stopTextSpan } |
-  <aes deh\hm>1.)\sept \glissando \n \square aes1.\> |
+  <aes d!\hm>1.)\sept \glissando \n \square aes1.\> |
 
   r2.\! \n \hH ais4\< \startTextSpan \glissando \noHead { 4 4 |
   \noAcc 4 }
@@ -306,7 +159,7 @@ violinOneB = \relative c'' {
   \sq <b f>2. r2\! r2. \feathr { \pontl\tastor \n c16[(\< \startTextSpan s c c] } |
     \feathl { \n c16[\> c s c] } c2)\stopTextSpan 
     r2.\! r2 \n <f, bes\hm>4\ord\< |
-  <f bes\hm>1.:32\!\glissando \n \sq d2.:32)\> |
+  <f bes\hm>1.:32\!\glissando \n \sq d2.:32\> |
   \sq d2.:32 r2.\! |
 
   r1. r2 \feathr {\pontl\tastor \n d'16[(\< \startTextSpan s d d] } |
@@ -318,8 +171,8 @@ violinOneB = \relative c'' {
     \sq fis2. \stopTextSpan r2.\! |
   r2.
     \topGliss <cis fis\hm>1.\p\< ~ \glissando | 
-  \topGliss <cis gis'\hm>2. ~ \topGliss <cis gis'\hm>1.\f\glissando ~ |
-  \n <cis fih\hm>1.\sept~\> <cis fih\hm>2.~ |
+  \topGliss <cis gis'\hm>2. ~ \once \tieDown \topGliss <cis gis'\hm>1.\f\glissando ~ |
+  \n <cis g'!\hm>1.\sept~\> <cis g'\hm>2.~ |
 }%end violinOne
 
 violinTwoB = \relative c' {
@@ -333,8 +186,8 @@ violinTwoB = \relative c' {
     \glissando \noHead { \hh 4 } 
     r2.\! r2 \topGliss \once\tieDown \n <aes des\hm>4\ord\pp\< \glissando ~  |  
   \pontr <aes es'\hm>1.\startTextSpan ~ 
-    \once\tieDown \topGliss <aes es'\hm>2.)\! \stopTextSpan \glissando ~ |
-  \n <aes deh>1.\>\sept |
+    \once\tieDown \topGliss <aes es'\hm>2.\! \stopTextSpan \glissando ~ |
+  \n <aes d!>1.\>\sept |
   
   r1.\! r4 \ordr \n \sq gis4(\< \startTextSpan  \feathr {\sq 16[ s \sq gis16 gis16] } 
      \sq gis2.:32) \glissando |
@@ -381,7 +234,7 @@ celloB = \relative c {
     \repeat tremolo 12 { \tastor b'32\startTextSpan e, }
     \repeat tremolo 12 { b'32 e, } |
   b'4\stopTextSpan ~ \pontr <b d,>2~\startTextSpan <b d,>2. \glissando \n \sq <b d,>2.\> ~| 
-  \sq <gis b,>4:32 r2\!\stopTextSpan r2. |
+  \sq <b d,>4:32 r2\!\stopTextSpan r2. |
 
   \acciaccatura {c,,8} \ordl\pontr cis'1.\pp\< \startTextSpan ~ <fis\hm cis>1.\<\glissando |
   \repeat tremolo 12 {<ais\hm dis,>32\stopTextSpan dis,32 }
@@ -394,20 +247,20 @@ celloB = \relative c {
 }%end celloB
 
 violinOneAA = \relative c'' {
-  <cis fih\hm>2. r2.\! |
+  <cis? g'?\hm>2. r2.\! |
   \topGliss <b e\harmonic>1.\ord\pp\< \glissando ~ |
   \tastor <b fis'\harmonic>1.\fp\startTextSpan 
   \n \HH fis'4\>\stopTextSpan \glissando \noHead {4 \hh 4} | 
   \hh eis4 r2\! r2. |
 
-  \n <f, beh\harmonic>1.\sept\ord\< \startTextSpan ~ |
-  <f beh\harmonic>2. ~ <f beh\harmonic>2.)\pont\stopTextSpan \glissando ~ 
-  \ordr <f cis'\hm>1.\> \glissando\startTextSpan |
-  fis2. r1.\! \stopTextSpan | 
+  \n <f, b!\harmonic>1.\sept\ord\< \startTextSpan ~ |
+  <f b\harmonic>2. ~ <f b\harmonic>2.)\pont\stopTextSpan \glissando ~ 
+  \ordr \n<fis cis'\hm>1.\> \startTextSpan ~ |
+  <fis cis'\hm>2. r1.\! \stopTextSpan | 
   
   \ottava #1 \n \tastor c''1.\< ~ \startTextSpan|
   c2.\! \ottava #0 bes,2.(\> \stopTextSpan ~ |
-  aes1.\!\glissando \n \sq aes2.\> | 
+  aes1.\!\glissando \n \sq aes2.\>) | 
   r1.\! |
   
 }%end violinOne
@@ -422,8 +275,8 @@ violinTwoAA= \relative c' {
 
   r2.\! r4 \n <bes, d\hm>2\ord\<~ |
   \pontr <bes d\hm>1.\startTextSpan
-  \topGliss <bes f'\hm>2.\mp \stopTextSpan \glissando ~ <bes eeh\hm>2.\sept ~ |
-  \n <bes eeh\hm>1.\> r2.\! |
+  \topGliss <bes f'\hm>2.\mp \stopTextSpan \glissando ~ <bes e!\hm>2.\sept ~ |
+  \n <bes e\hm>1.\> r2.\! |
 
   r2. \n \tastol \HH e''4\< \glissando \startTextSpan \noHead {4 \hh 4} | 
   \ordl\pontr e1.\!\stopTextSpan\startTextSpan ~ |
@@ -435,12 +288,12 @@ violaAA = \relative c {
   r1. | 
   r2. \acciaccatura {f8} \hH cis'4\p \glissando \noHead { 4 4 |
   \noAcc 4 4 4 } \hH \pontr <cis f,!>4 \glissando \startTextSpan \noHead { 4 4 4 4 4 }
-  \n \square <c f,>1.\>  | 
+  \n \square <c f,>1.\> ~  | 
 
   \sq <c f,>1.\stopTextSpan |
   r2.\! r2 \n aes4\ord\< ~ |
-  aes2.) <aes deh\hm>2.\mp\sept~ |
-  <aes deh\hm>1.\> r2.\! |
+  aes2. <aes d\hm>2.\mp\sept~ |
+  <aes d\hm>1.\> r2.\! |
 
   r2.\! r2 \feathl { \n gis16[(\< gis s gis] } |
   gis2.)\! ~ \n <gis dis'\hm>2.\> |
@@ -457,8 +310,8 @@ celloAA = \relative c, {
 
   r1. |
   r2. \n b2.\< ~|
-  <b e\hm>1.\!~ |
-  \n <b\hm fis>2.)\> r1.\! |
+  \once \tieDown <b e\hm>1.\!~ |
+  \n <b fis'\hm>2.)\> r1.\! |
 
   \once \tieDown \n bes1.\<~
   <bes f'\hm>1.\mp 
@@ -509,8 +362,8 @@ violaBB = \relative c'' {
   <f g>1. \n fis2.\p\> |  
   r2.\! \clef "alto" 
     \repeat tremolo 12 { \n e32\< gis,} \repeat tremolo 12 {e' gis,} |
-  \repeat tremolo 12 {\n <e'\hm b>\p\> <gis,\hm dis>} |
-    \repeat tremolo 12 {<e'\hm b> <gis,\hm dis>} 
+  \repeat tremolo 12 {\n <e'\hm b>\p\> <gis,\hm dis>} 
+    \repeat tremolo 12 {<e'\hm b> <gis,\hm dis>} | 
   r2.\! r1. |
 
   r1. |
@@ -520,7 +373,7 @@ violaBB = \relative c'' {
   r2. r4 \n a2:32\pont\<|
 
   a1.:32\! gis2.:32 | 
-  gis2.:32 <gis cis\hm>1.:32) 
+  gis2.:32 <gis cis\hm>1.:32 
   \tastor gis1.:32\startTextSpan 
   \n <gis fis>2.\>\stopTextSpan r2.\! |
 
@@ -529,12 +382,12 @@ celloBB = \relative c{
   r1. r2. |
   r1. r2. |
   r1. |
-  r1. \ordr \n <c fih\hm>4(\sept\< \startTextSpan  
-    <c fih\hm>8[ <c fih\hm>] 
-    \tuplet 3/2 { <c fih\hm> <c fih\hm> <c fih\hm> } | 
+  r1. \ordr \n <c ges'\hm>4(\sept\< \startTextSpan  
+    <c ges'\hm>8[ <c ges'\hm>] 
+    \tuplet 3/2 { <c ges'\hm> <c ges'\hm> <c ges'\hm> } | 
 
-  \tuplet 3/2 { <c fih\hm>8(\! <c fih\hm> <c fih\hm>8 } 
-    \topGliss <c fih\hm>2)\stopTextSpan \glissando 
+  \tuplet 3/2 { <c ges'\hm>8\! <c ges'\hm> <c ges'\hm>8 } 
+    \once \tieDown \topGliss <c ges'\hm>2 ~ \stopTextSpan \glissando 
     <c f\hm>2) 
     \feathr {ges16[\< s ges ges]} |
   \pontr \feathl { f''16([\!\startTextSpan f s f] } f2~ f4 e2~ |
@@ -543,8 +396,8 @@ celloBB = \relative c{
 
   \acciaccatura {g,,8} \repeat tremolo 12 {\n <aes'\hm des,>32\ord\f\> <des,\hm ges,>} 
     \repeat tremolo 12 {f\startTextSpan b,} 
-    \repeat tremolo 4 {\hh f' \hh b,} |
-    \repeat tremolo 4 {\hh f' \hh b,} |
+    \repeat tremolo 4 {\hh f' \hh b,} 
+    \repeat tremolo 4 {\hh f' \hh b,} 
     \repeat tremolo 4 {\hh f'\tasto\stopTextSpan \hh b,} |
   \hh f'4( \HH bes,4 \glissando \noHead {\hh 4) } r2.\! 
     r2 \n bes4(\< ~ |
@@ -560,8 +413,8 @@ violinOneCoda = \relative c''  {
 }%end violinOneCoda
 
 violinTwoCoda = \relative c'' {
-  \feathl {cis16([ s cis cis]} b2~\> b2.)\! c2.( |
-  c2.\startTextSpan ~ c2\>\tuplet 3/2 \hh { c8\tasto(\p\<\stopTextSpan c c)} 
+  \feathl {cis16([ s cis cis]} b2~\> b2.)\! c2.( ~ |
+  c2.\startTextSpan ~ c2\>\tuplet 3/2 \hh { c8\tasto\p\<\stopTextSpan c c)} 
     \tuplet 3/2 \hh{ c(\! c c)} \HH c4 \glissando \noHead { 4 |
   4\> 4 4 4 4 \hh 4 } \n \HH des4\pp\> \glissando \noHead { 4 4 |
   \noAcc 4 4 4 4 4 \hh 4 } r2.\! |
@@ -571,11 +424,11 @@ violinTwoCoda = \relative c'' {
 violaCoda = \relative c' {
   \time 9/4
   r2. \sq d1.\p\< ~ |
-  \sq <d g,>2.\!\startTextSpan ~ \sq<d g,>2 
+  \pontl\ordr \sq <d g,>2.\!\startTextSpan ~ \sq<d g,>2 
     \tuplet 3/2 {\sq <d g,>8\< \sq 8 \sq 8}
     \tuplet 3/2 \hh {<f aes,>8 8 8 } \hH <f aes,>4\! \glissando \noHead { \hh 4} |
-    <es\hm bes>1.\ord~ <es\hm bes>2.\glissando |
-    <deseh\hm aes>1._\sept\startTextSpan ~ <deseh\hm aes>2.\pont |
+  <es\hm bes>1.\stopTextSpan ~ <es\hm bes>2.\glissando |
+  \pontr <d!\hm aes>1._\sept\startTextSpan ~ <deseh\hm aes>2.\stopTextSpan |
 }%end violaCoda
 
 celloCoda = \relative c, {
@@ -634,7 +487,7 @@ timecode = {
   \bar "|."
 }
 
-#(set-global-staff-size 18)
+#(set-global-staff-size 16)
 \book {
   \paper {
     #(set! paper-alist (cons '("ipad" . (cons (* 220 mm) (* 305 mm))) paper-alist))
@@ -644,11 +497,13 @@ timecode = {
     right-margin = 0.6\in
     bottom-margin = 0.7\in
 
-    system-system-spacing =
+   %{
+   system-system-spacing =
     #'((basic-distance . 20)
        (minimum-distance . 15)
        (padding . 1)
        (stretchability . 0))
+    %}
 
     %{print-page-number = ##t
     print-first-page-number = ##t
