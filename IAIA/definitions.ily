@@ -1,65 +1,79 @@
 \version "2.19.80"
 %Created Sun June 17 00:02 EDT 2018 at Walden School
 
+fpp = #(make-dynamic-script (markup #:line ( 
+             #:dynamic "fpp" )))
+
 redHead = #(define-music-function
   (parser location mus)
   (ly:music?)
   #{
-    \override NoteHead.color = #red
     #mus
-    \revert NoteHead.color
   #})
 
 topGliss = \once \set glissandoMap = #'((1 . 1) (0 . 2))
+
+half-harmonic = #(define-music-function
+  (parser location mus)
+  (ly:music?)
+  #{
+    \temporary \override NoteHead.style = #'harmonic-black
+    \revert NoteColumn.glissando-skip
+    \temporary \override Glissando.bound-details.left.padding = #-0.1
+    \temporary \override Glissando.line-cap-style = #'square
+    #mus
+    \revert Glissando.bound-details.left.padding
+    \revert Glissando.bound-details
+    \revert Glissando.thickness
+    \revert NoteHead.style
+  #})
 
 hh = #(define-music-function 
   (parser location notes)
   (ly:music?)
   #{
-    \temporary \override NoteHead.style = #'harmonic-black
+    \temporary \override Glissando.arrow-length = #1.3
+    \temporary \override Glissando.arrow-width = #0.5
     \temporary \override Glissando.thickness = #3
-  %%\temporary \override Glissando.bound-details.left.padding = #-0.1
-    \revert NoteColumn.glissando-skip
-    #notes
-    \revert Glissando.bound-details
-    \revert NoteHead.style
-    \revert Glissando.thickness
+    \half-harmonic { #notes }
+    \revert Glissando.arrow-length
+    \revert Glissando.arrow-width
+  #})
+
+Hh = #(define-music-function
+  (parser location num notes)
+  (number? ly:music?)
+  #{
+    \temporary \override Glissando.bound-details.right.padding = #num
+    \override Glissando.bound-details.right.arrow = ##f
+    \temporary \override Glissando.thickness = #3
+    \half-harmonic { #notes }
+    \revert Glissando.bound-details.right.padding
+    \override Glissando.bound-details.right.arrow = ##t
   #})
 
 HH = #(define-music-function 
   (parser location notes)
   (ly:music?)
   #{
-    \temporary \override NoteHead.style = #'harmonic-black
-    \temporary \override Glissando.thickness = #4
-  %%\temporary \override Glissando.bound-details.left.padding = #-0.1
     \temporary \override Glissando.bound-details.right.padding = #-4
     \override Glissando.bound-details.right.arrow = ##f
-    \revert NoteColumn.glissando-skip
-    #notes
-    \revert Glissando.bound-details.left.padding
+    \temporary \override Glissando.thickness = #3
+    \half-harmonic { #notes }
     \revert Glissando.bound-details.right.padding
     \override Glissando.bound-details.right.arrow = ##t
-    \revert NoteHead.style
-    \revert Glissando.thickness
-
   #})
+
 hH = #(define-music-function 
   (parser location notes)
   (ly:music?)
   #{
-    \temporary \override NoteHead.style = #'harmonic-black
-    \temporary \override Glissando.thickness = #4
-  %%\temporary \override Glissando.bound-details.left.padding = #-0.1
     \temporary \override Glissando.bound-details.right.padding = #-1
     \override Glissando.bound-details.right.arrow = ##f
-    \revert NoteColumn.glissando-skip
-    #notes
-    \revert Glissando.bound-details.left.padding
+    \temporary \override Glissando.thickness = #3
+    \half-harmonic { #notes }
     \revert Glissando.bound-details.right.padding
     \override Glissando.bound-details.right.arrow = ##t
-    \revert NoteHead.style
-    \revert Glissando.thickness
   #})
 
 noHead = #(define-music-function (music)(ly:music?)
@@ -99,11 +113,12 @@ spannerStyle = {
   \override TextSpanner.bound-details.right.arrow = ##t
   \override TextSpanner.bound-details.left.padding = #0
   \override TextSpanner.bound-details.right.padding = #1
-  \override Glissando.thickness = #3
   \override TextSpanner #'(bound-details left-broken text) = ##f 
   \override TextSpanner #'(bound-details right-broken text) = ##f
 
+  \override Glissando.thickness = #3
   \override Glissando.bound-details.right.arrow = ##t
+
   \override Hairpin.to-barline = ##f
 
   \set harmonicDots = ##t
@@ -122,25 +137,45 @@ IV = ^\markup {\halign #2 \concat {\teeny IV}}
 textin = {
   \once \override Staff.TextScript.outside-staff-priority = #240 
 }
-sept = ^\markup {\small 7th \small par.}
+sept = ^\markup {\small "7ᵗʰ par"}
 
-ord = ^\markup {\italic N}
+
+%% T E X T  S P A N N E R  D E F I N I T I O N S    |   |   |
+%% T E X T  S P A N N E R  D E F I N I T I O N S    V   V   V
+
+ord = ^\markup {N}
 ordl = \once \override TextSpanner.bound-details.left.text =
-  \markup {N}
+  \markup {\upright N}
 ordr = \once \override TextSpanner.bound-details.right.text =
-  \markup {N}
+  \markup {\upright N}
 
-pont = ^\markup {\italic S.P.}
+pont = ^\markup {S.P.}
 pontl = \once \override TextSpanner.bound-details.left.text = 
-  \markup {S.P.} 
+  \markup {\upright S.P.} 
 pontr = \once \override TextSpanner.bound-details.right.text = 
-  \markup {S.P.} 
+  \markup {\upright S.P.} 
 
-tasto = ^\markup {\italic S.T.}
+tasto = ^\markup {S.T.}
 tastol = \once \override TextSpanner.bound-details.left.text = 
-  \markup {S.T.} 
+  \markup {\upright S.T.} 
 tastor = \once \override TextSpanner.bound-details.right.text = 
-  \markup {S.T.} 
+  \markup {\upright S.T.} 
+
+shrink = #(define-music-function (num)(number?)
+  #{
+    \once \override TextSpanner.bound-details.right.padding = $num
+  #})
+lift = #(define-music-function (num)(number?)
+  #{
+    \once \override TextSpanner.staff-padding = $num
+  #})
+leften = #(define-music-function (num)(number?)
+  #{
+    \once \override TextSpanner.bound-details.left.padding = $num
+  #})
+
+
+
 
 feathr = #(define-music-function (music)(ly:music?)
   #{
