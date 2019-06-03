@@ -2,4 +2,10 @@
 
 hairpinOn = \override Hairpin #'circled-tip = ##t
 hairpinOff = \revert Hairpin.circled-tip
-n = \once \override Hairpin #'circled-tip = ##t
+n =  {
+ 	\temporary \override Hairpin #'to-barline = ##f
+	\temporary \override Hairpin #'circled-tip = ##t
+	\once \override Hairpin #'circled-tip = ##t
+	\revert Hairpin #'circled-tip
+	\revert Hairpin #'to-barline
+}

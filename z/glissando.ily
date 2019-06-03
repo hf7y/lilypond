@@ -88,3 +88,7 @@ fancy-gliss =
 #})
 
 glissandoTrill = \once \override Glissando.style = #'trill
+
+glissandoFormatting = {
+	\override Glissando.thickness = #2
+}
