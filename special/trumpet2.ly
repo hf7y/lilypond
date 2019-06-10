@@ -1,12 +1,12 @@
 %Wed, 27 Feb 2019 11:02:54 -0600
 \version "2.18.2"
 
-\include "./z/staff.ily"
-\include "./z/note.ily"
-\include "./z/glissando.ily"
-\include "./z/dynamic.ily"
-\include "./z/spanner.ily"
-\include "./z/square.ily"
+\include "../z/staff.ily"
+\include "../z/note.ily"
+\include "../z/glissando.ily"
+\include "../z/dynamic.ily"
+\include "../z/spanner.ily"
+\include "../z/square.ily"
 
 strt = \startTextSpan
 stsp = \stopTextSpan
