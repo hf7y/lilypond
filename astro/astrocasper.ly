@@ -27,6 +27,11 @@ makePercent =
    (make-music 'PercentEvent
                'length (ly:music-length note)))
 
+#(define trapKit '(
+         (bassdrum        default   #f           -1)
+         (snare           default   #f           0)
+         (hihat           default   #f           1)))
+
 fpp = #(make-dynamic-script (markup #:line ( 
              #:dynamic "fpp" )))
 
@@ -35,13 +40,24 @@ II = ^\markup {\halign #0 \concat {\teeny II}}
 III = ^\markup {\halign #0 \concat {\teeny III}}
 IV = ^\markup \center-align \teeny "IV"
 
+stemHack = #(define-music-function
+  (parser location mus)
+  (ly:music?)
+  #{
+    \stemUp
+    \temporary \override Staff.Stem.length = #11
+    \temporary \override Staff.Stem.Y-offset = #-3
+    #mus
+    \revert Staff.Stem.Y-offset
+    \revert Staff.Stem.length
+    \stemNeutral
+  #})
+
 %%%%%%%%%%%%%%%%%%%%:
 %:                 %:
 %:  R  a  v  e  l  %:
 %:                 %:
 %%%%%%%%%%%%%%%%%%%%:
-
-snareRavel = { s1 }
 
 vibraphoneRavel = \stemless \relative c''' {
   \override FrameBracket.no-bracket = ##t
@@ -80,7 +96,7 @@ vibraphoneRavel = \stemless \relative c''' {
   s1 | %m22
   s1 | %m23
   s2... \frameExtenderEnd s16 }| %m24
-  \frameStart \hide g8 <g! a!>4_\markup \bpm 360 
+  \frameStart \hide g8 <g! a!>4_\markup \bpm 480 
     \frameEnd \hide g8 \no-line { \hide g8 s8 s4 | %m25
   s1 | %m26
   s1} | %m27
@@ -109,7 +125,7 @@ vibraphoneRavel = \stemless \relative c''' {
   
   %hmy7
   %\time 2/4
-  \frameExtenderEnd \frameStart <a! b!>4_\markup \bpm 360 
+  \frameExtenderEnd \frameStart <a! b!>4_\markup \bpm 420 
     \frameEnd \hide f8 \no-line s8 | %m38
   %\time 4/4
   \no-line s1 | %m39
@@ -118,7 +134,7 @@ vibraphoneRavel = \stemless \relative c''' {
   %\bar "!"
 
   %hmy8
-  \frameExtenderEnd \frameStart <a! b!>4_\markup \bpm 360 
+  \frameExtenderEnd \frameStart <a! b!>4_\markup \bpm 300 
     \frameEnd \hide f8 \no-line { s8 s2 } | %m41
   \no-line s1 | %m42
   \frameExtenderEnd \frameStart <aes bes>4_\markup \bpm 360
@@ -638,6 +654,8 @@ timecodeRavel = {
   %hmy7
   \set Score.currentBarNumber = #7
   \once \override Score.BarNumber.transparent = ##f
+  \once \override Staff.TimeSignature.extra-spacing-width = 
+    #'(0 . 3)
   \time 2/4
   s2 | %m38
   \time 4/4
@@ -671,7 +689,7 @@ timecodeRavel = {
   s1 | %m49
   \time 2/4
   s2 | %m50
-  \bar "||"
+  \bar "|"
 }
 
 vibraphoneRavelB = \stemless \relative c''' {
@@ -868,9 +886,9 @@ violinIIRavelB = \relative c''' {
 
   %hmy8
   %\time 4/4
-  e2.\glissando \half-harmonic e4 | %m25
-  \half-harmonic c1\glissando | %m26
-  \no-line \square c1 | %m27
+  e2.\II\glissando \half-harmonic e4 | %m25
+  \half-harmonic c1\II\glissando | %m26
+  \no-line \square c1~ | %m27
   %\bar "!"
 }%end violinIIRavel 
 
@@ -917,7 +935,7 @@ violaRavelB = \relative c'' {
   %\time 4/4
   g1\harmonic~ | %m20
   g1\harmonic~ | %m21
-  g1\harmonic\> | %m22
+  << g1\harmonic\> {s2.... \clef "alto" s32 }>>| %m22
   %\bar "!"
   
   %hmy7
@@ -930,7 +948,7 @@ violaRavelB = \relative c'' {
   %\time 4/4
   \no-line \square { f1\mf\<~ | %m25
   f1\f~ | 
-  <f c'>1 } |
+  <f b,>1~ } |
   %\bar "!"
 }%end violaRavel
 
@@ -1090,7 +1108,7 @@ timecodeRavelB = {
   s1 | %m25
   s1 | %m26
   s1 | %m27
-  \bar "!"
+  \bar "|"
 }
 
 %:.';;.';.';.;.';.';.";.';
@@ -1099,33 +1117,309 @@ timecodeRavelB = {
 %":: . .'  . ,. :  . :"::'
 %:.::.';,":.';.';.;'::.":.
 
-vibraphoneNoise = {
+trapNoise = \drummode {
+  \override DrumStaff.FrameBracket.no-bracket = ##t
+  s1 | s1 | s1 | s1 | s1 | %m5
+  s1 | s1 | s1 | s1 | \n << hh1:32^"hat"(\< {s2.. s8)}>> | %m10
 
+  \frameStart << sn1^"snare, brush" {s4 \frameEnd \stemless \stemHack \hide sn4}>> | %m11
+ \hide  sn1 | %m13
+ \hide  sn1 | %m14
+ \hide  sn1 | %m15
+ \hide  sn1 | %m16
+ \hide  sn1 | %m17
+ \hide  sn1 | %m18
+ \hide  sn1 | %m19
+ \hide  sn1 | %m20
+ \hide  sn1 | %m21
+ \hide  sn1 | %m22
+ \frameExtenderEnd \hide sn1 | %m23
+
+}%end trapNoise
+vibraphoneNoise = \relative c''' {
+  %hmy9
+  \stemless \no-line { \n s1\> | %m1
+  s1 | %m2
+  s1 | %m3
+  s1 | %m4
+  s1 } | %m5
+  %\bar ";"
+
+  %hmy0
+  \no-line \stemless { \frameExtenderEnd \frameStart 
+    <a b>4\!^\markup \italic "tacet"_\markup \bpm 360
+    \frameEnd \hide f8 \no-line { s8 s2 } | %m6
+  \no-line s1_\markup \large "slower and slower" | %m7
+  \no-line s1 | %m8
+  \frameExtenderEnd \no-line c1\rest_\markup \bpm 0 | %m9
+  \no-line s1 } | %m10
+  %\bar ""
+
+  %hmy1
+  \no-line s1 | %m11
+  %\bar ";"
+
+  %hmy2
+  \no-line s1 | %m13
+  \no-line s1 | %m14
+  \no-line s1 | %m15
+  \no-line s1 | %m16
+  \no-line s1 | %m17
+
+  \no-line s1 | %m18
+  \no-line s1 | %m19
+  \no-line { a2\rest b2\mf~ } | %20
+  \stemless \no-line { \frameStart << \n b1\< 
+    {s4 \frameEnd \stemHack \hide b4 }>> | %m21
+  \no-line s1  | %m22
+  \frameExtenderEnd \no-line s1 } | %m23
+  %\bar "|"
 }%end vibraphoneNoise
 
-violinINoise = {
+violinINoise = \relative c'' {
+  %hmy9
+  \once \override Hairpin.to-barline = ##f
+  \tieDashed \n \half-harmonic <c f>1:32\>~ | %m1
+  \half-harmonic <c f>1:32 \glissando | %m2
+  \no-line { \square <c f>1:32~ | %m3
+  \headless f1:32~^\markup \italic "tacet"\! | %m4
+  \headless f1:16~ } | %m5
+  %\bar ";"
 
+  %hmy0
+  \no-line { \headless f1:8 | %m6
+  \tieSolid \n \square c1\<~ | %m7
+  \square c1\p\glissando } | %m8
+  \half-harmonic c1\glissando | %m9
+  \no-line \square c1\< | %m10
+  %\bar ""
+
+  %hmy1
+  \no-line c1\rest\! | %m11
+  %\bar ";"
+
+  %hmy2
+  \stemless \no-line { \frameStart << \n b1\< 
+    {s4 \frameEnd \stemHack \hide b4 }>> | %m13
+  << s1 { s2 s\pp }>> | %m14
+  s2 \frameExtenderEnd a2\rest | %m15 
+  r4 } \no-line b2.\pp~ | %16
+  \stemless \no-line { \frameStart << b1
+    {s4 \frameEnd \stemHack \hide b4 }>> | %m17
+  s1 | %m18
+  s1 | %m19
+  s1 | %m20
+  s1 | %m21
+  s1 | %m22
+  \frameExtenderEnd \hide g1 } | %m23
+  %\bar "|"
 }%end violinINoise
 
-violinIINoise = {
+violinIINoise = \relative c'' {
+  %hmy9
+  \no-line \square { c1~ | %m1
+  c1~ | %m2
+  <c f,>1\<~ | %m3
+  <c f,>1~ | %m4
+  <c f,>1\mf~ } | %m5
+  %\bar ";"
 
+  %hmy0
+  \no-line \square { <c f,>1\glissando | %m6
+  <g' c,>1~ | %m7
+  <c, f,>1\glissando | %m8
+  <f, b,>1\glissando\< | %m9
+  <f' b,>1~ } | %m10
+  %\bar ""
+
+  %hmy1
+  \no-line c1\rest\! | %m11
+  %\bar ";"
+  
+  %hmy2
+  \no-line { r2. b4\pp~ } |
+  \stemUp \stemless \no-line { \frameStart << b1 
+    {s4 \frameEnd \stemHack \hide b4 }>> | %m13
+  s2 \frameExtenderEnd a2\rest | %m15 
+  \frameStart << b1
+    {s4\< \frameEnd \stemHack \hide b4 s4\p }>> | %m16
+  s1 | %m17
+  s1 | %m18
+  s1 | %m19
+  s1 | %m20
+  s1 | %m21
+  s1 | %m22
+  \frameExtenderEnd \hide g1 } | %m23
+  %\bar "|"
 }%end violinIINoise
 
-violaNoise = {
+violaNoise = \relative c' {
+  %hmy9
+  \no-line \square { <f b,>1~ | %m1
+  <f b,>1\glissando | %m2
+  <c' f,>1 | %m3
+  \clef "treble"
+  <c g'>1\III\II~ | %m4
+  <c g'>1 } | %m5
+  %\bar ";"
 
+  %hmy0
+  \no-line \square { <g' d'>1\II\I\glissando | %m6
+  <e b'>1\glissando | %m7
+  <c g'>\glissando\< | %m8
+  <a e'>\glissando | %m9
+  <f c'>1 } | %m10
+  %\bar ""
+
+  %hmy1
+  \no-line c'1\rest\! | %m11
+  %\bar ";"
+
+  %hmy2
+  \no-line { r1 | %m13
+  s1 | %m14
+  s2 b2\p~ | %15
+  \frameStart << b1
+    {s4 \frameEnd \stemHack \stemless \hide b4 s4 }>> | %m16
+  s1 | %m17
+  s1 | %m18
+  s1 | %m19
+  s1 | %m20
+  s1 | %m21
+  s1  | %m22
+  \frameExtenderEnd \hide g1 } | %m23
+  %\bar "|"
 }%end violaNoise
 
-celloNoise = {
+celloNoise = \relative c' {
+  %hmy9
+  \tieDashed \no-line { \square <a e'>1:32~ | %m1
+  \square <a e'>1:32~ | %m2
+  \n \square <a e'>1:32\>~ | %m3
+  \square <a e'>1:32~ | %m3
+  \headless <a e'>1:32\!_\markup \italic "tacet" } | %m3
+  %\bar ";"
 
+  %hmy0
+  \no-line \square { \n <c,, g'>1:64\III\IV\<~ | %m6
+  <c g'>1:64~ | %m7
+  <c g'>1:64~ | %m7
+  <c g'>1:64~ | %m7
+  <c g'>1:64 } \tieSolid | %m7
+  %\bar ""
+
+  %hmy1
+  \no-line e'1\rest\! | %m11
+  %\bar ";"
+
+  %hmy2
+  \no-line { r1 | %m13
+  s1 | %m14
+  s1 | %m15
+  s1 | %m16
+  s1}| %17
+  \once \override Staff.TextScript.outside-staff-priority = #249
+  <<
+    \new Voice \no-line {
+      d1^"\"Hey, Zach\""\mf~
+      \frameStart << d1 | %m18 
+	{s4 \frameEnd \stemHack \stemless \hide d4 s4 }>> | %m19 |
+      s1 | %20
+      s1 | %21
+      s1 | %22
+      \frameExtenderEnd \hide g1 | %m23
+    } 
+    \new Staff \no-line {
+      \override Staff.FrameBracket.no-bracket = ##t
+      \override Staff.Clef.full-size-change = ##t
+      \clef "bass"
+      \hide Staff.TimeSignature
+      r2. d4^\markup \right-align "Zach:"\mf~ | %m18 
+      \frameStart << d1
+	{s4 \frameEnd \stemHack \stemless \hide d4 s4 }>> | %m19
+      s1 | %m20
+      s1 | %m21
+      s1 | %m22
+      \frameExtenderEnd \hide g1 | %m23
+    }
+  >>
+  %\bar "|"
 }%end celloNoise 
 
 timecodeNoise = {
+  \override Staff.FrameBracket.no-bracket = ##t
+  \tempo 4 = 60 
+  \time 4/4
+  \numericTimeSignature
 
+  \set Timing.defaultBarType = "'"
+  \override Score.BarNumber.transparent = ##t
+  \override Score.BarNumber.break-visibility = 
+    #end-of-line-invisible
+  \set Score.barNumberVisibility = 
+    #(every-nth-bar-number-visible 1)
+
+  \override Staff.Glissando.thickness = #3
+  \override Staff.Glissando.bound-details.right.arrow = ##t
+  %\override Hairpin.to-barline = ##f
+  \set Staff.harmonicDots = ##t
+  %hmy9
+  \set Score.currentBarNumber = #19
+  \once \override Score.BarNumber.transparent = ##f
+  s1 | %m1
+  s1 | %m2
+  s1 | %m3
+  s1 | %m4
+  s1 | %m5
+  \bar ";"
+
+  %hmy0
+  \set Score.currentBarNumber = #20
+  \once \override Score.BarNumber.transparent = ##f
+  s1 | %m6
+  s1 | %m7
+  s1 | %m8
+  s1 | %m9
+  s1 | %m10
+  \bar ""
+
+  %hmy1
+  \set Score.currentBarNumber = #21
+  \once \override Score.BarNumber.transparent = ##f
+  s1 | %m11
+  \bar ";"
+  \once \override Score.RehearsalMark.break-visibility = 
+    #end-of-line-visible
+  \once \override Score.RehearsalMark.self-alignment-X = #RIGHT
+  \mark\markup{\musicglyph #"scripts.ufermata"} 
+
+  %hmy2
+  \set Score.currentBarNumber = #22
+  \once \override Score.BarNumber.transparent = ##f
+  \override TextScript.outside-staff-priority = #'()
+  \once \override TextScript.staff-padding = #'()
+  \tempo "Speaking"
+  s1 | %m13
+  s1 | %m14
+  s1 | %m15
+  s1 | %m16
+  s1 | %m17
+  s1 | %m18
+  s1 | %m19
+  s1 | %m20
+  s1 | %m21
+  s1 | %m22
+  \mark\markup{\musicglyph #"scripts.ufermata"} 
+  s1 | %m23
+  \bar "|"
+  
 }%end timecodeNoise
 
 %Called by Staves in \score
-snare = {
-  \snareRavel
+trap = {
+  << \timecodeRavel >>
+  \timecodeRavelB
+  \trapNoise
 }
 vibraphone = {
   \vibraphoneRavel
@@ -1171,12 +1465,13 @@ timecode = {
   }
   \context {
     \Staff
-    \override VerticalAxisGroup.staff-staff-spacing.padding = #6
+    \override VerticalAxisGroup.staff-staff-spacing.padding = #5
     \override VerticalAxisGroup.staff-staff-spacing.basic-distance = #20
   }
   \context {
     \DrumStaff
     \RemoveEmptyStaves
+    \consists \frameEngraver
   }
   \context {
     \Voice
@@ -1204,7 +1499,7 @@ timecode = {
 
   system-system-spacing = 
     #'((basic-distance   . 25)
-       (minimum-distance . 15)
+       (minimum-distance . 5)
        (padding          . 4 )
        (stretchability   . 1 ))
 
@@ -1222,9 +1517,10 @@ timecode = {
       instrumentName = #"Trap"
       shortInstrumentName = #""
       \override StaffSymbol.line-count = #1
-
     }{
-      <<\timecode \snare>>
+      \set DrumStaff.drumStyleTable = 
+	#(alist->hash-table trapKit)
+      <<\timecode \trap>>
     }%end Snare
     \new Staff \with {
       instrumentName = #"Vibraphone "
