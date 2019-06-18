@@ -30,6 +30,7 @@ makePercent =
 #(define trapKit '(
          (bassdrum        default   #f           -1)
          (snare           default   #f           0)
+         (crashcymbal          default   #f           2)
          (hihat           default   #f           1)))
 
 fpp = #(make-dynamic-script (markup #:line ( 
@@ -52,6 +53,314 @@ stemHack = #(define-music-function
     \revert Staff.Stem.length
     \stemNeutral
   #})
+
+% (.Y.) ( '  ' (.).)   ( .)( .)  ( , Y . )
+%  (.x.)   P    `     . )    ( . . ) (.).) 
+% (. .)  \   ,    O      ' ' . ) ( , Y . )
+% (.Y.)(.x.) (.        P   ( , Y . ) (.).)
+% (.v.) (. .)  \.'./   , , . . ) ( . ' . ) 
+
+trapPop = \drummode {
+  \override DrumStaff.FrameBracket.no-bracket = ##t
+  \stemUp
+  %hmy1
+  s1 | %m1
+  s1 | %m2
+  s1 | %m3
+  s1 | %m4
+
+  %hmy2
+  s1 | %m5
+  s1 | %m6
+  s1 | %m7
+  s2 r8 <<{bd8^"bass, rim" bd bd16 s} \\
+    {bd8 bd[ s16 bd]}>> | %m8
+
+  %hmy3
+  bd16^"head" \headless {bd bd} bd
+    bd \headless bd bd-> \headless bd 
+    \headless bd bd bd bd
+    \headless bd bd \headless bd \headless bd | %m9
+  bd \headless bd bd-> \headless bd
+    \headless bd bd bd-> \headless bd
+    \headless bd bd bd bd
+    bd-> \headless {bd bd} bd | %m10
+  \hide R1^\markup \italic "simile" | %m11
+  s1 | %12
+
+  s1 | %13
+  s1 | %14
+  s1 | %15
+  s1 | %16
+
+  bd16 \headless {bd bd} bd
+    bd \headless bd bd \headless bd
+    \headless bd bd bd-> bd 
+    bd \n \headless sn\< sn sn | %17
+  
+  bd16\p \headless {bd bd} sn 
+    bd \headless bd sn \headless sn
+    sn sn \headless {sn sn} 
+    sn bd \headless bd bd | %m18
+  bd \headless bd bd \headless bd
+    sn sn \headless sn sn 
+    bd sn \headless sn sn
+    sn \headless sn bd bd | %m19
+  \hide R1^\markup \italic "simile" | %m20
+  s1 | %m21
+
+  s1 | %22
+  %\time 5/16
+  r4 r16 | %23
+
+  %\time 4/4
+  <<
+    \new DrumVoice {
+      \voiceOne
+      \override TupletNumber.text = #tuplet-number::calc-fraction-text
+      \tuplet 7/8 {hh8[ hh16.]}
+      \omit TupletNumber
+      \tuplet 7/8 {hh8[^\markup {\left-align \teeny \circle " "} hh16.]}
+      \tuplet 7/8 {hh8[ hh16.]}
+      \tuplet 7/8 {hh8[^\markup {\left-align \teeny \circle " "} hh16.]}
+    }
+    \new DrumVoice {
+      \voiceTwo
+      bd4 sn 
+      bd8 bd sn4
+    }
+  >>
+}
+
+vibraphonePop = \relative c' {
+  \key cis \major
+  %hmy1
+  fis4\pp <ais gis> <cis gis> <fis, ais'> | %m1
+  <fis gis'> <ais gis'> <bis eis> <bis cis> | %m2
+  <ais bis>\pp\> bis\! <fis gis>\pp\> ais\! | %m3
+  <dis, ais'>_\markup \italic "simile" <eis fis> <eis ais> <gis ais> | %m4
+
+  %hmy2
+  gis dis fis bis | %m5
+  \n eis,\pp\> cis\! \n bis\pp\> dis\! | %m6
+  \n eis4\ppp\> \headless cis bis \headless cis | %m7
+  cis4 \headless cis\! r4 s4 | %m8
+
+  %hmy3
+  s1 | %m9
+  s1 | %m10
+  s1 | %m11
+  s1 | %m12
+
+  s1 | %m13
+  s1 | %m14
+  s1 | %m15
+  s1 | %m16
+
+  s1 | %m17
+  s1 | %m18
+  s1 | %m19
+  s1 | %m20
+
+  s1 | %m21
+  s1 | %m22
+  %\time 5/16
+  r4 r16 | %m23
+}%end vibraphonePop
+
+violinIPop = \relative c' {
+  \key cis \major
+  eis16 r8. eis8 r8 dis16 r8. gis16 r8. | %m1
+  fis16 r8. dis'8 r8 dis16 r8. gis8 r8 | %m2
+  fis16 r8. cis8 r8 cis16 r8. dis8 r8 | %m3
+  eis16 r8. eis8. r16 dis16 r8. dis8. r16 | %m4
+
+  fis,32 r8.. ais8. r16 cis32 r8.. ais'8. r16 | %m5
+  gis32 r8.. gis8. r16 eis32 r8.. cis'8.. r32 | %m6
+  bis32 r8.. bis8.. r32 gis32 r8.. ais8.. r32 | %m7
+  ais64 r8... fis8... r64 ais64 r8... gis4 | %m8
+
+  r4 eis4 r4 gis4 | %m9
+  r4 dis4 r4 gis4~ | %m10
+  gis32 r8.. cis,4~ cis16 r8. dis4~ | %m11
+  dis8 r8 eis4~ eis8. r16 dis4~ | %m12
+
+  dis8.. r32 ais'4~ ais4 ais4~ | %m13
+  ais8.. r32 gis4~ gis8. r16 cis4~ | %m14
+  cis8 r8 bis4~ bis16 r8. ais4~ | %m15
+  ais32 r8.. fis4~ r4 gis4 | %m16
+
+  s1 | %m17
+  s1 | %m18
+  s1 | %m19
+  s1 | %m20
+
+  s1 | %m21
+  s1 | %m22
+  %\time 5/16
+  r4 r16 | %m23
+
+  \key c \major
+  %\time 4/4
+  s1 |
+}%end violinIPop
+
+violinIIPop = \relative c'' {
+  \key cis \major
+  r1 | %m1
+  r1 | %m2
+  r1 | %m3
+  r1 | %m4
+
+  s1 | %m5
+  s1 | %m6
+  s1 | %m7
+  s1 | %m8
+
+  s1 | %m9
+  s1 | %m10
+  s1 | %m11
+  s1 | %m12
+
+  s1 | %m13
+  s1 | %m14
+  s1 | %m15
+  s1 | %m16
+
+  s1 | %m17
+  s1 | %m18
+  s1 | %m19
+  s1 | %m20
+
+  s1 | %m21
+  s1 | %m22
+  %\time 5/16
+  r4 r16 | %m23
+
+  \key c \major
+  %\time 4/4
+  s1 | %m10
+}%end violinIIPop
+
+violaPop = \relative c'' {
+  \key cis \major
+  r1 | %m1
+  r1 | %m2
+  r1 | %m3
+  r1 | %m4
+
+  s1 | %m5
+  s1 | %m6
+  s1 | %m7
+  s1 | %m8
+  s1 | %m9
+  s1 | %m10
+  s1 | %m11
+  s1 | %m12
+
+  s1 | %m13
+  s1 | %m14
+  s1 | %m15
+  s1 | %m16
+
+  s1 | %m17
+  s1 | %m18
+  s1 | %m19
+  s1 | %m20
+
+  s1 | %m21
+  s1 | %m22
+  %\time 5/16
+  r4 r16 | %m23
+
+  \key c \major
+  %\time 4/4
+  s1 | %m1
+}%end violaPop
+
+celloPop = \relative c {
+  \key cis \major
+  %hmy1
+  \half-harmonic <cis ais'>1~ | %m1
+  \half-harmonic <cis ais'>1^\markup \italic "vib."~ | %m3
+  \half-harmonic 
+    << { <cis ais'>1^\markup \italic "molto vib."\glissando | } %m2
+      { s2 \n s2\> } >>
+  \square <cis ais'>1~ | %m4
+  %\bar "|"
+
+  %hmy2
+  s1\! | %s5
+  s1 | %s6
+  s1 | %s7
+  s1 | %s8
+  %\bar "|"
+
+  %hmy3
+  \n cis8([\p\> cis cis\!)] \n dis([\p\> dis dis\!)] 
+    fis([_\markup \italic "simile" fis | %m9
+  fis)] eis([ eis eis)] ais,([ gis gis)] \n bis([\p\> | %m10
+  bis bis bis]) bis([ bis bis \headless {bis\! bis)]} |%m11
+  \headless {bis8( 8 8 8)} \headless {bis8([ 8 8)]} \n cis([\p\> |%m12
+
+  dis dis dis\!)] cis([\p\> cis\!)] \n fis([\p\> fis fis | %m13
+  fis\!)] eis([_\markup \italic "simile" eis eis)]
+    ais,([ gis gis)] eis([ | %m14
+  eis)] \n fis([\p\> fis fis fis)] fis([ fis fis | %m15
+  \headless { fis\! fis)] } \headless { fis([ fis fis fis)] fis( fis)} | %m16
+
+  s1 | %m17
+  s1 | %m18
+  s1 | %m19
+  s1 | %m20
+
+  s1 | %m21
+  s1 | %m22
+  %\time 5/16
+  r4 r16 | %m23
+
+  \key c \major
+  %\time 4/4
+}
+
+timecodePop = {
+  \tempo 4 = 108
+  \set Timing.defaultBarType = ";"
+  s1 | %m1
+  s1 | %m2
+  s1 | %m3
+  s1 | %m4
+  \bar "|"
+  s1 | %m5
+  s1 | %m6
+  s1 | %m7
+  s1 | %m8
+  \bar "|"
+  s1 | %m9
+  s1 | %m10
+  s1 | %m11
+  s1 | %m12
+
+  s1 | %m13
+  s1 | %m14
+  s1 | %m15
+  s1 | %m16
+
+  s1 | %m17
+  s1 | %m18
+  s1 | %m19
+  s1 | %m20
+
+  s1 | %m21
+  s1 | %m22
+  \time 5/16
+  s4 s16 | %m23
+  \bar "|"
+  
+  \tempo 4 = 84
+  \time 4/4
+  s1 | %m24
+}%end timecodePop
 
 %%%%%%%%%%%%%%%%%%%%:
 %:                 %:
@@ -185,7 +494,7 @@ violinIRavel = \relative c'' {
   bes1\<~ | %m17
   bes1\p\glissando | %m18
   \half-harmonic bes1 \glissando | %m19
-  \no-line \square b2 \tieDashed g2:32\IV~ | %m20
+  \no-line \square b2 \tieDashed g'2:32\IV~ | %m20
   %\bar "!"
 
   %hmy3
@@ -193,45 +502,44 @@ violinIRavel = \relative c'' {
   g1:32~ | %m22
   g1:32~ | %m23
   g1:32\glissando } | %m24
-  g'1:32\harmonic\fpp \glissando | %m25
+  g1:32\harmonic\fpp \glissando | %m25
   \half-harmonic g1:32\glissando | %m26
-  \no-line \square g1:32\<\glissando | %m27
+  \no-line \square g1:32\<\glissando \tieSolid | %m27
   %\bar "!"
 
   %hmy4
-  \tieDashed \half-harmonic g1:32\f\>\glissando | %m28
-  g1:32\pp\harmonic~ | %m29
-  g4:32\harmonic cis,4:32 e:32 g:32~  | %m30
+  \half-harmonic g1:32\f\>\glissando | %m28
+  g1:32\pp\harmonic\glissando | %m29
+  g4:32 cis,4:32 e:32 \tieDashed g:32~  | %m30
   g1:32\glissando \tieSolid | %m31
   %\bar "!"
   
   %hmy5
-  \tieDashed <<\n \no-line {\square g2:32\> s8.\!}
-    {s2 r4 \n e:32\<~}>> | %m32
-  << e1:32~ {s2 s\!}>> | %m33
+  \tieDashed \n \no-line \square g2:32\> \n e2:32\<~| %m32
+  << e1:32~ {s2 s\p}>> | %m33
   %\time 2/4
-  e2:32 \tieSolid | %m34
+  e2:32\< \tieSolid | %m34
   %\bar "!"
   
   %hmy6
   %\time 4/4
-  e4:32 e2.:32-> | %m35
-  s1 | %m36
-  s2 e2:32\< | %m37
+  e4:32 \tieDashed e2.:32->\f\>~ | %m35
+  e1:32~ | %m36
+  e1:32\< | %m37
   %\bar "!"
   
   %hmy7
   %\time 2/4
-  s2 | %m40
+  f2:32~ | %m40
   %\time 4/4
-  s1 | %m38
-  s1 | %m39
+  f1:32~ | %m38
+  \n f1:32\> \tieSolid | %m39
   %\bar "!"
 
   %hmy8
-  s1 | %m41
-  s1 | %m42
-  s1 | %m43
+  \n a,1\< | %m41
+  \n a1\p\> | %m42
+  \tieDashed \n aes'1:32\< | %m43
   %\bar "!"
   
   %hmy9
@@ -246,7 +554,7 @@ violinIRavel = \relative c'' {
   %\time 4/4
   \tieDashed bes1:32^\markup {\italic "sul pont."}~ | %m47
   bes1:32~ | %m48
-  \n bes2:32\> r4\! \n aes4:32\<~ | %m49
+  \n bes2:32\> \n aes2:32\<~ | %m49
   %\time 2/4
   aes2:32 \tieSolid | %m50
   %\bar "!"
@@ -263,12 +571,14 @@ violinIIRavel = \relative c'' {
   bes\fp~ | %m4
   bes1\>~ | %m5
   bes1\pp~ | %m6
-  bes2. \n g4\<~| %m7
-  g1\mp\>~ | %m8
-  g1\p~ | %m9
-  g1 \glissando | %m10
+  bes2 \n 
+  
   <<
   \new Voice {
+    g2\<~| %m7
+    g1\mp\>~ | %m8
+    g1\p~ | %m9
+    g1 \glissando | %m10
     \no-line \square g1^~ | %m11
   %\bar "!"
 
@@ -277,12 +587,16 @@ violinIIRavel = \relative c'' {
     \stemless \hide g4 
     }
   \new Voice {
+    s2 | %m7
+    s1 | %m8
+    s1 | %m9
+    s1 | %m10
     s1 | %m11
-    \no-line { c,8\rest \once \stemDown \square c2..~} | %m12
+    
+    \no-line { c,8\rest \once \tieDown \once \stemDown \square c2..~} | %m12
     \no-line \square {<g' c,>2~ \tieDashed <g c,>2:16\<~ | %m13
     <g c,>1:32\mp^~} | %m14
-    <<{\n \square g2.:64\>}
-      {\no-line {s2 s8.}}>> \n e'4:32\<~ | %m15
+    \n \no-line \square g2:64\> \n e'2:32\<~ | %m15
     e1:32~ | %m16
     e1:32\p~ | %m17
     e1:32~ | %m18
@@ -309,8 +623,7 @@ violinIIRavel = \relative c'' {
   %\bar "!"
   
   %hmy5
-  <<\n \no-line {\square g2\> s8 s32.}
-    {s2 r4\! \tieDashed \n cis4:32\<~}>>| %m32
+  \n \no-line \square g2\> \tieDashed \n cis2:32\<~| %m32
   cis2:32 c2:32\p~ | %m33
   %\time 2/4
   c2:32\<~ \tieSolid | %m34
@@ -325,16 +638,16 @@ violinIIRavel = \relative c'' {
   
   %hmy7
   %\time 2/4
-  \tieDashed <b e\harmonic>2:32 | %m40
+  \tieDashed <b e\harmonic>2:32~ | %m40
   %\time 4/4
-  s1 | %m38
-  <bes es>1:32\< \tieSolid | %m39
+  < b e\harmonic>1:32 | %m38
+  <bes es\harmonic>1:32\< | %m39
   %\bar "!"
 
   %hmy8
-  \tieDashed <b e>1:32\fp~ | %m41
-  \n <b e\harmonic>2:32\> r2\! | %m42
-  \n <b e\harmonic>1:32\< \tieSolid | %m43
+  \tieDashed <bes f'\harmonic>1:32\fp~ | %m41
+  \n <bes f'\harmonic>2:32\> r2\! | %m42
+  \n <bes es\harmonic>1:32\< | %m43
   %\bar "!"
   
   %hmy9
@@ -348,7 +661,7 @@ violinIIRavel = \relative c'' {
   %\time 4/4
   \tieDashed \n f'1:32^\markup {\italic "sul pont."}\> | %m47
   r4\! \n f2.:32\<~ | %m48
-  f2:32\! r4 \n f4:32\<~ | %m49
+  \n f2:32\> r4\! \n f4:32\<~ | %m49
   %\time 2/4
   f2:32 \tieSolid | %m50
   %\bar "!"
@@ -364,29 +677,31 @@ violaRavel = \relative c' {
   %hmy1
   \no-line {\square d1~ | %m4
   \square d1\<~ | %m5
-  \square d1\mp\glissando} | %m6
-  d1\harmonic~ | %m7
-  d1\harmonic~ | %m8
+  \square d1~ | %m6
+  \square d1\mp\glissando} | %m7
+  \square d1\harmonic~ | %m8
   \n d1\harmonic\> | %m9
   r4\! \stemUp \tieDashed \n <a e'\harmonic>2.:32\<~ | %m10
-  \n <a e'\harmonic>1:32\p\> \stemNeutral \tieSolid | %m11
+  <a e'\harmonic>1:32\mp\>\glissando \stemNeutral \tieSolid | %m11
   %\bar "!"
 
   %hmy2
-  r1\! | %m12
+  \n \no-line \square a1:32\pp\> | %m12
+  r4\! 
+  
   << 
     \new Voice {
-      r4 \clef "treble" \grace {g'8~} \stemUp <g d'>2.\p_~ | %m13
+      \clef "treble" \grace {g'8~} \stemUp <g d'>2.\p_~ | %m13
       g1~ | %m14
       g1~ | %m15
       e1\rest | %m16
     }
     \new Voice {
-      s1 | %m13
+      s2. | %m13
       s1 | %m14
       \stemUp d'4\rest d2.^~ | %m15
       \stemNeutral d1\<~ | %m16
-      \n d2.\f\> r4\! | %m17
+      \n d1\f\> | %m17
     }
   >>
   \clef "alto" \tieDashed \n f,,1:32\harmonic\IV\<~  | %m18
@@ -429,38 +744,34 @@ violaRavel = \relative c' {
   %\time 2/4
   e2\f~ | %m40
   %\time 4/4
-  e4 r4 c2 | %m38
-  r4 d2. | %m39
+  e2 c2~ | %m38
+  c4 d2.( | %m39
   %\bar "!"
 
   %hmy8
-  e1 | %m41
-  c1 | %m42
-  << d1 {s2.... \clef "alto" s32}>> | %m43
+  e1) | %m41
+  c2.
+  
+  <<
+    { d4~ | %m42
+      d1 | } %m43 
+    { s4 | %m42 
+      s2.... \clef "alto" s32}>> | %m43
   %\bar "!"
   
   %hmy9
-  f,,1\harmonic~ | %m44
-  \n f4\harmonic\> r4\! \n d'2:32\<| %m45
+  f,,1\IV\harmonic~ | %m44
+  f1\harmonic\glissando | %m45
   %\time 5/4
-  \n d2:32\> f,2.\fp\glissando | %m46
+  \half-harmonic f1~ \half-harmonic f4\< | %m46
   %\bar "!"
   
   %hmy10
   %\time 4/4
-  <<{
-    \tieDashed \half-harmonic f4:32\IV r4 
-      r4 \half-harmonic f4:32 | %m47
-    d'2:32\harmonic d2:32\harmonic~ | %m48
-    d2:32\harmonic  r4 \tieSolid
-  }{
-    \override Hairpin.to-barline = ##f
-    \n s8\< \n s8\> s4\! s4 \n s8\< \n s8\> | %m47
-    \n s4\< \n s4\> \n s2\< | %m48
-    \n s2\> s4\! 
-  }>> 
-  
-  \half-harmonic f,4:32\IV\< | %m49
+  \tieDashed \n \half-harmonic f4:32\IV\> r4\! 
+    r4 \n \half-harmonic f4:32\< | %m47
+  \n d'2:32\harmonic\>~ \n d2:32\harmonic\<~ | %m48
+  \n d2:32\harmonic\> r4\! \tieSolid \half-harmonic f,4:32\IV\< | %m49
   %\time 2/4
   \half-harmonic {d'4:32\II \clef "treble" e'4:32\I} | %m50
   %\bar "!"
@@ -485,12 +796,12 @@ celloRavel = \relative c {
   %\bar "!"
 
   %hmy2
-  <c f\harmonic>4:32 r4\! 
+  <c f\harmonic>2:32 
     \clef "treble" bes''4\fp_~ <bes d>~| %m12
   <bes d>1\glissando | %m13
-  \n \half-harmonic <bes d>1\>~ | %m14
+  \n \half-harmonic <bes d>1\>\glissando | %m14
   <bes d>1 | %m15
-  r4\! g2.\pp\<~ | %m16
+  g1\pp\<~ | %m16
   g1\mp\>~ | %m17
   g1\p\glissando | %m18
   \half-harmonic g1\glissando | %m19
@@ -498,13 +809,14 @@ celloRavel = \relative c {
   %\bar "!"
 
   %hmy3
-  \n \no-line \square g2.\> r4\! | %m21
+  \once \override Hairpin.to-barline = ##f
+  \n \no-line \square g1\> | %m21
   \n << d'1\<~ {s2. s4\mp}>> | %m22
   << d1\>~ {s2 s\pp}>> | %m23
   << {d2.. c8} {s2 s\<}>> | %m24
   e1:32\harmonic \glissando | %m25
   \half-harmonic \n e1:32\>\glissando | %m26
-  \no-line \square {e2 r4\!} \clef "bass" f,,4 | %m27
+  \no-line \square e2. \clef "bass" f,,4\p | %m27
   %\bar "!"
 
   %hmy4
@@ -518,13 +830,13 @@ celloRavel = \relative c {
   r4\! \clef "treble" g'4 e2~ | %m32
   \n e1~ | %m33
   %\time 2/4
-  e2\> | %m34
+  \n e2\> | %m34
   %\bar "!"
   
   %hmy6
   %\time 4/4
-  r4\! \no-line {\square a2.\fp~ | %m35
-  \square a1\glissando} | %m36
+  \no-line {r4\! \square a2.\fp\glissando } | %m35
+  \half-harmonic a1\glissando | %m36
   a1\< | %m37
   %\bar "!"
   
@@ -532,29 +844,28 @@ celloRavel = \relative c {
   %\time 2/4
   \tieDashed d2:32\fp~ | %m38
   %\time 4/4
-  d2:32 s2 | %m39
-  s1 | %m40
+  d1:32~ | %m39
+  d1:32\glissando | %m40
   %\bar "!"
 
   %hmy8
-  s1 | %m41
-  s1 | %m42
-  s1 | %m43
+  \half-harmonic d1:32~ | %m41
+  \n \no-line \square d1:32\> \tieSolid | %m42
+  \n d1(\< | %m43
   %\bar "!"
   
   %hmy9
-  s1 | %m44
-  s1 | %m45
+  c'1)\!~ | %m44
+  c2 \tieDashed \clef "tenor" \n <aes,, des\harmonic>2:32\<~| %m45
   %\time 5/4
-  \clef "bass" \relative c' {
-  \n <aes des\harmonic>2.:32\> aes4\p\< bes4 } \tieSolid | %m46
+  <aes des\harmonic>2.:32\> aes4\p\< bes4 \tieSolid | %m46
   %\bar "!"
   
   %hmy10
   %\time 4/4
-  c,2\! f,4 aes8 c | %m47
+  c2\! f,4 aes8 c | %m47
   d1 | %m48
-  r8 \clef "tenor" c16 d \tuplet 3/2 { f8 e c } d2\<~ | %m49
+  r8 c16 d \tuplet 3/2 { f8 e c } d2\<~ | %m49
   %\time 2/4
   d2~ | %m50
   %\bar "!"
@@ -1120,21 +1431,28 @@ timecodeRavelB = {
 trapNoise = \drummode {
   \override DrumStaff.FrameBracket.no-bracket = ##t
   s1 | s1 | s1 | s1 | s1 | %m5
-  s1 | s1 | s1 | s1 | \n << hh1:32^"hat"(\< {s2.. s8)}>> | %m10
+  s1 | s1 | s1 | s1 |  
+  << \n crashcymbal1:32^"cymbal"(\< 
+    { s8 s4.. s16) s4.^\markup \italic "l.v."}>>| %m10
 
-  \frameStart << sn1^"snare, brush" {s4 \frameEnd \stemless \stemHack \hide sn4}>> | %m11
+  sn1_"snare, brush"\sp\longfermata~ | %11
+  \frameStart << sn1
+    {s4 \frameEnd \stemless \stemHack \hide sn4}>> | %m12
  \hide  sn1 | %m13
  \hide  sn1 | %m14
  \hide  sn1 | %m15
  \hide  sn1 | %m16
- \hide  sn1 | %m17
+ \once \override Hairpin.to-barline = ##f
+ \n \hide  sn1\> | %m17
  \hide  sn1 | %m18
- \hide  sn1 | %m19
- \hide  sn1 | %m20
- \hide  sn1 | %m21
- \hide  sn1 | %m22
+ \frameExtenderEnd r2\! s2 | %m19
  \frameExtenderEnd \hide sn1 | %m23
-
+ s1 | %m24
+ s1 | %m25
+ s1 | %m26
+ s1 | %m27
+ s1 | %m28
+ \hide sn1 | %m29
 }%end trapNoise
 vibraphoneNoise = \relative c''' {
   %hmy9
@@ -1168,12 +1486,20 @@ vibraphoneNoise = \relative c''' {
 
   \no-line s1 | %m18
   \no-line s1 | %m19
-  \no-line { a2\rest b2\mf~ } | %20
-  \stemless \no-line { \frameStart << \n b1\< 
+  \no-line { s2 b2\mf~ } | %20
+  \stemless \no-line { \frameStart << b1
     {s4 \frameEnd \stemHack \hide b4 }>> | %m21
-  \no-line s1  | %m22
-  \frameExtenderEnd \no-line s1 } | %m23
+  s1 } | %m22
   %\bar "|"
+
+  %hmy3
+  \no-line s1 | %m23
+  \no-line {\n s1\> | %m24
+  \frameExtenderEnd s1\! | %m25
+  s1 | %m24
+  b1_"\"shh\"" | %m25
+  s1 | %m26
+  s1 } | %m29
 }%end vibraphoneNoise
 
 violinINoise = \relative c'' {
@@ -1204,15 +1530,23 @@ violinINoise = \relative c'' {
   << s1 { s2 s\pp }>> | %m14
   s2 \frameExtenderEnd a2\rest | %m15 
   r4 } \no-line b2.\pp~ | %16
-  \stemless \no-line { \frameStart << b1
+  \no-line { \frameStart << \stemless b1
     {s4 \frameEnd \stemHack \hide b4 }>> | %m17
   s1 | %m18
   s1 | %m19
   s1 | %m20
   s1 | %m21
   s1 | %m22
-  \frameExtenderEnd \hide g1 } | %m23
   %\bar "|"
+
+  %hmy3
+  s1 | %m23 
+  s1 | %m24
+  s1 | %m25
+  s1 | %m26
+  s2 \frameExtenderEnd s4 b4_"\"shh\""~ | %m27
+  b1 | %m28
+  s1} | %m29
 }%end violinINoise
 
 violinIINoise = \relative c'' {
@@ -1237,8 +1571,8 @@ violinIINoise = \relative c'' {
   %\bar ";"
   
   %hmy2
-  \no-line { r2. b4\pp~ } |
-  \stemUp \stemless \no-line { \frameStart << b1 
+  \no-line { a2.\rest b4\pp~ } |
+  \stemUp \no-line \stemless { \frameStart << b1 
     {s4 \frameEnd \stemHack \hide b4 }>> | %m13
   s2 \frameExtenderEnd a2\rest | %m15 
   \frameStart << b1
@@ -1249,8 +1583,16 @@ violinIINoise = \relative c'' {
   s1 | %m20
   s1 | %m21
   s1 | %m22
-  \frameExtenderEnd \hide g1 } | %m23
   %\bar "|"
+
+  %hmy3
+  s1 | %m23 
+  s1 | %m24
+  s1 | %m25
+  s1 | %m26
+  s1 | %m27
+  \n s2...\> \frameExtenderEnd s16\!} | %m28
+  \no-line { s2 b2^\markup \italic "tacet"}| %m29
 }%end violinIINoise
 
 violaNoise = \relative c' {
@@ -1276,7 +1618,7 @@ violaNoise = \relative c' {
   %\bar ";"
 
   %hmy2
-  \no-line { r1 | %m13
+  \no-line { c1\rest | %m13
   s1 | %m14
   s2 b2\p~ | %15
   \frameStart << b1
@@ -1287,8 +1629,16 @@ violaNoise = \relative c' {
   s1 | %m20
   s1 | %m21
   s1  | %m22
-  \frameExtenderEnd \hide g1 } | %m23
   %\bar "|"
+
+  %hmy3
+  s1 | %m23 
+  s1 | %m24
+  s1 | %m25
+  s1 | %m26
+  s1 | %m27
+  \n s2...\> \frameExtenderEnd s16\! | %m28
+  s1 } | %m29
 }%end violaNoise
 
 celloNoise = \relative c' {
@@ -1313,21 +1663,30 @@ celloNoise = \relative c' {
   %\bar ";"
 
   %hmy2
-  \no-line { r1 | %m13
+  \no-line { e1\rest | %m13
   s1 | %m14
   s1 | %m15
   s1 | %m16
   s1}| %17
   \once \override Staff.TextScript.outside-staff-priority = #249
   <<
-    \new Voice \no-line {
-      d1^"\"Hey, Zach\""\mf~
+    \new Voice {
+      \no-line { d1^"\"Hey, Zach\""\mf~
       \frameStart << d1 | %m18 
 	{s4 \frameEnd \stemHack \stemless \hide d4 s4 }>> | %m19 |
       s1 | %20
       s1 | %21
       s1 | %22
-      \frameExtenderEnd \hide g1 | %m23
+
+      %hmy3
+      \n s1\> | %m23 
+      \frameExtenderEnd \hide g1\! | %m24
+      s1 | %m25
+      \n \square <c, a'>1^\markup \italic "sul pont."\<~ | %m26
+      \square <c a'>\pp~ | %m27
+      \square <c a'>\glissando } | %m28
+      \half-harmonic <cis ais'>1\glissando | %m29
+      \celloPop
     } 
     \new Staff \no-line {
       \override Staff.FrameBracket.no-bracket = ##t
@@ -1340,7 +1699,12 @@ celloNoise = \relative c' {
       s1 | %m20
       s1 | %m21
       s1 | %m22
-      \frameExtenderEnd \hide g1 | %m23
+      %\bar "|"
+      
+      %hmy3
+      s1 | %m23 
+      \n s1\> | %m24
+      \frameExtenderEnd \no-line s2\! |%m25
     }
   >>
   %\bar "|"
@@ -1391,13 +1755,15 @@ timecodeNoise = {
   \once \override Score.RehearsalMark.break-visibility = 
     #end-of-line-visible
   \once \override Score.RehearsalMark.self-alignment-X = #RIGHT
-  \mark\markup{\musicglyph #"scripts.ufermata"} 
+  %\mark\markup{\musicglyph #"scripts.ufermata"} 
 
   %hmy2
   \set Score.currentBarNumber = #22
   \once \override Score.BarNumber.transparent = ##f
-  \override TextScript.outside-staff-priority = #'()
+  \once \override TextScript.outside-staff-priority = #'()
   \once \override TextScript.staff-padding = #'()
+  \break
+  \set Timing.defaultBarType = ""
   \tempo "Speaking"
   s1 | %m13
   s1 | %m14
@@ -1410,46 +1776,61 @@ timecodeNoise = {
   s1 | %m21
   s1 | %m22
   \mark\markup{\musicglyph #"scripts.ufermata"} 
-  s1 | %m23
   \bar "|"
   
+  %hmy3
+  s1 | %23
+  s1 | %24
+  s1 | %25
+  s1 | %26
+  s1 | %27 
+  s1 | %28
+  s1 | %29
+  \bar "|"
 }%end timecodeNoise
+
 
 %Called by Staves in \score
 trap = {
-  << \timecodeRavel >>
-  \timecodeRavelB
-  \trapNoise
+  %\timecodeRavel
+  %\timecodeRavelB
+  <<\timecodeNoise \trapNoise>>
+  \trapPop
 }
 vibraphone = {
-  \vibraphoneRavel
-  \vibraphoneRavelB
+  %\vibraphoneRavel
+  %\vibraphoneRavelB
   \vibraphoneNoise
+  \vibraphonePop
 }
 violinI = {
-  \violinIRavel
-  \violinIRavelB
+  %\violinIRavel
+  %\violinIRavelB
   \violinINoise
+  \violinIPop
 }
 violinII = {
-  \violinIIRavel
-  \violinIIRavelB
+  %\violinIIRavel
+  %\violinIIRavelB
   \violinIINoise
+  \violinIIPop
 }
 viola = {
-  \violaRavel
-  \violaRavelB
+  %\violaRavel
+  %\violaRavelB
   \violaNoise
+  \violaPop
 }
 cello = {
-  \celloRavel
-  \celloRavelB
+  %\celloRavel
+  %\celloRavelB
   \celloNoise
 }
 timecode = {
-  \timecodeRavel
-  \timecodeRavelB
+  %\timecodeRavel
+  %\timecodeRavelB
   \timecodeNoise
+  \timecodePop
 }
 
 \layout {
