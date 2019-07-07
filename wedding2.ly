@@ -122,7 +122,7 @@ guitarVerseI =
       << gis,2. {s8 \hide r}>> gis4 | %m21
       << r4 {s8 \hide r}>> a4 fis e | %m22
       << gis2. {s8 \hide r}>> g4 | %m23
-      r8 f8 <a d>2.^~ | %m24
+      r4 <a d>2.^~ | %m24
       <a d>2.. 
     }
   }
@@ -143,14 +143,15 @@ guitarVerseI =
       \alternative {
 	{ \once \shiftOff \once \omit NoteHead a,8 e' gis e a, e' gis e | } %m12
 	{ \once \shiftOff \once \omit NoteHead a,8 e' gis e 
-	    \once \shiftOff \once \omit NoteHead gis, e' gis4 | } %m12
+	    gis, e' gis fis, | } %m12
       }
 
-      \once \shiftOff \once \omit NoteHead e,8 b' e b e, b' e eis, | %m21
-      \once \shiftOff \once \omit NoteHead fis a cis a fis a c a | %m22
-      \once \shiftOff \once \omit NoteHead e b' e b e, b' e b  | %m23
-      s8 f'8 ~ f2.~ | %m24
-      f2..
+      \set tieWaitForNote = ##t
+      e8 b' e b e, b' e eis, | %m21
+      fis a cis a fis a c a | %m22
+      e b' e b e, b' e b  | %m23
+      f8~ f'8 ~ <f f,>2.~ | %m24
+      <f f,>2..
     }
   }
 
@@ -169,14 +170,14 @@ guitarVerseI =
       }%end repeat
       \alternative {
 	{ a2 s2 | } %m12
-	{ a2 gis4_~ gis8 fis8 | } %m20
+	{ a2 s2 | } %m20
       }
       
-      e2 s2 | %21
-      fis2 s2 | %22
-      e2 s2 | %23
-      f1~ | %m24
-      f2..
+      s2 s2 | %21
+      s2 s2 | %22
+      s2 s2 | %23
+      s1~ | %m24
+      s2..
     }
   }
 >>
@@ -707,44 +708,27 @@ guitarCoda = {
       \time 7/4 r4 cis cis r d2. | %m109 
       
 
-      \time 4/4 a8 cis e fis aes es c aes |
-      g b e fis dis4 gis4 | 
+      \time 4/4 a8 cis e fis <aes es c> es c aes |
+      g b e fis dis4 gis4 | %m111
+      <a e cis>1 | %m112
     }%end voice
 
     \new Voice = "mid" \relative c {
-      \voiceFour 
+      \stemDown
       \set tieWaitForNote = ##t
       \time 5/4 
-	\once \shiftOff \once \omit NoteHead a8[ e' gis e]
-	\once \shiftOff \once \omit NoteHead a, f'_~ <f a>4 s4 |
+	a8[ e' gis e] a, f' a2 |
       \time 6/4 
-	\once \shiftOff \once \omit NoteHead a,8[ e' gis e]  
-	\once \shiftOff \once \omit NoteHead a, f'_~ <f a>2 s4 |
+	a,8[ e' gis e] a, f' a2. |
       \time 7/4	
-	\once \shiftOff \once \omit NoteHead a,8[ e' gis e gis e]
-	\once \shiftOff \once \omit NoteHead a, f'_~ <f a>2 s4 |
+	a,8[ e' gis e gis e] a, f' a2. |
       \time 7/4 
-	\once \shiftOff \once \omit NoteHead a,8[ e' gis e gis e]
-	\once \shiftOff \once \omit NoteHead a, f'_~ <f a>2. |
+	a,8[ e' gis e gis e] a, f' a2. |
     
-      \time 4/4 s2 
-	\once \override Stem.length = #12
-	\shiftOff <c' es>8 s4. | %m110
-      s2 \once \omit NoteHead fis,8[ bis8]
+      \time 4/4 a,2 aes'2 | %m110
+      g2 fis8 bis4. | %m111
+      <a, e'>1 | %m112
     }%end voice
-
-    \new Voice = "p" \relative c {
-      \voiceTwo
-      \set tieWaitForNote = ##t
-      \time 5/4 a2 a4~ a4 s4 |
-      \time 6/4 a2 a4~ a2 s4 |
-      \time 7/4 a2. a4~ a2 s4 |
-      \time 7/4 a2. a4~ a2. |
-
-      \time 4/4 a2 aes' |
-      g2 fis |
-      < a, e' cis' e a >1
-    }
   >>
 }%end guitarCoda
 
