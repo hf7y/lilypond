@@ -29,30 +29,20 @@ guitarHookI = <<
     \stemUp
     \partial 8 s8 |
     \repeat volta 2 {
-      << r4 {s8 \hide r}>> cis8 e fis4 4 | %m1 %formatting hack
-      << r4 {s8 \hide r}>> cis8 e fis gis fis e~ | %m2
-      e8 r8 cis8 e fis4 fis8 e | %m3
-      << cis2 {s8 \hide r}>> << r4 {s8 \hide r}>> d4 | %m4
+      r4 cis8 e <fis cis a>4 4 | %m1 %formatting hack
+      r4 cis8 e <fis cis a> gis <fis cis a> e~ | %m2
+      cis4. e8 <fis cis a>4 8 e | %m3
+      cis2 r4 d4 | %m4
     }%end repeat
   }%end voice ima
-  \new Voice = "mid" \relative c {
-    \voiceFour
-    \partial 8 s8 |
-    \repeat volta 2 {
-      \once \shiftOff \once \omit NoteHead a8 e' gis4 <a cis>4 4 | %m1
-      \once \shiftOff \once \omit NoteHead a,8 e' gis4 <a cis>4 4 | %m2
-      \once \shiftOff \once \omit NoteHead a,8 e' gis4 <a cis>4 4 | %m3
-      \once \shiftOff \once \omit NoteHead a,8 e' gis e a,8 e' gis e | %m4
-    }%end repeat
-  }%end voice mid
   \new Voice = "p" \relative c, {
     \partial 8 e8 |
     \voiceTwo
     \repeat volta 2 {
-      a2_~ 4. e8 | %m1
-      a2_~ 4 8 e | %m2
-      a2 e4. e8 | %m3
-      a2 s2 | %m4
+      a8 e' gis4 a,4. e8 | %m1
+      a8 e' gis4 e,4 e | %m2
+      a8 e' gis4 e,4. e8 | %m3
+      a8 e' gis e a, e' gis e | %m4
     }%end repeat
   }%end voice p
 >> %end guitarIntro
@@ -98,54 +88,47 @@ wordsVerseI = \lyricmode {
   'cause I'm the on -- ly one who gives it right.
 }
 
-guitarVerseI = 
-<<
+guitarVerseI = <<
   \new Voice = "ima" {
     \stemUp
     \relative c' {
       \repeat unfold 2 {
 	r4 cis2 cis4 | %m5
 	r4 cis2 gis4 | %m6
-	<< r4 {s8 \hide r}>> cis8 e fis4 fis8 e | %m7 %formatting hack
-	<< cis2 { s8 \hide r } >> r2 | %m8 %hack
+	r4 cis8 e <fis cis a>4 8 e | %m7
+	cis2 r2 | %m8
 
 	r4 a2 a4 | %m9
 	r4 a2 a4 | %m10
-	<< r4 {s8 \hide r}>>  cis8 e fis4 fis8 e | %m11 %formatting hack
-      }%end repeat
-      \alternative {
+	r4 cis8 e <fis cis a>4 8 e | %m7
+      } \alternative {
 	{ << cis2 {s8 \hide r}>> r2 | } %m12
 	{ << cis4 {s8 \hide r}>> e4 
 	  << cis4 {s8 \hide r}>> d4 | } %m20
-      }
-
-      << gis,2. {s8 \hide r}>> gis4 | %m21
-      << r4 {s8 \hide r}>> a4 fis e | %m22
-      << gis2. {s8 \hide r}>> g4 | %m23
+      }%end repeat
+       gis,2. gis4 | %m21
+      r4 a4 fis e | %m22
+      gis2. g4 | %m23
       r4 <a d>2.^~ | %m24
       <a d>2.. 
     }
-  }
-
-  \new Voice = "mid" {
+  }%end voice "ima"
+  \new Voice = "p" {
     \voiceFour 
     \relative c {
       \repeat unfold 2 {
 	a8 e' gis e a, e' gis e | %m5
 	a, e' gis e a, e' gis e | %m6
-	\once \shiftOff \once \omit NoteHead a,8 e' gis4 <a cis>4 <a cis> | %m7
-	\once \shiftOff \once \omit NoteHead a,8 e' gis e a, e' gis e | %m8
+	a,8 e' gis4 e,4. e8 | %m7
+	a8 e' gis e a, e' gis e | %m8
 
 	d8 fis a fis d fis a fis | %m9
 	d f a f d f a f | %m10
-	\once \shiftOff \once \omit NoteHead a,8 e' gis4 <a cis>4 <a cis> | %m11
+	a,8 e' gis4 e,4. e8 | %m7
+      } \alternative {
+	{ a8 e' gis e a, e' gis e | } %m12
+	{ a,8 e' gis e gis, e' gis fis, | } %m12
       }%end repeat
-      \alternative {
-	{ \once \shiftOff \once \omit NoteHead a,8 e' gis e a, e' gis e | } %m12
-	{ \once \shiftOff \once \omit NoteHead a,8 e' gis e 
-	    gis, e' gis fis, | } %m12
-      }
-
       \set tieWaitForNote = ##t
       e8 b' e b e, b' e eis, | %m21
       fis a cis a fis a c a | %m22
@@ -153,34 +136,8 @@ guitarVerseI =
       f8~ f'8 ~ <f f,>2.~ | %m24
       <f f,>2..
     }
-  }
-
-  \new Voice = "p" {
-    \voiceTwo
-    \relative c {
-      \repeat unfold 2 {
-	s1 | %m5
-	s1 | %m6
-	a2 e4. e8 | %m7
-	a2 s2 | %m8
-
-	s1 | %m9
-	s1 | %m10
-	a2 e4. e8 | %m11
-      }%end repeat
-      \alternative {
-	{ a2 s2 | } %m12
-	{ a2 s2 | } %m20
-      }
-      
-      s2 s2 | %21
-      s2 s2 | %22
-      s2 s2 | %23
-      s1~ | %m24
-      s2..
-    }
-  }
->>
+  }%end voice "p"
+>>%guitarVerseI
 
 voiceHookII = {
   \bar "" \pageBreak r8 | %m25
@@ -200,42 +157,26 @@ guitarHookII = <<
     \stemUp
     s8 | %m25
     \repeat volta 2 {
-      << r4 {s8 \hide r}>> cis8 e fis4 4 | %m26 %formatting hack
-      << r4 {s8 \hide r}>> cis8 e fis gis fis e~ | %m27
-      e8 r8 cis8 e fis4 fis8 e | %m28
-    }%end repeat
-    \alternative {
-      { << cis2 {s8 \hide r}>> r4 d4 | } %m29
+      r4 cis8 e <fis cis a>4 4 | %m26
+      r4 cis8 e <fis cis a> gis <fis cis a> e~ | %m7
+      cis4. e8 <fis cis a>4 8 e | %m28
+    } \alternative {
+      { cis2 r4 d4 | } %m29
       { << cis2 {s8 \hide r}>> } 
-    }
+    }%end repeat
   }%end voice ima
-  \new Voice = "mid" \relative c {
-    \voiceFour
-    s8 | %m25
-    \repeat volta 2 {
-      \once \shiftOff \once \omit NoteHead a8 e' gis4 <a cis>4 4 | %m26
-      \once \shiftOff \once \omit NoteHead a,8 e' gis4 <a cis>4 4 | %m27
-      \once \shiftOff \once \omit NoteHead a,8 e' gis4 <a cis>4 4 | %m28
-    }%end repeat
-    \alternative {
-      { \once \shiftOff \once \omit NoteHead a,8 e' gis e 
-	  \once \shiftOff \once \omit NoteHead a,8 e' gis4 | } %m29
-      { \once \shiftOff \once \omit NoteHead a,8 e' gis e }	
-    }
-  }%end voice mid
   \new Voice = "p" \relative c, {
+    \voiceFour
     e8 | %m25
-    \voiceTwo
     \repeat volta 2 {
-      a2_~ 4. e8 | %m26
-      a2_~ 4 8 e | %m27
-      a2 e4. e8 | %m28
+      a8 e' gis4 e,4. 8 | %m26
+      a8 e' gis4 a,4 a8 e8 | %m27
+      a8 e' gis a, e4. 8 | %m28
+    } \alternative {
+      { a8 e' gis e a,8 e' gis e, | } %m29
+      { a8 e' gis e | }
     }%end repeat
-    \alternative {
-      { a2 a4_~ a8 e8 | } %m29
-      { a2 }
-    }
-  }%end voice p
+  }%end voice "p"
 >>%end guitarHookII
 
 
@@ -442,9 +383,10 @@ guitarBridge = <<
 	\repeat percent 3 { fis,[ e' a] } e,[ e' a] | %71
 	b,[ fis' a] cis,![ gis' b] 
       }%end scaleDurations
-      \set tieWaitForNote = ##t d,8~ a'_~ <d, a' cis>4 | %m72
+      d,8 a' cis4 | %m72
 
-      d8~ a'_~ <d, a' c>2. |
+      \set tieWaitForNote = ##t
+      d,8~ a'_~ <d, a' c>2. |
     }
   }%end voice
   \new Voice = "top stuff" {
@@ -496,50 +438,47 @@ voiceHookIII = {
 guitarHookIII = <<
   \new Voice = "ima" \relative c' {
     \stemUp
-    << r4 {s8 \hide r}>> cis8 e fis4 4 | %m74 %formatting hack
-    << r4 {s8 \hide r}>> cis8 e fis gis a b | %m75
-    << cis2. {s8 \hide r}>> cis16 b a gis | %m76
-    << fis4 {s8 \hide r}>> << e2 {s8 \hide r}>> 
-      \once \shiftOff \once \omit NoteHead b8 bis | %m77
+    << r4 {s8 \hide r}>> cis8 e <a, cis fis>4 4 | %m74 %formatting hack
+    << r4 {s8 \hide r}>> cis8 e <a, cis fis> gis' <fis a> b | %m75
+    << cis2. {s8 \hide r}>> <cis d,>16 b a gis | %m76
+    << fis4 {s8 \hide r}>> << e2. {s8 \hide r}>> | %m77
 
-    << cis4. {s8 \hide r}>> e8 fis4 b\harmonic | %m78 %formatting hack
-    << r4 {s8 \hide r}>> cis,8 e fis gis a b | %m79
-    cis8 b d cis << fis4 {s8 \hide r}>> gis,4 | %m80
+    << r4 {s8 \hide r}>> cis8 e <a, cis fis>4 b'\harmonic | %m78 %formatting
+    << r4 {s8 \hide r}>> cis,8 e <a, cis fis> gis' <fis a> b | %m79
+    cis8 b d cis << <fis b, fis>4 {s8 \hide r}>> <gis, d b>4 | %m80
     << b2 {s8 \hide r}>> << a2 {s8 \hide r}>> | %m81
 
     a,,8 fis' cis' fis, a, e' cis' e, | %m82
-    r8 d a' b cis b a4 | %m83
-    r8 f a b c b a f | %m83
+    a, 8 d a' b cis b a4 | %m83
+    a,8 f' a b c b a f | %m83
   }%end voice ima
-  \new Voice = "mid" \relative c {
+  \new Voice = "mid" \relative c' {
     \voiceFour
-    \once \shiftOff \once \omit NoteHead a8 e' gis4 <a cis>4 4 | %m74
-    \once \shiftOff \once \omit NoteHead a,8 e' gis4 <a cis>4 fis'4 | %m75
-    \once \shiftOff \once \omit NoteHead a,,8 gis' cis e <a, d fis>4 d4 | %m76
-    \once \shiftOff \once \omit NoteHead a,8 a' cis a 
-      \once \shiftOff \once \omit NoteHead a,8 e' b'4 | %m77
+    s1 |
+    s1 |
+    s1 |
+    s1 |
 
-    \once \shiftOff \once \omit NoteHead a,8 e' gis4 <a cis>2 | %m78
-    \once \shiftOff \once \omit NoteHead a,8 e' gis4 <a cis>4 fis'4 | %m79
-    \once \shiftOff \once \omit NoteHead a,,8 gis' cis e <fis b>4 <b, d>4 | %m80
-    g8\rest a cis e \mergeDifferentlyHeadedOn a e cis gis | %m81
-
+    s1 |
+    s1 |
+    s1 |
+    s1 |
   }%end voice mid
   \new Voice = "p" \relative c {
     \voiceTwo
-    a2 a2 | %m74
-    a2 a4 d | %m75
-    a2 r8 a~ a[ e] | %m76
-    a2 a4_~ a8 e8 | %m77
+    a8 e' gis4 a,4. e8 | %m74
+    a8 e' gis4 a,4 d | %m75
+    a8 gis' cis e <a, d fis>8 a,4 e8 | %m76
+    a8 a' cis a a,8 e' b'8 e,,8 | %m77
 
-    a2 a4. e8 | %m78
-    a2 a4 d | %m79
-    a2 d4. e,8 | %m80
-    a1 | %m81
+    a8 e' gis4 a,4. e8 | %m74
+    a8 e' gis4 a, d | %m79
+    a8 gis' cis e d,4. e,8 | %m80
+    a8 a' cis e \mergeDifferentlyHeadedOn a e cis gis | %m81
 
-    a2 a2 | %m82
-    a1 | %m83 
-    a2.. e8 | %m84
+    s1 |
+    s1 |
+    s2.. e,8 | %m84
   }%end voice p
 >> %end guitarHookIII
 

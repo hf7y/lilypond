@@ -2,7 +2,7 @@
 \version "2.18.2"
 
 \header {
-  title = "Caspermix"
+  title = "Astrocasper"
   subtitle = \markup \normal-text {\italic "for Walden" \small "MMXIX"}
   composer = "Z.V. Pine"
   tagline = ""
