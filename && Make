@@ -1,0 +1,82 @@
+\version "2.18.2"
+
+%http://lilypond.org/doc/v2.19/Documentation/notation/techniques-specific-to-lyrics#Simple-repeats
+
+\header {
+  title = "Summer Sleep"
+  subtitle = ""
+  composer = "Z.V. Pine"
+  tagline = ""
+}%end header
+
+verseI = \relative c' {
+  \numericTimeSignature
+  \autoBeamOff
+  \repeat volta 2 {
+    \repeat volta 2 {
+      \repeat volta 2 {
+	r4 c8 8 4 r4 | %m1				      %Summer sleep
+      }%end repeat
+	r8 d8 8. 16 4 r4 | %m2				      %I missed the dawn
+    }%end repeat
+  }\alternative {
+    { \break r8 e8 8 8 4 r4 | } %m3			      %my tired eyes
+    { r8 f8 \tuplet 3/2 { 8 8 8 } 8 8 r4 | } %m4	      %too heavy to open
+  }%end repeat
+
+  \break
+  r4 \tuplet 3/2 { g4 4 4 } 8 8 | %m5			      %Far off birds argue
+  \repeat volta 2 { 
+    r4 a8 8 4 r4 | %m6					      %Freeway hiss
+    \break
+    \repeat volta 2 {
+      \tuplet 3/2 { r4 b8 } \tuplet 3/2 { 8 8 8 } 4 r4 | %m7  %In dream I am ten
+    }%end repeat
+  }%end repeat
+}%end verseI 
+
+lyricsI = \lyricmode {
+  Sum -- mer sleep    I missed the dawn
+  My ti -- red eyes    too hea -- vy to o -- pen
+  \set stanza = #"1. "
+  << { Far off birds ar -- gue }
+    \new Lyrics = "secondVerse"
+    \with { alignBelowContext = #"firstVerse" } {
+      \set associatedVoice = "one"
+      \set stanza = #"2. "
+      Car a -- larms trill
+    }
+  >>
+  \set stanza = #"1. "
+  << { Free -- way hiss }
+    \new Lyrics = "secondVerse"
+    \with { alignBelowContext = #"firstVerse" } {
+      \set associatedVoice = "one"
+      \set stanza = #"2. "
+      False e -- mergencies
+    }
+  >>
+  In dream I am ten    nap -- ping in the Ma -- ster's house
+}
+
+\paper {
+  #(set! paper-alist (cons '("montalvo" . (cons (* 11 in) (* 14 in))) paper-alist)) 
+  #(set-paper-size "montalvo")
+}%end paper
+
+\score {
+  \pointAndClickOff
+  <<
+    \new Staff \with {
+      instrumentName = "Soprano"
+      shortInstrumentName = ""
+    }{
+      \new Voice = "one" {
+	\verseI
+      }%end Voice
+    }%end Staff
+    \new Lyrics = "firstVerse" \lyricsto "one" {
+      \lyricsI
+    }%end Lyrics
+  >>
+}%end score
