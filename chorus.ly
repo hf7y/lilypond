@@ -18,7 +18,6 @@
 
 tuttiA = {
   \time 2/4
-  \set Staff.explicitClefVisibility = #end-of-line-invisible
   \omit Score.TimeSignature
   \set Score.defaultBarType = #""
   \override Stem.thickness = #-1.0
@@ -50,8 +49,7 @@ conductorA = {
 
   \hide b1-\tweak HorizontalBracketText.text "14\"" ^\startGroup 
     s1 s1 s4 \hide b4\stopGroup
-  %\bar ""
-  \break
+  \bar "" \break
 }
 siA = \relative c'' {
   \tuttiA
@@ -85,7 +83,7 @@ siA = \relative c'' {
   s2\!
 
   \undo \omit Score.BarLine
-  %\bar "|."
+  \bar "|."
 }
 siALyrics = \lyricmode {
   \markup \box ɑ \skip 1 \skip 1 \skip 1 \skip 1
@@ -113,7 +111,7 @@ siiA = \relative c'' {
     2~ s2
     2~
   }
-  %\bar "|."
+  \bar "|."
 }
 siiALyrics = \lyricmode {
   \markup \box ɔ
@@ -142,7 +140,7 @@ aiA = \relative c' {
   e2~ s2
   e2^\< \n s2^\>
   s2\!
-  %\bar "|."
+  \bar "|."
 }
 aiALyrics = \lyricmode {
   \markup \box ɑ \skip 1 \skip 1 \skip 1
@@ -167,7 +165,7 @@ aiiA = \relative c' {
   cis2~ s2
   cis2^\< \n s2^\>
   s2\!
-  %\bar "|."
+  \bar "|."
 }
 aiiALyrics = \lyricmode {
   \markup \box ɔ \skip 1
@@ -198,7 +196,7 @@ tiA = \relative c' {
     2~ s2
     2~
   }
-  %\bar "|."
+  \bar "|."
 }
 tiALyrics = \lyricmode {
   \markup \box ɑ \skip 1 \skip 1 \skip 1
@@ -224,7 +222,7 @@ tiiA = \relative c {
     2~ s2
     2~
   }
-  %\bar "|."
+  \bar "|."
 }
 tiiALyrics = \lyricmode {
   \markup \box ɔ
@@ -255,7 +253,7 @@ biA = \relative c {
     2~ s2
     2~
   }
-  %\bar "|."
+  \bar "|."
 }
 biALyrics = \lyricmode {
   \markup \box ɑ \skip 1 \skip 1 \skip 1
@@ -281,7 +279,7 @@ biiA = \relative c {
   c2^\pp~ s2
   c2^\< \n s2^\>
   s2\!
-  %\bar "|."
+  \bar "|."
 }
 biiALyrics = \lyricmode {
   \markup \box ɔ
@@ -290,7 +288,7 @@ biiALyrics = \lyricmode {
 
 
 tuttiB = {
-  \undo \omit Score.TimeSignature
+  \omit Score.TimeSignature
   \set Score.defaultBarType = #""
   \revert Stem.thickness
   \revert Flag.transparent
@@ -300,38 +298,30 @@ tuttiB = {
   \set Staff.tempoEquationText = "= ca."
   %\override Staff.FrameBracket.no-bracket = ##t
   \override Staff.Clef.full-size-change = ##t
-  \override Staff.Clef #'stencil = ##f
-  \override Staff.ClefModifier #'stencil = ##f
   \autoBeamOff
 }
 force-clef-treble = {
   \revert Staff.Clef #'stencil
-  \revert Staff.ClefModifier #'stencil
   \set Staff.forceClef = ##t
   \clef "treble"
 }
 force-clef-tenor = {
   \revert Staff.Clef #'stencil
-  \revert Staff.ClefModifier #'stencil
   \set Staff.forceClef = ##t
   \clef "treble_8"
 }
 force-clef-bass = {
   \revert Staff.Clef #'stencil
-  \revert Staff.ClefModifier #'stencil
   \set Staff.forceClef = ##t
   \clef "bass"
 }
 BVowelShift = {
   \time 4/4
-  \override Staff.Clef #'transparent = ##t
-  \override Staff.ClefModifier #'transparent = ##t
+  \override Staff.Clef #'stencil = ##f
   \override Staff.Stem.length = #0
   \fat-line \stemless { \hide b2^\< \hide b2 \hide b2\mf s4^\sp \hide b4 \hide b4 s4^\< \hide b2 }
   \revert Staff.Stem.length
   \set Staff.tempoEquationText = "="
-  \revert Staff.Clef #'transparent
-  \revert Staff.ClefModifier #'transparent
 }
 BVowelShiftLyrics = \lyricmode {
   \markup \box ɪ 
@@ -362,18 +352,19 @@ conductorB = {
 siB = \relative c'' {
   \tuttiB
 
+  \override Staff.Clef #'stencil = ##f
   \time 3/4
   \no-line { r2. }
   
   \force-clef-treble 
-  \tempo 4 = 92
+  \tempo 8 = 92
   \time 4/8
-  r8 b16^\mp b b b r8 
+  r8 b16^\mp b b b r8 \bar ":|."
   \fat-line { \time 7/4 r2. r1 }
 
   \BVowelShift
 
-  \force-clef-treble
+  %\force-clef-treble
   \tempo 4 = 84
   c4\f 4 8 8 r \bar ":|."
 
@@ -395,13 +386,14 @@ siBLyrics = \lyricmode {
 siiB = \relative c'' {
   \tuttiB
   
+  \override Staff.Clef #'stencil = ##f
   \time 9/8
   \no-line { \n \square b2.^\> r4.\! }
   
   \force-clef-treble
-  \tempo 4 = 100
+  \tempo 8 = 100
   \time 7/16
-  gis16^\mp 16 8 8 r16 
+  gis16^\mp 16 8 8 r16 \bar ":|." 
   \time 23/16
   \fat-line { r8. r4 r1 }
 
@@ -411,6 +403,7 @@ siiB = \relative c'' {
   \tempo 4 = 84
   gis4\f 4 8 8 r8 \bar ":|."
 
+  \override Staff.Clef #'stencil = ##f
   \no-line s32 \fat-line { s2.... s8 s1 }
   \override TextSpanner.bound-details.left.text = "ritardando"
   \fat-line {s1\startTextSpan s2.. s8 }
@@ -425,10 +418,9 @@ siiBLyrics = \lyricmode {
 
 aiB = \relative c' {
   \tuttiB
-  \force-clef-treble
-  \tempo 4 = 84
+  \tempo 8 = 84
   \time 5/8
-  r8 e8^\mp 8 16 16 r8
+  r8 e8^\mp 8 16 16 r8 \bar ":|."
   \time 19/8
   \fat-line { r4. r1 r1 }
 
@@ -439,6 +431,7 @@ aiB = \relative c' {
   e4\f 4 8 8 r8
   4 4 8 8 r4 \bar ":|."
 
+  \override Staff.Clef #'stencil = ##f
   \no-line s32 \fat-line { s2.... s8 }
   \override TextSpanner.bound-details.left.text = "accellerando"
   \fat-line {s1\startTextSpan s2.. s8}
@@ -454,13 +447,14 @@ aiBLyrics = \lyricmode {
 
 aiiB = \relative c' {
   \tuttiB
+  \override Staff.Clef #'stencil = ##f
   \time 2/4
   \no-line { r2 }
 
   \force-clef-treble
-  \tempo 4 = 80 
+  \tempo 8 = 80 
   \time 4/8
-  r8 cis^\mp cis8 16 16
+  r8 cis^\mp cis8 16 16 \bar ":|."
 
   \time 8/4
   \fat-line { r1 r1 }
@@ -472,6 +466,7 @@ aiiB = \relative c' {
   cis4\f 4 8 8 r8
   4 4 8 8 r4 \bar ":|."
   
+  \override Staff.Clef #'stencil = ##f
   \no-line s32 \fat-line { s2.... s8 }
   \override TextSpanner.bound-details.left.text = "ritardando"
   \fat-line {s1\startTextSpan s2.. s8 }
@@ -488,13 +483,14 @@ aiiBLyrics = \lyricmode {
 tiB = \relative c' {
   \tuttiB
 
+  \override Staff.Clef #'stencil = ##f
   \time 4/4
   \no-line { \n \square b2.^\> r4\!  }
   
   \force-clef-tenor
-  \tempo 4 = 96
+  \tempo 8 = 96
   \time 3/8
-  r16 b16^\mp b b b r16
+  r16 b16^\mp b b b r16 \bar ":|."
 
   \time 13/8
   \fat-line { r8 r2 r1 }
@@ -505,6 +501,7 @@ tiB = \relative c' {
   \tempo 4 = 84
   c4\f 4 8 8 r4 s32 \bar ":|."
 
+  \override Staff.Clef #'stencil = ##f
   \no-line s32 \fat-line { s2... s1 }
   \override TextSpanner.bound-details.left.text = "accellerando"
   \fat-line {s1\startTextSpan s2.. s8 }
@@ -520,13 +517,14 @@ tiBLyrics = \lyricmode {
 tiiB = \relative c' {
   \tuttiB
 
+  \override Staff.Clef #'stencil = ##f
   \time 5/4
   \no-line { \n \square b1^\> r4\! }
   
   \force-clef-tenor
-  \tempo 4 = 104
+  \tempo 8 = 104
   \time 4/8
-  r8 a16^\mp a a a r8 
+  r8 a16^\mp a a a r8 \bar ":|."
 
   \time 10/8
   \fat-line { r4 r1 }
@@ -537,6 +535,7 @@ tiiB = \relative c' {
   \tempo 4 = 84
   bes4\f 4 8 8 r4 s32 \bar ":|."
   
+  \override Staff.Clef #'stencil = ##f
   \no-line s32 \fat-line { s2... s1 }
   \override TextSpanner.bound-details.left.text = "ritardando"
   \fat-line {s1\startTextSpan s2.. s8}
@@ -552,13 +551,14 @@ tiiBLyrics = \lyricmode {
 biB = {
   \tuttiB
 
+  \override Staff.Clef #'stencil = ##f
   \time 5/4
   \no-line { \n \square \stemless d1^\> r4\! }
 
   \force-clef-bass
-  \tempo 4 = 76
+  \tempo 8 = 76
   \time 6/8
-  r8 e^\mp \tuplet 3/2 {e8 e e} e8 e8
+  r8 e^\mp \tuplet 3/2 {e8 e e} e8 e8 \bar ":|."
 
   \time 4/4
   \fat-line { r1 }
@@ -572,6 +572,7 @@ biB = {
   f4\f 4 8 8 r4
   4 4 8 8 r8 \bar ":|."
 
+  \override Staff.Clef #'stencil = ##f
   \no-line s32 \fat-line { s2.... s8 }
   \override TextSpanner.bound-details.left.text = "accellerando"
   \fat-line {s1\startTextSpan s2.. s8}
@@ -588,11 +589,12 @@ biBLyrics = \lyricmode {
 biiB = {
   \tuttiB
 
+  \override Staff.Clef #'stencil = ##f
   \time 7/4
   \no-line { r1 r2. }
 
   \force-clef-bass
-  \tempo 4 = 72
+  \tempo 8 = 72
   \time 7/16
   dis8^\mp 8 16 16 r \bar ":|."
 
@@ -608,6 +610,7 @@ biiB = {
   es4\f 4 8 8 r4
   4 4 8 8 r8 \bar ":|."
 
+  \override Staff.Clef #'stencil = ##f
   \no-line s32 \fat-line { s2.... s8 }
   \override TextSpanner.bound-details.left.text = "ritardando"
   \fat-line {s1\startTextSpan \n s2.^\> s8\!\stopTextSpan } \no-line s8
@@ -1039,8 +1042,8 @@ global = {
   \context {
     \Score
     %proportionalNotationDuration = #(ly:make-moment 1/16)
-    \override SpacingSpanner.strict-note-spacing = ##t
-    \override SpacingSpanner.uniform-stretching = ##t
+    %\override SpacingSpanner.strict-note-spacing = ##t
+    %\override SpacingSpanner.uniform-stretching = ##t
     \remove "Timing_translator"
     \remove "Default_bar_line_engraver"
     \remove "Metronome_mark_engraver"
