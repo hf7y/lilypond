@@ -2,7 +2,7 @@
 z_voice = #(define-music-function
   (parser location voiceName) (string?) #{ <<
     \new Staff = #voiceName { 
-      \new Voice = #(string-append voiceName "_voice") {} }
+      \new Voice = #(string-append voiceName "_voice") { \autoBeamOff } }
     \new Lyrics = #(string-append voiceName "_lyrics") {
       \lyricsto #(string-append voiceName "_voice") {} }  >> #} )
 

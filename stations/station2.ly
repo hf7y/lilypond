@@ -14,7 +14,6 @@
 
 
 stringChorus = <<
-  \chorusIII
   \context Voice = "coroIII_s_voice" {
     g8 g g g }
   \context Lyrics = "coroIII_s_lyrics" \lyricmode { 
@@ -43,6 +42,8 @@ stringChorus = <<
 
 \score {
   <<
+    \asScoreOrder
+    %\chorusIII
     \stringChorus
   >>
 }
