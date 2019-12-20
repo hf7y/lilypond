@@ -1,0 +1,7 @@
+#!/bin/bash
+
+lilypond ./book.ly
+
+winid=$(xdotool search --name book.pdf)
+xdotool windowfocus $winid
+xdotool key r
