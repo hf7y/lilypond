@@ -1,0 +1,274 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "%introit-music.ly\n%Created\t 2 Jan 2020\n\n\\version \"2.19.83\"\n\nintroitMusic = {\n\t<<\n\t\t\\new Voice {\n\t\t\t\\change Staff = \"up\"\n\t\t\t\\voiceOne\n\n\t\t\tr8 d4.~ d2~ | d2 s2 |\n\t\t}\n\t\t\\new Voice {\n\t\t\t\\change Staff = \"up\"\n\t\t\t\\voiceTwo\n\n\t\t\tr4. c8~ c4 r4 | r1 |\n\t\t}\n\t\t\\new Voice {\n\t\t\t\\change Staff = \"up\"\n\t\t\t\\voiceThree\n\n\t\t\tr4 a4~ a4. r8 | r1 |\n\t\t}\n\n\t\t\\new Voice {\n\t\t\t\\change Staff = \"down\"\n\t\t\t\\voiceOne\n\n\t\t\t\n\t\t}\n\t\t\\new Voice {\n\t\t\t\\change Staff = \"down\"\n\t\t\t\\voiceTwo\n\n\n\t\t}\n\t\t\\new Voice {\n\t\t\t\\change Staff = \"down\"\n\t\t\t\\voiceFour\n\n\t\t\tg1~ | g2~ g8 r4.\n\t\t}\n\n\t\t\\new Voice {\n\t\t\t\\change Staff = \"pedal\"\n\t\t\t\\oneVoice\n\t\t\ts1 * 4\n\t\t}\n\t>>\n}",
+			"file": "introit-music.ly",
+			"file_size": 502,
+			"file_write_time": 132224961630171125,
+			"settings":
+			{
+				"buffer_size": 606,
+				"encoding": "UTF-8",
+				"line_ending": "Unix",
+				"name": "%introit-music.ly"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				":w",
+				":w - Save"
+			],
+			[
+				":W",
+				":w - Save"
+			],
+			[
+				":lil",
+				"Set Syntax: LilyPond"
+			],
+			[
+				":q",
+				"Set Syntax: SQL"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 76.0,
+		"history":
+		[
+			":64",
+			"ls"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/zach/lilypond/mass"
+	],
+	"file_history":
+	[
+		"/home/zach/lilypond/mass/introit.pdf",
+		"/home/zach/lilypond/total-abstraction/book.ly",
+		"/home/zach/lilypond/total-abstraction/finale.ly",
+		"/home/zach/lilypond/z/note.ily",
+		"/home/zach/lilypond/total-abstraction/definitions.ily",
+		"/home/zach/lilypond/total-abstraction/template.ly",
+		"/home/zach/lilypond/total-abstraction/sixth.ly",
+		"/home/zach/lilypond/total-abstraction/first.ly",
+		"/home/zach/.config/sublime-text-3/Packages/User/Lilypond Book.sublime-build",
+		"/home/zach/lilypond/total-abstraction/make",
+		"/home/zach/lilypond/total-abstraction/book.pdf",
+		"/home/zach/.config/sublime-text-3/Packages/User/Package Control.sublime-settings"
+	],
+	"find":
+	{
+		"height": 28.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"s1",
+			"si",
+			"Dynamics",
+			"PART"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"\\no-line s1",
+			"FINALE"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "introit-music.ly",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 606,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								301,
+								301
+							]
+						],
+						"settings":
+						{
+							"_nv_visual_sel_mode": "mode_visual_line",
+							"auto_name": "%introit-music.ly",
+							"syntax": "Packages/SubLilyPond/LilyPond.tmLanguage",
+							"vintage":
+							{
+								"_vintageous_glue_until_normal_mode": false,
+								"action": null,
+								"action_count": "",
+								"mode": "mode_normal",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"normal_insert_count": "1",
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 8
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 41.0
+	},
+	"input":
+	{
+		"height": 41.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 272.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/User/Lilypond Book.sublime-build",
+	"project": "mass.sublime-project",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+		"_vintageous_last_char_search": "5",
+		"_vintageous_last_char_search_command": "vi_t",
+		"_vintageous_reset_during_init": true
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 185.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
