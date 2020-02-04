@@ -12,6 +12,7 @@ FIRSTtuttiA = {
   \override Staff.BarLine.bar-extent = #'(-2 . 2)
   \override Staff.BarLine.X-offset = #-1
   \override Hairpin.to-barline = ##f
+  \override ParenthesesItem.font-size = #10
 
   \set Staff.tempoEquationText = "="
   \override Staff.Clef.full-size-change = ##t
@@ -19,17 +20,17 @@ FIRSTtuttiA = {
   \autoBeamOff
 
   \newSpacingSection
-  \override Score.SpacingSpanner.spacing-increment = #3
+  \override Score.SpacingSpanner.spacing-increment = #1
 }
 
 FIRSTconductorA = {
-    \hide b1
-    %-\tweak HorizontalBracketText.text "8\""
-      \startGroup s1 s2... \hide b16 \stopGroup
-    \hide b16
-    %-\tweak HorizontalBracketText.text "8\""
-      \startGroup s2.. \hide b16 \stopGroup
-    \pageBreak
+  \hide b1
+  -\tweak HorizontalBracketText.text "15\""
+    \startGroup s1 s1 s2... \hide b16 \stopGroup
+  \hide b16
+  -\tweak HorizontalBracketText.text "60\""
+    \startGroup s2.. \hide b16
+  \pageBreak
 }
 
 FIRSTsiADynamics = {
@@ -38,12 +39,13 @@ FIRSTsiADynamics = {
 FIRSTsiA = \relative c'' {
   \FIRSTtuttiA
   \force-clef-treble
-  b1^\pp\longfermata \bar ":|."
+  b1^\pp\longfermata \breathe \bar ":|."
+  \fat-line s1
   \fat-line { s1 s1 s1 }
 }
 FIRSTsiALyrics = \lyricmode {
-  \markup {\box hm}1 \skip 2 \skip 1
-  \markup {\box n}1 \skip 2 
+  \markup {\box hm}1 \skip 1 \skip 1
+  \skip 1 \markup {\box n}1 
 }
 
 FIRSTsiiADynamics = {
@@ -51,12 +53,14 @@ FIRSTsiiADynamics = {
 }
 FIRSTsiiA = \relative c'' {
   \FIRSTtuttiA
-  \no-line a1\rest\shortfermata 
-  \force-clef-treble b1^\pp\longfermata \bar ":|."
+  \no-line a1\rest\shortfermata
+  \bar ".|:" \force-clef-treble b1^\pp\longfermata \breathe \bar ":|."
+  \fat-line s1
   \fat-line { s1 s1 }
 }
 FIRSTsiiALyrics = \lyricmode {
-  \skip 1 \markup {\box hm}1 \skip 1 \skip 1 
+  \skip 1 \markup {\box hm}1 \skip 1 
+  \skip 1 \markup {\box n}1 
 }
 
 FIRSTaiADynamics = {
@@ -65,11 +69,13 @@ FIRSTaiADynamics = {
 FIRSTaiA = \relative c' {
   \FIRSTtuttiA
   \force-clef-treble
-  e1^\pp\longfermata s2. \bar ":|."
-  \fat-line { s4 s1 s1 }
+  e1^\pp\longfermata \breathe \bar ":|."
+  \fat-line s1
+  \fat-line { s1 s1 s1 }
 }
 FIRSTaiALyrics = \lyricmode {
-  \markup {\box hm}1 \skip 1 \skip 1 \skip 1
+  \markup {\box hm}1 \skip 1 \skip 1 
+  \skip 1 \markup {\box n}1 
 }
 
 FIRSTaiiADynamics = {
@@ -78,12 +84,14 @@ FIRSTaiiADynamics = {
 FIRSTaiiA = \relative c' {
   \FIRSTtuttiA
   \force-clef-treble
-  cis1^\pp\longfermata s2 \bar ":|."
-  \fat-line { s2 s1 s1 }
+  cis1^\pp\longfermata \breathe \bar ":|."
+  \fat-line { s1 s1 s1 }
+  \force-clef-treble \stemless \parenthesize d4
+  \fat-line { s2. }
 }
 FIRSTaiiALyrics = \lyricmode {
-  \markup {\box hm}1 \skip 1
-  \markup {\box n}2 \skip 2 \skip 1
+  \markup {\box hm}1 \skip 1 \skip 1
+  \skip 1 \markup {\box n}1 
 }
 
 FIRSTtiADynamics = {
@@ -91,14 +99,14 @@ FIRSTtiADynamics = {
 }
 FIRSTtiA = \relative c' {
   \FIRSTtuttiA
-  \no-line { a1\rest\shortfermata s2 }
-  \force-clef-tenor e'1^\pp\longfermata \bar ":|."
+  \n \no-line { \square b1^\>\shortfermata s4 s4\! }
+  \bar ".|:" \force-clef-tenor e1^\pp\longfermata \bar ":|."
+  \fat-line s1
   \fat-line { s2 s1 }
 }
 FIRSTtiALyrics = \lyricmode {
-  \skip 1 \skip 2 
-  \markup {\box hm}1 
-  \skip 2 \markup {\box n}1
+  \skip 1 \skip 2 \markup {\box hm}2 \skip 1
+  \skip 1 \markup {\box n}1 
 }
 
 FIRSTtiiADynamics = {
@@ -106,14 +114,15 @@ FIRSTtiiADynamics = {
 }
 FIRSTtiiA = \relative c' {
   \FIRSTtuttiA
-  \no-line { a1\rest\shortfermata s4 }
-  \force-clef-tenor cis1^\pp\longfermata \bar ":|."
-  \fat-line { s2. s1 }
+  \n \no-line { \square b1^\>\shortfermata s4\! }
+  \bar ".|:" \force-clef-tenor cis1^\pp\longfermata \bar ":|."
+  \fat-line { s2. | s1 }
+  \force-clef-tenor \stemless \parenthesize d4
+  \fat-line { s2. }
 }
 FIRSTtiiALyrics = \lyricmode {
-  \skip 1 \skip 4 
-  \markup {\box hm}1 
-  \skip 2. \skip 1 
+  \skip 1 \skip 4 \markup {\box hm}2. \skip 1
+  \skip 1 \markup {\box n}1 
 }
 
 FIRSTbiADynamics = {
@@ -122,12 +131,13 @@ FIRSTbiADynamics = {
 FIRSTbiA = \relative c {
   \FIRSTtuttiA
   \force-clef-bass
-  c1^\pp\longfermata s4 \bar ":|."
-  \fat-line { s2. s1 s1 }
+  c1^\pp\longfermata \bar ":|."
+  \fat-line s1
+  \fat-line { s1 s1 s1 }
 }
 FIRSTbiALyrics = \lyricmode {
-  \markup {\box hm} \skip 4
-  \skip 2. \skip 1 \skip 1
+  \markup {\box hm}1 \skip 1 \skip 1
+  \skip 1 \markup {\box n}1 
 }
 
 FIRSTbiiADynamics = {
@@ -135,19 +145,19 @@ FIRSTbiiADynamics = {
 }
 FIRSTbiiA = \relative c {
   \FIRSTtuttiA
-  \no-line { c1\rest\shortfermata s2. }
-  \force-clef-bass c1^\pp\longfermata  \bar ":|."
+  \n \no-line { \square d1^\>\shortfermata s2 s4\! }
+  \bar ".|:" \force-clef-bass c1^\pp\longfermata  \bar ":|."
+  \fat-line s1
   \fat-line { s4 s1 }
 }
 FIRSTbiiALyrics = \lyricmode {
-  \skip 1 \skip 2. 
-  \markup {\box hm}1 
-  \skip 1 \markup {\box n}4 
+  \skip 1 \skip 2. \markup {\box hm}4 \skip 1 
+  \skip 1 \markup {\box n}1 
 }
 
 FIRSTtuttiB = {
   \set tieWaitForNote = ##t
-  \override Hairpin.to-barline = ##t
+  \override Hairpin.to-barline = ##f
   \omit Score.TimeSignature
   \set Score.defaultBarType = #""
   \set tieWaitForNote = ##t
@@ -159,15 +169,20 @@ FIRSTtuttiB = {
 }
 
 FIRSTconductorB = {
-    \hide b2 \startGroup s4 \hide b4 \stopGroup
-    %-\tweak HorizontalBracketText.text "8\""
+    \hide b2 s4 \hide b4 \stopGroup
+    
       
-  \hide b1\startGroup s1 s2. \hide b4\stopGroup
+  \hide b1
+  -\tweak HorizontalBracketText.text "20\""
+  \startGroup s1
+  s2. \hide b4\stopGroup
 
   \newSpacingSection
   \override Score.SpacingSpanner.spacing-increment = #4
 
-  \hide b4\startGroup s4.. \hide b16 \stopGroup
+  \hide b4
+  -\tweak HorizontalBracketText.text "25\""
+  \startGroup s4 s4.. \hide b16 \stopGroup
 }
 
 FIRSTsiBDynamics = {
@@ -175,7 +190,8 @@ FIRSTsiBDynamics = {
 }
 FIRSTsiB = \relative c'' {
   \FIRSTtuttiB
-  \fat-line { s1 s1 s1 s1 }
+  \fat-line { s1 s1 s1 s2 }
+  \n \fat-line s2^\> 
   << \no-line \square b1^\<
       { s2... s16\ff} >>
 }
@@ -187,11 +203,11 @@ FIRSTsiBLyrics = \lyricmode {
 FIRSTsiiBDynamics = {
   s1 s1 s1 s1
 }
-FIRSTsiiB = \relative c'' {
+FIRSTsiiB = \relative c' {
   \FIRSTtuttiB
   \fat-line s1
-  \fat-line s2
-  \fat-line s1 \bar ".|:"
+  \fat-line s1
+  \n \fat-line s2^\> \bar ".|:"
   \no-line <<
     \square b'1\fermata~ 
     {\n s2^\< \n s2^\p\>} >> \bar ":|."
@@ -199,8 +215,8 @@ FIRSTsiiB = \relative c'' {
   \fat-line { s2...^\< s16\ff }
 }
 FIRSTsiiBLyrics = \lyricmode {
-  \skip 1 \skip 1 \skip 1
-  \markup {\box n}1 
+  \skip 1 \skip 1 \skip 2
+  \markup {\box s}1 \skip 2
   →2... \markup {\box sh}16
 }
 
@@ -209,9 +225,9 @@ FIRSTaiBDynamics = {
 }
 FIRSTaiB = \relative c' {
   \FIRSTtuttiB
-  \fat-line s2.
   \fat-line s1
-  \fat-line s1 \bar ".|:"
+  \fat-line s1
+  \fat-line s2. \bar ".|:"
   \no-line <<
     \square b'1\fermata~ 
     {\n s2^\< \n s2^\p\>} >> \bar ":|."
@@ -219,8 +235,8 @@ FIRSTaiB = \relative c' {
   \fat-line { s2...^\< s16\ff }
 }
 FIRSTaiBLyrics = \lyricmode {
-  \skip 2 \markup {\box n}1 
-  \skip 2 \skip 1 \skip 1
+  \skip 1 \skip 1 \skip 2.
+  \markup {\box s}1 \skip 4
   →2... \markup {\box sh}16
 }
 
@@ -229,7 +245,7 @@ FIRSTaiiBDynamics = {
 }
 FIRSTaiiB = \relative c' {
   \FIRSTtuttiB
-  \fat-line s1 \bar ".|:"
+  \fat-line s2 \n \fat-line s2^\> \bar ".|:"
   \no-line <<
     \square b'1\fermata~ 
     {\n s2^\< \n s2^\p\>} >> \bar ":|."
@@ -246,10 +262,10 @@ FIRSTaiiBLyrics = \lyricmode {
 FIRSTtiBDynamics = {
   s1 s1 s1 s1
 }
-FIRSTtiB = \relative c' {
+FIRSTtiB = \relative c {
   \FIRSTtuttiB
   \fat-line s1
-  \fat-line s1 \bar ".|:"
+  \fat-line s2 \n \fat-line s2^\> \bar ".|:"
   \no-line <<
     \square b'1\fermata~ 
     {\n s2^\< \n s2^\p\>} >> \bar ":|."
@@ -257,18 +273,19 @@ FIRSTtiB = \relative c' {
   \fat-line { s2...^\< s16\ff }
 }
 FIRSTtiBLyrics = \lyricmode {
-  \skip 1 \skip 1 \skip 1 \skip 1
+  \skip 1 \skip 1
+  \markup {\box s}1 \skip 1
   →2... \markup {\box sh}16
 }
 
 FIRSTtiiBDynamics = {
   s1 s1 s1 s1
 }
-FIRSTtiiB = \relative c' {
+FIRSTtiiB = \relative c {
   \FIRSTtuttiB
   \fat-line s1
   \fat-line s1
-  \fat-line s2. \bar ".|:"
+  \fat-line s4 \n \fat-line s2^\> \bar ".|:"
   \no-line <<
     \square b'1\fermata~ 
     {\n s2^\< \n s2^\p\>} >> \bar ":|."
@@ -276,10 +293,8 @@ FIRSTtiiB = \relative c' {
   \fat-line { s2...^\< s16\ff }
 }
 FIRSTtiiBLyrics = \lyricmode {
-  \skip 1 
-  \skip 2 \markup {\box n}2
-  \skip 1
-  \markup { \box s }1
+  \skip 1 \skip 1 \skip 2.
+  \markup {\box s}1 \skip 4
   →2... \markup {\box sh}16
 }
 
@@ -288,7 +303,8 @@ FIRSTbiBDynamics = {
 }
 FIRSTbiB = \relative c {
   \FIRSTtuttiB
-  \fat-line s1. \bar ".|:"
+  \fat-line s1
+  \n \fat-line s2^\> \bar ".|:"
   \no-line <<
     \square d1\fermata~ 
     {\n s2^\< \n s2^\p\>} >> \bar ":|."
@@ -297,8 +313,8 @@ FIRSTbiB = \relative c {
   \fat-line { s2...^\< s16\ff }
 }
 FIRSTbiBLyrics = \lyricmode {
-  \skip 2. \markup {\box n}4
-  \skip 2 \markup {\box s}2 \skip 1 \skip 1
+  \skip 1 \skip 2
+  \markup {\box s}1 \skip 1 \skip 2
   →2... \markup {\box sh}16
 }
 
@@ -307,7 +323,8 @@ FIRSTbiiBDynamics = {
 }
 FIRSTbiiB = \relative c {
   \FIRSTtuttiB
-  \fat-line { s1 s1 s1 s1 }
+  \fat-line { s1 s1 s1 s2 }
+  \n \fat-line s2^\>
   << \no-line \square d1^\<
       { s2... s16\ff} >>
 }

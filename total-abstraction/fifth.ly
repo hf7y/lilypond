@@ -16,7 +16,7 @@ FIFTHtuttiA = {
   \set tieWaitForNote = ##t
   \override Hairpin.to-barline = ##f
 
-  \set Staff.tempoEquationText = "="
+  \set Staff.tempoEquationText = "= ca. "
   \override Staff.Clef.full-size-change = ##t
   \no-clef
   \autoBeamOff
@@ -24,17 +24,18 @@ FIFTHtuttiA = {
 
 FIFTHconductorA = {
     \hide b1
-    %-\tweak HorizontalBracketText.text "8\""
-      \startGroup s2 s2... \hide b16 \stopGroup
+    -\tweak HorizontalBracketText.text "10\""
+      \startGroup s1 s1 s2... \hide b16 \stopGroup
     \hide b1
-    %-\tweak HorizontalBracketText.text "8\""
-      \startGroup s1. s2... \hide b16 \stopGroup
+    -\tweak HorizontalBracketText.text "20\""
+      \startGroup s2... \hide b16 \stopGroup
     \pageBreak
 }
 
 FIFTHsiA = \relative c'' {
   \FIFTHtuttiA
   \fat-line { s2. } \no-line s4.
+  \tempo 8 = 150
   \force-clef-treble
   d8 8 8 dis2 \bar ":|."
   \fat-line { s1 s1 }
@@ -43,14 +44,15 @@ FIFTHsiA = \relative c'' {
   \fat-line { s4. | s1 }
 }
 FIFTHsiALyrics = \lyricmode {
-  \once \override LyricText.self-alignment-X = #1
-  \markup \italic solfeggio
+  \markup \box re \skip 1 \skip 1 \markup \box ri
+  \markup \box re \skip 1 \skip 1 \skip 1
 }
 
 FIFTHsiiA = \relative c'' {
   \FIFTHtuttiA
   \fat-line { s1 | s2. } \no-line s4
   \force-clef-treble
+  \tempo 8 = 150
   \tuplet 3/2 { d8 8 8 } dis2 \bar ":|."
   \fat-line { s4 | s1 }
   \force-clef-treble
@@ -58,14 +60,15 @@ FIFTHsiiA = \relative c'' {
   \fat-line { s4 | s1  }
 }
 FIFTHsiiALyrics = \lyricmode {
-  \once \override LyricText.self-alignment-X = #1
-  \markup \italic solfeggio
+  \markup \box re \skip 1 \skip 1 \markup \box ri
+  \markup \box re \skip 1 \skip 1 \skip 1
 }
 
 FIFTHaiA = \relative c' {
   \FIFTHtuttiA
   \fat-line { s1 } \no-line { s2 s8 }
   \force-clef-treble
+  \tempo 8 = 150
   d8 8 8 | dis2 s2 \bar ":|."
   \fat-line { s1 s2 }
   \force-clef-treble
@@ -73,20 +76,19 @@ FIFTHaiA = \relative c' {
   \fat-line { s1 }
 }
 FIFTHaiALyrics = \lyricmode {
-  \once \override LyricText.self-alignment-X = #1
-  \markup \italic solfeggio
+  \markup \box re \skip 1 \skip 1 \markup \box ri
+  \markup \box re \skip 1 \skip 1
 }
 
 FIFTHaiiA = \relative c' {
   \FIFTHtuttiA
   \fat-line { s1 | s1 } \no-line { s2 s8 }
   \force-clef-treble
-  r4. | dis8 dis dis \bar ":|."
+  \tempo 8 = 150 r4. | dis8 dis dis \bar ":|."
   \fat-line { s8 s2 | s1 | s1 }
 }
 FIFTHaiiALyrics = \lyricmode {
-  \once \override LyricText.self-alignment-X = #1
-  \markup \italic solfeggio
+  \markup \box ri \skip 1 \skip 1
 }
 
 FIFTHtiA = \relative c' {
@@ -97,35 +99,35 @@ FIFTHtiA = \relative c' {
 
 }
 FIFTHtiALyrics = \lyricmode {
-  \once \override LyricText.self-alignment-X = #1
-  \markup \italic solfeggio
+  \markup \box rɑ
 }
 
 FIFTHtiiA = \relative c' {
   \FIFTHtuttiA
   \fat-line { s1 | s1 | } \no-line {s2 s8 }
   \force-clef-tenor
+  \tempo 8 = 150 
   d8 d d | r4. \bar ":|." 
   \fat-line { s8 s2 | s1 | s1 }
 }
 FIFTHtiiALyrics = \lyricmode {
-  \once \override LyricText.self-alignment-X = #1
-  \markup \italic solfeggio
+  \markup \box re \skip 1 \skip 1
 }
 
 FIFTHbiA = \relative c {
   \FIFTHtuttiA
   \fat-line { s1 | s2. } \no-line { s4 | s4 }
   \force-clef-bass
+  \tempo 8 = 150
   d4 d d | dis1 \bar ":|."
   \fat-line { s2 }
   \force-clef-bass
-  r4 es | \no-acc dis dis \bar ":|."
+  r4 es | \no-acc es es \bar ":|."
   \fat-line { s2 }
 }
 FIFTHbiALyrics = \lyricmode {
-  \once \override LyricText.self-alignment-X = #1
-  \markup \italic solfeggio
+  \markup \box re \skip 1 \skip 1 \markup \box ri
+  \markup \box me \skip 1 \skip 1
 }
 
 FIFTHbiiA = \relative c {
@@ -135,19 +137,17 @@ FIFTHbiiA = \relative c {
   \n des1^\>\shortfermata \no-line s1 \!
 }
 FIFTHbiiALyrics = \lyricmode {
-  \once \override LyricText.self-alignment-X = #1
-  \markup \italic solfeggio
+  \markup \box rɑ
 }
 
 
 FIFTHtuttiB = {
   \set tieWaitForNote = ##t
-  \override Hairpin.to-barline = ##t
+  \override Hairpin.to-barline = ##f
   \omit Score.TimeSignature
   \set Score.defaultBarType = #""
   \set tieWaitForNote = ##t
 
-  \set Staff.tempoEquationText = "="
   \override Staff.Clef.full-size-change = ##t
   \no-clef
   \autoBeamOff
@@ -155,12 +155,12 @@ FIFTHtuttiB = {
 
 FIFTHconductorB = {
     \hide b1
-    %-\tweak HorizontalBracketText.text "8\""
+    -\tweak HorizontalBracketText.text "25\""
       \startGroup s1 s1 s2... \hide b16 \stopGroup
     \newSpacingSection
     \override Score.SpacingSpanner.spacing-increment = #1
     \hide b1
-    %-\tweak HorizontalBracketText.text "8\""
+    -\tweak HorizontalBracketText.text "60\"– 120\""
       \startGroup s1 s1 s2... \hide b16 \stopGroup
     \pageBreak
 }
@@ -174,7 +174,7 @@ FIFTHsiB = \relative c'' {
   \fat-line { \bar ".|:" \n s1^\< | \n s1^\> \bar ":|." s1\! | s1 }
 }
 FIFTHsiBLyrics = \lyricmode {
-  \skip 1 \skip 1 \skip 1 \skip 1
+  \markup \box ri
 }
 
 FIFTHsiiB = \relative c'' {
@@ -186,7 +186,7 @@ FIFTHsiiB = \relative c'' {
   \fat-line { \bar ".|:" \n s1^\< | \n s1^\> \bar ":|." s1\! | s1 }
 }
 FIFTHsiiBLyrics = \lyricmode {
-  \skip 1 \skip 1 \skip 1 \skip 1
+  \markup \box ri
 }
 
 FIFTHaiB = \relative c' {
@@ -198,7 +198,7 @@ FIFTHaiB = \relative c' {
   \fat-line { \bar ".|:" \n s1^\< | \n s1^\> \bar ":|." s1\! | s1 }
 }
 FIFTHaiBLyrics = \lyricmode {
-  \skip 1 \skip 1 \skip 1 \skip 1
+  \markup \box ri
 }
 
 FIFTHaiiB = \relative c' {
@@ -213,19 +213,21 @@ FIFTHaiiB = \relative c' {
   \fat-line { \n s1^\> \bar ".|:" \n s1^\< | \n s1^\> \bar ":|." s1\! }
 }
 FIFTHaiiBLyrics = \lyricmode {
-  \skip 1 \skip 1 \skip 1 \skip 1
+  \markup \box ri \skip 1 \skip 1 \markup \box me
 }
 
 FIFTHtiB = \relative c' {
   \FIFTHtuttiB
   \no-line { s1 | s4 }
   \force-clef-tenor
+  \tempo 8 = 150 
   \tuplet 3/2 { r8 dis8 8 } \tuplet 3/2 { 8 8 8 } \bar ":|."
   \fat-line { s4 | s1 | \n s1^\> }
   \fat-line { \bar ".|:" \n s1^\< | \n s1^\> \bar ":|." s1\! | s1 }
 }
 FIFTHtiBLyrics = \lyricmode {
-  \skip 1 \skip 1 \skip 1 \skip 1
+  \markup \box ri \skip 1 \skip 1
+  \skip 1 \skip 1 \skip 1
 }
 
 FIFTHtiiB = \relative c' {
@@ -238,7 +240,7 @@ FIFTHtiiB = \relative c' {
   \fat-line { \n s1^\> \bar ".|:" \n s1^\< | \n s1^\> \bar ":|." s1\! }
 }
 FIFTHtiiBLyrics = \lyricmode {
-  \skip 1 \skip 1 \skip 1 \skip 1
+  \markup \box me \skip 1 \skip 1
 }
 
 FIFTHbiB = \relative c {
@@ -250,20 +252,21 @@ FIFTHbiB = \relative c {
   \fat-line { \n s1^\> \bar ".|:" \n s1^\< | \n s1^\> \bar ":|." s1\! }
 }
 FIFTHbiBLyrics = \lyricmode {
-  \skip 1 \skip 1 \skip 1 \skip 1
+  \markup \box me
 }
 
 FIFTHbiiB = \relative c {
   \FIFTHtuttiB
   \no-line s2. 
-  \force-clef-bass 
-  es8 8 | 8 8 r4 \bar ":|."
+  \force-clef-bass
+  \tempo 8 = 150 
+  es8 8 | \no-acc 8 8 r4 \bar ":|."
   \fat-line s2|
   \fat-line { s1 s1 }
   \fat-line { \n s1^\> \bar ".|:" \n s1^\< | \n s1^\> \bar ":|." s1\! }
 }
 FIFTHbiiBLyrics = \lyricmode {
-  \skip 1 \skip 1 \skip 1 \skip 1
+  \markup \box me \skip 1 \skip 1 \skip 1
 }
 
 %consolidated voices

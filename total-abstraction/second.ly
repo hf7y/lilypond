@@ -18,9 +18,12 @@ SECONDtuttiA = {
 }
 
 SECONDconductorA = {
-    \hide b1 \startGroup s2.. \hide b8\stopGroup
-    %-\tweak HorizontalBracketText.text "8\""
-    \hide b1 \startGroup s2... \hide b16 \stopGroup
+    \hide b1 
+    -\tweak HorizontalBracketText.text "20\""
+    \startGroup s2.. \hide b8\stopGroup
+    \hide b1 
+    -\tweak HorizontalBracketText.text "45\""
+    \startGroup s2... \hide b16 \stopGroup
     \pageBreak
 }
 
@@ -29,14 +32,18 @@ SECONDsiADynamics = {
 }
 SECONDsiA = \relative c'' {
   \SECONDtuttiA
-  \no-line { \xNotesOn b4_"clap"^\ff s2. s1 } \xNotesOff
+  \no-line { \xNotesOn \once \stemUp \stemless b4^\ff s2. s1 } \xNotesOff
   \override Staff.BarLine.bar-extent = #'(-2 . 2)
   \bar ".|:" \force-clef-treble
-    << b1*1/2\shortfermata {\n s4..^\< s16^\mf} >> \bar ":|." \fat-line s1.
+    << b1*1/2\shortfermata {\n s4..^\< s16^\mf} >> \bar ":|." \fat-line s1
+    \bar ".|:" \scaleDurations 4/10 { \n b1\shortfermata^\< \stemless e,4^\mf } \bar ":|."
 }
 SECONDsiALyrics = \lyricmode {
   \skip 1 \skip 1 
-  \markup {\box z}1 \skip 1
+  \markup {\box z}1 \skip 2
+    \scaleDurations 4/10 { 
+    \markup {\box z}1
+    \markup {\box ɑ}4 }
 }
 
 SECONDsiiADynamics = {
@@ -44,12 +51,12 @@ SECONDsiiADynamics = {
 }
 SECONDsiiA = \relative c'' {
   \SECONDtuttiA
-  \tempo " ca. 150 WPM"
+  \tempo \markup \small {" ca. 150 WPM" }
   \no-line { s1^\p s1 s2. } \bar ":|." \fat-line { s4 s1 }
 }
 SECONDsiiALyrics = \lyricmode {
   \once \override LyricText.self-alignment-X = #LEFT
-  \markup \column {
+  \markup \small \column {
     {"The basis of an aesthetic act is the pure idea"}
     {"But the pure idea is, of necessity, an aesthetic act"}
     {"Here then is the paradox that is the artist's problem"}} 1
@@ -61,12 +68,12 @@ SECONDaiADynamics = {
 }
 SECONDaiA = \relative c' {
   \SECONDtuttiA
-  \tempo " ca. 150 WPM"
+  \tempo \markup \small " ca. 150 WPM"
   \no-line { s1^\p s1 s2 } \bar ":|." \fat-line { s2 s1 }
 }
 SECONDaiALyrics = \lyricmode {
   \once \override LyricText.self-alignment-X = #LEFT
-  \markup \column {
+  \markup \small \column {
     {"The basis of an aesthetic act is the pure idea"}
     {"But the pure idea is, of necessity, an aesthetic act"}
     {"Here then is the paradox"}} 1
@@ -78,12 +85,12 @@ SECONDaiiADynamics = {
 }
 SECONDaiiA = \relative c' {
   \SECONDtuttiA
-  \tempo " ca. 90 WPM"
+  \tempo \markup \small " ca. 90 WPM"
   \no-line { s1^\p s1 s4 } \bar ":|." \fat-line { s2. s1 }
 }
 SECONDaiiALyrics = \lyricmode {
   \once \override LyricText.self-alignment-X = #LEFT
-  \markup \column {
+  \markup \small \column {
     {"Not space cutting nor space building"}
     {"Not construction nor fauvist destruction"}
     {"Not the pure line, straight and narrow"} } 1
@@ -95,12 +102,12 @@ SECONDtiADynamics = {
 }
 SECONDtiA = \relative c' {
   \SECONDtuttiA
-  \tempo " ca. 90 WPM"
+  \tempo \markup \small " ca. 90 WPM"
   \no-line { s1^\p s1 s2 s8 } \bar ":|." \fat-line { s4. s1 }
 }
 SECONDtiALyrics = \lyricmode {
   \once \override LyricText.self-alignment-X = #LEFT
-  \markup \column {
+  \markup \small \column {
     {"Nor the tortured line, distorted and humiliating"}
     {"Not the accurate eye, all fingers"}
     {"Nor the wild eye of dream, winking"}}1
@@ -112,12 +119,12 @@ SECONDtiiADynamics = {
 }
 SECONDtiiA = \relative c' {
   \SECONDtuttiA
-  \tempo " ca. 60 WPM"
+  \tempo \markup \small " ca. 60 WPM"
   \no-line { s1^\p s1 s4 } \bar ":|." \fat-line { s2. s1 }
 }
 SECONDtiiALyrics = \lyricmode {
   \once \override LyricText.self-alignment-X = #LEFT
-  \markup \column {
+  \markup \small \column {
     {"But the idea-complex"}
     {"That makes contact with mystery"}
     {"Of life, of me, of nature"}}1
@@ -129,13 +136,13 @@ SECONDbiADynamics = {
 }
 SECONDbiA = \relative c {
   \SECONDtuttiA
-  \tempo " ca. 60 WPM"
+  \tempo \markup \small " ca. 60 WPM"
   \no-line { s1^\p s1 s8 } \bar ":|." \fat-line { s2.. s1 }
 
 }
 SECONDbiALyrics = \lyricmode {
   \once \override LyricText.self-alignment-X = #LEFT
-  \markup \column {
+  \markup \small \column {
     {"But the idea-complex"}
     {"That makes contact with mystery"}
     {"Of life, of me" }}1
@@ -147,7 +154,7 @@ SECONDbiiADynamics = {
 }
 SECONDbiiA = \relative c {
   \SECONDtuttiA
-  \no-line { \xNotesOn c4_"clap"^\ff s2. s2 } \xNotesOff
+  \no-line { \xNotesOn \stemless c4^\ff s2. s2 } \xNotesOff
   \override Staff.BarLine.bar-extent = #'(-2 . 2)
   \bar ".|:" \force-clef-bass
     << c1*1/2\shortfermata {\n s4..^\< s16^\mf} >> \bar ":|." 
@@ -181,9 +188,12 @@ SECONDtuttiB = {
 
 SECONDconductorB = {
     \hide b1
-    %-\tweak HorizontalBracketText.text "8\""
+    -\tweak HorizontalBracketText.text "75\""
       \startGroup s1 s2 s2... \hide b16 \stopGroup
-    \hide b8 \startGroup s4 \hide b8 \stopGroup
+    \hide b8 
+    -\tweak HorizontalBracketText.text "15\""
+    \startGroup s4 \hide b8 \stopGroup
+
 }
 
 SECONDsiBDynamics = {
@@ -191,17 +201,14 @@ SECONDsiBDynamics = {
 }
 SECONDsiB = \relative c'' {
   \SECONDtuttiB
-  \force-clef-treble
-  \bar ".|:" \scaleDurations 4/5 { \n b1\shortfermata^\< \stemless e,4^\mf } \bar ":|."
+  \fat-line s1
   \override TextSpanner.bound-details.left.text = "diminuendo"
   \fat-line { s1\startTextSpan s2. s2 s4\stopTextSpan }
-  e1*1/2^\p\fermata
+  \force-clef-treble e1*1/2^\p\fermata
 
 }
 SECONDsiBLyrics = \lyricmode {
-  \scaleDurations 4/5 { 
-    \markup {\box z}1
-    \markup {\box ɑ}4 }
+  \skip 1
   \skip 1 \skip 1.
   \markup {\box z}2
 }
@@ -215,7 +222,7 @@ SECONDsiiB = \relative c'' {
   \fat-line { s1 s4 s2.\startTextSpan s1 s2\stopTextSpan s2^\pp }
 }
 SECONDsiiBLyrics = \lyricmode {
-  \skip 1 \skip 1. whisper2 →2 \markup {\box s}2
+  \skip 1 \skip 1. \markup \small {to whisper}2 →2 \markup {\box s}2
 }
 
 SECONDaiBDynamics = {
@@ -227,7 +234,7 @@ SECONDaiB = \relative c' {
   \fat-line { s1 s1\startTextSpan s1 s2\stopTextSpan s2^\pp }
 }
 SECONDaiBLyrics = \lyricmode {
-  \skip 1 \skip 1 \skip 1 \skip 1
+  \skip 1 \skip 1. \markup \small {to whisper}2 →2 \markup {\box s}2
 }
 
 SECONDaiiBDynamics = {
@@ -239,7 +246,7 @@ SECONDaiiB = \relative c' {
   \fat-line { s2. s4\startTextSpan s1 s1 s2\stopTextSpan s2^\pp }
 }
 SECONDaiiBLyrics = \lyricmode {
-  \skip 1 \skip 1 \skip 1 \skip 1
+  \skip 1 \skip 1. \markup \small {to whisper}2 →2 \markup {\box s}2
 }
 
 SECONDtiBDynamics = {
@@ -251,7 +258,7 @@ SECONDtiB = \relative c' {
   \fat-line { s2 s2\startTextSpan s1 s1 s2\stopTextSpan s2^\pp }
 }
 SECONDtiBLyrics = \lyricmode {
-  \skip 1 \skip 1 \skip 1 \skip 1
+  \skip 1 \skip 1. \markup \small {to whisper}2 →2 \markup {\box s}2
 }
 
 SECONDtiiBDynamics = {
@@ -263,7 +270,7 @@ SECONDtiiB = \relative c' {
   \fat-line { s4 s2.\startTextSpan s1 s1 s2\stopTextSpan s2^\pp }
 }
 SECONDtiiBLyrics = \lyricmode {
-  \skip 1 \skip 1 \skip 1 \skip 1
+  \skip 1 \skip 1. \markup \small {to whisper}2 →2 \markup {\box s}2
 }
 
 SECONDbiBDynamics = {
@@ -275,7 +282,7 @@ SECONDbiB = \relative c {
   \fat-line { s1\startTextSpan s1 s1 s2\stopTextSpan s2^\pp }
 }
 SECONDbiBLyrics = \lyricmode {
-  \skip 1 \skip 1 \skip 1 \skip 1
+  \skip 1 \skip 1. \markup \small {to whisper}2 →2 \markup {\box s}2
 }
 
 SECONDbiiBDynamics = {
@@ -285,7 +292,7 @@ SECONDbiiB = \relative c {
   \SECONDtuttiB
   \override TextSpanner.bound-details.left.text = "diminuendo"
   \fat-line { s2 s1.\startTextSpan s2. s2 s4\stopTextSpan }
-  e1*1/2^\p\fermata
+  \force-clef-bass e1*1/2^\p\fermata
 }
 SECONDbiiBLyrics = \lyricmode {
   \skip 1 \skip 1 \skip 1.

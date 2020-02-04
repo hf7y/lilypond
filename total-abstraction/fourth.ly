@@ -19,146 +19,140 @@ FOURTHtuttiA = {
 }
 
 FOURTHconductorA = {
-    \hide b2
-    %-\tweak HorizontalBracketText.text "8\""
-      \startGroup s2... \hide b16 \stopGroup
+    \hide b1\stopGroup
     \hide b1
-    %-\tweak HorizontalBracketText.text "8\""
-      \startGroup s2 s2... \hide b16 \stopGroup
+    -\tweak HorizontalBracketText.text "60\""
+      \startGroup s1 s2... \hide b16 \stopGroup
+    \hide b2
+    -\tweak HorizontalBracketText.text "25\""
+      \startGroup s4.. \hide b16 \stopGroup
     \pageBreak
 }
 
-FOURTHsiADynamics = {
-  s1 s1 s1 s1
-}
 FOURTHsiA = \relative c'' {
   \FOURTHtuttiA
+  \fat-line s1
+  \no-line { \stemless \clicks b4 s4 } \bar ".|:"
   \force-clef-treble
-  \n g1*1/2^\mp^\> s4.. s16\! \bar ":|."  
-  \fat-line { s4 \stemUp \stemless \clicks f'4:16 s2 | s1 | s2 }
+  \n g1*1/2->^\mp^\> s4.. s16\! \bar ":|."  
+  \fat-line { s2 | s1 | s2 }
   \force-clef-treble
-  \stemless \parenthesize fis,4 \fat-line s4
+  \stemless \parenthesize fis4 \fat-line s4
 }
 FOURTHsiALyrics = \lyricmode {
-  \markup {\box a}1 \skip 1 \skip 1 \skip 1
+  \skip 1
+  \skip 2 \markup {\box a}2 \skip 1 \skip 1 \skip 1
 }
 
-FOURTHsiiADynamics = {
-  s1 s1 s1 s1
-}
 FOURTHsiiA = \relative c'' {
   \FOURTHtuttiA
-  \fat-line s4.
-  \bar ".|:" \no-line {s4. s4 s1 s2.} \bar ":|."
-  \fat-line { s4 \stemUp \stemless \clicks f4:16 s2.}
+  \fat-line s1
+  \no-line { \stemless \clicks b4 s4 }
+  \bar ".|:" \no-line {s2 | s1 | s2 } \bar ":|."
+  \fat-line { s2 | s1 }
 }
 FOURTHsiiALyrics = \lyricmode {
-  \skip 4. 
+  \skip 1
+  \skip 2 
   \once \override LyricText.self-alignment-X = #LEFT
-    \markup \column {
-      {"Nor the tortured line, distorted and humiliating"}
+    \markup \small \column {
+      {"Nor the tortured line, distorted, humiliating"}
       {"Not the accurate eye, all fingers"}
-      {"Nor the wild eye of dream, winking"}}4. \skip 4
+      {"Nor the wild eye of dream, winking"}}2
   \skip 1 \skip 1 \skip  1
 }
 
-FOURTHaiADynamics = {
-  s1 s1 s1 s1
-}
 FOURTHaiA = \relative c' {
   \FOURTHtuttiA
+  \no-line s1
   \force-clef-treble
-  \n c1*1/2^\mp^\> s4.. s16\! \bar ":|."  
-  \fat-line { s4 \stemUp \stemless \clicks f'4:16 s2 | s1 | s2 }
+  \n c1*1/2->^\mp^\> s4.. s16\! \bar ":|."  
+  \fat-line { s1 | s1 | s2 }
   \force-clef-treble
-  \stemless \parenthesize cis,4 \fat-line s4
+  \stemless \parenthesize cis4 \fat-line s4
 }
 FOURTHaiALyrics = \lyricmode {
+  \skip 1
   \markup {\box a}1 \skip 1 \skip 1 \skip 1
 }
 
-FOURTHaiiADynamics = {
-  s1 s1 s1 s1
-}
-FOURTHaiiA = \relative c' {
+FOURTHaiiA = \relative c'' {
   \FOURTHtuttiA
-  \fat-line { \n s1^\> } 
-  \bar ".|:" \no-line { s1\! s1 s2.} \bar ":|."
-  \fat-line s4
+  \fat-line s1
+  \no-line { \stemless \clicks b4 s2. }
+  \bar ".|:" \no-line { s1\! s1} \bar ":|."
+  \fat-line s1
 }
 FOURTHaiiALyrics = \lyricmode {
-  \skip 1 \skip 4
+  \skip 1
+  \skip 1 
   \once \override LyricText.self-alignment-X = #LEFT
-    \markup \column {
-      {"Nor the tortured line, distorted and humiliating"}
+    \markup \small \column {
+      {"Nor the tortured line, distorted, humiliating"}
       {"Not the accurate eye, all fingers"}
-      {"Nor the wild eye of dream, winking"}}2.
+      {"Nor the wild eye of dream, winking"}}1
   \skip 1 \skip 1
 }
 
-FOURTHtiADynamics = {
-  s1 s1 s1 s1
-}
 FOURTHtiA = \relative c' {
   \FOURTHtuttiA
-  \fat-line s4.
-  \bar ".|:" \no-line {s4. s4 s1 s2} \bar ":|."
-  \fat-line { s4 \stemUp \stemless \clicks f4:16 s1}
+  \fat-line s1
+  \no-line { \stemless \clicks b4 s4 }
+  \bar ".|:" \no-line {s2 | s1 | s2 } \bar ":|."
+  \fat-line { s2 | s1 }
 }
 FOURTHtiALyrics = \lyricmode {
-  \skip 4. 
+  \skip 1
+  \skip 2 
   \once \override LyricText.self-alignment-X = #LEFT
-    \markup \column {
+    \markup \small \column {
       {"Not space cutting nor space building"}
       {"Not construction nor fauvist destruction"}
-      {"Not the pure line, straight and narrow"} }4. \skip 4
+      {"Not the pure line, straight and narrow"} }2
   \skip 1 \skip 1 \skip  1
 }
 
-FOURTHtiiADynamics = {
-  s1 s1 s1 s1
-}
-FOURTHtiiA = \relative c {
+FOURTHtiiA = \relative c' {
   \FOURTHtuttiA
-  \fat-line { \n s2.^\> }
+  \fat-line s1
+  \no-line { \stemless \clicks b4 s2 }
   \force-clef-tenor
-  \bar ".|:" \n f1*1/2^\mp^\> s4.. s16\! \bar ":|."  
-  \fat-line { s4 \stemUp \stemless \clicks f'4:16 s2 s1 s4 }
+  \bar ".|:" \n f1*1/4->^\mp^\> | s2 s8. s16\! \bar ":|."  
+  \fat-line { s4 | s1 | s1 }
 }
 FOURTHtiiALyrics = \lyricmode {
+  \skip 1
   \skip 2. \markup {\box a}1 \skip 4 \skip 1 \skip 1
 }
 
-FOURTHbiADynamics = {
-  s1 s1 s1 s1
-}
 FOURTHbiA = \relative c {
   \FOURTHtuttiA
-  \fat-line { \n s1^\> } 
-  \bar ".|:" \no-line { s1\! s1 s2} \bar ":|."
-  \fat-line { s4 \stemUp \stemless \clicks a'4:16 }
+  \fat-line s1
+  \no-line { \stemless \clicks d4 s2. }
+  \bar ".|:" \no-line { s1\! s1} \bar ":|."
+  \fat-line s1
 }
 FOURTHbiALyrics = \lyricmode {
-  \skip 1 \skip 4
+  \skip 1
+  \skip 1
   \once \override LyricText.self-alignment-X = #LEFT
-    \markup \column {
+    \markup \small \column {
       {"Not space cutting nor space building"}
       {"Not construction nor fauvist destruction"}
-      {"Not the pure line, straight and narrow"} }2.
+      {"Not the pure line, straight and narrow"} }1
   \skip 1 \skip 1
 }
 
-FOURTHbiiADynamics = {
-  s1 s1 s1 s1
-}
 FOURTHbiiA = \relative c {
   \FOURTHtuttiA
-  \fat-line { \n s2.^\> }
+  \fat-line s1
+  \no-line { \stemless \clicks d4 s2 }
   \force-clef-bass
-  \bar ".|:" \n bes1*1/2^\mp^\> s4.. s16\! \bar ":|."  
-  \fat-line { s4 \stemUp \stemless \clicks a'4:16 s2 s1 s4 }
+  \bar ".|:" \n bes1*1/4->^\mp^\> | s2 s8. s16\! \bar ":|."  
+  \fat-line { s4 | s1 | s1 }
 }
 FOURTHbiiALyrics = \lyricmode {
+  \skip 1
   \skip 2. \markup {\box a}1 \skip 4 \skip 1 \skip 1
 }
 
@@ -177,176 +171,150 @@ FOURTHtuttiB = {
 }
 
 FOURTHconductorB = {
+    \newSpacingSection
+    \override Score.SpacingSpanner.spacing-increment = #1
     \hide b1
-    %-\tweak HorizontalBracketText.text "8\""
-      \startGroup s2... \hide b16 \stopGroup
+    -\tweak HorizontalBracketText.text "40\""
+      \startGroup s1 s2... \hide b16 \stopGroup
     \hide b1
-    %-\tweak HorizontalBracketText.text "8\""
-      \startGroup s2... \hide b16 \stopGroup
+    -\tweak HorizontalBracketText.text "30\""
+      \startGroup s1 s2... \hide b16 \stopGroup
+    \hide b1
+    -\tweak HorizontalBracketText.text "25\""
+      \startGroup s1 s2... \hide b16 \stopGroup
+    \pageBreak
 }
 
-FOURTHsiBDynamics = {
-  s1 s1 s1 s1
-}
 FOURTHsiB = \relative c'' {
   \FOURTHtuttiB
-  \fat-line { s2. \stemUp \stemless \clicks f4:8 s2. }
-  \force-clef-treble \stemless \parenthesize a,4
-  \fat-line { s4 \stemless \clicks f'4:16 s2 }
-  \fat-line { \stemless \clicks f4:32 s4 \stemless \clicks 4:64 }
-  \force-clef-treble \stemless \parenthesize cis4
+  \stemUp
+  \fat-line { s1 | s2. \stemless \clicks f4:8 | s1 }
+  \fat-line { s1 | }
+    \force-clef-treble \stemless \parenthesize a,4 
+    \fat-line { s2 \stemless \clicks f'4:16 | s1 }
+  \fat-line { s1 | }
+    \force-clef-treble \stemless \parenthesize cis4
+    \fat-line { s2 \stemless \clicks f4:32 | }
+    \fat-line { \stemless \clicks f4:64 s2. }
 }
 FOURTHsiBLyrics = \lyricmode {
-  \skip 1 \skip 1 \skip 1 \skip 1
+  \skip 1 \skip 1 →1
+  \skip 1 \markup \box "ɑ"1 →1
+  \skip 1 \markup \box "ʌ"2 →2 \markup \box "z"1
 }
 
-FOURTHsiiBDynamics = {
-  s1 s1 s1 s1
-}
 FOURTHsiiB = \relative c'' {
   \FOURTHtuttiB
-  \fat-line { s1 \stemUp \stemless \clicks f4:8 s2. }
-  \fat-line { s2 \stemless \clicks f4:16 s4 }
-  \fat-line { \stemless \clicks f4:32 s4 \stemless \clicks 4:64 s4 }
+  \stemUp
+  \fat-line { s1 | s2 \stemless \clicks f4:8 s4 | s1 }
+  \fat-line { s1 | s2 \stemless \clicks f4:16 s4 | s1 }
+  \fat-line { s1 | s2 \stemless \clicks f4:32 s4 | }
+    \fat-line { \stemless \clicks f4:64 s2. }
 }
 FOURTHsiiBLyrics = \lyricmode {
-  \skip 2 \markup \italic "gradually to whisper"2 \skip 1 \skip 2
-  \markup \box "s"2 \skip 1 
+  \skip 1 \skip 1 \skip 1
+  \skip 1 \markup \small "to whisper"1 →1
+  \skip 1 \skip 1 \markup \box "s"1
 }
 
-FOURTHaiBDynamics = {
-  s1 s1 s1 s1
-}
 FOURTHaiB = \relative c' {
   \FOURTHtuttiB
-  \fat-line { s2 \stemUp \stemless \clicks f'4:8 s4 s1 }
-  \fat-line { s4 \stemless \clicks f4:16 s2 }
-  \fat-line { \stemless \clicks f4:32 }
-  \force-clef-treble \stemless \parenthesize d,4
-  \fat-line { \stemless \clicks f'4:64 s4 }
+  \stemUp
+  \fat-line { s1 | s4 \stemless \clicks f'4:8 s2 | s1 }
+  \fat-line { s1 | s4 \stemless \clicks f4:16 s2 | s1 }
+  \fat-line { s1 }
+    \force-clef-treble \stemless \parenthesize d,4
+    \fat-line { \stemless \clicks f'4:32 s2 | }
+    \fat-line { \stemless \clicks f4:64 s2. }
 }
 FOURTHaiBLyrics = \lyricmode {
-  \skip 1 \skip 1 \skip 1 \skip 1
+  \skip 1 \skip 1 →1
+  \skip 1 \markup \box "ɑ"1 →1
+  \skip 1 \markup \box "ʌ"2 →2 \markup \box "z"1
 }
 
-FOURTHaiiBDynamics = {
-  s1 s1 s1 s1
-}
-FOURTHaiiB = \relative c' {
+FOURTHaiiB = \relative c'' {
   \FOURTHtuttiB
-  \fat-line { s4 \stemUp \stemless \clicks f'4:8 s2 }
-  \fat-line { s1 \stemless \clicks f4:16 s2. }
-  \fat-line { \stemless \clicks f4:32 s4 \stemless \clicks 4:64 s4 }
+  \stemUp
+  \fat-line { s1 | \stemless \clicks f4:8 s2. | s1 }
+  \fat-line { s1 | \stemless \clicks f4:16 s2. | s1 }
+  \fat-line { s1 | \stemless \clicks f4:32 s2. | }
+    \fat-line {\stemless \clicks s4:64 s2. }
 }
 FOURTHaiiBLyrics = \lyricmode {
-  \skip 1 \markup \italic "gradually to whisper"1 
-  \markup \box "s"1 \skip 1 
+  \skip 1 \skip 1 \skip 1
+  \skip 1 \markup \small "to whisper"1 →1
+  \skip 1 \skip 1 \markup \box "s"1
 }
 
-FOURTHtiBDynamics = {
-  s1 s1 s1 s1
-}
 FOURTHtiB = \relative c' {
   \FOURTHtuttiB
-  \fat-line { s1 s2 \stemUp \stemless \clicks f4:8 s4 }
-  \fat-line { s2. \stemless \clicks f4:16 }
-  \fat-line { \stemless \clicks f4:32 s4 \stemless \clicks 4:64 s4 }
+  \stemUp
+  \fat-line { s2. \stemless \clicks f4:8 | s1 | s1 }
+  \fat-line { s2. \stemless \clicks f4:16 | s1 | s1 }
+  \fat-line { s2. \stemless \clicks f4:32 | s1| }
+    \fat-line { \stemless \clicks 4:64 s2. }
 }
 FOURTHtiBLyrics = \lyricmode {
-  \skip 2 \markup \italic "gradually to whisper"2 \skip 1 \skip 2.
-  \markup \box "s"4 \skip 1
+  \skip 1 \skip 1 \skip 1
+  \skip 1 \markup \small "to whisper"1 →1
+  \skip 1 \skip 1 \markup \box "s"1
 }
 
-FOURTHtiiBDynamics = {
-  s1 s1 s1 s1
-}
 FOURTHtiiB = \relative c' {
   \FOURTHtuttiB
-  \fat-line s2 
-  \force-clef-tenor \stemless \parenthesize g4
-  \fat-line s4
-  \fat-line { s4 \stemUp \stemless \clicks f'4:8 }
-  \fat-line s2
-  \force-clef-tenor \stemless \parenthesize d4
-  \fat-line s4
-  \fat-line { \stemless \clicks f4:16 s4 }
-  \fat-line { \stemless \clicks f4:32 s4 \stemless \clicks 4:64 s4 }
+  \fat-line { s2 \stemUp \stemless \clicks f4:8 s4 | }
+    \force-clef-tenor \stemless \parenthesize g4
+    \fat-line { s2. | s1 }
+  \fat-line { s2 \stemUp \stemless \clicks f4:16 s4 | }
+    \force-clef-tenor \stemless \parenthesize d4
+    \fat-line { s2. | s1 }
+  \fat-line { s2 \stemless \clicks f4:32 s4 | s1 | }
+    \fat-line { \stemless \clicks f4:64 s2. }
 }
 FOURTHtiiBLyrics = \lyricmode {
-  \skip 1 \skip 1 \skip 1 \skip 1
+  \skip 1 \skip 1 →1
+  \skip 1 \markup \box "ɑ"1 →1
+  \skip 1 \markup \box "ʌ"2 →2 \markup \box "z"1
 }
 
-FOURTHbiBDynamics = {
-  s1 s1 s1 s1
-}
-FOURTHbiB = \relative c {
+FOURTHbiB = \relative c' {
   \FOURTHtuttiB
-  \fat-line { s1 s2. \stemUp \stemless \clicks a'4:8 }
-  \fat-line { s4 \stemless \clicks a4:16 s2}
-  \fat-line { \stemless \clicks f4:32 s4 \stemless \clicks 4:64 s4 }
+  \stemUp
+  \fat-line { s4 \stemless \clicks a4:8 s2 | s1 | s1 }
+  \fat-line { s4 \stemless \clicks a4:16 s2 | s1 | s1 }
+  \fat-line { s4 \stemless \clicks a4:32 s2 | s1 }
+    \fat-line { \stemless \clicks a4:64 s2. }
 }
 FOURTHbiBLyrics = \lyricmode {
-  \skip 1 \markup \italic "gradually to whisper"1
-  \skip 4 \markup \box "s"2. \skip 1 
+  \skip 1 \skip 1 \skip 1
+  \skip 1 \markup \small "to whisper"1 →1
+  \skip 1 \skip 1 \markup \box "s"1
 }
 
-FOURTHbiiBDynamics = {
-  s1 s1 s1 s1
-}
 FOURTHbiiB = \relative c {
   \FOURTHtuttiB
-  \fat-line s2 
-  \force-clef-bass \stemless \parenthesize b!4
-  \fat-line s4
-  \fat-line { \stemUp \stemless \clicks a'4:8 s4 }
-  \fat-line s2
+  \stemUp 
+  \fat-line { \stemless \clicks a'4:8 s2. | }
+    \force-clef-bass \stemless \parenthesize b!4 
+    \fat-line { s2. | s1 }
+  \fat-line { \stemless \clicks a4:16 s2. | }
   \force-clef-bass \stemless \parenthesize cis,4
-  \fat-line s4
-  \fat-line { \stemless \clicks a'4:16 s4 }
-  \fat-line { \stemless \clicks a4:32 }
+    \fat-line { s2. | s1 }
+  \fat-line { \stemless \clicks a'4:32 s2. | }
   \force-clef-bass \stemless \parenthesize d,4
-  \fat-line { \stemless \clicks a'4:64 s4 }
+  \fat-line { s2. | \stemless \clicks a'4:64 s2. }
 }
 FOURTHbiiBLyrics = \lyricmode {
-  \skip 1 \skip 1 \skip 1 \skip 1
+  \skip 1 \skip 1 →1
+  \skip 1 \markup \box "ɑ"1 →1
+  \skip 1 \markup \box "ʌ"2 →2 \markup \box "z"1
 }
 
 %consolidated voices
 FOURTHconductor = {
   \FOURTHconductorA
   \FOURTHconductorB
-}
-FOURTHsiDynamics = {
-  \FOURTHsiADynamics
-  \FOURTHsiBDynamics
-}
-FOURTHsiiDynamics = {
-  \FOURTHsiiADynamics
-  \FOURTHsiiBDynamics
-}
-FOURTHaiDynamics = {
-  \FOURTHaiADynamics
-  \FOURTHaiBDynamics
-}
-FOURTHaiiDynamics = {
-  \FOURTHaiiADynamics
-  \FOURTHaiiBDynamics
-}
-FOURTHtiDynamics = {
-  \FOURTHtiADynamics
-  \FOURTHtiBDynamics
-}
-FOURTHtiiDynamics = {
-  \FOURTHtiiADynamics
-  \FOURTHtiiBDynamics
-}
-FOURTHbiDynamics = {
-  \FOURTHbiADynamics
-  \FOURTHbiBDynamics
-}
-FOURTHbiiDynamics = {
-  \FOURTHbiiADynamics
-  \FOURTHbiiBDynamics
 }
 FOURTHsi = {
   \FOURTHsiA
@@ -429,11 +397,6 @@ FOURTHscore = \score {
         \override Flag.stencil = ##f
         \FOURTHconductor
       }
-      %\new Dynamics \with {
-      %  \override VerticalAxisGroup.staff-affinity = #DOWN
-      %  \override VerticalAxisGroup.
-      %    nonstaff-relatedstaff-spacing.basic-distance = #0
-      %}{ \FOURTHsiDynamics }
       \new Staff = "si" \with {
         instrumentName = "S"
         shortInstrumentName = "S"
@@ -450,11 +413,6 @@ FOURTHscore = \score {
       %\lyricsto "si"
       { \FOURTHsiLyrics }
 
-      %\new Dynamics \with {
-      %  \override VerticalAxisGroup.staff-affinity = #DOWN
-      %  \override VerticalAxisGroup.
-      %    nonstaff-relatedstaff-spacing.basic-distance = #0
-      %}{ \FOURTHsiiDynamics }
       \new Staff = "sii" \with {
         instrumentName = "S"
         shortInstrumentName = "S"
@@ -472,11 +430,6 @@ FOURTHscore = \score {
       %\lyricsto "sii"
       { \FOURTHsiiLyrics }
 
-      %\new Dynamics \with {
-      %  \override VerticalAxisGroup.staff-affinity = #DOWN
-      %  \override VerticalAxisGroup.
-      %    nonstaff-relatedstaff-spacing.basic-distance = #0
-      %}{ \FOURTHaiDynamics }
       \new Staff = "ai" \with {
         instrumentName = "A"
         shortInstrumentName = "A"
@@ -493,11 +446,6 @@ FOURTHscore = \score {
       %\lyricsto "ai"
       { \FOURTHaiLyrics }
 
-      %\new Dynamics \with {
-      %  \override VerticalAxisGroup.staff-affinity = #DOWN
-      %  \override VerticalAxisGroup.
-      %    nonstaff-relatedstaff-spacing.basic-distance = #0
-      %}{ \FOURTHaiiDynamics }
       \new Staff = "aii" \with {
         instrumentName = "A"
         shortInstrumentName = "A"
@@ -515,11 +463,6 @@ FOURTHscore = \score {
       %\lyricsto "aii"
       { \FOURTHaiiLyrics }
 
-      %\new Dynamics \with {
-      %  \override VerticalAxisGroup.staff-affinity = #DOWN
-      %  \override VerticalAxisGroup.
-      %    nonstaff-relatedstaff-spacing.basic-distance = #0
-      %}{ \FOURTHtiDynamics }
       \new Staff = "ti" \with {
         instrumentName = "T"
         shortInstrumentName = "T"
@@ -537,11 +480,6 @@ FOURTHscore = \score {
       %\lyricsto "ti"
       { \FOURTHtiLyrics }
 
-      %\new Dynamics \with {
-      %  \override VerticalAxisGroup.staff-affinity = #DOWN
-      %  \override VerticalAxisGroup.
-      %    nonstaff-relatedstaff-spacing.basic-distance = #0
-      %}{ \FOURTHtiiDynamics }
       \new Staff = "tii" \with {
         instrumentName = "T"
         shortInstrumentName = "T"
@@ -559,11 +497,6 @@ FOURTHscore = \score {
       %\lyricsto "tii"
       { \FOURTHtiiLyrics }
       
-      %\new Dynamics \with {
-      %  \override VerticalAxisGroup.staff-affinity = #DOWN
-      %  \override VerticalAxisGroup.
-      %    nonstaff-relatedstaff-spacing.basic-distance = #0
-      %}{ \FOURTHbiDynamics }
       \new Staff = "bi" \with {
         instrumentName = "B"
         shortInstrumentName = "B"
@@ -580,11 +513,6 @@ FOURTHscore = \score {
       %\lyricsto "bi"
       { \FOURTHbiLyrics }
 
-      %\new Dynamics \with {
-      %  \override VerticalAxisGroup.staff-affinity = #DOWN
-      %  \override VerticalAxisGroup.
-      %    nonstaff-relatedstaff-spacing.basic-distance = #0
-      %}{ \FOURTHbiiDynamics }
       \new Staff = "bii" \with {
         instrumentName = "B"
         shortInstrumentName = "B"

@@ -1,9 +1,10 @@
 %book.ly
-%Modified on 12 4, 2019 at 12:04
-%Created on 10 21, 2019 at 17:22
+%Modified on 12 20, 2019 at 20:20
+%Modified on 12  4, 2019 at 12:04
+%Created  on 10 21, 2019 at 17:22
 
 \version "2.19.83"
-\include "/home/zach/lilypond/raybon/definitions.ily"
+\include "/home/zach/lilypond/total-abstraction/definitions.ily"
 \include "/home/zach/lilypond/z/note.ily"
 \include "/home/zach/lilypond/z/square.ily"
 \include "/home/zach/lilypond/z/dynamic.ily"
@@ -32,6 +33,8 @@
 \score { \FIFTHscore }
 \include "./sixth.ly"
 \score { \SIXTHscore }
+\include "./finale.ly"
+\score { \FINALEscore }
 
 \layout {
   \context {

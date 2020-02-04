@@ -1,9 +1,9 @@
-%first.ly
+%finale.ly
 %Created on 10 21, 2019 at 17:22
 
 \version "2.19.83"
 
-PARTtuttiA = {
+FINALEtuttiA = {
   \set tieWaitForNote = ##t
   \override Hairpin.to-barline = ##f
   \omit Score.TimeSignature
@@ -17,102 +17,102 @@ PARTtuttiA = {
   \autoBeamOff
 }
 
-PARTconductorA = {
+FINALEconductorA = {
     \hide b1
     %-\tweak HorizontalBracketText.text "8\""
       \startGroup s1 s1 s2... \hide b16 \stopGroup
     \pageBreak
 }
 
-PARTsiADynamics = {
+FINALEsiADynamics = {
   s1 s1 s1 s1
 }
-PARTsiA = \relative c'' {
-  \PARTtuttiA
+FINALEsiA = \relative c'' {
+  \FINALEtuttiA
   s1 s1 s1 s1
 }
-PARTsiALyrics = \lyricmode {
+FINALEsiALyrics = \lyricmode {
   \skip 1 \skip 1 \skip 1 \skip 1
 }
 
-PARTsiiADynamics = {
+FINALEsiiADynamics = {
   s1 s1 s1 s1
 }
-PARTsiiA = \relative c'' {
-  \PARTtuttiA
+FINALEsiiA = \relative c'' {
+  \FINALEtuttiA
   s1 s1 s1 s1
 }
-PARTsiiALyrics = \lyricmode {
+FINALEsiiALyrics = \lyricmode {
   \skip 1 \skip 1 \skip 1 \skip 1
 }
 
-PARTaiADynamics = {
+FINALEaiADynamics = {
   s1 s1 s1 s1
 }
-PARTaiA = \relative c' {
-  \PARTtuttiA
+FINALEaiA = \relative c' {
+  \FINALEtuttiA
   s1 s1 s1 s1
 }
-PARTaiALyrics = \lyricmode {
+FINALEaiALyrics = \lyricmode {
   \skip 1 \skip 1 \skip 1 \skip 1
 }
 
-PARTaiiADynamics = {
+FINALEaiiADynamics = {
   s1 s1 s1 s1
 }
-PARTaiiA = \relative c' {
-  \PARTtuttiA
+FINALEaiiA = \relative c' {
+  \FINALEtuttiA
   s1 s1 s1 s1
 }
-PARTaiiALyrics = \lyricmode {
+FINALEaiiALyrics = \lyricmode {
   \skip 1 \skip 1 \skip 1 \skip 1
 }
 
-PARTtiADynamics = {
+FINALEtiADynamics = {
   s1 s1 s1 s1
 }
-PARTtiA = \relative c' {
-  \PARTtuttiA
+FINALEtiA = \relative c' {
+  \FINALEtuttiA
   s1 s1 s1 s1
 }
-PARTtiALyrics = \lyricmode {
+FINALEtiALyrics = \lyricmode {
   \skip 1 \skip 1 \skip 1 \skip 1
 }
 
-PARTtiiADynamics = {
+FINALEtiiADynamics = {
   s1 s1 s1 s1
 }
-PARTtiiA = \relative c' {
-  \PARTtuttiA
+FINALEtiiA = \relative c' {
+  \FINALEtuttiA
   s1 s1 s1 s1
 }
-PARTtiiALyrics = \lyricmode {
+FINALEtiiALyrics = \lyricmode {
   \skip 1 \skip 1 \skip 1 \skip 1
 }
 
-PARTbiADynamics = {
+FINALEbiADynamics = {
   s1 s1 s1 s1
 }
-PARTbiA = \relative c {
-  \PARTtuttiA
+FINALEbiA = \relative c {
+  \FINALEtuttiA
   s1 s1 s1 s1
 }
-PARTbiALyrics = \lyricmode {
+FINALEbiALyrics = \lyricmode {
   \skip 1 \skip 1 \skip 1 \skip 1
 }
 
-PARTbiiADynamics = {
+FINALEbiiADynamics = {
   s1 s1 s1 s1
 }
-PARTbiiA = \relative c {
-  \PARTtuttiA
+FINALEbiiA = \relative c {
+  \FINALEtuttiA
   s1 s1 s1 s1
 }
-PARTbiiALyrics = \lyricmode {
+FINALEbiiALyrics = \lyricmode {
   \skip 1 \skip 1 \skip 1 \skip 1
 }
 
-PARTtuttiB = {
+FINALEtuttiB = {
   \set tieWaitForNote = ##t
   \override Hairpin.to-barline = ##f
   \omit Score.TimeSignature
@@ -126,203 +126,203 @@ PARTtuttiB = {
   \autoBeamOff
 }
 
-PARTconductorB = {
+FINALEconductorB = {
     \hide b1
     %-\tweak HorizontalBracketText.text "8\""
       \startGroup s1 s1 s2... \hide b16 \stopGroup
 }
 
-PARTsiBDynamics = {
+FINALEsiBDynamics = {
   s1 s1 s1 s1
 }
-PARTsiB = \relative c'' {
-  \PARTtuttiB
+FINALEsiB = \relative c'' {
+  \FINALEtuttiB
   s1 s1 s1 s1
 }
-PARTsiBLyrics = \lyricmode {
+FINALEsiBLyrics = \lyricmode {
   \skip 1 \skip 1 \skip 1 \skip 1
 }
 
-PARTsiiBDynamics = {
+FINALEsiiBDynamics = {
   s1 s1 s1 s1
 }
-PARTsiiB = \relative c'' {
-  \PARTtuttiB
+FINALEsiiB = \relative c'' {
+  \FINALEtuttiB
   s1 s1 s1 s1
 }
-PARTsiiBLyrics = \lyricmode {
+FINALEsiiBLyrics = \lyricmode {
   \skip 1 \skip 1 \skip 1 \skip 1
 }
 
-PARTaiBDynamics = {
+FINALEaiBDynamics = {
   s1 s1 s1 s1
 }
-PARTaiB = \relative c' {
-  \PARTtuttiB
+FINALEaiB = \relative c' {
+  \FINALEtuttiB
   s1 s1 s1 s1
 }
-PARTaiBLyrics = \lyricmode {
+FINALEaiBLyrics = \lyricmode {
   \skip 1 \skip 1 \skip 1 \skip 1
 }
 
-PARTaiiBDynamics = {
+FINALEaiiBDynamics = {
   s1 s1 s1 s1
 }
-PARTaiiB = \relative c' {
-  \PARTtuttiB
+FINALEaiiB = \relative c' {
+  \FINALEtuttiB
   s1 s1 s1 s1
 }
-PARTaiiBLyrics = \lyricmode {
+FINALEaiiBLyrics = \lyricmode {
   \skip 1 \skip 1 \skip 1 \skip 1
 }
 
-PARTtiBDynamics = {
+FINALEtiBDynamics = {
   s1 s1 s1 s1
 }
-PARTtiB = \relative c' {
-  \PARTtuttiB
+FINALEtiB = \relative c' {
+  \FINALEtuttiB
   s1 s1 s1 s1
 }
-PARTtiBLyrics = \lyricmode {
+FINALEtiBLyrics = \lyricmode {
   \skip 1 \skip 1 \skip 1 \skip 1
 }
 
-PARTtiiBDynamics = {
+FINALEtiiBDynamics = {
   s1 s1 s1 s1
 }
-PARTtiiB = \relative c' {
-  \PARTtuttiB
+FINALEtiiB = \relative c' {
+  \FINALEtuttiB
   s1 s1 s1 s1
 }
-PARTtiiBLyrics = \lyricmode {
+FINALEtiiBLyrics = \lyricmode {
   \skip 1 \skip 1 \skip 1 \skip 1
 }
 
-PARTbiBDynamics = {
+FINALEbiBDynamics = {
   s1 s1 s1 s1
 }
-PARTbiB = \relative c {
-  \PARTtuttiB
+FINALEbiB = \relative c {
+  \FINALEtuttiB
   s1 s s1 s1
 }
-PARTbiBLyrics = \lyricmode {
+FINALEbiBLyrics = \lyricmode {
   \skip 1 \skip 1 \skip 1 \skip 1
 }
 
-PARTbiiBDynamics = {
+FINALEbiiBDynamics = {
   s1 s1 s1 s1
 }
-PARTbiiB = \relative c {
-  \PARTtuttiB
+FINALEbiiB = \relative c {
+  \FINALEtuttiB
   s1 s1 s1 s1
 }
-PARTbiiBLyrics = \lyricmode {
+FINALEbiiBLyrics = \lyricmode {
   \skip 1 \skip 1 \skip 1 \skip 1
 }
 
 %consolidated voices
-PARTconductor = {
-  \PARTconductorA
-  \PARTconductorB
+FINALEconductor = {
+  \FINALEconductorA
+  \FINALEconductorB
 }
-PARTsiDynamics = {
-  \PARTsiADynamics
-  \PARTsiBDynamics
+FINALEsiDynamics = {
+  \FINALEsiADynamics
+  \FINALEsiBDynamics
 }
-PARTsiiDynamics = {
-  \PARTsiiADynamics
-  \PARTsiiBDynamics
+FINALEsiiDynamics = {
+  \FINALEsiiADynamics
+  \FINALEsiiBDynamics
 }
-PARTaiDynamics = {
-  \PARTaiADynamics
-  \PARTaiBDynamics
+FINALEaiDynamics = {
+  \FINALEaiADynamics
+  \FINALEaiBDynamics
 }
-PARTaiiDynamics = {
-  \PARTaiiADynamics
-  \PARTaiiBDynamics
+FINALEaiiDynamics = {
+  \FINALEaiiADynamics
+  \FINALEaiiBDynamics
 }
-PARTtiDynamics = {
-  \PARTtiADynamics
-  \PARTtiBDynamics
+FINALEtiDynamics = {
+  \FINALEtiADynamics
+  \FINALEtiBDynamics
 }
-PARTtiiDynamics = {
-  \PARTtiiADynamics
-  \PARTtiiBDynamics
+FINALEtiiDynamics = {
+  \FINALEtiiADynamics
+  \FINALEtiiBDynamics
 }
-PARTbiDynamics = {
-  \PARTbiADynamics
-  \PARTbiBDynamics
+FINALEbiDynamics = {
+  \FINALEbiADynamics
+  \FINALEbiBDynamics
 }
-PARTbiiDynamics = {
-  \PARTbiiADynamics
-  \PARTbiiBDynamics
+FINALEbiiDynamics = {
+  \FINALEbiiADynamics
+  \FINALEbiiBDynamics
 }
-PARTsi = {
-  \PARTsiA
-  \PARTsiB
+FINALEsi = {
+  \FINALEsiA
+  \FINALEsiB
 }
-PARTsii = {
-  \PARTsiiA
-  \PARTsiiB
+FINALEsii = {
+  \FINALEsiiA
+  \FINALEsiiB
 }
-PARTai = {
-  \PARTaiA
-  \PARTaiB
+FINALEai = {
+  \FINALEaiA
+  \FINALEaiB
 }
-PARTaii = {
-  \PARTaiiA
-  \PARTaiiB
+FINALEaii = {
+  \FINALEaiiA
+  \FINALEaiiB
 }
-PARTti = {
-  \PARTtiA
-  \PARTtiB
+FINALEti = {
+  \FINALEtiA
+  \FINALEtiB
 }
-PARTtii = {
-  \PARTtiiA
-  \PARTtiiB
+FINALEtii = {
+  \FINALEtiiA
+  \FINALEtiiB
 }
-PARTbi = {
-  \PARTbiA
-  \PARTbiB
+FINALEbi = {
+  \FINALEbiA
+  \FINALEbiB
 }
-PARTbii = {
-  \PARTbiiA
-  \PARTbiiB
+FINALEbii = {
+  \FINALEbiiA
+  \FINALEbiiB
 }
-PARTsiLyrics = { 
-  \PARTsiALyrics
-  \PARTsiBLyrics
+FINALEsiLyrics = { 
+  \FINALEsiALyrics
+  \FINALEsiBLyrics
 }
-PARTsiiLyrics = { 
-  \PARTsiiALyrics 
-  \PARTsiiBLyrics 
+FINALEsiiLyrics = { 
+  \FINALEsiiALyrics 
+  \FINALEsiiBLyrics 
 }
-PARTaiLyrics = { 
-  \PARTaiALyrics 
-  \PARTaiBLyrics 
+FINALEaiLyrics = { 
+  \FINALEaiALyrics 
+  \FINALEaiBLyrics 
 }
-PARTaiiLyrics = {
-  \PARTaiiALyrics 
-  \PARTaiiBLyrics 
+FINALEaiiLyrics = {
+  \FINALEaiiALyrics 
+  \FINALEaiiBLyrics 
 }
-PARTtiLyrics = {
-  \PARTtiALyrics 
-  \PARTtiBLyrics 
+FINALEtiLyrics = {
+  \FINALEtiALyrics 
+  \FINALEtiBLyrics 
 } 
-PARTtiiLyrics = {
-  \PARTtiiALyrics 
-  \PARTtiiBLyrics 
+FINALEtiiLyrics = {
+  \FINALEtiiALyrics 
+  \FINALEtiiBLyrics 
 }
-PARTbiLyrics = {
-  \PARTbiALyrics 
-  \PARTbiBLyrics 
+FINALEbiLyrics = {
+  \FINALEbiALyrics 
+  \FINALEbiBLyrics 
 }
-PARTbiiLyrics = {
-  \PARTbiiALyrics 
-  \PARTbiiBLyrics 
+FINALEbiiLyrics = {
+  \FINALEbiiALyrics 
+  \FINALEbiiBLyrics 
 }
 
-PARTscore = \score {
+FINALEscore = \score {
   \pointAndClickOff
   <<
     %\new StaffGroup <<
@@ -336,13 +336,13 @@ PARTscore = \score {
       }{
         \override Stem.length = #0
         \override Flag.stencil = ##f
-        \PARTconductor
+        \FINALEconductor
       }
       %\new Dynamics \with {
       %  \override VerticalAxisGroup.staff-affinity = #DOWN
       %  \override VerticalAxisGroup.
       %    nonstaff-relatedstaff-spacing.basic-distance = #0
-      %}{ \PARTsiDynamics }
+      %}{ \FINALEsiDynamics }
       \new Staff = "si" \with {
         instrumentName = "S"
         shortInstrumentName = "S"
@@ -350,20 +350,20 @@ PARTscore = \score {
           staff-staff-spacing.basic-distance = #15
       }\new Voice = "si" {
         \clef "treble"
-        \PARTsi
+        \FINALEsi
       }
       \new Lyrics \with {
         \override VerticalAxisGroup.
           nonstaff-relatedstaff-spacing.basic-distance = #0
       }
       %\lyricsto "si"
-      { \PARTsiLyrics }
+      { \FINALEsiLyrics }
 
       %\new Dynamics \with {
       %  \override VerticalAxisGroup.staff-affinity = #DOWN
       %  \override VerticalAxisGroup.
       %    nonstaff-relatedstaff-spacing.basic-distance = #0
-      %}{ \PARTsiiDynamics }
+      %}{ \FINALEsiiDynamics }
       \new Staff = "sii" \with {
         instrumentName = "S"
         shortInstrumentName = "S"
@@ -372,20 +372,20 @@ PARTscore = \score {
         %\RemoveAllEmptyStaves
       }\new Voice = "sii" {
         \clef "treble"
-        \PARTsii
+        \FINALEsii
       }
       \new Lyrics \with {
         \override VerticalAxisGroup.
           nonstaff-unrelatedstaff-spacing.basic-distance = #0
       }
       %\lyricsto "sii"
-      { \PARTsiiLyrics }
+      { \FINALEsiiLyrics }
 
       %\new Dynamics \with {
       %  \override VerticalAxisGroup.staff-affinity = #DOWN
       %  \override VerticalAxisGroup.
       %    nonstaff-relatedstaff-spacing.basic-distance = #0
-      %}{ \PARTaiDynamics }
+      %}{ \FINALEaiDynamics }
       \new Staff = "ai" \with {
         instrumentName = "A"
         shortInstrumentName = "A"
@@ -393,20 +393,20 @@ PARTscore = \score {
           staff-staff-spacing.basic-distance = #15
       }\new Voice = "ai" {
         \clef "treble"
-        \PARTai
+        \FINALEai
       }
       \new Lyrics \with {
         \override VerticalAxisGroup.
           nonstaff-relatedstaff-spacing.basic-distance = #0
       }
       %\lyricsto "ai"
-      { \PARTaiLyrics }
+      { \FINALEaiLyrics }
 
       %\new Dynamics \with {
       %  \override VerticalAxisGroup.staff-affinity = #DOWN
       %  \override VerticalAxisGroup.
       %    nonstaff-relatedstaff-spacing.basic-distance = #0
-      %}{ \PARTaiiDynamics }
+      %}{ \FINALEaiiDynamics }
       \new Staff = "aii" \with {
         instrumentName = "A"
         shortInstrumentName = "A"
@@ -415,20 +415,20 @@ PARTscore = \score {
         %\RemoveAllEmptyStaves
       }\new Voice = "aii" {
         \clef "treble"
-        \PARTaii
+        \FINALEaii
       }
       \new Lyrics \with {
         \override VerticalAxisGroup.
           nonstaff-relatedstaff-spacing.basic-distance = #0
       }
       %\lyricsto "aii"
-      { \PARTaiiLyrics }
+      { \FINALEaiiLyrics }
 
       %\new Dynamics \with {
       %  \override VerticalAxisGroup.staff-affinity = #DOWN
       %  \override VerticalAxisGroup.
       %    nonstaff-relatedstaff-spacing.basic-distance = #0
-      %}{ \PARTtiDynamics }
+      %}{ \FINALEtiDynamics }
       \new Staff = "ti" \with {
         instrumentName = "T"
         shortInstrumentName = "T"
@@ -437,20 +437,20 @@ PARTscore = \score {
         %\RemoveAllEmptyStaves
       }\new Voice = "ti" {
         \clef "treble_8"
-        \PARTti
+        \FINALEti
       }
       \new Lyrics \with {
         \override VerticalAxisGroup.
           nonstaff-relatedstaff-spacing.basic-distance = #0
       }
       %\lyricsto "ti"
-      { \PARTtiLyrics }
+      { \FINALEtiLyrics }
 
       %\new Dynamics \with {
       %  \override VerticalAxisGroup.staff-affinity = #DOWN
       %  \override VerticalAxisGroup.
       %    nonstaff-relatedstaff-spacing.basic-distance = #0
-      %}{ \PARTtiiDynamics }
+      %}{ \FINALEtiiDynamics }
       \new Staff = "tii" \with {
         instrumentName = "T"
         shortInstrumentName = "T"
@@ -459,20 +459,20 @@ PARTscore = \score {
         %\RemoveAllEmptyStaves
       }\new Voice = "tii" {
         \clef "treble_8"
-        \PARTtii
+        \FINALEtii
       }
       \new Lyrics \with {
         \override VerticalAxisGroup.
           nonstaff-relatedstaff-spacing.basic-distance = #0
       }
       %\lyricsto "tii"
-      { \PARTtiiLyrics }
+      { \FINALEtiiLyrics }
       
       %\new Dynamics \with {
       %  \override VerticalAxisGroup.staff-affinity = #DOWN
       %  \override VerticalAxisGroup.
       %    nonstaff-relatedstaff-spacing.basic-distance = #0
-      %}{ \PARTbiDynamics }
+      %}{ \FINALEbiDynamics }
       \new Staff = "bi" \with {
         instrumentName = "B"
         shortInstrumentName = "B"
@@ -480,20 +480,20 @@ PARTscore = \score {
           staff-staff-spacing.basic-distance = #15
       }\new Voice = "bi" {
         \clef "bass"
-        \PARTbi
+        \FINALEbi
       }
       \new Lyrics \with {
         \override VerticalAxisGroup.
           nonstaff-relatedstaff-spacing.basic-distance = #0
       }
       %\lyricsto "bi"
-      { \PARTbiLyrics }
+      { \FINALEbiLyrics }
 
       %\new Dynamics \with {
       %  \override VerticalAxisGroup.staff-affinity = #DOWN
       %  \override VerticalAxisGroup.
       %    nonstaff-relatedstaff-spacing.basic-distance = #0
-      %}{ \PARTbiiDynamics }
+      %}{ \FINALEbiiDynamics }
       \new Staff = "bii" \with {
         instrumentName = "B"
         shortInstrumentName = "B"
@@ -502,14 +502,14 @@ PARTscore = \score {
         %\RemoveAllEmptyStaves
       }\new Voice = "bii" {
         \clef "bass"
-        \PARTbii
+        \FINALEbii
       }
       \new Lyrics \with {
         \override VerticalAxisGroup.
           nonstaff-relatedstaff-spacing.basic-distance = #0
       }
       %\lyricsto "bii"
-      { \PARTbiiLyrics }
+      { \FINALEbiiLyrics }
     %>>
   >>
 }

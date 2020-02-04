@@ -1,4 +1,4 @@
-%first.ly
+%third.ly
 %Created on 10 21, 2019 at 17:22
 
 \version "2.19.83"
@@ -12,19 +12,19 @@ THIRDtuttiA = {
   \override Hairpin.to-barline = ##f
   \override Staff.BarLine.bar-extent = #'(-2 . 2)
 
-  \set Staff.tempoEquationText = "="
+  \set Staff.tempoEquationText = "= ca. "
   \override Staff.Clef.full-size-change = ##t
   \no-clef
   \autoBeamOff
 }
 
 THIRDconductorA = {
-    \hide b1
-    %-\tweak HorizontalBracketText.text "8\""
+    \hide b4
+    -\tweak HorizontalBracketText.text "45\""
       \startGroup s2... \hide b16 \stopGroup
     \hide b1
-    %-\tweak HorizontalBracketText.text "8\""
-      \startGroup s2... \hide b16 \stopGroup
+    -\tweak HorizontalBracketText.text "35\""
+      \startGroup s2. s2... \hide b16
     \pageBreak
 }
 
@@ -40,9 +40,9 @@ THIRDsiAClaps = \relative c''' {
 THIRDsiA = \relative c' {
   \THIRDtuttiA
   \fat-line s4
-  \tempo 8 = 184
-  \force-clef-treble e8 8 16 16 
-  \bar ".|:" r16 e8 8 16 16 \bar ":|." \fat-line s2...
+  \tempo 8 = 180
+  \force-clef-treble e8-- 8 16 16 
+  \bar ".|:" r16 e8-- 8 16 16 \bar ":|." \fat-line s2...
   \fat-line { s1 s1 }
 }
 THIRDsiALyrics = \lyricmode {
@@ -61,12 +61,12 @@ THIRDsiiAClaps = \relative c''' {
 THIRDsiiA = \relative c'' {
   \THIRDtuttiA
   \fat-line s4
-  \tempo 8 = 184
-  \force-clef-treble e8 8 16 16 
-  \override TextSpanner.bound-details.left.text = "meno rall."
-  \bar ".|:" r16 e8 8 16 16 \bar ":|." 
+  \tempo 8 = 180
+  \force-clef-treble e8 8-- 16 16 
+  \override TextSpanner.bound-details.left.text = "rall."
+  \bar ".|:" r16 e8 8-- 16 16 \bar ":|." 
     \fat-line s2...\startTextSpan
-  \fat-line { s1\stopTextSpan s1 }
+  \fat-line { s1 s1\stopTextSpan }
 }
 THIRDsiiALyrics = \lyricmode {
   \skip 4 \markup {\box tɔ}2. \skip 1 \skip 1 \skip 1
@@ -84,9 +84,9 @@ THIRDaiAClaps = \relative c''' {
 THIRDaiA = \relative c' {
   \THIRDtuttiA
   \fat-line s4
-  \tempo 8 = 184
-  \force-clef-treble e8 8 16 16 
-  \bar ".|:" r16 e8 8 16 16 16 \bar ":|." \fat-line s2..
+  \tempo 8 = 180
+  \force-clef-treble e8-- 8 16 16 
+  \bar ".|:" r16 e8-- 8 16 16 16 \bar ":|." \fat-line s2..
   \fat-line { s1 s1 }
 }
 THIRDaiALyrics = \lyricmode {
@@ -105,10 +105,10 @@ THIRDaiiAClaps = \relative c''' {
 THIRDaiiA = \relative c' {
   \THIRDtuttiA
   \fat-line s4
-  \tempo 8 = 184
-  \force-clef-treble e8 8 16 16 
+  \tempo 8 = 180
+  \force-clef-treble e8 8-- 16 16 
   \override TextSpanner.bound-details.left.text = "rall."
-  \bar ".|:" r16 e8 8 16 16 16 \bar ":|." 
+  \bar ".|:" r16 e8 8-- 16 16 16 \bar ":|." 
     \fat-line s2..\startTextSpan
   \fat-line { s1 s1 \stopTextSpan }
 }
@@ -129,9 +129,9 @@ THIRDtiAClaps = \relative c'' {
 THIRDtiA = \relative c {
   \THIRDtuttiA
   \fat-line s4
-  \tempo 8 = 184
-  \force-clef-tenor d8 8 r16 16~ 
-  \bar ".|:" d16 8 8 16 16 r16 16~ \bar ":|." \fat-line { \stemless \hide 16 s2. }
+  \tempo 8 = 180
+  \force-clef-tenor d8-- 8 r16 16~ 
+  \bar ".|:" d16 8-- 8 16 16 r16 16~ \bar ":|." \fat-line { \stemless \hide 16 s2. }
   \fat-line { s1 s1 }
 }
 THIRDtiALyrics = \lyricmode {
@@ -150,12 +150,12 @@ THIRDtiiAClaps = \relative c'' {
 THIRDtiiA = \relative c {
   \THIRDtuttiA
   \fat-line s4
-  \tempo 8 = 184
-  \force-clef-tenor d8 8 r16 16~ 
-  \override TextSpanner.bound-details.left.text = "più rall."
-  \bar ".|:" d16 8 8 16 16 r16 16~ \bar ":|." 
+  \tempo 8 = 180
+  \force-clef-tenor d8 8-- r16 16~ 
+  \override TextSpanner.bound-details.left.text = "rall."
+  \bar ".|:" d16 8 8-- 16 16 r16 16~ \bar ":|." 
     \fat-line { \stemless \hide 16\startTextSpan s2. }
-  \fat-line { s1 s1 }
+  \fat-line { s1 s1\stopTextSpan }
 }
 THIRDtiiALyrics = \lyricmode {
   \skip 4 \markup {\box tɔ}2. \skip 1 \skip 1 \skip 1
@@ -173,9 +173,9 @@ THIRDbiAClaps = \relative c' {
 THIRDbiA = \relative c {
   \THIRDtuttiA
   \fat-line s4
-  \tempo 8 = 184
-  \force-clef-bass d8 8 16 16
-  \bar ".|:" r16 8 8 16 16 r16 16 16 16 \bar ":|." \fat-line { s2 s8. }
+  \tempo 8 = 180
+  \force-clef-bass d8-- 8 16 16
+  \bar ".|:" r16 8-- 8 16 16 r16 16 16 16 \bar ":|." \fat-line { s2 s8. }
   \fat-line  { s1 s1 }
 }
 THIRDbiALyrics = \lyricmode {
@@ -194,12 +194,12 @@ THIRDbiiAClaps = \relative c' {
 THIRDbiiA = \relative c {
   \THIRDtuttiA
   \fat-line s4
-  \tempo 8 = 184
-  \force-clef-bass d8 8 16 16
-  \override TextSpanner.bound-details.left.text = "molto rall."
-  \bar ".|:" r16 8 8 16 16 r16 16 16 16 \bar ":|." 
+  \tempo 8 = 180
+  \force-clef-bass d8 8-- 16 16
+  \override TextSpanner.bound-details.left.text = "rall."
+  \bar ".|:" r16 8 8-- 16 16 r16 16 16 16 \bar ":|." 
     \fat-line { s2\startTextSpan  s8. }
-  \fat-line { s1 s1 }
+  \fat-line { s1 s1\stopTextSpan }
 }
 THIRDbiiALyrics = \lyricmode {
   \skip 4 \markup {\box tɔ}2. \skip 1 \skip 1 \skip 1
@@ -220,12 +220,14 @@ THIRDtuttiB = {
 }
 
 THIRDconductorB = {
+    s2... \hide b16\stopGroup
     \hide b1
-    %-\tweak HorizontalBracketText.text "8\""
-      \startGroup s1 s2... \hide b16 \stopGroup
-    \hide b2
-    %-\tweak HorizontalBracketText.text "8\""
+    -\tweak HorizontalBracketText.text "35\""
       \startGroup s2... \hide b16 \stopGroup
+    \hide b2
+    -\tweak HorizontalBracketText.text "35\""
+      \startGroup s2... \hide b16 
+    % \stopGroup
 }
 
 THIRDsiBDynamics = {
@@ -236,13 +238,13 @@ THIRDsiBClaps = \relative c'' {
 }
 THIRDsiB = \relative c'' {
   \THIRDtuttiB
-  \override TextSpanner.bound-details.left.text = "molto accel."
-  \fat-line { s1 s1\startTextSpan^\> s1 }
+  \override TextSpanner.bound-details.left.text = "accel."
+  \fat-line { s1_\markup \small \italic "senza accento" s1\startTextSpan^\> s1 }
   \bar ".|:" \no-line \square g1:32^\pp\stopTextSpan \bar ":|." 
     \fat-line { \n s4..\> s16\! }
 }
 THIRDsiBLyrics = \lyricmode {
-  \skip 1 \skip 1 →1 \markup {\box t}1
+  \skip 1 \skip 1 →2. \markup {\box t}4 \skip 1
 }
 
 THIRDsiiBDynamics = {
@@ -253,12 +255,12 @@ THIRDsiiBClaps = \relative c'' {
 }
 THIRDsiiB = \relative c'' {
   \THIRDtuttiB
-  \override TextSpanner.bound-details.left.text = "molto accel."
-  \fat-line { s1 s1\startTextSpan^\> s1 }
+  \override TextSpanner.bound-details.left.text = "accel."
+  \fat-line { s1_\markup \small \italic "senza accento" s1\startTextSpan^\> s1 }
   \bar ".|:" \no-line \square g1:32^\pp\stopTextSpan \bar ":|." \fat-line s2
 }
 THIRDsiiBLyrics = \lyricmode {
-  \skip 1 \skip 1 →1 \markup {\box t}1
+  \skip 1 \skip 1 →2. \markup {\box t}4 \skip 1
 }
 
 THIRDaiBDynamics = {
@@ -269,13 +271,13 @@ THIRDaiBClaps = \relative c'' {
 }
 THIRDaiB = \relative c'' {
   \THIRDtuttiB
-  \override TextSpanner.bound-details.left.text = "molto accel."
-  \fat-line { s1 s1\startTextSpan^\> s1 }
+  \override TextSpanner.bound-details.left.text = "accel."
+  \fat-line { s1_\markup \small \italic "senza accento" s1\startTextSpan^\> s1 }
   \bar ".|:" \no-line \square g1:32^\pp\stopTextSpan \bar ":|."
     \fat-line { \n s4..\> s16\! }
 }
 THIRDaiBLyrics = \lyricmode {
-  \skip 1 \skip 1 →1 \markup {\box t}1
+  \skip 1 \skip 1 →2. \markup {\box t}4 \skip 1
 }
 
 THIRDaiiBDynamics = {
@@ -286,12 +288,12 @@ THIRDaiiBClaps = \relative c'' {
 }
 THIRDaiiB = \relative c'' {
   \THIRDtuttiB
-  \override TextSpanner.bound-details.left.text = "molto accel."
-  \fat-line { s1 s1\startTextSpan^\> s1 }
+  \override TextSpanner.bound-details.left.text = "accel."
+  \fat-line { s1_\markup \small \italic "senza accento" s1\startTextSpan^\> s1 }
   \bar ".|:" \no-line \square g1:32^\pp\stopTextSpan \bar ":|." \fat-line s2
 }
 THIRDaiiBLyrics = \lyricmode {
-  \skip 1 \skip 1 →1 \markup {\box t}1
+  \skip 1 \skip 1 →2. \markup {\box t}4 \skip 1
 }
 
 THIRDtiBDynamics = {
@@ -302,13 +304,13 @@ THIRDtiBClaps = \relative c' {
 }
 THIRDtiB = \relative c' {
   \THIRDtuttiB
-  \override TextSpanner.bound-details.left.text = "molto accel."
-  \fat-line { s1 s1\startTextSpan^\> s1 }
+  \override TextSpanner.bound-details.left.text = "accel."
+  \fat-line { s1_\markup \small \italic "senza accento" s1\startTextSpan^\> s1 }
   \bar ".|:" \no-line \square g1:32^\pp\stopTextSpan \bar ":|."
   \fat-line s2
 }
 THIRDtiBLyrics = \lyricmode {
-  \skip 1 \skip 1 →1 \markup {\box t}1
+  \skip 1 \skip 1 →2. \markup {\box t}4 \skip 1
 }
 
 THIRDtiiBDynamics = {
@@ -319,12 +321,12 @@ THIRDtiiBClaps = \relative c' {
 }
 THIRDtiiB = \relative c' {
   \THIRDtuttiB
-  \override TextSpanner.bound-details.left.text = "molto accel."
-  \fat-line { s1\stopTextSpan s1\startTextSpan^\> s1 }
+  \override TextSpanner.bound-details.left.text = "accel."
+  \fat-line { s1_\markup \small \italic "senza accento" s1\startTextSpan^\> s1 }
   \bar ".|:" \no-line \square g1:32^\pp\stopTextSpan \bar ":|." \fat-line s2
 }
 THIRDtiiBLyrics = \lyricmode {
-  \skip 1 \skip 1 →1 \markup {\box t}1
+  \skip 1 \skip 1 →2. \markup {\box t}4 \skip 1
 }
 
 THIRDbiBDynamics = {
@@ -335,12 +337,12 @@ THIRDbiBClaps = \relative c{
 }
 THIRDbiB = \relative c {
   \THIRDtuttiB
-  \override TextSpanner.bound-details.left.text = "molto accel."
-  \fat-line { s1 s1\startTextSpan^\> s1 }
+  \override TextSpanner.bound-details.left.text = "accel."
+  \fat-line { s1_\markup \small \italic "senza accento" s1\startTextSpan^\> s1 }
   \bar ".|:" \no-line \square b1:32^\pp\stopTextSpan \bar ":|." \fat-line s2
 }
 THIRDbiBLyrics = \lyricmode {
-  \skip 1 \skip 1 →1 \markup {\box t}1
+  \skip 1 \skip 1 →2. \markup {\box t}4 \skip 1
 }
 
 THIRDbiiBDynamics = {
@@ -351,12 +353,12 @@ THIRDbiiBClaps = \relative c {
 }
 THIRDbiiB = \relative c {
   \THIRDtuttiB
-  \override TextSpanner.bound-details.left.text = "molto accel."
-  \fat-line { s1 s1\stopTextSpan\startTextSpan^\> s1 }
+  \override TextSpanner.bound-details.left.text = "accel."
+  \fat-line { s1_\markup \small \italic "senza accento" s1\startTextSpan^\> s1 }
   \bar ".|:" \no-line \square b1:32^\pp\stopTextSpan \bar ":|." \fat-line s2
 }
 THIRDbiiBLyrics = \lyricmode {
-  \skip 1 \skip 1 →1 \markup {\box t}1
+  \skip 1 \skip 1 →2. \markup {\box t}4 \skip 1
 }
 
 %consolidated voices

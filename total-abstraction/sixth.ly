@@ -13,16 +13,17 @@ SIXTHtuttiA = {
 
   \set Staff.tempoEquationText = "="
   \override Staff.Clef.full-size-change = ##t
+  \set Staff.explicitClefVisibility = #end-of-line-invisible
   \no-clef
   \autoBeamOff
 }
 
 SIXTHconductorA = {
     \hide b1
-    %-\tweak HorizontalBracketText.text "8\""
-      \startGroup s2... \hide b16 \stopGroup
+    -\tweak HorizontalBracketText.text "15\""
+      \startGroup s1 s2... \hide b16 \stopGroup
     \hide b1
-    %-\tweak HorizontalBracketText.text "8\""
+    -\tweak HorizontalBracketText.text "10\""
       \startGroup s2... \hide b16 \stopGroup
     \pageBreak
 }
@@ -33,12 +34,12 @@ SIXTHsiADynamics = {
 SIXTHsiA = \relative c'' {
   \override TextSpanner.bound-details.left.text = "dim. al niente"
   \SIXTHtuttiA
-  \fat-line s1\startTextSpan \no-line { s1\stopTextSpan s1 }
-  \force-clef-treble \n fis1*1/2^\< s4. s8\!
+  \fat-line { s1\startTextSpan s1 } \no-line { s1\stopTextSpan s1 s2 }
+  \force-clef-treble \n \stemless fis2^\<
 }
 SIXTHsiALyrics = \lyricmode {
   \skip 1 \skip 1 \skip 1 
-  \markup \box "e"1
+  \skip 1 \skip 2 \markup \box "e"2
 }
 
 SIXTHsiiADynamics = {
@@ -47,11 +48,11 @@ SIXTHsiiADynamics = {
 SIXTHsiiA = \relative c'' {
   \override TextSpanner.bound-details.left.text = "dim. al niente"
   \SIXTHtuttiA
-  \fat-line { s1 s1\startTextSpan} \no-line { s1\stopTextSpan s1 }
+  \fat-line { s1 s1\startTextSpan s1 } \no-line { s1\stopTextSpan s1 }
 }
 SIXTHsiiALyrics = \lyricmode {
   \skip 1 \skip 1 \skip 1
-  \markup \box "e"1
+  \skip 1 \markup \box "e"1
 }
 
 SIXTHaiADynamics = {
@@ -60,29 +61,28 @@ SIXTHaiADynamics = {
 SIXTHaiA = \relative c' {
   \override TextSpanner.bound-details.left.text = "dim. al niente"
   \SIXTHtuttiA
-  \fat-line s1\startTextSpan \no-line { s1\stopTextSpan s1 }
-  \force-clef-treble \n a'1*1/2^\< s4. s8\!
+  \fat-line { s1\startTextSpan s1 } \no-line { s1\stopTextSpan s1 s2 }
+  \force-clef-treble \n \stemless a'2^\<
 }
 SIXTHaiALyrics = \lyricmode {
-  \skip 1 \skip 1 \skip 1
-  \markup \box "e"1
+  \skip 1 \skip 1 \skip 1 \skip 1 
+  \skip 2 \markup \box "e"2
 }
 
 SIXTHaiiADynamics = {
   s1 s1 s1 s1
 }
 SIXTHaiiA = \relative c' {
-  \override TextSpanner.bound-details.left.text = "molto rit."
   \SIXTHtuttiA
-  \fat-line s2\startTextSpan 
-  \bar ".|:" \force-clef-treble \stemless es4*1/2^~ es1*3/8 \shortfermata\stopTextSpan \bar ":|."
-  \fat-line { s1 }
+  \fat-line s1
+  \bar ".|:" \force-clef-treble \stemless { es4~ es2\shortfermata } \bar ":|." \fat-line s4
+  \fat-line { s1 s1 }
   
-  \force-clef-treble d1^\< a'1*1/2 s2\!
+  \force-clef-treble \stemless { d2^\< a'2 }
 }
 SIXTHaiiALyrics = \lyricmode {
-  \skip 2 \markup \box "m"8 \markup \box "e"4. \skip 1
-  \markup \box "m"1 \markup \box "e"1 
+  \skip 1 \markup \box "m"4 \markup \box "e"2. \skip 1
+  \skip 1 \markup \box "m"2 \markup \box "e"2
 }
 
 SIXTHtiADynamics = {
@@ -91,28 +91,28 @@ SIXTHtiADynamics = {
 SIXTHtiA = \relative c' {
   \override TextSpanner.bound-details.left.text = "dim. al niente"
   \SIXTHtuttiA
-  \fat-line s1\startTextSpan \no-line { s1\stopTextSpan s1 }
-  \force-clef-tenor \n cis1*1/2^\< s4. s8\!
+  \fat-line { s1\startTextSpan s1 } \no-line { s1\stopTextSpan s1 s2 }
+  \force-clef-tenor \n \stemless cis2^\<
 }
 SIXTHtiALyrics = \lyricmode {
-  \skip 1 \skip 1 \skip 1
-  \markup \box "e"1
+  \skip 1 \skip 1 \skip 1 
+  \skip 1 \skip 2 \markup \box "e"2
 }
 
 SIXTHtiiADynamics = {
   s1 s1 s1 s1
 }
 SIXTHtiiA = \relative c' {
-  \override TextSpanner.bound-details.left.text = "molto rit."
+  \override TextSpanner.bound-details.left.text = "rit."
   \SIXTHtuttiA
-  \fat-line s1\startTextSpan 
-  \bar ".|:" \force-clef-tenor \stemless es4*1/2^~ es1*3/8\shortfermata\stopTextSpan \bar ":|."
-  \fat-line { s2 }
-  \force-clef-tenor cis1^\<~ cis1*1/2 s2\!
+  \fat-line { s1\startTextSpan s1 } 
+  \bar ".|:" \force-clef-tenor \stemless { es4~ es2\shortfermata\stopTextSpan } \bar ":|."
+  \fat-line { s4 | s1 }
+  \force-clef-tenor \stemless { cis2^\<~ cis2 }
 }
 SIXTHtiiALyrics = \lyricmode {
-  \skip 1 \markup \box "m"8 \markup \box "e"2.. 
-  \markup \box "m"1 \markup \box "e"1 
+  \skip 1 \skip 1 \markup \box "m"4 \markup \box "e"2. 
+  \skip 1 \markup \box "m"2 \markup \box "e"2
 }
 
 SIXTHbiADynamics = {
@@ -121,48 +121,48 @@ SIXTHbiADynamics = {
 SIXTHbiA = \relative c {
   \override TextSpanner.bound-details.left.text = "dim. al niente"
   \SIXTHtuttiA
-  \fat-line { s1 s1\startTextSpan } \no-line { s1\stopTextSpan s1 }
+  \fat-line { s1 s1\startTextSpan s1 } \no-line { s1\stopTextSpan s1 }
 
 }
 SIXTHbiALyrics = \lyricmode {
-  \skip 1 \skip 1 \skip 1 \skip 1
+  \skip 1 \skip 1 \skip 1 \skip 1 \skip 1
 }
 
 SIXTHbiiADynamics = {
   s1 s1 s1 s1
 }
 SIXTHbiiA = \relative c {
-  \override TextSpanner.bound-details.left.text = "molto rit."
+  \override TextSpanner.bound-details.left.text = "rit."
   \SIXTHtuttiA
-  \fat-line s2.\startTextSpan 
-  \bar ".|:" \force-clef-bass \stemless es4*1/2^~ es1*3/8\shortfermata\stopTextSpan \bar ":|."
-  \fat-line { s2. }
-  \force-clef-bass cis1^\< fis,1*1/2 s2\!
+  \fat-line { s1\startTextSpan s2 }
+  \bar ".|:" \force-clef-bass \stemless { es4^~ es2*1/2\shortfermata\stopTextSpan } | s4 \bar ":|."
+  \fat-line { s2. | s1 }
+  \force-clef-bass \stemless { cis2^\< fis,2 }
 }
 SIXTHbiiALyrics = \lyricmode {
-  \skip 2. \markup \box "m"8 \markup \box "e"4. \skip 2.
-  \markup \box "m"1 \markup \box "e"1 
+  \skip 1 \skip 2 \markup \box "m"4 \markup \box "e"4 \skip 1
+  \skip 1 \markup \box "m"2 \markup \box "e"2
 }
 
 SIXTHtuttiB = {
   \set tieWaitForNote = ##t
-  \override Hairpin.to-barline = ##t
+  \override Hairpin.to-barline = ##f
   \omit Score.TimeSignature
   \set Score.defaultBarType = #""
   \set tieWaitForNote = ##t
 
   \set Staff.tempoEquationText = "="
   \override Staff.Clef.full-size-change = ##t
-  \no-clef
   \autoBeamOff
+  \no-clef
 }
 
 SIXTHconductorB = {
     \hide b1
-    %-\tweak HorizontalBracketText.text "8\""
+    -\tweak HorizontalBracketText.text "30\""
       \startGroup s2... \hide b16 \stopGroup
     \hide b1
-    %-\tweak HorizontalBracketText.text "8\""
+    -\tweak HorizontalBracketText.text "30\""
       \startGroup s2... \hide b16 \stopGroup
     \pageBreak
 }
@@ -172,7 +172,8 @@ SIXTHsiBDynamics = {
 }
 SIXTHsiB = \relative c'' {
   \SIXTHtuttiB
-  \fat-line { \n s1^\> } \no-line { s1\! s1 s2. }
+  \force-clef-treble
+  \n \stemless fis2^\sp\> \no-line { s2 | s1\! s1 s2. }
   \force-clef-treble \n fis1*1/8^\< s8\f
 }
 SIXTHsiBLyrics = \lyricmode {
@@ -186,7 +187,8 @@ SIXTHsiiB = \relative c' {
   \SIXTHtuttiB
   \no-line { s1 s1 }
   \force-clef-treble
-  \scaleDurations 8/18 { d2.^\markup \italic "dolce" cis2 e1 fis1 fis4 e1\longfermata }
+  \tempo \markup \small Largo
+  \scaleDurations 8/18 { d2. cis2 e1 fis1 fis4 e1\longfermata }
 }
 SIXTHsiiBLyrics = \lyricmode {
   \skip 1 \skip 1 \markup \box "ɑ"1 \skip 1
@@ -197,8 +199,8 @@ SIXTHaiBDynamics = {
 }
 SIXTHaiB = \relative c'' {
   \SIXTHtuttiB
-  \force-clef-treble a1*1/2 \n s2\sp^\> 
-  \bar ".|:" \n a1*1/2^\< \n s2\> \bar ":|." 
+  \force-clef-treble \n \stemless a2\sp^\> s2
+  \bar ".|:" \n \stemless a2^\< \n s2\> \bar ":|." 
   \fat-line { s1\! s1 }
 }
 SIXTHaiBLyrics = \lyricmode {
@@ -210,8 +212,8 @@ SIXTHaiiBDynamics = {
 }
 SIXTHaiiB = \relative c'' {
   \SIXTHtuttiB
-  \force-clef-treble \n a2\sp^\> 
-  \bar ".|:" \n a1*1/2^\< \n s2\> \bar ":|." 
+  \force-clef-treble \n \stemless a4\sp^\> s4 
+  \bar ".|:" \n \stemless a2^\< \n s2\> \bar ":|." 
   \fat-line { s2\! s1 s1 }
 }
 SIXTHaiiBLyrics = \lyricmode {
@@ -223,8 +225,8 @@ SIXTHtiBDynamics = {
 }
 SIXTHtiB = \relative c' {
   \SIXTHtuttiB
-  \force-clef-tenor cis1*1/2 \n s2\sp^\>
-  \bar ".|:" \n cis1*1/2^\< \n s2\> \bar ":|." | 
+  \force-clef-tenor \n \stemless cis2\sp^\> s2
+  \bar ".|:" \n \stemless cis2^\< \n s2\> \bar ":|." | 
   \fat-line { s1\! s1 } 
 }
 SIXTHtiBLyrics = \lyricmode {
@@ -236,8 +238,8 @@ SIXTHtiiBDynamics = {
 }
 SIXTHtiiB = \relative c' {
   \SIXTHtuttiB
-  \force-clef-tenor \n cis2\sp^\> 
-  \bar ".|:" \n cis!1*1/2^\< \n s2\> \bar ":|." 
+  \force-clef-tenor \n \stemless cis4\sp^\> s4
+  \bar ".|:" \n \stemless cis!2^\< \n s2\> \bar ":|." 
   \fat-line { s2\! s1 s1 }
 
 }
@@ -252,7 +254,8 @@ SIXTHbiB = \relative c' {
   \SIXTHtuttiB
   \no-line { s1 s1 }
   \force-clef-bass
-  \scaleDurations 8/18 { d2.^\markup \italic "dolce" cis2 e1 r4 a,2. r4 e'1\longfermata }
+  \tempo \markup \small Largo
+  \scaleDurations 8/18 { d2. cis2 e1 r4 a,2. r4 e'1\longfermata }
 }
 SIXTHbiBLyrics = \lyricmode {
   \skip 1 \skip 1 
@@ -264,7 +267,8 @@ SIXTHbiiBDynamics = {
 }
 SIXTHbiiB = \relative c, {
   \SIXTHtuttiB
-  \fat-line { \n s1^\> } \no-line { s1\! s1 s2. }
+  \force-clef-bass
+  \n \stemless fis2^\sp\> \no-line { s2 s1\! s1 s2. }
   \force-clef-bass \n fis1*1/8^\< s8\f
 }
 SIXTHbiiBLyrics = \lyricmode {

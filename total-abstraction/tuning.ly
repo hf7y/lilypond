@@ -18,30 +18,30 @@ TUNINGtuttiA = {
 TUNINGconductorA = {
   \override Stem.length = #0
   \override Flag.stencil = ##f
-  \hide b1-\tweak HorizontalBracketText.text "\"" ^\startGroup 
+  \hide b1-\tweak HorizontalBracketText.text "40\"" ^\startGroup 
     s1 s4 \hide b4\stopGroup
 
   s2
 
-  s4 \hide b2-\tweak HorizontalBracketText.text "\"" ^\startGroup s4 
+  s4 \hide b2-\tweak HorizontalBracketText.text "35\"" ^\startGroup s4 
     s1 s4 \hide b4\stopGroup
 
   \bar ""
   \break
 
-  \hide b1-\tweak HorizontalBracketText.text "\"" ^\startGroup
+  \hide b1-\tweak HorizontalBracketText.text "20\"" ^\startGroup
     s2.. \hide b8\stopGroup
 
-  \hide b8-\tweak HorizontalBracketText.text "\"" ^\startGroup
+  \hide b8-\tweak HorizontalBracketText.text "10\"" ^\startGroup
     s2. \hide b8\stopGroup
 
   \bar ""
   \pageBreak
 
-  \hide b1-\tweak HorizontalBracketText.text "\"" ^\startGroup 
+  \hide b1-\tweak HorizontalBracketText.text "15\"" ^\startGroup 
     s2. \hide b4\stopGroup
 
-  \hide b8-\tweak HorizontalBracketText.text "\"" ^\startGroup
+  \hide b8-\tweak HorizontalBracketText.text "20\"" ^\startGroup
     s2 s2. \hide b8\stopGroup
   \bar "" \break
 }
@@ -74,15 +74,16 @@ TUNINGsiA = \relative c'' {
   b4^\ppp~ s2. 
   b2~ s2
   b2^\< \n s2^\>
-  s2\!
+  \no-line s2\!
 
   \undo \omit Score.BarLine
-  \bar "|."
+  % \bar "|."
 }
 TUNINGsiALyrics = \lyricmode {
-  \markup \box ɑ \skip 1 \skip 1 \skip 1 \skip 1
-  \markup \box ɔ
-  \markup \box o
+  \skip 2. \markup \box "ɑ"4 | →1 | \markup \box "a"1
+  \skip 2. \markup \box "ɑ"4 | →1 | \markup \box "ɛ"2
+  \skip 2. \markup \box "ɔ"4 | \skip 4 →2 \markup \box "a"8 →8 | \markup \box "e"1 |
+  \markup \box "o"1 | \skip 1 | \skip 1 | \skip 2
 }
 
 TUNINGsiiA = \relative c'' {
@@ -99,17 +100,20 @@ TUNINGsiiA = \relative c'' {
   %\no-line s2
 
   \oneVoice
+  \no-clef
   \square \no-line {
     s2 \n b4^\<~ s4
     2\ppp~ s2
     2~ s2
-    2~
+    2 
   }
-  \bar "|."
+  % \bar "|."
 }
-TUNINGsiiALyrics = \lyricmode {
-  \markup \box ɔ
-  \markup \box s 
+TUNINGsiiALyrics =  \lyricmode {
+  \skip 1 | \skip 1 | \skip 1
+  \skip 1 | \skip 1 | \skip 2
+  \skip 1 | \skip 1 | \skip 1 |
+  \skip 2 \markup \box "s"2 | →1 | \markup \box "sh"8 →2.. | \markup \box "s"2
 }
 
 TUNINGaiA = \relative c' {
@@ -127,19 +131,20 @@ TUNINGaiA = \relative c' {
   \voiceOne
   s1
   s2 e'4~ s4
-  e2 s2
+  e2\fermata s2
 
   \oneVoice
   s4 e4^\pp~ s2
   e2~ s2
   e2^\< \n s2^\>
-  s2\!
-  \bar "|."
+  \no-line s2\!
+  % \bar "|."
 }
 TUNINGaiALyrics = \lyricmode {
-  \markup \box ɑ \skip 1 \skip 1 \skip 1
-  \markup \box ɔ
-  \markup \box o
+  \skip 4 \markup \box "ɑ"2. | →1 | \markup \box "a"1
+  \skip 4 \markup \box "ɑ"2. | →1 | \markup \box "ɛ"2
+  \skip 2 \markup \box "ɔ"2 | →2 \markup \box "a"4 →4 | \markup \box "e"1 |
+  \skip 4 \markup \box "o"2. | \skip 1 | \skip 1 | \skip 2
 }
 
 TUNINGaiiA = \relative c' {
@@ -150,7 +155,7 @@ TUNINGaiiA = \relative c' {
   \voiceTwo
   s2 d4^\markup \italic "solo"~ s4
   s1
-  d2 \glissando s4 cis4 ^\fermata
+  d2 \glissando s4 cis4_\shortfermata
 
   \change Staff = "aii"
 
@@ -158,12 +163,14 @@ TUNINGaiiA = \relative c' {
   s2. cis4^\pp~
   cis2~ s2
   cis2^\< \n s2^\>
-  s2\!
-  \bar "|."
+  \no-line s2\!
+  % \bar "|."
 }
 TUNINGaiiALyrics = \lyricmode {
-  \markup \box ɔ \skip 1
-  \markup \box o
+  \skip 1 | \skip 1 | \skip 1
+  \skip 1 | \skip 1 | \skip 2
+  \skip 1 | \skip 1 | \skip 1 |
+  \skip 2. \markup \box "o"4 | \skip 1 | \skip1 | \skip 2
 }
 
 TUNINGtiA = \relative c' {
@@ -184,18 +191,20 @@ TUNINGtiA = \relative c' {
   g2 \fermata s2
 
   \oneVoice
+  \no-clef
   \no-line \square {
     s2 \n b4^\< ~ s4
     2\ppp~ s2
     2~ s2
     2~
   }
-  \bar "|."
+  % \bar "|."
 }
 TUNINGtiALyrics = \lyricmode {
-  \markup \box ɑ \skip 1 \skip 1 \skip 1
-  \markup \box ɔ
-  \markup \box s
+  \markup \box "ɑ"1 | →1 | \markup \box "a"1
+  \skip 1 | \markup \box "ɑ"8 →8 \skip 2. | \markup \box "ɛ"2
+  \skip 4 \markup \box "ɔ"2 →4 | \skip 4 \markup \box "a"4. →4. | \markup \box "e"1 |
+  \skip 2 \markup \box "s"2 | →1 | \markup \box "sh"8 →2.. | \markup \box "s"2
 }
 
 TUNINGtiiA = \relative c {
@@ -211,16 +220,19 @@ TUNINGtiiA = \relative c {
   \change Staff = "tii"
 
   \oneVoice
+  \no-clef
   \no-line \square {
     s1 \n b2^\<~ s2\ppp
     2~ s2
     2~
   }
-  \bar "|."
+  % \bar "|."
 }
 TUNINGtiiALyrics = \lyricmode {
-  \markup \box ɔ
-  \markup \box s
+  \skip 1 | \skip 1 | \skip 1
+  \skip 1 | \skip 1 | \skip 2
+  \skip 1 | \skip 1 | \skip 1 |
+  \skip 1 | \markup \box "s"8 →2.. | \markup \box "sh"8 →2.. | \markup \box "s"2
 }
 
 TUNINGbiA = \relative c {
@@ -247,13 +259,13 @@ TUNINGbiA = \relative c {
     2~ s2
     2~
   }
-  \bar "|."
+  % \bar "|."
 }
 TUNINGbiALyrics = \lyricmode {
-  \markup \box ɑ \skip 1 \skip 1 \skip 1
-  \markup \box ɔ
-  \markup \box o 
-  \markup \box s
+  \skip 2 \markup \box "ɑ"2 | →1 | \markup \box "a"1
+  \skip 2 \markup \box "ɑ"2 | →1 | \markup \box "ɛ"2
+  \markup \box "ɔ"2 →2 | \markup \box "a"2 →2 | \markup \box "e"1 |
+  \skip 2. \markup \box "o"4 | \skip 4 \markup \box "s"8 →8 \skip 2 | \markup \box "sh"8 →2.. | \markup \box "s"2
 }
 
 TUNINGbiiA = \relative c {
@@ -272,12 +284,14 @@ TUNINGbiiA = \relative c {
   s1
   c2^\pp~ s2
   c2^\< \n s2^\>
-  s2\!
-  \bar "|."
+  \no-line s2\!
+  % \bar "|."
 }
 TUNINGbiiALyrics = \lyricmode {
-  \markup \box ɔ
-  \markup \box s
+  \skip 1 | \skip 1 | \skip 1
+  \skip 1 | \skip 1 | \skip 2
+  \skip 1 | \skip 1 | \skip 1 |
+  \skip 1 | \markup \box "o"1 | \skip 1 | \skip 2
 }
 
 
@@ -302,7 +316,7 @@ TUNINGscore = \score {
         \clef "treble"
         \TUNINGsiA
       }
-      \new Lyrics \lyricsto "si" { \TUNINGsiALyrics }
+      \new Lyrics { \TUNINGsiALyrics }
 
       \new Staff = "sii" \with {
         instrumentName = "S"
@@ -312,7 +326,7 @@ TUNINGscore = \score {
         \clef "treble"
         \TUNINGsiiA
       }
-      \new Lyrics \lyricsto "sii" { \TUNINGsiiALyrics }
+      \new Lyrics { \TUNINGsiiALyrics }
 
       \new Staff = "ai" \with {
         instrumentName = "A"
@@ -321,7 +335,7 @@ TUNINGscore = \score {
         \clef "treble"
         \TUNINGaiA
       }
-      \new Lyrics \lyricsto "ai" { \TUNINGaiALyrics }
+      \new Lyrics { \TUNINGaiALyrics }
 
       \new Staff = "aii" \with {
         instrumentName = "A"
@@ -331,7 +345,7 @@ TUNINGscore = \score {
         \clef "treble"
         \TUNINGaiiA
       }
-      \new Lyrics \lyricsto "aii" { \TUNINGaiiALyrics }
+      \new Lyrics { \TUNINGaiiALyrics }
 
       \new Staff = "ti" \with {
         instrumentName = "T"
@@ -341,7 +355,7 @@ TUNINGscore = \score {
         \clef "treble_8"
         \TUNINGtiA
       }
-      \new Lyrics \lyricsto "ti" { \TUNINGtiALyrics }
+      \new Lyrics { \TUNINGtiALyrics }
 
       \new Staff = "tii" \with {
         instrumentName = "T"
@@ -351,7 +365,7 @@ TUNINGscore = \score {
         \clef "treble_8"
         \TUNINGtiiA
       }
-      \new Lyrics \lyricsto "tii" { \TUNINGtiiALyrics }
+      \new Lyrics { \TUNINGtiiALyrics }
       
       \new Staff = "bi" \with {
         instrumentName = "B"
@@ -360,7 +374,7 @@ TUNINGscore = \score {
         \clef "bass"
         \TUNINGbiA
       }
-      \new Lyrics \lyricsto "bi" { \TUNINGbiALyrics }
+      \new Lyrics { \TUNINGbiALyrics }
 
       \new Staff = "bii" \with {
         instrumentName = "B"
@@ -370,7 +384,7 @@ TUNINGscore = \score {
         \clef "bass"
         \TUNINGbiiA
       }
-      \new Lyrics \lyricsto "bii" { \TUNINGbiiALyrics }
+      \new Lyrics { \TUNINGbiiALyrics }
     %>>
   >>
 }
