@@ -19,21 +19,21 @@
   tagline = ""
 }
 
-\include "./tuning.ly"
+\include "./0tuning.ly"
 \score { \TUNINGscore }
-\include "./first.ly"
+\include "./1first.ly"
 \score { \FIRSTscore }
-\include "./second.ly"
+\include "./2second.ly"
 \score { \SECONDscore }
-\include "./third.ly"
+\include "./3third.ly"
 \score { \THIRDscore }
-\include "./fourth.ly"
+\include "./4fourth.ly"
 \score { \FOURTHscore }
-\include "./fifth.ly"
+\include "./5fifth.ly"
 \score { \FIFTHscore }
-\include "./sixth.ly"
+\include "./6sixth.ly"
 \score { \SIXTHscore }
-\include "./finale.ly"
+\include "./7finale.ly"
 \score { \FINALEscore }
 
 \layout {

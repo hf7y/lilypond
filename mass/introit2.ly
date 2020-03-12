@@ -19,79 +19,101 @@ glissandoSkipOff = {
 }
 
 chordos = \relative c {
-	\ottava #-1
-	<e g bes d >1~ | 1 |
-	r4 <e g bes d >2.~ | 1 | 
-	r4 <e g c e >4 <g bes d fis >2~ | 2 r4 <bes c e gis >4~ |
+	\clef "bass"
+	r2 <e g ais d >4 <e g c e >4 | <g ais d fis >1 | 
+	r2 \tuplet 3/2 { <e g ais d >4 <e g c e >4 <g ais d fis >4 } | 
+		<ais c e gis >1 |
+	r4 <e g ais d >4 \tuplet 3/2 { <e g c e >4 <g ais d fis >4 <ais c e gis >4 } |
+		\clef "treble"
+		<c d g ais >4 <d e gis c >4  <e g b d >4  <fis gis cis e >4 |
 	\set tieWaitForNote = ##t
-	<bes c e gis >1~ | { \hide gis'4 \hide bes, \hide e \hide c } |
+	<gis b dis fis >1~ | 
+		{ \hide gis4 \hide b \hide dis \hide fis } |
+
+	\clef "bass"
+	r2 <e,, g ais d >4 <e g c e >4 | r4 <g ais d fis >2.~ | 
+	<g ais d fis>4 r4 \tuplet 3/2 { <e g ais d >4 <e g c e >4 <g ais d fis >4 } | 
+		r4 <ais c e gis >2 <c d g ais >4~|
+	<c d g ais >2 \tuplet 3/2 { r4 <e, g ais d >4 <g ais d fis >4 } |
+		\clef "treble"
+		\tuplet 3/2 { <ais c e gis >4 <c d g ais >4 <d e gis c >4 } <e g b d >4 \tuplet 3/2 { r8 <fis gis cis e >4 } |
+	\set tieWaitForNote = ##t
+	<gis b dis fis >4 <ais cis f gis >2.~
+		{ \hide ais4 \hide cis \hide f \hide gis } |
 
 	\break	
-	r4 <e, g bes d >2.~ | 1 | 
-	r4 <e g b! d >4 <e g b d >2~ | 1 | 
-	r4 <e g b d >4  <fis gis cis e >  <gis b dis fis > |
-	\ottava #0
-		<ais cis f gis >  <dis g ais > <d f a c > <e g b d > |
+	e,4~ g~ ais~ d~ | <e, g ais d >1 | 
+	<e g b d >4  <fis gis cis e >2.~ | <fis gis cis e >1|
+	<e g b d >4  <fis gis cis e >2 <gis b dis fis >4~ | <gis b dis fis >1 |
+		<ais cis f gis >4  <dis g ais > <d f a c > <e g b d > |
 	<fis a cis e >2. r4 | r1 |
 
-	\break
-	r4 <e g b d >4 <fis a cis e >2~ | 1 | 
-	r4 <fis a cis e > <gis b dis fis >  <bes cis f gis >~ | 1 |
-	r4 <fis a cis e >  <gis b dis fis >  <ais cis f gis > |
-	  <c dis g ais > <d f a c > <e g b d > <fis a cis e > |
-	<gis b dis fis>8  <ais cis f gis>~ 4 s2 |
-
 }
-pedal-tones = \relative c,, {
+pedal-tones = \relative c, {
 	\ottava #-1
-	<c c'>1~ | 2. r4 |
-	<c c'>1~ | 2. r4 |
-	<c c'>1~ | 4 \ottava #0 r4 <c' g'>2~ |
-	<c g'>1 | r1 |
+	<c, c'>1~ | 2 <c' g'>2 |
+	<c, c'>1~ | 2 <c' g'>2 |
+	<c, c'>1  | 
+		\ottava #0 
+		r4 c' g' c |
+	e4 ais, \tuplet 3/2 { fis' c gis' } |
+		d \tuplet 3/2 { r8 g,4 } r2 | 
 
-	<c g'>1~ | 2. r4 |
-	<c g'>1~ | 2. r4 |
-	<c g'>2 <g' c>2 | <c e>2 
-		{
-			\clef "treble"
-		 	\tuplet 5/4 { fis'''16  g16  d16  cis16  g'16 } 
-			\tuplet 5/4 { ais,16  e16  g16  fis,16  dis'16 }  |
-			 \tuplet 5/4 { f16  f16  g,16  ais,16  g16 } 
-			 \clef "bass"
-			 \tuplet 5/4 { f'16  e,16  cis'16  dis16  b16 } 
-			 \tuplet 5/4 { f16  g16  e,16  e'16  fis,16 } 
-			 \tuplet 5/4 { a16  g16  c,16  d,16  g16 }  |
-			 e16  d'16  c16  c,16  g'16 r8. r2 |
-		}
+	\ottava #-1
+	<c,, c'>1~ | 2 <c' g'>2 |
+	<c, c'>1 | <c' g'> |
+	<c, c'>2. 
+		\ottava #0 
+		\tuplet 3/2 {r8 g''4} | 
+		\tuplet 3/2 { b4  g'4  e4 } |
+	\tuplet 3/2 { ais4 c e } |
+		\clef "treble"
+		g8  c  ais  c \tuplet 3/2 { ais'4  c  e,  } |
+	g'8  c, g  e \tuplet 5/4 { g  c,  e, b  g } |
 
-	r1 | \clef "bass" r2 <g' c>2~ 
-	<g c>2. r4 | <c e>1 ~ |
-	<c e>2 <e g> | <g bes> \tuplet 3/2 { <bes c>4 <c d> <d e> }|
-	\clef "treble"
-		 \tuplet 5/4 { g16  b16  gis16  c16  gis'16 } 
-		\tuplet 5/4 { a16  d,,16  a'16  e'16  g,16 }
-		\clef "bass"
-		\change Staff = "up"
-	\new Voice \autochange {
-		% ________________________________________bar 2 :
- 		\tuplet 5/4 { d'16  ais''16  c,16  f,16  dis16 } 
-		 \tuplet 5/4 { ais16  e'''16  fis,,16  a,16  f'16 } 
-		 \tuplet 5/4 { ais16  gis,16  c'16  a,16  c''16 } 
-		 \tuplet 5/4 { e,,,16  e'''16  f16  g,,,16  ais''16 }  |
-		% ________________________________________bar 3 :
- 		\tuplet 5/4 { g,,16  ais16  g'16  dis16  ais''16 } 
-		 \tuplet 5/4 { cis'16  b,16  a,16  g'16  g,16 } 
-		 \tuplet 5/4 { c'16  g16  g,,,16  g16  e'16 } 
-		 \tuplet 5/4 { e'16  g''16  f'16  ais,,16  g''16 }  |
-		% ________________________________________bar 4 :
- 		\tuplet 5/4 { ais16  cis,,16  b,16  g'''16  g16 } 
-		 \tuplet 5/4 { g16  c,,,,16  g'''16  g,,16  g'16 } 
-		 \tuplet 5/4 { g,,,16  a'16  g''16  e'''16  c,,16 } 
-		 \tuplet 5/4 { d''16  g,,16  g,,,,16  g'16  g16 }  |
-		% ________________________________________bar 5 :
- 		\tuplet 5/4 { g'''16  g16  g,,,,16  g''''16  g16 } 
-	 	\tuplet 5/4 { g''16  g,,,,16  g''''16  g,,,16  g,,16 }
-	}
+	\clef "bass"
+	\tuplet 3/2 { e4 bes g } 
+	<< 	\voiceTwo { c,2~ | c1 } \\
+		\voiceOne { r4 g'8 bes | r4 g8 bes r4 g8 bes |} >>	
+	<< 	\voiceTwo { c,1~ | c1 } \\
+		\voiceOne { r4 g'8 bes r4 g8 bes | r4 g8 bes r4 \tuplet 3/2 { g8 bes g }|} >>	
+% ________________________________________bar 2 :
+ \tuplet 3/2 { bes8  g8  c,8 } 
+	 \tuplet 3/2 { g'8  c8  g'8 }
+		 \tuplet 3/2 { c8  e8  c,8 }
+		 	\clef "treble"
+			 \tuplet 3/2 { fis'8  e8  g'8 }  |
+% ________________________________________bar 3 :
+ \tuplet 3/2 { c,8  ais8  e8 } 
+	 \tuplet 3/2 { g8  e'8  fis,8 } 
+		 \tuplet 3/2 { c'8  d,8  g'8 } 
+			 \tuplet 3/2 { e,8  ais'8  fis8 }  |
+% ________________________________________bar 4 :
+ \tuplet 3/2 { e'8  c8  d,8 } 
+	 \tuplet 3/2 { ais'8  fis,8  b8 }
+	 		g16  d16  c16  g''16 
+			ais,,16  e''16  fis,16  ais16  |
+% ________________________________________bar 2 :
+c,16  g'16  ais16  d,16 
+	c'16  g16  c16  c'16 
+		gis16  c,,16  c16  e16 
+	\clef "bass"
+	\change Staff = "up"
+	\autochange \relative c {
+			g'16  fis,16  gis'16  d16  |
+% ________________________________________bar 3 :
+c16  d'16  fis,16  ais'16 
+	c16  c,16  fis,16  b,16 
+		e16  ais'16  g16  b16  
+\tuplet 5/4 { e16  fis,16  ais,,16  c''16  g16 }  |
+% ________________________________________bar 2 :
+ \tuplet 5/4 { ais,16  d,,16  c'16  g''16  c16 } 
+	 \tuplet 5/4 { c,,16  gis''16  c,16  c'16  e,,,16 } 
+		 \tuplet 5/4 { g'16  fis'16  fis,,16  d''16  c'16 } 
+			 \tuplet 5/4 { d,16  fis16  fis16  c,,16  c'''16 }  |
+% ________________________________________bar 3 :
+ \tuplet 5/4 { fis,16  b,,16  e'16  ais'16  g,,16 }
+}
 }
 
 
