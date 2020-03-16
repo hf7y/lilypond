@@ -36,19 +36,19 @@
 			}
 		},
 		{
-			"file": "/home/zach/siddhartha/.make-index",
+			"file": "/home/zach/siddhartha/cancelled-mar-14.txt",
 			"settings":
 			{
-				"buffer_size": 572,
+				"buffer_size": 911,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/home/zach/siddhartha/overview.html",
+			"file": "/home/zach/siddhartha/index.html",
 			"settings":
 			{
-				"buffer_size": 420,
+				"buffer_size": 4634,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -109,17 +109,21 @@
 	"expanded_folders":
 	[
 		"/home/zach/siddhartha",
-		"/home/zach/siddhartha/i-orthodoxy",
-		"/home/zach/siddhartha/i-orthodoxy/breathe",
-		"/home/zach/siddhartha/i-orthodoxy/homily",
-		"/home/zach/siddhartha/i-orthodoxy/introit"
+		"/home/zach/siddhartha/asceticism",
+		"/home/zach/siddhartha/earthly-delights",
+		"/home/zach/siddhartha/earthly-delights/intimacy",
+		"/home/zach/siddhartha/orthodoxy",
+		"/home/zach/siddhartha/orthodoxy/breathe"
 	],
 	"file_history":
 	[
+		"/home/zach/siddhartha/orthodoxy/breathe/score.html",
+		"/home/zach/siddhartha/index.html",
+		"/home/zach/siddhartha/earthly-delights/intimacy/score.html",
+		"/home/zach/siddhartha/overview.html",
+		"/home/zach/siddhartha/.make-index",
 		"/home/zach/siddhartha/i-orthodoxy/introit/index.html",
 		"/home/zach/siddhartha/.css",
-		"/home/zach/siddhartha/.make-index",
-		"/home/zach/siddhartha/index.html",
 		"/home/zach/siddhartha/.blurb",
 		"/home/zach/lilypond/mass/dear_russel-3_10_20.txt",
 		"/home/zach/www/II Asceticism/stations of the cross/index.html",
@@ -260,7 +264,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -282,22 +286,7 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"vintage":
-							{
-								"_vintageous_glue_until_normal_mode": false,
-								"action": null,
-								"action_count": "",
-								"mode": "mode_normal",
-								"motion": null,
-								"motion_count": "",
-								"must_capture_register_name": false,
-								"normal_insert_count": "1",
-								"partial_sequence": "",
-								"register": "\"",
-								"sequence": "",
-								"xpos": 6
-							}
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -319,33 +308,18 @@
 						"selection":
 						[
 							[
-								6204,
-								6204
+								5373,
+								5373
 							]
 						],
 						"settings":
 						{
 							"_nv_visual_sel_mode": "mode_visual",
 							"syntax": "Packages/SubLilyPond/LilyPond.tmLanguage",
-							"translate_tabs_to_spaces": false,
-							"vintage":
-							{
-								"_vintageous_glue_until_normal_mode": false,
-								"action": null,
-								"action_count": "",
-								"mode": "mode_normal",
-								"motion": null,
-								"motion_count": "",
-								"must_capture_register_name": false,
-								"normal_insert_count": "1",
-								"partial_sequence": "",
-								"register": "\"",
-								"sequence": "",
-								"xpos": 55
-							}
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2985.0,
+						"translation.y": 3153.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
@@ -353,85 +327,24 @@
 				},
 				{
 					"buffer": 2,
-					"file": "/home/zach/siddhartha/.make-index",
+					"file": "/home/zach/siddhartha/cancelled-mar-14.txt",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 572,
+						"buffer_size": 911,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								515,
-								515
+								247,
+								247
 							]
 						],
 						"settings":
 						{
-							"_nv_visual_sel_mode": "mode_visual",
-							"highlight_line": false,
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"vintage":
-							{
-								"_vintageous_glue_until_normal_mode": false,
-								"action": null,
-								"action_count": "",
-								"mode": "mode_normal",
-								"motion": null,
-								"motion_count": "",
-								"must_capture_register_name": false,
-								"normal_insert_count": "1",
-								"partial_sequence": "",
-								"register": "\"",
-								"sequence": "",
-								"xpos": 9
-							}
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "/home/zach/siddhartha/overview.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 420,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								419,
-								419
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"translate_tabs_to_spaces": false,
-							"vintage":
-							{
-								"_vintageous_glue_until_normal_mode": false,
-								"action": null,
-								"action_count": "",
-								"mode": "mode_normal",
-								"motion": null,
-								"motion_count": "",
-								"must_capture_register_name": false,
-								"normal_insert_count": "1",
-								"partial_sequence": "",
-								"register": "\"",
-								"sequence": "",
-								"xpos": 9
-							}
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -439,13 +352,41 @@
 					},
 					"stack_index": 1,
 					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/home/zach/siddhartha/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4634,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4029,
+								4029
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 2109.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
 				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 41.0
+		"height": 28.0
 	},
 	"input":
 	{
