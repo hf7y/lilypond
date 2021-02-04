@@ -1,0 +1,397 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"SHARP",
+				"DOUBLE-SHARP"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "phrase1.ly",
+			"settings":
+			{
+				"buffer_size": 2702,
+				"encoding": "UTF-8",
+				"line_ending": "Unix",
+				"name": "\\version \"2.20.0\""
+			}
+		},
+		{
+			"file": "phrase2.ly",
+			"settings":
+			{
+				"buffer_size": 3058,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "\\version \"2.20.0\"\n\n\\header {\n\ttitle = \"Phrase 3\"\n}\n\n\\include \"./arpeggio.ly\"\n\\include \"../z/note.ily\"\n\npentatonic = #`(\n  (0 . ,DOUBLE-SHARP)\n  (1 . 0)\n  (2 . 0)\n  (3 . ,DOUBLE-SHARP)\n  (4 . 0)\n  (5 . 0)\n  (6 . 0)\n)\n\nwhole-tone = #`(\n  (0 . 0)\n  (1 . 0)\n  (2 . 0)\n  (3 . ,SHARP)\n  (4 . ,SHARP)\n  (5 . ,SHARP)\n  (6 . ,SHARP)\n)\n\nfunction =\n#(define-music-function\n     (parser location pitch duration figure)\n     (ly:pitch? ly:duration? string?)\n\t(make-music\n\t  'SequentialMusic\n\t  'elements\n\t  (list (make-music\n\t          'NoteEvent\n\t          'articulations\n\t          (list (make-music\n\t                  'AbsoluteDynamicEvent\n\t                  'text\n\t                  \"f\"))\n\t          'duration\n\t          duration\n\t          'pitch\n\t          pitch)))\n   )\n\nmelodyC = {\n\t\\ottava #0\n\t\\relative c''' { cis4( dis) s s a g s dis' s f b, s s a }\n\t\n\t\\ottava #0\n\t\\relative c'' { cis( dis) s a g s f s s dis' s f s s f, s s s e d}\n\n\t\\bar \"\" \\break\n\t\\clef \"bass\"\n\t\\relative c' { bes( c) s aes s ges s d e s bes s s aes s e s f s }\n\n\t\\ottava #-1\n\t\\relative c, { cis b s s  a s g s s aes ges s g s f s s dis cis e es }\n\n\t\\relative c,, { es s es s es s s es s s es s s s s es s s s \n\t\t}\t\n}\n\naccompanimentC = {\n\t\\override Accidental.stencil = ##f\n\t\\arpeggioNormal\n\ts4\n\t%\\ottava #1\n\t\\squigUp d' \\squig a'  \\squig f' \\squig c' \n\t\\squigDown gis'' \\squig dis' \\squig fis' \\squig gis' \n\t\\squig dis' \\squigUp b' \\squig e' \\squig b \n\ts4\n\t\n\t%\\ottava #0\n\t\\squig c' \\squig d' \\squig g'' \n\t\\squig a' \\squigDown gis' \\squig dis \\squig cis' \n\t\\squigUp g' \\squig g'' \\squigDown dis' \\squig dis \n\t\\squig fis \\squigUp a' \\squig e \\squig f \n\t\\squigDown dis \\squig cis' \\squig fis s4 \n\ts4\n\t\\change Staff = \"accompanimentUp\" \\clef \"bass\"\n\t\\set Staff.clefPosition = #0\n  \t\\set Staff.middleCPosition = #4\n\t\\change Staff = \"accompanimentDown\" \\clef \"bass\"\n\t\\set Staff.clefPosition = #0\n  \t\\set Staff.middleCPosition = #4\n\n\t\\squigDown ais \\squigUp a \\squig d, \n\t\\squig a, \\squigDown fis,, \\squig dis, \\squig gis \n\t\\squigUp d, \\squig a, \\squig f,, \\squig d,, \n\t\\squigDown ais,, \\squig dis,, \\squig gis, \\squig cis, \n\t\\squig fis,, \\squig cis, \\squig ais,, \\squig gis,\n\n\t\\change Staff = \"accompanimentUp\"\n\t\\key bes \\minor\n\n\t%\\ottava #-1\n\t\\squigUp dis, \\squigDown ais,, \\squig dis,, \\squig gis,\n\t\\squigUp cis, \\squigDown ais, \\squig dis,, \\squig gis,\n\t\\squig cis, \\squig gis \\squigUp g,, \\squig dis,,\n\t\\squigDown gis, \\squig cis, \\squig fis,, \\squigUp a, \n\t\\squig dis, \\squigDown fis,, \\squig dis,, \\squig gis, \n\t\\squig cis,,\n\n\t\\squig ais, \\squig cis, \\squig gis,,\n\t\\squig dis,, \\squig fis,,, \\squigUp cis,, \\squigDown gis,,\n\t\\squig dis,, \\squig ais, \\squigUp cis, \\squig f,\n\t\\squigDown ais,, \\squig cis,, \\squigUp g, \\squig dis, \n\t\\squigDown fis,, \\squigUp a, \\squig cis, \\squig g\n\t\\change Staff = \"accompanimentUp\" \\clef \"treble\"\n\t\\set Staff.clefPosition = #0\n  \t\\set Staff.middleCPosition = #-4\n\t\\change Staff = \"accompanimentDown\" \\clef \"treble\"\n\t\\set Staff.clefPosition = #0\n  \t\\set Staff.middleCPosition = #-4\n\t\\squigUp dis \\squig g' \\squig cis' \\squig g' \n\n\t\\change Staff = \"accompanimentDown\"\n\t\\key b \\major\n\t\\squigDown dis \\squig g' \\squig cis' \\squig g'\n\n\t\\squigUp dis \\squig g' \\squig cis' \\squig g' \n\n\t\\squigDown dis \\squig g' \\squig cis' \\squig g'\n\n\t\\squigUp dis \\squig g' \\squig cis' \\squig g' \n\n\t\\squigDown dis \\squig g' \\squig cis' \\squig g'\n\n\t\\squigUp dis \\squig g' \\squig cis' \\squig g' \n\n\t\\squigDown dis \\squig g' \\squig cis' \\squig g'\n\n\t\\squigUp dis \\squig g' \\squig cis' \\squig g' \n1\n\t\\squigDown dis \\squig g' \\squig cis' \\squig g'\n}\n\n\\score {\n\t\\new GrandStaff <<\n\t\t\\new Staff = \"melody\" \\with {\n\t\t\t\\accidentalStyle dodecaphonic\n\t\t\t\\override VerticalAxisGroup.staff-staff-spacing = #'((minimum-distance . 15))\n\t\t}{\n\t\t\t\\clef \"treble\"\n\t\t\t\\partial 4\n\t\t\t\\stemless\n\n\t\t\t\\melodyC\n\t\t}\n\t\t\\new Staff = \"accompanimentUp\" \\with {\n\t\t\t\\override VerticalAxisGroup.staff-staff-spacing = #'((minimum-distance . 15))\n\t\t}{\n\t\t\t\\override Staff.StaffSymbol.line-positions = #'(0)\n\t\t\t\\clef \"treble\"\n\t\t\t\\set Staff.clefPosition = #0\n  \t\t\t\\set Staff.middleCPosition = #-4\n\n\t\t\t\\key c \\whole-tone\n\t\t\t\\partial 4\n\t\t\t\\accompanimentC\n\t\t}\n\t\t\\new Staff = \"accompanimentDown\" \\with {\n\t\t\t%\\override VerticalAxisGroup.staff-staff-spacing = #'((basic-distance . 50))\n\t\t}{\n\t\t\t\\key f \\whole-tone\n\t\t\t\\clef \"treble\"\n\t\t\t\\set Staff.clefPosition = #0\n  \t\t\t\\set Staff.middleCPosition = #-4\n\t\t\t\\override Staff.StaffSymbol.line-positions = #'(0)\n\t\t\ts4\n\t\t\ts1 * 35 s2.\n\t\t}\n\t>>\n\t\\layout {\n   \t\t\\context {\n     \t\t\\Score\n      \t\t\\override SpacingSpanner.base-shortest-duration = #(ly:make-moment 1/8)\n    \t\tproportionalNotationDuration = #(ly:make-moment 1/16)\n    \t\t\\omit BarLine\n    \t\t\\omit Staff.KeyCancellation\n    \t}\n\n    \t\\context {\n    \t\t\\GrandStaff\n    \t\t\\remove Span_bar_engraver\n    \t}\n    }\n}",
+			"file": "phrase3.ly",
+			"file_size": 4737,
+			"file_write_time": 132495925770950928,
+			"settings":
+			{
+				"buffer_size": 4738,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/zach/lilypond/z/note.ily",
+			"settings":
+			{
+				"buffer_size": 1086,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "arpeggio.ly",
+			"settings":
+			{
+				"buffer_size": 15251,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"lil",
+				"Set Syntax: LilyPond"
+			],
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/zach/lilypond/introit",
+		"/home/zach/lilypond/z"
+	],
+	"file_history":
+	[
+		"/home/zach/lilypond/introit/arpeggio.ly",
+		"/home/zach/lilypond/introit/arpeggio.pdf",
+		"/home/zach/lilypond/introit/materials.ily",
+		"/home/zach/lilypond/introit/i.ly",
+		"/home/zach/lilypond/introit/i-lines.ly",
+		"/home/zach/lilypond/introit/i.pdf",
+		"/home/zach/lilypond/hello_world.py",
+		"/home/zach/.config/sublime-text-3/Packages/User/Lilypond.sublime-build"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"-sev",
+			"mo-two",
+			"mo-one",
+			"8",
+			"white"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"-sev-quint",
+			"mo-thirtytwo",
+			"mo-thirtyone",
+			"16",
+			"black"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "phrase1.ly",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2702,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2448,
+								2448
+							]
+						],
+						"settings":
+						{
+							"auto_name": "\\version \"2.20.0\"",
+							"syntax": "Packages/SubLilyPond/LilyPond.tmLanguage"
+						},
+						"translation.x": 4.0,
+						"translation.y": 1268.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "phrase2.ly",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3058,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3058,
+								3058
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SubLilyPond/LilyPond.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1931.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "phrase3.ly",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4738,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3471,
+								3471
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SubLilyPond/LilyPond.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1402.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/home/zach/lilypond/z/note.ily",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 1086,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1085,
+								1085
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SubLilyPond/LilyPond.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "arpeggio.ly",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 15251,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								14988,
+								14988
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SubLilyPond/LilyPond.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5972.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 187.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/User/Lilypond.sublime-build",
+	"project": "introit.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 214.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

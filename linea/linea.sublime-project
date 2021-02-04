@@ -1,0 +1,18 @@
+{
+	"build_systems":
+	[
+		{
+			"name": "palette.ly",
+			"shell_cmd": "lilypond palette.ly"
+		}
+	],
+	"folders":
+	[
+		{
+			"path": "."
+		},
+		{
+			"path": "/home/zach/lilypond/z"
+		}
+	]
+}

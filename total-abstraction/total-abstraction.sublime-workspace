@@ -16,40 +16,28 @@
 	"buffers":
 	[
 		{
-			"contents": "<html>\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=windows-1252\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title> Shavetail Saola - Z.V. Pine</title>\n<link href=\"../../.styles/main.css\" rel=\"stylesheet\" type=\"text/css\">\n<link href=\"./saola.css\" rel=\"stylesheet\" type=\"text/css\">\n</head>\n<body>\n<header>\n<h1>Shavetail Saola</h1>\n<span>by Z.V. Pine</span>\n</header>\n<section id=\"berkeleyside\">\n<audio src=\"1berkeleyside.mp3\" controls></audio>\t\n<p><br>\none o one<br>\ndriving on<br>\nway past sausolito<br>\nnausea in a rental car<br>\n<br>\nadmiring<br>\nsome rich fag's farm<br>\nwith a valley view<br>\ncare of the sierra club<br>\n<br>\nwhere the water<br>\npulls the skin tight<br>\nup against your bones<br>\n<br>\nand the chinese freighters<br>\ndisappear into the smoke<br>\n<br>\nthat's where we are<br>\n<br>\na million years<br>\nthis battered stone<br>\nmet the malice of the<br>\ndesperate north pacific ocean<br>\n<br>\nit lost its ground<br>\nbut it kept its soul<br>\na wounded heart<br>\nbeating on a battered coast<br>\n<br>\nif it could talk<br>\nit'd let you know<br>\n<br>\nI want you way out of my town<br>\nand don't you go to san&nbsp;francisco either<br>\nall you fuckers on the west coast<br>\ncan't you leave me alone<br>\n<br>\njust let the ocean break my bones<br>\nand grind them into mud and dust<br>\nthe wind can turn my blood to rust<br>\n<br>\nthen turn me back<br>\nto berkeleyside<br>\ndump me with the street kids<br>\nwhile you go and live my life<br>\n<br>\nthey'll smoke me out<br>\nthey'll stay the night<br>\nhuddled up<br>\nI'll find myself a place to die<br>\n</p>\n</section>\n<section id=\"freiburg\">\n<audio src=\"2freiburg.mp3\" controls></audio>\t\t\n<p><br>\nin the freiburg forest<br>\nwitnessing the old world trees<br>\nlose the first of their leaves<br>\n<br>\ncompany of dappled light<br>\ndancing on a listing stream<br>\n<br>\nwelcome autumn arbor rouge dismantling<br>\nholy autumn arbor rouge dismantling<br>\n<br>\nthe freiburg forest<br>\nsifting porous paraply<br>\nmaking time to make peace<br>\n</p>\n</section>\n<section id=\"gun\">\n<audio src=\"3gun.mp3\" controls></audio>\t\t\n<p><br>\nI could've chewed you out<br>\nline by line and each one numbered<br>\nand it would leave no doubt<br>\nbut it's just fine to keep you wondering<br>\n<br>\nI'm sure you'll come up with it<br>\nbut keep it to yourself<br>\nI'm alright without you burning my cool<br>\n<br>\nback on that beautiful coast<br>\nhearing the white of the ocean<br>\nmuscle the earth to its bones<br>\n<br>\nrelease with the lapping of the sea<br>\nchiseling the canvast coast<br>\ncut into relief<br>\n<br>\nbut patiently<br>\nthe monster knocks with a fist full of rocks<br>\nsalt water knuckling the earth 'til it buckles<br>\nthe dirt and the grit and the stone<br>\nslipping slowly under<br>\n<br>\nalong the coast I wander<br>\nwith a star in the west<br>\nseawrack sparkling sea smelling green<br>\nsunset firework leathering my chest<br>\n<br>\ncerise the color of the eve<br>\nnight for the ripe day decadent and sweet<br>\ncherry kissed by the lips of the sea<br>\nhorizon hologram swallowed by the beast<br>\n<br>\non my mind I wish you'd get off of it<br>\nwish I could think about<br>\nblack pacific ocean without seeing you<br>\n</p>\n</section>\n<section id=\"whitman\">\n<audio src=\"4whitman.mp3\" controls></audio>\t\t\n<p><br>\nwhen the lilacs last in the dooryard bloomed<br>\nI had that jap guitar that I stole from you<br>\nand as our star stole west I sang the blues<br>\n<br>\nI didn't have no electric bass<br>\nno drum machine no cassette tape<br>\nI just sang that blues til it went away<br>\n<br>\nO warbling bird sing your song from the swamp<br>\nO grey brown bird sing at death of him I love<br>\n<br>\nI saw you last on that berkeley roof<br>\nas the sun beat down til the sky was bruised<br>\nwhen the lilacs last in the dooryard bloomed<br>\n</p>\n</section>\n<section id=\"boulder\">\n<audio src=\"5boulder.mp3\" controls></audio>\n<p><br>\nI've seen the alps<br>\nI drank a wheat beer up there with adolf and his pals<br>\nI took a look at that anschluss view<br>\nbut I still don't get what that war was all about<br>\n<br>\nand I've been to boulder<br>\nI've seen those big old rocks hanging over my head<br>\nand if those colorado boys still want me dead<br>\nI don't know but I wish they'd get it over with<br>\n<br>\nI'm taking the high road<br>\nI'm getting up and over it<br>\nit's gonna take more than geography<br>\nto keep me from keeping on<br>\n<br>\nO appalachia<br>\nyou done sublimated through the ages<br>\nyou don't stick way out up into the clouds<br>\nbut your hills are wise<br>\nthey're just the right size for me<br>\n</p>\n</section>\n</body>\n</html>\n",
-			"file": "/home/zach/index.html",
-			"file_size": 4617,
-			"file_write_time": 132282937726238213,
+			"file": "/home/zach/siddhartha/asceticism/total-abstraction/carousel.html",
 			"settings":
 			{
-				"buffer_size": 4617,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/zach/lilypond/mass/introit4.ily",
-			"settings":
-			{
-				"buffer_size": 6694,
+				"buffer_size": 1657,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/home/zach/siddhartha/cancelled-mar-14.txt",
+			"file": "/home/zach/Documents/Score Library/data/get-composers.py",
 			"settings":
 			{
-				"buffer_size": 911,
+				"buffer_size": 23,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/home/zach/siddhartha/index.html",
+			"file": "/home/zach/siddhartha/asceticism/total-abstraction/index.html",
 			"settings":
 			{
-				"buffer_size": 4634,
-				"encoding": "UTF-8",
+				"buffer_size": 578,
 				"line_ending": "Unix"
 			}
 		}
@@ -117,8 +105,11 @@
 	],
 	"file_history":
 	[
-		"/home/zach/siddhartha/orthodoxy/breathe/score.html",
 		"/home/zach/siddhartha/index.html",
+		"/home/zach/siddhartha/cancelled-mar-14.txt",
+		"/home/zach/lilypond/mass/introit4.ily",
+		"/home/zach/index.html",
+		"/home/zach/siddhartha/orthodoxy/breathe/score.html",
 		"/home/zach/siddhartha/earthly-delights/intimacy/score.html",
 		"/home/zach/siddhartha/overview.html",
 		"/home/zach/siddhartha/.make-index",
@@ -128,7 +119,6 @@
 		"/home/zach/lilypond/mass/dear_russel-3_10_20.txt",
 		"/home/zach/www/II Asceticism/stations of the cross/index.html",
 		"/home/zach/www/index.html",
-		"/home/zach/lilypond/mass/introit4.ily",
 		"/home/zach/Pd/scores/fundamental-rhythm-motif.ly",
 		"/home/zach/lilypond/total-abstraction/6sixth.ly",
 		"/home/zach/lilypond/total-abstraction/7finale.ly",
@@ -173,6 +163,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"png",
 			"<g b>",
 			"Mur.",
 			"Rum.",
@@ -217,6 +208,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"svg",
 			"<g bes>",
 			"Rit.",
 			"Acc.",
@@ -264,87 +256,47 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/home/zach/index.html",
+					"file": "/home/zach/siddhartha/asceticism/total-abstraction/carousel.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4617,
+						"buffer_size": 1657,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								339,
-								339
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/home/zach/lilypond/mass/introit4.ily",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6694,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5373,
-								5373
+								13,
+								13
 							]
 						],
 						"settings":
 						{
 							"_nv_visual_sel_mode": "mode_visual",
-							"syntax": "Packages/SubLilyPond/LilyPond.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 3153.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "/home/zach/siddhartha/cancelled-mar-14.txt",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 911,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								247,
-								247
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"vintage":
+							{
+								"_vintageous_glue_until_normal_mode": false,
+								"action": null,
+								"action_count": "",
+								"mode": "mode_normal",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"normal_insert_count": "1",
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 5
+							}
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -354,31 +306,87 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "/home/zach/siddhartha/index.html",
+					"buffer": 1,
+					"file": "/home/zach/Documents/Score Library/data/get-composers.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4634,
+						"buffer_size": 23,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4029,
-								4029
+								20,
+								20
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax"
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"vintage":
+							{
+								"_vintageous_glue_until_normal_mode": false,
+								"action": null,
+								"action_count": "",
+								"mode": "mode_normal",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"normal_insert_count": "1",
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 20
+							}
 						},
 						"translation.x": 0.0,
-						"translation.y": 2109.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/home/zach/siddhartha/asceticism/total-abstraction/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 578,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"vintage":
+							{
+								"action": null,
+								"action_count": "",
+								"mode": "mode_normal",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 8
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				}
 			]

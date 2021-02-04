@@ -1,0 +1,33 @@
+$(define (element? x ls)
+  (cond ((null? list) #f )
+      ((eq? x (car lst)) #t )
+      (#t (element? x (cdr ls)))))
+
+$(define (union a b)
+  (cond ((null? b) a)
+      ((element? (car b) a)
+       (union a (cdr b)))
+      (#t (union (cons (car b) a) (cdr b)))))
+
+$(define (intersect a b)
+  (if (null? a) '()
+      (let ((included (element? (car a) b)))
+        (if (null? (cdr a))
+            (if included a '())
+            (if included
+                (cons (car a) (intersect (cdr a) b))
+                (intersect (cdr a) b))))))
+
+$(define (subtract a b)
+  (cond ((null? a) '())
+      ((element? (car a) b)
+       (subtract (cdr a) b))
+      (#t (cons (car a) (subtract (cdr a) b)))))
+
+$(define (rm x ls)
+  (if (null? ls)
+      '()
+      (if (eqv? x (car ls))
+          (rm x (cdr ls))
+          (cons (car ls)
+                (rm x (cdr ls))))))

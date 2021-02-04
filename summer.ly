@@ -186,7 +186,7 @@ global = {
         \stopStaff
         \autoBeamOff
         \square { f'1 f'2 s4 f'8 f'16 }
-        s1 s1_"toneless, little to no larnyx vibration"
+        s1 s1_"toneless, little to no larynx vibration"
       }
       \new Staff {
         \omit Staff.Clef

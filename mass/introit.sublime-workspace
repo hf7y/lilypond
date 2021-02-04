@@ -1,0 +1,339 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ali",
+				"text-align\tproperty"
+			],
+			[
+				"backgr",
+				"background-color\tproperty"
+			],
+			[
+				"font-s",
+				"font-size\tproperty"
+			],
+			[
+				"for",
+				"force-clef-bass"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "glissandoSkipOn = {\n\t\\override NoteColumn.glissando-skip = ##t\n\t\\hide NoteHead\n\t\\hide Accidental\n\t\\hide Tie\n\t\\override NoteHead.no-ledgers = ##t\n}\n\nglissandoSkipOff = {\n\t\\revert NoteColumn.glissando-skip\n\t\\undo \\hide NoteHead\n\t\\undo \\hide Tie\n\t\\undo \\hide Accidental\n\t\\revert NoteHead.no-ledgers\n}\n\n\\header {\n\ttitle = \"Spectral Harmony Sketch\"\n}\n\nchordos = \\relative c {\n\t\\clef \"bass\"\n\tr2 <e g ais d >4 <e g c e >4 | <g ais d fis >1 | \n\tr2 \\tuplet 3/2 { <e g ais d >4 <e g c e >4 <g ais d fis >4 } | \n\t\t<ais c e gis >1 |\n\tr4 <e g ais d >4 \\tuplet 3/2 { <e g c e >4 <g ais d fis >4 <ais c e gis >4 } |\n\t\t\\clef \"treble\"\n\t\t<c d g ais >4 <d e gis c >4  <e g b d >4  <fis gis cis e >4 |\n\t\\set tieWaitForNote = ##t\n\t<gis b dis fis >1~ | \n\t\t{ \\hide gis4 \\hide b \\hide dis \\hide fis } |\n\n\t\\clef \"bass\"\n\tr2 <e,, g ais d >4 <e g c e >4 | r4 <g ais d fis >2.~ | \n\t<g ais d fis>4 r4 \\tuplet 3/2 { <e g ais d >4 <e g c e >4 <g ais d fis >4 } | \n\t\tr4 <ais c e gis >2 <c d g ais >4~|\n\t<c d g ais >2 \\tuplet 3/2 { r4 <e, g ais d >4 <g ais d fis >4 } |\n\t\t\\clef \"treble\"\n\t\t\\tuplet 3/2 { <ais c e gis >4 <c d g ais >4 <d e gis c >4 } <e g b d >4 \\tuplet 3/2 { r8 <fis gis cis e >4 } |\n\t\\set tieWaitForNote = ##t\n\t<gis b dis fis >4 <ais cis f gis >2.~\n\t\t{ \\hide ais4 \\hide cis \\hide f \\hide gis } |\n\n\t\\break\t\n\te,4~ g~ ais~ d~ | <e, g ais d >1 | \n\t<e g b d >4  <fis gis cis e >2.~ | <fis gis cis e >1|\n\t<e g b d >4  <fis gis cis e >2 <gis b dis fis >4~ | <gis b dis fis >1 |\n\t\t<ais cis f gis >4  <dis g ais > <d f a c > <e g b d > |\n\t<fis a cis e >2. r4 | r1 |\n\n}\npedal-tones = \\relative c, {\n\t\\ottava #-1\n\t<c, c'>1~ | 2 <c' g'>2 |\n\t<c, c'>1~ | 2 <c' g'>2 |\n\t<c, c'>1  | \n\t\t\\ottava #0 \n\t\tr4 c' g' c |\n\te4 ais, \\tuplet 3/2 { fis' c gis' } |\n\t\td \\tuplet 3/2 { r8 g,4 } r2 | \n\n\t\\ottava #-1\n\t<c,, c'>1~ | 2 <c' g'>2 |\n\t<c, c'>1 | <c' g'> |\n\t<c, c'>2. \n\t\t\\ottava #0 \n\t\t\\tuplet 3/2 {r8 g''4} | \n\t\t\\tuplet 3/2 { b4  g'4  e4 } |\n\t\\tuplet 3/2 { ais4 c e } |\n\t\t\\clef \"treble\"\n\t\tg8  c  ais  c \\tuplet 3/2 { ais'4  c  e,  } |\n\tg'8  c, g  e \\tuplet 5/4 { g  c,  e, b  g } |\n\n\t\\clef \"bass\"\n\t\\tuplet 3/2 { e4 bes g } \n\t<< \t\\voiceTwo { c,2~ | c1 } \\\\\n\t\t\\voiceOne { r4 g'8 bes | r4 g8 bes r4 g8 bes |} >>\t\n\t<< \t\\voiceTwo { c,1~ | c1 } \\\\\n\t\t\\voiceOne { r4 g'8 bes r4 g8 bes | r4 g8 bes r4 \\tuplet 3/2 { g8 bes g }|} >>\t\n% ________________________________________bar 2 :\n \\tuplet 3/2 { bes8  g8  c,8 } \n\t \\tuplet 3/2 { g'8  c8  g'8 }\n\t\t \\tuplet 3/2 { c8  e8  c,8 }\n\t\t \t\\clef \"treble\"\n\t\t\t \\tuplet 3/2 { fis'8  e8  g'8 }  |\n% ________________________________________bar 3 :\n \\tuplet 3/2 { c,8  ais8  e8 } \n\t \\tuplet 3/2 { g8  e'8  fis,8 } \n\t\t \\tuplet 3/2 { c'8  d,8  g'8 } \n\t\t\t \\tuplet 3/2 { e,8  ais'8  fis8 }  |\n% ________________________________________bar 4 :\n \\tuplet 3/2 { e'8  c8  d,8 } \n\t \\tuplet 3/2 { ais'8  fis,8  b8 }\n\t \t\tg16  d16  c16  g''16 \n\t\t\tais,,16  e''16  fis,16  ais16  |\n% ________________________________________bar 2 :\n\tc,16  g'16  ais16  d,16 \n\t\tc'16  g16  c16  c'16 \n\t\t\tgis16  c,,16  c16  e16 \n\t\t\\clef \"bass\"\n\t\t\\change Staff = \"up\"\n\t\t\\autochange \\relative c {\n\t\t\t\tg'16  fis,16  gis'16  d16  |\n\t% ________________________________________bar 3 :\n\tc16  d'16  fis,16  ais'16 \n\t\tc16  c,16  fis,16  b,16 \n\t\t\te16  ais'16  g16  b16  \n\t\\tuplet 5/4 { e16  fis,16  ais,,16  c''16  g16 }  |\n\t% ________________________________________bar 2 :\n\t \\tuplet 5/4 { ais,16  d,,16  c'16  g''16  c16 } \n\t\t \\tuplet 5/4 { c,,16  gis''16  c,16  c'16  e,,,16 } \n\t\t\t \\tuplet 5/4 { g'16  fis'16  fis,,16  d''16  c'16 } \n\t\t\t\t \\tuplet 5/4 { d,16  fis16  fis16  c,,16  c'''16 }  |\n\t% ________________________________________bar 3 :\n\t \\tuplet 5/4 { fis,16  b,,16  e'16  ais'16  g,,16 }\n\t}\n}\npointilism = {\n\n\n}\n\n\\score {\n\t<<\n\t\t\\new PianoStaff <<\n\t\t\t\\new Staff = \"swell_up\" {\n\t\t\t\t\\pointilism\n\t\t\t\ts1 * 30\t\n\t\t\t}\n\t\t\t\\new Staff = \"swell_down\" {\n\t\t\t\t\\clef \"bass\"\n\t\t\t\ts1 * 30\n\t\t\t}\n\t\t>>\n\t\t\\new PianoStaff <<\n\t\t\t\\new Staff = \"up\" {\n\t\t\t\t\\chordos\n\t\t\t\ts1 * 30\t\n\t\t\t}\n\t\t\t\\new Staff = \"down\" {\n\t\t\t\t\\clef \"bass\"\n\t\t\t\t\\pedal-tones\n\t\t\t\ts1 * 30\n\t\t\t}\n\t\t>>\n\t>>\n\n\t\\layout {\n\t\t\\mergeDifferentlyHeadedOn\n\t\t\\mergeDifferentlyDottedOn\n\t\t\\set harmonicDots = ##t\n\t\t\\override Glissando.thickness = #4\n\t\t\\set Staff.pedalSustainStyle = #'mixed\n\t\t\\override TextSpanner.bound-padding = #1.0\n\t\t\\override TextSpanner.bound-details.right.padding = #1.3\n\t\t\\override TextSpanner.bound-details.right.stencil-align-dir-y = #CENTER\n\t\t\\override TextSpanner.bound-details.left.stencil-align-dir-y = #CENTER\n\t\t\\override TextSpanner.bound-details.right-broken.text = ##f\n\t\t\\override TextSpanner.bound-details.left-broken.text = ##f\n\t\t\\override Glissando.minimum-length = #4\n\t\t\\override Glissando.springs-and-rods = #ly:spanner::set-spacing-rods\n\t\t\\override Glissando.breakable = ##t\n\t\t\\override Glissando.after-line-breaking = ##t\n\t\t\\set baseMoment = #(ly:make-moment 1/8)\n\t\t\\set beatStructure = #'(2 2 2 2)\n\t\t#(set-default-paper-size \"a4\")\n\t}\n\t\\midi { }\n}\n\n\\version \"2.18.2\"",
+			"file": "introit3.ly",
+			"file_size": 4892,
+			"file_write_time": 132275161750710652,
+			"settings":
+			{
+				"buffer_size": 4878,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				":w",
+				":w - Save"
+			],
+			[
+				":W",
+				":w - Save"
+			],
+			[
+				":lil",
+				"Set Syntax: LilyPond"
+			],
+			[
+				":q",
+				"Set Syntax: SQL"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 76.0,
+		"history":
+		[
+			":w",
+			":64",
+			"ls"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/zach/lilypond/mass/introit2.ly",
+		"/home/zach/opera/casting/non-singers.html",
+		"/home/zach/Documents/Pd/scores/chords.ly",
+		"/home/zach/Documents/Pd/scores/pointilism1.ly",
+		"/run/user/1001/gvfs/sftp:host=ssh.ocf.berkeley.edu/services/http/users/p/pine/portfolio/index.html",
+		"/home/zach/lilypond/total-abstraction/fourth.ly",
+		"/home/zach/lilypond/total-abstraction/second.ly",
+		"/home/zach/lilypond/total-abstraction/first.ly",
+		"/home/zach/lilypond/total-abstraction/book.ly",
+		"/home/zach/lilypond/total-abstraction/total-abstraction.sublime-project",
+		"/home/zach/lilypond/total-abstraction/fifth.ly",
+		"/home/zach/lilypond/total-abstraction/sixth.ly",
+		"/home/zach/lilypond/total-abstraction/tuning.ly",
+		"/home/zach/lilypond/total-abstraction/third.ly",
+		"/home/zach/lilypond/total-abstraction/finale.ly",
+		"/home/zach/lilypond/z/note.ily",
+		"/home/zach/lilypond/total-abstraction/definitions.ily",
+		"/home/zach/lilypond/total-abstraction/template.ly",
+		"/home/zach/.config/sublime-text-3/Packages/User/Lilypond Book.sublime-build",
+		"/home/zach/lilypond/total-abstraction/make",
+		"/home/zach/lilypond/total-abstraction/book.pdf",
+		"/home/zach/.config/sublime-text-3/Packages/User/Package Control.sublime-settings"
+	],
+	"find":
+	{
+		"height": 28.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"bes",
+			"\\parenthesize \\stemless",
+			"parent",
+			"\\skip1",
+			"markup \\italic \"",
+			"gradually ",
+			"\\markup \\column",
+			"molto ",
+			"\"senza",
+			"\\fat-line { s1",
+			"\\skip 1 \\skip 1 →1 \\markup {\\box t}1",
+			"184",
+			"s2\\stopTextSpan",
+			"\\stopTextSpan s2",
+			"whisper",
+			"no-clef",
+			"/no-clef",
+			"\\tempo \" ",
+			"\\\\tempo \" ",
+			"\\markup \\column",
+			"\\bar",
+			"s1",
+			"si",
+			"Dynamics",
+			"PART"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"ais",
+			"\\stemless \\parenthesize",
+			"\\skip 1",
+			"markup \\small \"",
+			"",
+			"\\markup \\small \\column",
+			"",
+			"\\italic \"senza",
+			"\\italics \"senza",
+			"\\fat-line { s1_\\markup \\small \"senza accento\"",
+			"\\skip 1 \\skip 1 →2. \\markup {\\box t}4 \\skip 1",
+			"\\skip 1 \\skip 1 →2 \\markup {\\box t}2 \\skip 2",
+			"180",
+			"s4 s4\\stopTextSpan",
+			" s2\\stopTextSpan",
+			"to whisper",
+			"\\markup \\small {whisper}",
+			"\\markup \\small {whisper}2",
+			"\\tempo \\markup \\small \" ",
+			"\\tempo \\small \" ",
+			"\\\\tempo \\small \" ",
+			"\\markup \\small \\column",
+			"\\no-line s1",
+			"FINALE"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "introit3.ly",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4878,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3122,
+								3122
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SubLilyPond/LilyPond.tmLanguage",
+							"translate_tabs_to_spaces": false,
+							"vintage":
+							{
+								"_vintageous_glue_until_normal_mode": false,
+								"action": null,
+								"action_count": "",
+								"mode": "mode_normal",
+								"motion": null,
+								"motion_count": "",
+								"must_capture_register_name": false,
+								"normal_insert_count": "1",
+								"partial_sequence": "",
+								"register": "\"",
+								"sequence": "",
+								"xpos": 49
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 1475.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 41.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 272.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/User/Lilypond.sublime-build",
+	"project": "introit.sublime-project",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+		"_vintageous_last_buffer_search": "spacing",
+		"_vintageous_last_buffer_search_command": "vi_slash",
+		"_vintageous_last_char_search": "i",
+		"_vintageous_last_char_search_command": "vi_f",
+		"_vintageous_reset_during_init": true
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 233.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

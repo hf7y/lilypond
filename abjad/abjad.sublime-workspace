@@ -1,0 +1,276 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/home/zach/lilypond/abjad/hello_world.py",
+			"settings":
+			{
+				"buffer_size": 440,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Package Control Messages\n========================\n\nPackage Control\n---------------\n\n  Version 3.4.0 Release Notes\n  \n   -----------------------------------------------------------------------\n  | NOTICE: This will be the final release of Package Control supporting  |\n  | - Sublime Text 2                                                      |\n  | - Sublime Text 3 beta builds (<3143)                                  |\n   -----------------------------------------------------------------------\n  | Please see https://sublimetext.com for an updated build               |\n   -----------------------------------------------------------------------\n  \n  New features include:\n  \n   - Support for repositories hosted on https://gitlab.com - by TheSecEng\n  \n   - An alternative TLS implementation based on the oscrypto Python\n     library, which uses native operating system TLS libraries and\n     certificate handling. See the \"downloader_precedence\" setting to enable.\n  \n   - Preferences now use the side-by-side edit mode\n  \n   - Added command palette entries to enable and disable debug mode for\n     troubleshooting and bug reports\n  \n  Bug fixes include:\n  \n   - Fixed operation on macOS 11.0 Big Sur - by TheSecEng\n  \n   - Improved handling of invalid dependencies - by deathaxe\n  \n   - Corrected handling of unsuccessful downloads with wget - by deathaxe\n  \n   - Fixed various issues with the HTTP caching - by deathaxe\n  \n   - Updated the BitBucket provider to use the 2.0 API - deathaxe\n  \n   - Packages installed via symlinks are now unlinked instead of being\n     deleted when being removed or cleaned up - by rchl\n  \n   - Improved install performance of packages with large numbers of\n     files - by BenjaminSchaaf\n  \n   - Fixed handling of auth with the wininet downloader - by NicholasBuse\n  \n   - Fixed handling BitBucket repositories without a nickname\n  \n   - Resolved deadlocks and ignored packages occuring when removing multiple\n     dependencies at once\n  \n   - Package messages are no longer printed with trailing whitespace on lines\n     with no text - by dnicolson\n",
+			"settings":
+			{
+				"buffer_size": 2087,
+				"line_ending": "Unix",
+				"name": "Package Control Messages",
+				"read_only": true,
+				"scratch": true
+			}
+		}
+	],
+	"build_system": "Packages/Python/Python.sublime-build",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/zach/lilypond/abjad"
+	],
+	"file_history":
+	[
+		"/home/zach/lilypond/introit/i.ly",
+		"/home/zach/lilypond/hello_world.py",
+		"/home/zach/.config/sublime-text-3/Packages/User/Lilypond.sublime-build"
+	],
+	"find":
+	{
+		"height": 24.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"white"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"black"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/home/zach/lilypond/abjad/hello_world.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 440,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								440,
+								440
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2087,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2087,
+								2087
+							]
+						],
+						"settings":
+						{
+							"auto_indent": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_width": 2,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 36.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 378.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/Python/Python.sublime-build",
+	"project": "abjad.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
