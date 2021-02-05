@@ -1,0 +1,106 @@
+\version "2.20.0"
+
+\include "./gestures.ily"
+\include "./instrument-names.ily"
+
+\include "/home/zach/lilypond/z/list.ily"
+\include "/home/zach/lilypond/z/dynamic.ily"
+
+\header {
+	title= "Jesu, meine Freude"
+	composer = "Z V Pine" }
+
+#(set-global-staff-size 16)
+\paper { #(set-paper-size "b4") }
+
+timecode = { 
+	\tempo 4 = 72
+	s1* 20 }
+
+\include "./arrangement.ly"
+
+\score {
+	<<
+		\new StaffGroup <<
+			\new Staff = "fl" \with { instrumentName = "Flute" } <<
+				\clef "treble^8"
+				\timecode
+			>>
+			\new Lyrics = "fl"
+
+			\new Staff = "cl" \with { instrumentName = "Clarinet"} <<
+				\clef "treble"
+				\timecode
+			>>
+			\new Lyrics = "cl"
+
+			\new Staff = "bn" \with { instrumentName = "Basson"}<<
+				\clef "bass"
+				\timecode
+			>>
+			\new Lyrics = "bn"
+
+			\new Staff = "tbn" \with { instrumentName = "Trombone"} <<
+				\clef "bass"
+				\timecode
+			>>
+			\new Lyrics = "tbn" {}
+		>>
+
+		\new PianoStaff = "pf"  \with { instrumentName = "Piano"} <<
+			\new Staff = "up" <<
+				\clef "treble"
+				\timecode
+			>>
+			\new Staff = "down" <<
+				\clef "bass"
+				\timecode
+			>>
+		>>
+
+		\new StaffGroup <<
+			\new Staff = "vn" \with { instrumentName = "Violin"} <<
+				\clef "treble"
+				\timecode
+			>>
+			\new Staff = "va" \with { instrumentName = "Viola"} <<
+				\clef "alto"
+				\timecode
+			>>
+			\new Staff = "vc" \with { instrumentName = "Cello"} <<
+				\clef "bass"
+				\timecode
+			>>
+			\new Staff = "db" \with { instrumentName = "Contrabass"} <<
+				\clef "bass_8"
+				\timecode
+			>>
+		>>
+	\arrangement
+	>>
+
+	\layout {
+  		\context {
+    		\Staff
+    		\override VerticalAxisGroup.staff-staff-spacing =
+    			#'((basic-distance . 15)
+				   (minimum-distance . 9)
+				   (padding . 1)
+				   (stretchability . 10))
+
+    		\accidentalStyle modern
+			
+			\override TimeSignature.break-visibility = ##(#f #t #t)
+			\numericTimeSignature
+
+    		\override TupletNumber.text = #tuplet-number::calc-fraction-text
+    		tupletFullLength = ##t
+			tupletFullLengthNote = ##f
+  		}
+  		\context {
+  			\Score
+  			proportionalNotationDuration = #(ly:make-moment 1/4)
+  			
+  		}
+	}
+}

@@ -4,6 +4,10 @@
 		{
 			"name": "palette.ly",
 			"shell_cmd": "lilypond palette.ly"
+		},
+		{
+			"name": "Recursive Dream.ly",
+			"shell_cmd": "lilypond 'Recursive Dream.ly'"
 		}
 	],
 	"folders":
