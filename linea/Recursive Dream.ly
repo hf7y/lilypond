@@ -1,6 +1,8 @@
 \version "2.20.0"
 
+#(ly:set-option 'relative-includes #t)
 \include "./gestures.ily"
+\include "./gestures/clap.ly"
 \include "./instrument-names.ily"
 
 \include "/home/zach/lilypond/z/list.ily"
@@ -15,7 +17,7 @@
 
 timecode = { 
 	\tempo 4 = 72
-	s1* 20 }
+	s1*10}
 
 \include "./arrangement.ly"
 
@@ -99,7 +101,8 @@ timecode = {
   		}
   		\context {
   			\Score
-  			proportionalNotationDuration = #(ly:make-moment 1/4)
+  			% proportionalNotationDuration = #(ly:make-moment 1/16)
+  			proportionalNotationDuration = #(ly:make-moment 1/8)
   			
   		}
 	}

@@ -7,7 +7,7 @@
 		},
 		{
 			"name": "Recursive Dream.ly",
-			"shell_cmd": "lilypond 'Recursive Dream.ly'"
+			"shell_cmd": "lilypond -o '/home/zach/lilypond/linea/Recursive Dream' '/home/zach/lilypond/linea/Recursive Dream.ly'"
 		}
 	],
 	"folders":

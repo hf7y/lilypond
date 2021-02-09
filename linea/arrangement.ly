@@ -1,11 +1,41 @@
 \version "2.20.0"
 
 \include "./gestures.ily"
+\include "./instrument-names.ily"
+
 arrangement = 
 	\removeWithTag #'verbose
 	\removeWithTag #'part 
 {
-	\clap f2
+	<< 	\context Staff = "cl" \relative c'' { \partial 8 \n \shiftDurations #3 0 \clA\fp\>~ | \clA | r1\! | }
+		\context Staff = "bn" \relative c {
+			\clef "bass"
+			<< { %m1
+				 \partial 8 f,8
+				 f'1\flageolet~ | f1~ 	| f\glissando |
+				 c'\flageolet~ | c1:32\glissando |
+				 f,\flageolet~ | f^\markup \italic "bis." } \\
+
+			   { %m1
+			   	 \partial 8 s8
+			   	 f,1\harmonic\p~ | s1 	| s1\< |
+			   	 \scaleDurations 1/2 { f1\harmonic \stemUp \headless c''1:16 }| s1\> |
+				 f,,\harmonic\p~ | \repeat tremolo 16 { f32\harmonic bes,\harmonic }} >>
+			   \bnB %key clicks
+		}
+		
+		{ \partial 8 \clap #(sans '(cl bn)) c8 | \rests #(sans '(cl bn)) { s1 | s1 | s1 }
+			 << { \rests #'(fl up db) r4 \buzz #'(fl up down db) e2 a4 } 
+			    { \rests #'(cl tbn vc) r2 \buzz  #'(cl tbn vc) e4 f4 } >>
+		  \buzz #'(fl cl tbn up down vc db) f2 e2 | 
+		  \rests #(sans '(cl bn)) { s1 | s1 }
+		  \crackle #(sans '(bn)) f8 a1
+		}
+	>>
+	% \makeTimeSig \buzz f1 e4
+	% \makeTimeSig \clap f4
+	% \makeTimeSig \clap f4
+	% c1:8
 }
 
 
