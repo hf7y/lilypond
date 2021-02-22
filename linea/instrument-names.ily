@@ -25,9 +25,9 @@ $(define va  'va)
 $(define vc  'vc)
 $(define db  'db)
 
-$(define-public winds (list fl cl bn tbn))
+$(define-public winds (list 'fl 'cl 'bn 'tbn))
 $(define-public piano (list up down))
-$(define-public strings (list vn va vc db))
+$(define-public strings (list 'vn 'va 'vc 'db))
 $(define-public tutti (append winds piano strings))
 
 $(define-public basses '(bn tbn down vc db))

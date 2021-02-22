@@ -77,7 +77,7 @@ crackle = #(define-music-function
 		    #(momentToRests (cdr (numFits noteA noteB))) #} #{\clef "tenor"#})
 		#(function 'tbn #{  \transpose c g \twoNoteRandom $noteA $noteB
 		    #(momentToRests (cdr (numFits noteA noteB))) #} #{\clef "tenor"#})
-		#(function 'up #{  \transpose c c'' \threeNoteRandom $noteA $noteB \transpose c cis $noteB
+		#(function 'up #{  \transpose c c'' \threeNoteRandom $noteA $noteB \transpose c c $noteB
 		    #(momentToRests (cdr (numFits noteA noteB))) #} #{\clef "treble"#})
 		#(function 'down #{  \transpose c c'' \threeNoteRandom $noteA $noteB \transpose c cis $noteB
 		    #(momentToRests (cdr (numFits noteA noteB))) #} #{\clef "treble"#})

@@ -6,6 +6,7 @@
 \include "./gestures/clap.ly"
 \include "./gestures/buzz.ly"
 \include "./gestures/crackle.ly"
+\include "./gestures/pluck.ly"
 \include "./multiphonics.ily"
 
 \include "/home/zach/lilypond/z/timesignature.ily"
@@ -363,63 +364,7 @@ hiss = #(define-music-function
 % 		    #})
 %     >>
 %     #})
-% pluck = #(define-music-function
-%     (instruments noteA noteB)
-%     ((list? tutti) (ly:music?) ly:music?)
-%    #{
-%     <<
-%     	#(if (memq 'fl instruments) 
-%     		#{
-%     			\context Staff = "fl" {
-% 		        }
-%     		#})
-% 		#(if (memq 'cl instruments) 
-%     		#{
-%     			\context Staff = "cl" {
-% 		        }
-% 		    #})
-% 		#(if (memq 'bn instruments) 
-%     		#{
-%     			\context Staff = "bn" {
-% 		        }
-% 			#})
-% 		#(if (memq 'tbn instruments) 
-%     		#{
-%     			\context Staff = "tbn" {
-% 		        }
-% 			#})
-% 		#(if (memq 'up instruments) 
-%     		#{
-%     			\context Staff = "up" {
-% 		        }		        
-% 			#})
-% 		#(if (memq 'down instruments) 
-%     		#{
-%     			\context Staff = "down" {
-% 		        }		        
-% 			#})
-% 		#(if (memq 'vn instruments) 
-%     		#{
-%     			\context Staff = "vn" {
-% 		        }		        
-% 			#})
-% 		#(if (memq 'va instruments) 
-%     		#{		        
-% 		        \context Staff = "va" {
-% 		        }
-% 			#})
-% 		#(if (memq 'vc instruments) 
-%     		#{		        
-% 		        \context Staff = "vc" {
-% 		        }
-% 			#})
-% 		#(if (memq 'db instruments) 
-%     		#{		        
-% 		        \context Staff = "db" {
-% 		        }
-% 		    #})
-%     >>
-%     #})
+
 rests = #(define-music-function
 	    (instruments rest)
 	    ((list? tutti) ly:music?)

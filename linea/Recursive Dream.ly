@@ -8,16 +8,23 @@
 \include "/home/zach/lilypond/z/list.ily"
 \include "/home/zach/lilypond/z/dynamic.ily"
 
+
 \header {
 	title= "Jesu, meine Freude"
 	composer = "Z V Pine" }
 
+#(set! paper-alist
+  (cons '("half-dell"  . (cons ( * 6   in) ( * 6.5   in))) paper-alist))
 #(set-global-staff-size 16)
-\paper { #(set-paper-size "b4") }
+%\paper { #(set-paper-size "half-dell") }
+\paper { 
+	#(set-paper-size "b4") 
+	system-separator-markup = \slashSeparator
+}
 
 timecode = { 
 	\tempo 4 = 72
-	s1*10}
+	s1*32}
 
 \include "./arrangement.ly"
 
@@ -25,7 +32,7 @@ timecode = {
 	<<
 		\new StaffGroup <<
 			\new Staff = "fl" \with { instrumentName = "Flute" } <<
-				\clef "treble^8"
+				\clef "treble"
 				\timecode
 			>>
 			\new Lyrics = "fl"
@@ -101,8 +108,8 @@ timecode = {
   		}
   		\context {
   			\Score
-  			% proportionalNotationDuration = #(ly:make-moment 1/16)
-  			proportionalNotationDuration = #(ly:make-moment 1/8)
+  			proportionalNotationDuration = #(ly:make-moment 1/16)
+  			% proportionalNotationDuration = #(ly:make-moment 1/8)
   			
   		}
 	}

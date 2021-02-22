@@ -49,9 +49,13 @@ clap = #(define-music-function
     	#(function 'bn   #{ \n-transpose c,  $pitch c1 #} #{\clef "tenor"#})
     	#(function 'tbn  #{ \n-transpose c   $pitch c1 #} #{\clef "bass"#})
     	#(function 'down #{ \n-transpose c   $pitch { 
-    		f1 \change Staff = "up" c''[ c' ] \change Staff = "down" f, } #} #{\clef "bass"#})
-    	#(function 'vn   #{ <c' g' d'' a''>1\pizz #} #{\clef "treble"#})
-    	#(function 'va   #{ <c g d' a'>1\pizz #} #{\clef "alto"#})
+    		f1 \change Staff = "up" c'' c'  \change Staff = "down" f, } #} #{\clef "bass"#})
+    	#(if (= 0 (random 2)) 
+            (function 'vn   #{ \n-transpose c $pitch <c' g' d'' a''>1\arpeggio\pizz #} #{\clef "treble"#})
+            (function 'vn   #{ \n-transpose c $pitch c'1\pizz #} #{\clef "treble"#}))
+    	#(if (= 0 (random 2)) 
+            (function 'va   #{ \n-transpose c $pitch <c g d' a'>1\arpeggio\pizz #} #{\clef "alto"#})
+            (function 'va   #{ \n-transpose c $pitch c'1\pizz #} #{\clef "alto"#}))
     	#(function 'vc   #{ c,1\snappizzicato( \n-transpose c #pitch f,) #} #{\clef "bass"#})
     	#(function 'db   #{ e,,1\snappizzicato( \n-transpose c' $pitch c) #} #{\clef "bass_8"#})
     >>
