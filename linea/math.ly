@@ -48,20 +48,20 @@ giveDur = #(define-scheme-function
 		 				 	(ly:music-deep-copy noteX))))
 
 giveDot = #(define-scheme-function
-	(noteX noteY)
-	(ly:music? ly:music?)
-	(if (= 0 (ly:duration-dot-count (ly:music-property noteX 'duration)))
-		#{ #}
-		#{  \shiftDurations #(let ((x (ly:music-property noteX 'duration)))
-			                      (+ (ly:duration-log x) (ly:duration-dot-count x)))
-			                #0 \giveDur s1 $noteY #} ))
+    (noteX noteY)
+    (ly:music? ly:music?)
+    (let ((dots (ly:duration-dot-count (ly:music-property noteX 'duration)))
+          (log (ly:duration-log (ly:music-property noteX 'duration))))
+        (if (= dots 0) #{  \changeDur #(ly:make-duration (+ log 2) 0) $noteY #}
+                       #{  \changeDur #(ly:make-duration (+ dots log) 0) $noteY #} )))
 
 trimDot = #(define-scheme-function
-	(noteX)
-	(ly:music?)
-	(if (= 0 (ly:duration-dot-count (ly:music-property noteX 'duration)))
-		noteX
-		#{  \shiftDurations #0 #-1 $noteX #} ))
+    (noteX)
+    (ly:music?)
+    (let ((dots (ly:duration-dot-count (ly:music-property noteX 'duration)))
+          (log (ly:duration-log (ly:music-property noteX 'duration))))
+        (if (= dots 0) #{  \shiftDurations #1 #1  $noteX #}
+                       #{  \shiftDurations #0 #-1 $noteX #} )))
 
 giveDots = #(define-scheme-function
 	(noteX noteY)

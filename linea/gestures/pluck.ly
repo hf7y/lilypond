@@ -15,8 +15,8 @@ repeatMath = #(define-music-function
 	(let ((num (if (positive? prenum) prenum max)))
 		(if (> num max) #{#}
 			(cond ((= num 1) #{ $note \repeatMath #num #(- max num) \m-transpose c d $note #} )
-				  ((even? num) #{ $note -. \unfold #(- num 2) $note -. $note \repeatMath #(/ num 2) #(- max num) \m-transpose c d $note #})
-				  ((odd? num) #{ $note -> \unfold #(- num 2) $note -> $note \repeatMath #(/ (- num 1) 2) #(- max num) \m-transpose c d $note #})))))
+				  ((even? num) #{ $note -. \unfold #(- num 2) $note $note -.  \repeatMath #(/ num 2) #(- max num) \m-transpose c d $note #})
+				  ((odd? num) #{ $note -> \unfold #(- num 2) $note $note -> \repeatMath #(/ (- num 1) 2) #(- max num) \m-transpose c d $note #})))))
 
 pluck = #(define-music-function
     (instruments noteA noteB)

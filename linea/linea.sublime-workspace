@@ -172,22 +172,27 @@
 	"buffers":
 	[
 		{
-			"contents": "\n\n\n\n\n\n\n\t\t\t\t \\partial 8 f,8\n\t\t\t\t c'\\flageolet~ | c1:32\\glissando |\n\t\t\t\t c'\\flageolet~ | c1:32\\glissando |\n\t\t\t\t f'1\\flageolet~ | f1~ \t| <f c'>\\flageolet~^\"blend overtones\" |\n\t\t\t\t f'1\\flageolet~ | f1~ \t| <f c'>\\flageolet~^\"blend overtones\" |\n\t\t\t\t f,,\\harmonic\\p~ | \\repeat tremolo 16 { f32\\harmonic bes,\\harmonic } } >>\n\t\t\t\t f,,\\harmonic\\p~ | \\repeat tremolo 16 { f32\\harmonic bes,\\harmonic }o c87\n\t\t\t\t f,\\flageolet~ | f^\\markup \\italic \"bis.\"\n\t\t\t\t f,\\flageolet~ | f^\\markup \\italic \"bis.\" } \\\\\n\t\t\t   \t \\partial 8 s8\n\t\t\t   \t \\scaleDurations 1/2 { f1\\harmonic \\stemUp \\headless c''1:16 }| s1\\> |\n\t\t\t   \t \\scaleDurations 1/2 { f1\\harmonic \\stemUp \\headless c''1:16 }| s1\\> |\n\t\t\t   \t f,1\\harmonic\\p | s1 \t| s1\\< |\n\t\t\t   \t f,1\\harmonic\\p | s1 \t| s1\\< |\n\t\t\t   \\bnB } %key clks\n\t\t\t   { %m1\n\t\t\t<< { %m1\n\t\t\t\\clef \"bass\"\n\t\t\t\\crackle #'(up) c,16 c,4 \\crackle #'(up) c,8 c,2 \\crackle #'(up) c,16 c,4 |\n\t\t\t\\crackle #'(up) c,16 c,4 \\crackle #'(up) c,8 c,2 \\crackle #'(up) c,16 c,4 |\n\t\t\t\\crackle #'(up) c,16 c,4 \\crackle #'(up) c,8 c,4 \\crackle #'(up) c,16 c,2 |\n\t\t\t\\crackle #'(up) c,16 c,4 \\crackle #'(up) c,8 c,4 \\crackle #'(up) c,16 c,2 |\n\t\t\t\\crackle #'(up) c,8 c,4 \\crackle #'(up) c,16 c,2 \\crackle #'(up) c,8 c,4 |\n\t\t\t\\crackle #'(up) c,8 c,4 \\crackle #'(up) c,16 c,2 \\crackle #'(up) c,8 c,4 |\n\t\t\t\\crackle #'(up) c,8 c,4 \\crackle #'(up) c,4 c,2 \\crackle #'(up) c,8 c,4 | \n\t\t\t\\crackle #'(up) c,8 c,4 \\crackle #'(up) c,4 c,2 \\crackle #'(up) c,8 c,4 | }\n\t\t\tr2 r4 c8-.^\"guitar pick, palm mute\" b-. | \n\t\t\tr2 r4 c8-.^\"guitar pick, palm mute\" b-. | \n\t\t\tr2. s4 | r2. s4 | r4 s4 r2 |\n\t\t\tr2. s4 | r2. s4 | r4 s4 r2 |\n\t\t\\context Staff = \"up\" \\relative c' { \\partial 8 s8 | \n\t% \t\t\t \\partial 8 f,8\n\t% \t\t\t c'\\flageolet~ | c1:32\\glissando |\n\t% \t\t\t f'1\\flageolet~ | f1~ \t| f\\glissando |\n\t% \t\t\t f,,\\harmonic\\p~ | \\repeat tremolo 16 { f32\\harmonic bes,\\harmonic }} >>\n\t% \t\t\t f,\\flageolet~ | f^\\markup \\italic \"bis.\" } \\\\\n\t% \t\t   \t \\partial 8 s8\n\t% \t\t   \t \\scaleDurations 1/2 { f1\\harmonic \\stemUp \\headless c''1:16 }| s1\\> |\n\t% \t\t   \t f,1\\harmonic\\p | s1 \t| s1\\< |\n\t% \t\t   \\bnB } %key clks\n\t% \t\t   { %m1\n\t% \t\t { \\clap #piano c2. \\rests #'(down) r4 | } >>\n\t% \t\t { \\clap #piano e1 | } >>\n\t% \t\t { \\rests #'(cl tbn vc) r2 \\buzz  #'(cl tbn vc) e4 f4 | }\n\t% \t\t { \\rests #'(db) r2 \\buzz  #'(db) a4 f4 | }\n\t% \t\t<< { %m1\n\t% \t\t\\buzz #'(cl tbn) f8 c8 \\buzz #'(vc db) f8 a8 |\n\t% \t\t\\clap #'(tbn va db) a4 \\clap #'(up down) d4 |\n\t% \t\t\\clap #'(tbn va db) e4 \\clap #'(up down) a4 |\n\t% \t\t\\clap #'(vn) c4 \\clap #'(cl tbn vc) a4 |\n\t% \t\t\\clA~ | \\n \\clA\\f\\>~ | \\shiftDurations #1 #0 \\clA r4\\! s4 | }\n\t% \t\t\\clef \"bass\"\n\t% \t\t\\crackle #'(fl) c16 c4 \\crackle #'(fl) c8 g4 \\crackle #'(fl) c16 c2 |\n\t% \t\t\\crackle #'(fl) c16 ges4 \\crackle #'(fl) c8 ges2 \\crackle #'(fl) c16 ges4 |\n\t% \t\t\\crackle #'(fl) c8 g4 \\crackle #'(fl) c16 c2 \\crackle #'(fl) c8 g4 |\n\t% \t\t\\crackle #'(fl) c8 ges4 \\crackle #'(fl) ges4 c2. | }\n\t% \t\tr2 r4 c8-. des-. | \n\t% \t\tr4 e'4~^\\markup \\italic \"sul pont.\" | e1~ | e1 | }\n\t% \t\ts4 r4 | r2 <a' d\\harmonic >2~ | <a d\\harmonic >2 s2 | }\n\t% \t       \\buzz #'(                          ) f8 f8\n\t% \t       \\buzz #'(               vn         ) des8 bes8\n\t% \t       \\buzz #'(          down            ) aes8 c8\n\t% \t       \\buzz #'(          down    va vc   ) c8 f8 | } >>\n\t% \t       \\buzz #'(       up                 ) c8 f8 | } >>\n\t% \t       \\buzz #'(       up            vc   ) f8 c8\n\t% \t       \\buzz #'(       up      vn         ) des8 bes8\n\t% \t       \\buzz #'(       up      vn    vc   ) f8 c8\n\t% \t       \\buzz #'(   tbn    down            ) c8 aes8\n\t% \t       \\buzz #'(   tbn    down            ) f8 f8\n\t% \t       \\buzz #'(cl                      db) ges8 f8 | }\n\t% \t       \\rests #'(vn) s4 }\n\t% \t     { \\rests #'(vn) s4 \n\t% \t     { \\rests #'(vn) s4 \n\t% \t  << { \\buzz #'(       up down          db) f8 es8\n\t% \t  << { \\buzz #'(cl tbn up down    va vc db) f8 es8\n\t% \t  << { \\rests #'(clpcccccccccc tbn vc) r4 \\buzz #'(cl tbn vc) f2 c4 | } \n\t% \t  << { \\rests #'(db) r4 \\buzz #'(db) e2 a4 | } \n\t% \t  \\clap #'(tbn db) e4 \\clap #'(up down) a4\n\t% \t  \\clap #'(tbn va db) e4 \\clap #'(up down) a4\n\t% \t  \\clap #'(tbn vc) f4 \\clap #'(vn) c4 \n\t% \t  \\clap #'(vn) c4 \\clap #'(tbn vc) a4 \n\t% \t  \\retrograde \n\t% \t\\context Staff = \"bn\" \\relative c {\n\t% \t\\context Staff = \"cl\" \\relative c'' { \\partial 8 \\shiftDurations #3 0 \\clA\\fp\\<~ | \n\t% \t\\context Staff = \"fl\" \\relative c' { \\partial 8 s8 | r2. s4 | r2. s4 | r4 s4 r2 |\n\t% \t\\context Staff = \"va\" \\relative c,  { \\partial 8 s8 | r2    s4 r4 | r2    s4 r4 | s4 r4\n\t% \t\\context Staff = \"vn\" \\relative c'' { \\partial 8 s8 | r4 s4 r2    | s4 r4 r2    | r2 \n\t% \t{ \\partial 8 \\clap #(sans '(cl bn)) c8 | \n\t% \t}\n\t% << \t\n\t% >>\n\t<< \t\\context Staff = \"bn\" \\relative c {\n\t>>\n\t\\removeWithTag #'part \n\t\\removeWithTag #'verbose\n% \t\t\t\t\t\t\\crackle #'(vn) f''8 d'2.. >>\n% \t\t\t\t\t{ \\crackle #piano f4 a1 \\rests #piano r2 } >>\n% \t\t\t\t\t{ \\rests #'(cls bn tbn) r2 \\hiss #'(cl bn tbn) c2 bes2 }\n% \t\t\t\\clef \"tenor\" f1~ f1..\\pp }\n% \t\t\t\\clef \"tenor\" r8 \\n f2..\\<~ f1 \\pp~ f2.~ f1~ f4 } \n% \t\t\t\\makeTimeSig \\hiss #'(fl tbn vn va db) c1 f2.  }\n% \t\t\t\\rests #'(fl vn va db) r1 >>\n% \t\t  \t\t\t\t \\rests #(sans 'bn) r2. }\n% \t\t  \\makeTimeSig { \\hiss #'(fl cl tbn vn db) a1 f4 }\n% \t\t  \\makeTimeSig { \\rests #'(fl vc va) r2 \\hiss #'(fl vc va) f1 a4 }\n% \t\t% \\removeWithTag #'verbose \n% \t\t\\context Staff = \"bn\" \\relative c' { \n% \t\t\\context Staff = \"cl\" \\relative c' { r4 \\n a2.\\< a1..\\pp}\n% \t\t\\context Staff = \"cl\" { bes1\\> r2\\! }\n% \t\t\\context Staff = \"down\" \\relative c { e4-> r2. r1 r4 \\ottava #-1 f,,2 \\ottava #0 }\n% \t\t\\context Staff = \"tbn\" { bes,,1.. }\n% \t\t\\context Staff = \"up\" \\relative c'' { c8 f g, a bes d f, g a c e g}>>\n% \t\t\\context Staff = \"vc\" \\relative c { \\clef \"bass\" e1 c1..}\n% \t\t\\crackle #'(bn) bes4 f,1..\n% \t\t\\crackle #'(fl) bes4 bes,2..\n% \t\t\\crackle #'(va up) bes8 d1.\n% \t\t\\crackle #'(vc) f4 bes,1..\n% \t\t\\hiss #'(cl bn tbn vc) c2. bes2 >>\n% \t\t\\hiss #'(cl bn tbn vn va vc) c2. e4 >>\n% \t\t\\hiss #'(cl bn tbn vn va vc) c2. f2. \n% \t\t\\hiss #'(cl bn tbn vn va) e2. c2. >>\n% \t\t\\hiss #'(cl vn va) c1 f2 >>\n% \t\t\\hiss #'(fl vn va db) bes1. g4\n% \t\t\\makeTimeSig << \\crackle #'(bn vc up) bes4 d2..\n% \t\t\\removeWithTag #'part { \n% \t\t\\time 7/4\n% \t\t{ << \\hiss #'(tbn) f2 f2\n% \t\t{ \\clap #winds c'2 \\rests #winds r2 }\n% \t\t{ \\crackle #'(vc) bes4 f2. \\rests #'(vc) r2. }\n% \t\t{ \\crackle #'(vn) bes'4 f'2. \\rests #'(vn vc) r2. } >>\n% \t\t{ \\time 4/4 { \\clap #(sans 'bn) f4 \n% \t\t}\n% \t   \\hiss #'(va db) bes4. f2 >>\n% \t<<\n% \t<<\t\\context Staff = \"bn\" \\relative c' { \n% \t<<\t\\time 4/4\n% \t<< \n% \t<<  \\makeTimeSig \\crackle #'(fl bn tbn up vc db) e8 c1.\n% \t<<  \\makeTimeSig \\crackle #'(fl db up vc) e4 c1.\n% \t<<  \\makeTimeSig \\crackle #'(fl db) c4 e1\n% \t<<  \\makeTimeSig \\crackle #'(fl va db) f4 bes1.\n% \t>>\n% \t>>\n% \t>>\n% \t\\makeTimeSig << \n% \t\\makeTimeSig <<  \\crackle #'(fl db) c4 a1.\n% \t\\makeTimeSig << \\crackle #'(fl va) d8 bes1.\n% \t\\makeTimeSig \\crackle e16 c2.\t\t\t\t\n% arrangementOld =\n% }\n%ca. Max meeting 2\n\\include \"./gestures.ily\"\n\\include \"./instrument-names.ily\"\n\\version \"2.20.0\"\narrangement = \n{\n}",
 			"file": "arrangement.ly",
-			"file_size": 6928,
-			"file_write_time": 132580766732933037,
 			"settings":
 			{
-				"buffer_size": 6944,
+				"buffer_size": 7499,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "gestures/crackle.ly",
+			"file": "gestures/pluck.ly",
 			"settings":
 			{
-				"buffer_size": 4306,
+				"buffer_size": 3318,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Recursive Dream.ly",
+			"settings":
+			{
+				"buffer_size": 2396,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -238,20 +243,20 @@
 	"expanded_folders":
 	[
 		"/home/zach/lilypond/linea",
-		"/home/zach/lilypond/z"
+		"/home/zach/lilypond/linea/gestures"
 	],
 	"file_history":
 	[
+		"/home/zach/lilypond/linea/gestures/clap.ly",
+		"/home/zach/lilypond/linea/instrument-names.ily",
+		"/home/zach/lilypond/linea/gestures/pluck.ly",
+		"/home/zach/lilypond/linea/gestures/crackle.ly",
 		"/home/zach/lilypond/linea/Recursive Dream.ly",
 		"/home/zach/lilypond/linea/gestures.ily",
-		"/home/zach/lilypond/linea/gestures/pluck.ly",
-		"/home/zach/lilypond/linea/gestures/clap.ly",
 		"/home/zach/lilypond/linea/gestures/buzz.ly",
 		"/home/zach/lilypond/linea/multiphonics.ily",
-		"/home/zach/lilypond/linea/gestures/crackle.ly",
 		"/home/zach/lilypond/z/paper.ily",
 		"/home/zach/lilypond/linea/math.ly",
-		"/home/zach/lilypond/linea/instrument-names.ily",
 		"/home/zach/lilypond/linea/cited.html",
 		"/home/zach/lilypond/linea/math.pdf",
 		"/home/zach/lilypond/linea/arrangement.ly",
@@ -296,7 +301,7 @@
 	],
 	"find":
 	{
-		"height": 42.0
+		"height": 39.0
 	},
 	"find_in_files":
 	{
@@ -310,6 +315,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"vla",
+			"tbn",
+			"fl",
+			"harmonic gliss.",
 			"n-transpo",
 			"f8",
 			"g",
@@ -358,6 +367,10 @@
 		"regex": true,
 		"replace_history":
 		[
+			"va",
+			"vla",
+			"tbn",
+			"overblow",
 			"ges",
 			"g4",
 			"",
@@ -393,43 +406,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6944,
+						"buffer_size": 7499,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3854,
-								3854
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/SubLilyPond/LilyPond.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 1237.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "gestures/crackle.ly",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4306,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3334,
-								3334
+								1474,
+								1474
 							]
 						],
 						"settings":
@@ -438,10 +423,67 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1200.0,
+						"translation.y": 748.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "gestures/pluck.ly",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3318,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1877,
+								1877
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SubLilyPond/LilyPond.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 357.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Recursive Dream.ly",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2396,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								574,
+								574
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SubLilyPond/LilyPond.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -449,7 +491,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 42.0
+		"height": 26.0
 	},
 	"input":
 	{
@@ -480,7 +522,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 224.0
+		"height": 198.0
 	},
 	"output.find_results":
 	{
@@ -490,7 +532,7 @@
 	"project": "linea.sublime-project",
 	"replace":
 	{
-		"height": 75.0
+		"height": 69.0
 	},
 	"save_all_on_build": true,
 	"select_file":

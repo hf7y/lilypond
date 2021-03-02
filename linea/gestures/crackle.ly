@@ -46,7 +46,7 @@ pizzRandom = #(define-music-function
 		 			 			 (#t #{ \giveDur $noteX $noteY -. #}))
 		 			 	   (loop (- n 1))))))))
 			(make-music 'SequentialMusic 'elements 
-				(cons #{ $noteX -. \pizz #} (loop (- f 1))))))))
+				(cons #{ $noteX -. \pizz #} (loop f)))))))
 
 crackle = #(define-music-function
     (instruments noteA noteB)
@@ -76,7 +76,7 @@ crackle = #(define-music-function
 		#(function 'bn #{  \relative c' \threeNoteRandom $noteA $noteB { \xNotesOn $noteA \xNotesOff }
 		    #(momentToRests (cdr (numFits noteA noteB))) #} #{\clef "tenor"#})
 		#(function 'tbn #{  \transpose c g \twoNoteRandom $noteA $noteB
-		    #(momentToRests (cdr (numFits noteA noteB))) #} #{\clef "tenor"#})
+		    #(momentToRests (cdr (numFits noteA noteB))) #} #{\clef "bass"#})
 		#(function 'up #{  \transpose c c'' \threeNoteRandom $noteA $noteB \transpose c c $noteB
 		    #(momentToRests (cdr (numFits noteA noteB))) #} #{\clef "treble"#})
 		#(function 'down #{  \transpose c c'' \threeNoteRandom $noteA $noteB \transpose c cis $noteB
@@ -86,7 +86,7 @@ crackle = #(define-music-function
 		#(function 'va #{  \transpose c g' #(pizzRandom (giveDur noteA noteB) noteB #{ \transpose c ces $noteB #})
 		    #(momentToRests (cdr (numFits noteA noteB))) #} #{\clef "alto"#})
 		#(function 'vc #{  \transpose c c #(pizzRandom (giveDur noteA noteB) noteB #{ \transpose c ces $noteB #})
-		    #(momentToRests (cdr (numFits noteA noteB))) #} #{\clef "tenor"#})
+		    #(momentToRests (cdr (numFits noteA noteB))) #} #{\clef "bass"#})
 		#(function 'db #{  \transpose c f, #(pizzRandom (giveDur noteA noteB) noteB #{ \transpose c ces $noteB #})
 		    #(momentToRests (cdr (numFits noteA noteB))) #} #{\clef "bass_8"#})
     >>

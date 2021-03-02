@@ -23,7 +23,7 @@
 }
 
 timecode = { 
-	\tempo 4 = 72
+	\tempo 4 = 76
 	s1*32}
 
 \include "./arrangement.ly"
