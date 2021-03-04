@@ -2,12 +2,49 @@
 \include "./instrument-names.ily"
 \version "2.20.0"
 
-phraseZero = { 
-	\hiss f1 f
-	\hiss g2. g
-	\hiss a2 a
-	\hiss b4 b
-	\hiss c8 c
+phraseZero = {
+	<< 
+		\context Staff = "fl" {
+			\makeTimeSig { s2. s2 s2. }
+			\makeTimeSig { s2. s2. s1 }
+			\makeTimeSig { s1.. }	
+			\makeTimeSig { s1. }
+			\makeTimeSig { s1. s1. }
+			\makeTimeSig { s1. s2. s2 }	
+		}
+		{
+			%m1
+			\hiss #'(fl bn va db)  f2. f2
+			\hiss #'(fl bn va db)  f2.
+			%m2
+			c2. \hiss #'(fl bn va db)  c2. c1
+			%m3
+			\hiss #'(fl bn va db)  aes1..
+			%m4
+			d1.
+			%m5
+			\hiss #'(fl bn va db)  es1. es2.
+			\hiss #'(fl bn va db)  es2.
+			%m6
+			ges1. \hiss #'(fl bn va db) ges2 ges2.
+		}
+		{
+			%m1
+			\hiss #'(cl tbn vn vc)  f2. f2
+			\hiss #'(cl tbn vn vc)  f2.
+			%m2
+			c2. \hiss #'(cl tbn vn vc)  c2. c1
+			%m3
+			\hiss #'(cl tbn vn vc)  aes1..
+			%m4
+			d1.
+			%m5
+			\hiss #'(cl tbn vn vc)  es1. es2.
+			\hiss #'(cl tbn vn vc)  es2.
+			%m6
+			ges1. \hiss #'(cl tbn vn vc) ges2 ges2.
+		}
+	>>
  }
 phraseOne = {
 	<<

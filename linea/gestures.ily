@@ -56,12 +56,14 @@ arco = ^\markup \italic "arco"
 autoTimeSig = #(define-music-function
 	(music)
 	(ly:music?)
-	(if (not autoSig) #{#} 
-		#{ \context Score { \time #(let* ((moment (ly:music-length music))
-										 (nume (ly:moment-main-numerator moment))
-										 (den  (ly:moment-main-denominator moment)))
-										 (if (= 1 nume) (cons (* 2 nume) (* 2 den))
-									         			(cons nume den))) } #} ))
+	(if (not autoSig) music
+		#{ \context Score {
+			\time #(let* ((moment (ly:music-length music))
+						  (nume (ly:moment-main-numerator moment))
+						  (den  (ly:moment-main-denominator moment)))
+						 (if (= 1 nume) (cons (* 2 nume) (* 2 den))
+						    			(cons nume den))) } 
+			$music #} ))
 
 
 % hiss = #(define-music-function

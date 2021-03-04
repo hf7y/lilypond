@@ -18,7 +18,8 @@
 #(set-global-staff-size 16)
 %\paper { #(set-paper-size "half-dell") }
 \paper { 
-	#(set-paper-size "b4") 
+	% #(set-paper-size "b4") 
+	#(set-paper-size "half-dell")
 	system-separator-markup = \slashSeparator
 }
 

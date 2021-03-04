@@ -1,5 +1,33 @@
+%linea/math.ly
+
 \version "2.20.0"
 \include "/home/zach/lilypond/z/natural-transpose.ily"
+
+%index
+
+%Takes in moment outputs largest duration less than
+% mome2dur 
+% mome3dur 
+% mome4dur 
+
+% changeDur
+% giveDur
+
+% giveDot
+% trimDot
+% giveDots
+% trimDots
+
+% unfold
+% numFits
+
+% momentToRests
+
+% tuplet-q% 
+% getTactus% 
+% pitchFill
+
+
 
 %Takes in moment outputs largest duration less than
 #(define (mome2dur mome)

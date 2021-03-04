@@ -1,3 +1,5 @@
+\version "2.20.0"
+
 #(set! paper-alist 
   (cons '("lepow       . (cons (* 19 cm) (* 35 cm))) paper-alist))
 #(set! paper-alist 
@@ -6,6 +8,8 @@
   (cons '("ipad pro"   . (cons ( * 220 mm) ( * 305 mm))) paper-alist))
 #(set! paper-alist 
   (cons '("montalvo"   . (cons ( * 11  in) ( * 14  in))) paper-alist))
+#(set! paper-alist
+  (cons '("half-dell"  . (cons ( * 6   in) ( * 8   in))) paper-alist))
 
 z_montalvo = \paper {
   #(set-paper-size "montalvo")

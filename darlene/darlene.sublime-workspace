@@ -1,0 +1,553 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"pluc",
+				"pluckScale"
+			],
+			[
+				"num",
+				"numFits"
+			],
+			[
+				"x",
+				"xNotesOff"
+			],
+			[
+				"give",
+				"giveDur"
+			],
+			[
+				"f",
+				"flageolet"
+			],
+			[
+				"pitch",
+				"pitchB"
+			],
+			[
+				"ma",
+				"markup"
+			],
+			[
+				"fi",
+				"fill-rests"
+			],
+			[
+				"du",
+				"durs"
+			],
+			[
+				"ch",
+				"chromaticScale"
+			],
+			[
+				"make",
+				"make-music"
+			],
+			[
+				"pi",
+				"pitch-semitones"
+			],
+			[
+				"transpo",
+				"transposition"
+			],
+			[
+				"tr",
+				"transposition"
+			],
+			[
+				"musi",
+				"music-length"
+			],
+			[
+				"music",
+				"music-property"
+			],
+			[
+				"dura",
+				"duration-dot-count"
+			],
+			[
+				"durat",
+				"duration-log"
+			],
+			[
+				"t",
+				"tactus"
+			],
+			[
+				"mome",
+				"moment-main-denominator"
+			],
+			[
+				"moment-main",
+				"moment-main-numerator"
+			],
+			[
+				"shif",
+				"shiftDurations"
+			],
+			[
+				"mak",
+				"make-moment"
+			],
+			[
+				"int",
+				"integer-length"
+			],
+			[
+				"dur",
+				"duration-length"
+			],
+			[
+				"dr",
+				"duration"
+			],
+			[
+				"momen",
+				"moment-main-numerator"
+			],
+			[
+				"make-",
+				"make-moment"
+			],
+			[
+				"leng",
+				"music-length"
+			],
+			[
+				"trim",
+				"trimDot"
+			],
+			[
+				"duration",
+				"duration-dot-count"
+			],
+			[
+				"mom",
+				"moment-sub"
+			],
+			[
+				"moment",
+				"moment-sub"
+			],
+			[
+				"moment-m",
+				"moment-main-denominator"
+			],
+			[
+				"not",
+				"noteY"
+			],
+			[
+				"dots",
+				"dotsX"
+			],
+			[
+				"msui",
+				"music-property"
+			],
+			[
+				"define-",
+				"define-music-function"
+			],
+			[
+				"apply",
+				"applyContext"
+			],
+			[
+				"duration-",
+				"duration-dot-count"
+			],
+			[
+				"SHARP",
+				"DOUBLE-SHARP"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "score.ly",
+			"settings":
+			{
+				"buffer_size": 858,
+				"encoding": "UTF-8",
+				"line_ending": "Unix",
+				"name": "\\version \"2.20.0\""
+			}
+		},
+		{
+			"file": "/home/zach/lilypond/linea/math.ly",
+			"settings":
+			{
+				"buffer_size": 5721,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				":w",
+				":w - Save"
+			],
+			[
+				"lil",
+				"Set Syntax: LilyPond"
+			],
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/zach/lilypond/darlene"
+	],
+	"file_history":
+	[
+		"/home/zach/lilypond/wedding2.ly",
+		"/home/zach/lilypond/linea/gestures/pluck.ly",
+		"/home/zach/lilypond/linea/math.ly",
+		"/home/zach/lilypond/linea/gestures/crackle.ly",
+		"/home/zach/lilypond/linea/gestures/clap.ly",
+		"/home/zach/lilypond/linea/Recursive Dream.ly",
+		"/home/zach/lilypond/linea/gestures/buzz.ly",
+		"/home/zach/lilypond/darlene/arrangement.ly",
+		"/home/zach/lilypond/linea/gestures.ily",
+		"/home/zach/lilypond/linea/arrangement.ly",
+		"/home/zach/lilypond/linea/instrument-names.ily",
+		"/home/zach/lilypond/linea/multiphonics.ily",
+		"/home/zach/lilypond/z/paper.ily",
+		"/home/zach/lilypond/linea/cited.html",
+		"/home/zach/lilypond/linea/math.pdf",
+		"/home/zach/lilypond/linea/linea.sublime-project",
+		"/home/zach/lilypond/linea/data",
+		"/home/zach/lilypond/z/timesignature.ily",
+		"/home/zach/lilypond/linea/instrumentation.txt",
+		"/home/zach/lilypond/z/TimeSignature.ily",
+		"/home/zach/lilypond/linea/palette.ly",
+		"/home/zach/lilypond/linea/repeat-test.ly",
+		"/home/zach/lilypond/durations-example.ly",
+		"/home/zach/lilypond/z/list.ily",
+		"/home/zach/lilypond/fixed-test.ly",
+		"/home/zach/lilypond/z/definitions.ily",
+		"/home/zach/lilypond/z/pizz.ily",
+		"/home/zach/lilypond/z/natural-transpose.ily",
+		"/home/zach/lilypond/linea/natural-transpose.ily",
+		"/home/zach/lilypond/z/note.ily",
+		"/home/zach/lilypond/linea/repeat-test.pdf",
+		"/home/zach/lilypond/z/triangle-heads.ly",
+		"/home/zach/.config/sublime-text-3/Packages/User/palette.sublime-build",
+		"/home/zach/lilypond/linea/palette.sublime-build",
+		"/home/zach/roche-scrape/ultra-underblow/scrape.sh",
+		"/home/zach/lilypond/introit/1 opening fanfare.sublime-workspace",
+		"/home/zach/lilypond/introit/1 opening fanfare.ly",
+		"/home/zach/guitar.ly",
+		"/home/zach/lilypond/introit/1 opening fanfare.pdf",
+		"/home/zach/lilypond/introit/nov 12/arpeggio.ly",
+		"/home/zach/lilypond/introit/1 opening. fanfarely",
+		"/home/zach/lilypond/introit/nov 12/phrase3.pdf",
+		"/home/zach/lilypond/introit/phrase1.ly",
+		"/home/zach/lilypond/introit/i-lines.ly",
+		"/home/zach/lilypond/introit/arpeggio.ly",
+		"/home/zach/lilypond/introit/phrase3.ly",
+		"/home/zach/lilypond/introit/phrase2.ly",
+		"/home/zach/lilypond/introit/arpeggio.pdf",
+		"/home/zach/lilypond/introit/materials.ily",
+		"/home/zach/lilypond/introit/i.ly",
+		"/home/zach/lilypond/introit/i.pdf",
+		"/home/zach/lilypond/hello_world.py",
+		"/home/zach/.config/sublime-text-3/Packages/User/Lilypond.sublime-build"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 105.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"num",
+			"r2",
+			"autoTime",
+			"vla",
+			"tbn",
+			"fl",
+			"harmonic gliss.",
+			"n-transpo",
+			"f8",
+			"g",
+			"c4",
+			"fl ",
+			",",
+			"up",
+			"#\\(function",
+			"jett",
+			"'vn",
+			"n-tra",
+			"tbn",
+			"tag",
+			"\\\\tuplet ",
+			"\\tuplet ",
+			"\\\\tuplet ",
+			"mome3",
+			"hiss",
+			"'cl",
+			"hiss",
+			"multiphon",
+			"all-insts",
+			"rests",
+			"tuplet-q",
+			"vc",
+			"% \\\\timecode",
+			"\\\\timecode",
+			"hiss",
+			"\\\\transpose",
+			"\\transpose",
+			"autochange",
+			"\\\\repeat unfold",
+			"\\\\repeat",
+			"\\\\repeat unfold",
+			")))\n",
+			"dur",
+			"pitch",
+			"note",
+			"molto ",
+			"f4",
+			"bih"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"base",
+			"va",
+			"vla",
+			"tbn",
+			"overblow",
+			"ges",
+			"g4",
+			"",
+			"fl",
+			"#\\(writePart",
+			"\\\\tuplet-q ",
+			"\\\\tuplet-q",
+			"tutti",
+			"\\\\timecode",
+			"% \\\\timecode",
+			"\\\\n-transpose",
+			"\\\\unfold",
+			"durB",
+			"pitchB",
+			"noteB",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"folders":
+	[
+		{
+			"path": "/home/zach/lilypond/darlene"
+		}
+	],
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "score.ly",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 858,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								810,
+								810
+							]
+						],
+						"settings":
+						{
+							"auto_name": "\\version \"2.20.0\"",
+							"syntax": "Packages/SubLilyPond/LilyPond.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/home/zach/lilypond/linea/math.ly",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5721,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5309,
+								5309
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SubLilyPond/LilyPond.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1900.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 48.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 198.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/User/Lilypond.sublime-build",
+	"project": "",
+	"replace":
+	{
+		"height": 69.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 206.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -1,12 +1,55 @@
 \version "2.20.0"
 
+% firstHalf = #(define-music-function
+%     (noteX)
+%     (ly:music?)
+%     (if (= 0 (ly:duration-dot-count (ly:music-property noteX 'duration)))
+%         #{ \n $noteX \< #}
+%         #{ \n \giveDot $noteX r1 \trimDot $noteX \< #}))
+
+firstHalf = #(define-music-function
+    (noteX)
+    (ly:music?)
+    #{ \n $noteX \< #} )
+
+
+secondHalf = #(define-music-function
+    (noteY)
+    (ly:music?)
+    #{ \n \trimDot $noteY \> \giveDot $noteY r1\! #})
+
+% firstHalfFifth = #(define-music-function
+%     (noteX chord)
+%     (ly:music? ly:music?)
+%     (if (= 0 (ly:duration-dot-count (ly:music-property noteX 'duration)))
+%         #{ \n \giveDur $noteX \transpose c #(ly:music-property noteX 'pitch) $chord \<^\markup \italic "sul pont." #}
+%         #{ \giveDot $noteX r1 \n \giveDur \trimDot $noteX \transpose c #(ly:music-property noteX 'pitch) $chord \<^\markup \italic "sul pont." #}))
+
+firstHalfFifth = #(define-music-function
+    (noteX chord)
+    (ly:music? ly:music?)
+    #{ \n \giveDur $noteX \transpose c #(ly:music-property noteX 'pitch) $chord \<^\markup \italic "sul pont." #} )
+
+secondHalfFifth = #(define-music-function
+    (noteY chord)
+    (ly:music? ly:music?)
+    #{ \n \giveDur \trimDot $noteY \transpose c #(ly:music-property noteY 'pitch) $chord \>^\markup \italic "sul pont." \giveDot $noteY r1\!  #})
+
+#(define (trem dur)
+    (let ((log (ly:duration-log dur)))
+        (make-music 'TremoloEvent 'tremolo-type
+                    (expt 2 (+ (+ 3 log) (max (- 2 log) 0))))))
+    
+
 hiss = #(define-music-function
     (instruments noteA noteB)
     ((list? tutti) ly:music? ly:music?)
-    (letrec ((pitchA (ly:music-property noteA 'pitch))
+    (let* ((pitchA (ly:music-property noteA 'pitch))
              (durA (ly:music-property noteA 'duration))
              (pitchB (ly:music-property noteB 'pitch))
              (durB (ly:music-property noteB 'duration))
+             (pitchEq (equal? pitchA pitchB))
+             (tie (if pitchEq #{~#}))
              (randA (random 2))
              (randB (random 2))
              (function 
@@ -17,116 +60,35 @@ hiss = #(define-music-function
                                 $before $music }
                             \context Lyrics = #(symbol->string inst) 
                                 \lyricsto #(symbol->string inst) { $lyrics } >> #}))))
-   #{
+   #{ \autoTimeSig
     <<
-    	#(function 'fl #{ \fixed c' { \trimDot $noteA \> \giveDot $noteA r\! } #} #{#} #{ s #} )
-		#(if (memq 'cl instruments) 
-    		#{
-    			\context Staff = "cl" {
-    				#(let ((ls (mome3dur (ly:moment-add (ly:duration-length durA)
-    							 						(ly:duration-length durB)))))
-    						(make-sequential-music 
-    							(list (changeDur (car ls) clA)
-    								  (if (null? (cdr ls)) #{#} 
-    								  	  (changeDur (cadr ls) #{ r1 #})))))
+    	#(function 'fl #{ \fixed c'' { \firstHalf $noteA #tie \secondHalf $noteB } #} #{#} #{ ⟨s⟩ #} )
+		#(function 'cl #{ \fixed c'  { \firstHalf $noteA #tie \secondHalf $noteB } #} )
+        #(function 'bn #{ \fixed c   { \firstHalf $noteA #tie \secondHalf $noteB } #} )
+        #(function 'tbn #{ \no-line <<  \tag #'verbose \footnote #'(0 . 0) "air" \hide \giveDur $noteA r1 
+                               \transpose $pitchA d \square { \firstHalf $noteA ~ \secondHalf \giveDur $noteB $noteA } >> #} )
 
-		        }
-		    #})
-		#(if (memq 'bn instruments) 
-    		#{
-    			\context Staff = "bn" {
-    				\shiftDurations #1 #0 {
-    					\giveDur $noteA r
-    					\once \override Hairpin.circled-tip = ##t
-    					\once \override Hairpin.to-barline = ##f
-    					$noteA ~\>
-    					\shiftDurations #0 #1
-    					\giveDur $noteB $noteA \!
-    					\shiftDurations #1 #0 \giveDur $noteB r }
-		        }
-			#})
-		#(if (memq 'tbn instruments) 
-    		#{
-    			\context Staff = "tbn" {
-    					<< \tag #'verbose \footnote #'(0 . 0) "air" \hide \giveDur $noteA r1 
-    					\no-line
-						#(let ((ls (mome3dur (ly:moment-add (ly:duration-length durA)
-    							 						(ly:duration-length durB)))))
-    						(make-sequential-music 
-    							(list (if (null? (cdr ls)) #{#} 
-    								  	  (changeDur (cadr ls) #{ r1 #}))
-    								  (changeDur (car ls) #{\square d1#})))) >>
-		        }
-			#})
-		#(if (memq 'up instruments) 
-    		#{
-    			\context Staff = "up" {
-		        }		        
-			#})
-		#(if (memq 'down instruments) 
-    		#{
-    			\context Staff = "down" {
-		        }		        
-			#})
-		#(if (memq 'vn instruments) 
-    		#{
-    			\context Staff = "vn" {
-    				\shiftDurations #1 #0 \giveDur $noteB r1
-    				#(let ((ls (mome3dur (ly:music-length #{ $noteA 
-    														 \shiftDurations #1 #0 $noteB #}))))
-    						(make-sequential-music 
-    							(list #{ \changeDur #(car ls) 
-    								  				\n-transpose c,, $pitchA <c g>1\!:32
-    								  			   ^\markup \italic "molto sul pont." #}
-    								   (if (null? (cdr ls)) #{#} 
-    								  	  (changeDur (cadr ls) #{ r1 #})))))		  	  	
-		        }		        
-			#})
-		#(if (memq 'va instruments) 
-    		#{		        
-		        \context Staff = "va" {
-    				\shiftDurations #1 #0 \giveDur $noteA r1
-    				#(let ((ls (mome3dur (ly:music-length #{ $noteB 
-    														 \shiftDurations #1 #0 $noteA #}))))
-    						(make-sequential-music 
-    							(list #{ \changeDur #(car ls) 
-    								  				\n-transpose c, $pitchB <c g>1\!:32
-    								  			   ^\markup \italic "molto sul pont." #}
-    								   (if (null? (cdr ls)) #{#} 
-    								  	  (changeDur (cadr ls) #{ r1 #})))))
-		        }
-			#})
-		#(if (memq 'vc instruments) 
-    		#{		        
-		        \context Staff = "vc" {
-		        	\clef "tenor"
-    				#(let ((ls (mome3dur (ly:music-length #{ $noteB 
-    														 \shiftDurations #1 #0 $noteA #}))))
-    						(make-sequential-music 
-    							(list (if (null? (cdr ls)) #{#} 
-    								  	  (changeDur (cadr ls) #{ r1 #}))
-    								  #{ \changeDur #(car ls) 
-    								  			<<	\n-transpose c, $pitchA <c gih>1:32
-    								  			   		^\markup \italic "molto sul pont."
-    								  			   {s2\< s2\>} >> #})))
-		        	\shiftDurations #1 #0 \giveDur $noteA r1\!
-		        }
-			#})
-		#(if (memq 'db instruments) 
-    		#{		        
-		        \context Staff = "db" {
-    				#(let ((ls (mome3dur (ly:music-length #{ $noteA 
-    														 \shiftDurations #1 #0 $noteB #}))))
-    						(make-sequential-music 
-    							(list (if (null? (cdr ls)) #{#} 
-    								  	  (changeDur (cadr ls) #{ r1 #})) 
-    								  #{ \changeDur #(car ls) 
-    								  			<< \n-transpose c' $pitchB <c f>1:32
-    								  			   		^\markup \italic "molto sul pont." 
-    								  			   {s2\< s2\>} >>#}
-    								   )))
-		        	\shiftDurations #1 #0 \giveDur $noteB r1\!
-		        }
-		    #})
+		#(function 'up   #{ \giveDur $noteA r1 \giveDur $noteB r1 #} )
+		#(function 'down #{ \giveDur $noteA r1 \giveDur $noteB r1 #} )
+
+        #(function 'vn #{ \fixed c'' { \firstHalfFifth $noteA <c g>1 #(trem durA) #tie \secondHalfFifth $noteB { <c g>1 #(trem durB) }  } #} )
+        #(function 'va #{ \fixed c' { \firstHalfFifth $noteA <c g>1 #(trem durA) #tie \secondHalfFifth $noteB { <c g>1 #(trem durB) } } #} )
+        #(function 'vc #{ \fixed c { \firstHalfFifth $noteA <c g>1 #(trem durA) #tie \secondHalfFifth $noteB { <c g>1 #(trem durB) } } #} )
+        #(function 'db #{ \fixed c, { \firstHalfFifth $noteA <c f>1 #(trem durA) #tie \secondHalfFifth $noteB { <c f>1 #(trem durB) } } #} )
+
+	
+        %% CLARINET MULTIPHONIC IDEA
+        % #(if (memq 'cl instruments) 
+        %           #{
+        %               \context Staff = "cl" {
+        %                   #(let ((ls (mome3dur (ly:moment-add (ly:duration-length durA)
+        %                                                       (ly:duration-length durB)))))
+        %                           (make-sequential-music 
+        %                               (list (changeDur (car ls) clA)
+        %                                     (if (null? (cdr ls)) #{#} 
+        %                                         (changeDur (cadr ls) #{ r1 #})))))
+        %         }
+        %     #})
+        %%
     >>
     #}))
