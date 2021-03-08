@@ -3,9 +3,8 @@
 \version "2.20.0"
 \include "/home/zach/lilypond/z/natural-transpose.ily"
 
-%index
-
-%Takes in moment outputs largest duration less than
+% contents
+% ********
 % mome2dur 
 % mome3dur 
 % mome4dur 
@@ -23,41 +22,48 @@
 
 % momentToRests
 
-% tuplet-q% 
-% getTactus% 
+% tuplet-q
+% getTactus
 % pitchFill
 
 
+% frac->durs 
+#(define* (frac->durs frac #:optional (depth -1))
+	(if (or (zero? frac) (zero? depth)) '()
+		(let* ((nume-mag (integer-length (numerator frac)))
+			   (compl (logxor (numerator frac) (- (expt 2 nume-mag) 1))))
+			  (if (zero? compl) 
+			  	  (let ((dot-count (- nume-mag 1))
+			  			(log (- (integer-length (denominator frac)) nume-mag)))
+			  	  		;assumes (denominator frac) has form 2^n 
+			  	  	   (list (ly:make-duration log dot-count)))
+			  	  (let* ((compl-mag (integer-length compl))
+			    		 (dot-count (- (- nume-mag compl-mag) 1))
+			    		 (log (- (- (integer-length (denominator frac)) dot-count) 3)))
+			  	  		;assumes (denominator frac) has form 2^n
+			 			(cons (ly:make-duration log dot-count) 
+			 	 			  (frac->durs (/ (logxor compl (- (expt 2 compl-mag) 1))
+			 	 	   							 (denominator frac))
+			 	 	   					   (- depth 1))))))))
 
-%Takes in moment outputs largest duration less than
+
 #(define (mome2dur mome)
-	(let* ((nume (ly:moment-main-numerator mome))
-		 (den  (ly:moment-main-denominator mome))
-		 (n (- (string-length (number->string nume 2)) 1))
-		 (m (- (string-length (number->string den 2)) (+ n 1))))
-		 (ly:make-duration m n)))
+	; express mome as largest dur less than mome
+	(car (frac->durs (ly:moment-main mome) 1)))
 
 #(define (mome3dur mome)
-	(let ((nume (ly:moment-main-numerator mome))
-		  (den  (ly:moment-main-denominator mome)))
-	 	 (if (= nume 0) '()
-	 	 	 (let ((index (logxor nume (- (expt 2 (integer-length nume)) 1))))
-	 	 	 	  (cond ((= index 0) (list (mome2dur mome)))
-	 	 	 	  		(#t (let* ((shift (- 1 (integer-length index)))
-	 	 	 	  				   (big (ash (ash nume shift) (- shift))))
-	 	 	 	  				  (cons (mome2dur (ly:make-moment big den))
-	 	 	 	  				  		(mome3dur (ly:make-moment (- nume big) den))))))))))
-#(define (mome4dur mome)
-	(let ((nume (ly:moment-main-numerator mome))
-		  (den  (ly:moment-main-denominator mome)))
-	 	 (cond ((= nume 0) '())
-	 	 	   ((> (/ nume den) 1) (cons (ly:make-duration 0) 
-	 	 	 	   						 (mome4dur (ly:moment-sub mome (ly:make-moment 1)))))
-	 	 	   (#t (cons (ly:make-duration (- (integer-length den) (integer-length nume))) 
-	 	 	 			 (mome4dur (ly:moment-sub mome (ly:make-moment (ash #b1 (- (integer-length nume) 1)) den)))
-	 	 	 			 )))))
+	; express mome as list of durs
+	(frac->durs (ly:moment-main mome)))
 
-%assigns returns music with pitch from note and duration dur
+#(define (mome4dur mome)
+	(letrec ((fn (lambda (frac)
+					   (if (zero? (numerator frac)) '()
+					   	   (cons (ly:make-duration (- (integer-length (denominator frac)) 1))
+								 (fn (/ (- (numerator frac) 1) (denominator frac))))))))
+			(fn (ly:moment-main mome))))
+
+
+%The following *Dur and *Dot* functions presume (ly:music-length note) of the form 2^m-1/2^n
 changeDur = #(define-scheme-function
 	(dur note)
 	(ly:duration? ly:music?)
@@ -175,4 +181,3 @@ pitchFill = #(define-music-function
 				'elements
 				(function (cdr tactus) (* 2 semis) (changeDur (car tactus) init) 
 							  (changeDur (car tactus) final)))))
-
