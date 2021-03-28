@@ -1,0 +1,19 @@
+{
+	"build_systems":
+	[
+		{
+			"name": "main",
+			"shell_cmd": "lilypond ./main.ly"
+		},
+		// {
+		// 	"name": "Recursive Dream.ly",
+		// 	"shell_cmd": "lilypond -o '/home/zach/lilypond/linea/Recursive Dream' '/home/zach/lilypond/linea/Recursive Dream.ly'"
+		// }
+	],
+	"folders":
+	[
+		{
+			"path": "."
+		}
+	]
+}

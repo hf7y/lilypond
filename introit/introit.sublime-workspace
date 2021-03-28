@@ -17,15 +17,6 @@
 			{
 				"buffer_size": 3117,
 				"encoding": "UTF-8",
-				"line_ending": "Unix",
-				"name": "math.ly"
-			}
-		},
-		{
-			"file": "arpeggio.ly",
-			"settings":
-			{
-				"buffer_size": 15251,
 				"line_ending": "Unix"
 			}
 		},
@@ -37,6 +28,22 @@
 				"encoding": "UTF-8",
 				"line_ending": "Unix",
 				"name": "main.ly"
+			}
+		},
+		{
+			"file": "/home/zach/lilypond/linea/math.ly",
+			"settings":
+			{
+				"buffer_size": 6242,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/zach/lilypond/linea/Recursive Dream.ly",
+			"settings":
+			{
+				"buffer_size": 2429,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -80,10 +87,15 @@
 	},
 	"expanded_folders":
 	[
-		"/home/zach/lilypond/introit"
+		"/home/zach/lilypond/introit",
+		"/home/zach/lilypond/z"
 	],
 	"file_history":
 	[
+		"/home/zach/lilypond/introit/math.ly",
+		"/home/zach/lilypond/linea/math.ly",
+		"/home/zach/lilypond/introit/introit.sublime-project",
+		"/home/zach/lilypond/linea/linea.sublime-project",
 		"/home/zach/lilypond/introit/1 opening fanfare.pdf",
 		"/home/zach/lilypond/introit/nov 12/arpeggio.ly",
 		"/home/zach/lilypond/introit/1 opening fanfare.ly",
@@ -103,7 +115,7 @@
 	],
 	"find":
 	{
-		"height": 24.0
+		"height": 43.0
 	},
 	"find_in_files":
 	{
@@ -117,6 +129,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"deg",
+			"m-"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -134,7 +148,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -150,54 +164,24 @@
 						"selection":
 						[
 							[
-								73,
-								73
-							]
-						],
-						"settings":
-						{
-							"auto_name": "math.ly",
-							"syntax": "Packages/SubLilyPond/LilyPond.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 1197.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "arpeggio.ly",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 15251,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								12265,
-								12503
+								2751,
+								2751
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/SubLilyPond/LilyPond.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 4674.0,
+						"translation.y": 1258.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 1,
 					"file": "main.ly",
 					"semi_transient": false,
 					"settings":
@@ -209,21 +193,78 @@
 						"selection":
 						[
 							[
-								0,
-								0
+								365,
+								365
 							]
 						],
 						"settings":
 						{
 							"auto_name": "main.ly",
-							"syntax": "Packages/SubLilyPond/LilyPond.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/SubLilyPond/LilyPond.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/home/zach/lilypond/linea/math.ly",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6242,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								188,
+								188
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SubLilyPond/LilyPond.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 315.0,
+						"zoom_level": 1.0
+					},
 					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/home/zach/lilypond/linea/Recursive Dream.ly",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2429,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								655,
+								655
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/SubLilyPond/LilyPond.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 347.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -231,7 +272,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 24.0
+		"height": 30.0
 	},
 	"input":
 	{
@@ -262,17 +303,17 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 183.0
+		"height": 369.0
 	},
 	"output.find_results":
 	{
 		"height": 0.0
 	},
-	"pinned_build_system": "Packages/User/Lilypond.sublime-build",
-	"project": "1 opening fanfare.sublime-project",
+	"pinned_build_system": "main.ly",
+	"project": "introit.sublime-project",
 	"replace":
 	{
-		"height": 44.0
+		"height": 77.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -306,7 +347,7 @@
 	"settings":
 	{
 	},
-	"show_minimap": true,
+	"show_minimap": false,
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,

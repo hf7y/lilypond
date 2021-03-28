@@ -4,28 +4,30 @@
 \include "./gestures.ily"
 \include "./gestures/clap.ly"
 \include "./instrument-names.ily"
+\include "./rows.ly"
 
 \include "/home/zach/lilypond/z/list.ily"
 \include "/home/zach/lilypond/z/dynamic.ily"
 
 
 \header {
-	title= "Jesu, meine Freude"
-	composer = "Z V Pine" }
+	title= "r. r."
+	composer = "Z V Pine"
+	tagline = "" }
 
 #(set! paper-alist
   (cons '("half-dell"  . (cons ( * 6   in) ( * 6.5   in))) paper-alist))
 #(set-global-staff-size 16)
 %\paper { #(set-paper-size "half-dell") }
 \paper { 
-	% #(set-paper-size "b4") 
-	#(set-paper-size "half-dell")
+	#(set-paper-size "b4") 
+	% #(set-paper-size "half-dell")
 	system-separator-markup = \slashSeparator
 }
 
 timecode = { 
 	\tempo 4 = 76
-	s1*32}
+	s1*40}
 
 \include "./arrangement.ly"
 

@@ -42,8 +42,8 @@ clap = #(define-music-function
 	    		 				  		\context Lyrics = #(symbol->string inst) \lyricsto #(symbol->string inst) {} >> #})
     						))))
    #{
+    \autoTimeSig
     <<
-    	% \autoTimeSig $note
     	#(function 'fl   #{ \n-transpose c,, $pitch c1 #} #{\clef "treble"#})
     	#(function 'cl   #{ \n-transpose c,, $pitch c1 #} #{\clef "treble"#})
     	#(function 'bn   #{ \n-transpose c,  $pitch c1 #} #{\clef "tenor"#})

@@ -7,23 +7,31 @@
 flutterTongue = #(define-music-function
     (noteX noteY)
     (ly:music? ly:music?)
-    (let* ((durs (mome3dur (ly:music-length #{ $noteX $noteY #})))
+    (let* ((durs (mome3dur (ly:music-length #{ $noteX 
+                                               $noteY #})))
            (main (changeDur (car durs) noteX)))
-         #{ <<  \oneVoice
-                $main #(make-music 'TremoloEvent 'tremolo-type
-                    (expt 2 (+ (+ 3 (ly:duration-log (car durs))) (max (- 2 (ly:duration-log (car durs))) 0)))) \\
+         #{ <<  
+                \oneVoice
+                $main #(trem (car durs)) 
+            \\
                 \stemless \shiftDurations #1 #0 {
                     \hideNotes $main \glissando \unHideNotes
                     \once \override Dots.stencil = ##f
                     \tiny \parenthesize
-                    #(changeDur (car durs) noteY) }
+                    #(ly:music-transpose main 
+                                         (ly:make-pitch 0 
+                                                        (let ((r (- (random 4) 1)))
+                                                             (if (positive? r) r
+                                                                 (- r 1))))) }
             >> 
             #(make-music 'SequentialMusic 'elements
                 (letrec ((fill-rests (lambda (ls)
-                    (if (null? ls) '()
-                        (cons (make-music 'RestEvent 'duration (car ls))
-                              (fill-rests (cdr ls)))))))
-                    (fill-rests (cdr durs))))
+                                             (if (null? ls) '()
+                                                 (cons (make-music 
+                                                            'RestEvent 
+                                                            'duration (car ls))
+                                                       (fill-rests (cdr ls)))))))
+                        (fill-rests (cdr durs))))
           #}))
 
 stringTrem = #(define-music-function
@@ -43,20 +51,80 @@ stringTrem = #(define-music-function
 jette = #(define-music-function
     (min init final semis)
     ((number? 4) ly:music? ly:music? (number? 0))
-    (letrec ((tactus (getTactus min #{ $init $final #}))
+    (letrec ((tactus (getTactus min #{ #init #final #}))
              (function (lambda (m s i f)
                 (if (<= m 1) (list f)
                     (let ((transposition (round (/ s (- m 1)))))
-                        (cons i (function (- m 1) (- s transposition)
-                            #{\n-transpose c #(ly:make-pitch -1 0 (/ transposition 4)) $i #} f)))))))
-            (let ((ls (function (cdr tactus) (* 2 semis) (changeDur (car tactus) init) 
-                              (changeDur (car tactus) final))))
-                (make-music
-                    'SequentialMusic
-                    'elements
-                    (cons #{ #(car ls) ([ ^\markup \italic "jetté" #} (cdr ls))))))
+                         (cons i 
+                              (function (- m 1)
+                                        (- s transposition)
+                                        #{\n-transpose c #(ly:make-pitch -1 0 (/ transposition 4)) $i #}
+                                        f)))))))
+            (let ((ls (function (cdr tactus)
+                                (* 2 semis)
+                                (changeDur (car tactus) init) 
+                                (changeDur (car tactus) final))))
+                #{ #(make-music
+                        'SequentialMusic
+                        'elements
+                        (cons #{ #(car ls) ([ ^\markup \italic "jetté" #} 
+                              (cdr ls)))
+                    )] #} )))
 
-buzz = #(define-music-function
+jetteTwo = #(define-music-function
+    (noteX noteY shape)
+    (ly:music? ly:music? ly:music?)
+    (let* ((length (ly:music-length #{ #noteX #noteY #}))
+           (main (ly:moment-main length)))
+        (if (> main 1/4)
+            #{ #(jetteTwo (shiftDurations 1 0 (ly:music-deep-copy noteX)) 
+                          (shiftDurations 1 0 (ly:music-deep-copy noteY)) 
+                          shape)
+                #(make-music 
+                    'SequentialMusic 
+                    'elements
+                    (map (lambda (dur)
+                            (make-music
+                                'RestEvent
+                                'duration dur))
+                        (mome4dur 
+                            (ly:moment-div length
+                                           (ly:make-moment 2)))))
+            #}
+            (letrec ((tactus (getTactus 4 #{ #noteX #noteY #}))
+                     (pitchY (ly:music-property noteY 'pitch))
+                     (make-steps-list 
+                        (lambda (pa pb count)
+                            (let ((steps-a (ly:pitch-steps pa))
+                                  (steps-b (ly:pitch-steps pb)))
+                             (if (zero? count) '()
+                                 (let* ((diff (/ (- steps-b steps-a) count))
+                                        (int (round diff))
+                                        (rem (/ (round (* 4 (- diff int))) 4)))
+                                     (cons pa
+                                           (make-steps-list
+                                                (ly:pitch-transpose
+                                                    pa
+                                                    (ly:make-pitch 0 int rem))
+                                                pb
+                                                (- count 1)))))))))
+                    (letrec ((steps-list (make-steps-list
+                                        (ly:music-property noteX 'pitch)
+                                        pitchY
+                                        (- (cdr tactus) 1)))
+                             (transp-shape (lambda (p)
+                                            #{ \n-transpose c #p
+                                                #(changeDur (car tactus) shape) #})))
+                            (let ((pitch-list (map transp-shape steps-list)))
+                                #{
+                                    #(car pitch-list) ([ ^\markup \italic "jetté"
+                                    #(make-music
+                                        'SequentialMusic
+                                        'elements
+                                        (cdr pitch-list))
+                                    #(transp-shape pitchY) )] #} ))))))
+
+buzz =  #(define-music-function
     (instruments noteA noteB)
     ((list? tutti) ly:music? ly:music?)
     (letrec ((pitchA (ly:music-property noteA 'pitch))
@@ -72,6 +140,7 @@ buzz = #(define-music-function
                             \context Lyrics = #(symbol->string inst) 
                                 \lyricsto #(symbol->string inst) {} >> #}))))
    #{
+    \autoTimeSig
     <<
     	% \autoTimeSig { $noteA $noteB }
         #(function 'fl (flutterTongue #{ \transpose c c'' $noteA #} 
@@ -112,17 +181,25 @@ buzz = #(define-music-function
     				\giveDur $noteB r\!
 		        }	        
 			#})
-        #(function 'vn (jette 4 #{ \transpose c,, $pitchA \giveDur $noteA <c g> -. #} 
-            #{ \transpose c,, $pitchB \giveDur $noteB <c g> -.)] #} 
-            (- (ly:pitch-semitones pitchB) (ly:pitch-semitones pitchA)))
-                     #{\clef "treble"#})
-        #(function 'va (jette 3  #{ \transpose g,, $pitchB \giveDur $noteA <c g> -. #}
-            #{ \transpose g,, $pitchA \giveDur $noteB <c g> -.)] #}
-            (- (ly:pitch-semitones pitchA) (ly:pitch-semitones pitchB)))
-                     #{\clef "treble"#})
-		#(function 'vc (stringTrem #{ \transpose c $pitchA \giveDur $noteA <c f\harmonic> ^\markup \italic "sul pont."#} noteB )
-                        #{\clef "bass"#})
-        #(function 'db (stringTrem #{ \transpose c' $pitchB \giveDur $noteA <c f\harmonic> ^\markup \italic "sul pont."#} noteB )
+        #(function 'vn
+            (if (zero? (random 3))
+                (jetteTwo noteB noteA #{ <c' g'> #})
+                (stringTrem #{ \transpose c,, $pitchB \giveDur $noteA <c f\harmonic> ^\markup \italic "sul pont."#} noteB ))
+            #{\clef "treble"#})
+        #(function 'va 
+            (if (zero? (random 4))
+                (jetteTwo noteB noteA #{ <c g> #})
+                (stringTrem #{ \transpose c, $pitchA \giveDur $noteA <c f\harmonic> ^\markup \italic "sul pont."#} noteB ))
+            #{\clef "alto"#})
+		#(function 'vc 
+            (if (zero? (random 5))
+                (jetteTwo noteA noteB #{ <c g> #})
+                (stringTrem #{ \transpose c $pitchA \giveDur $noteA <c f\harmonic> ^\markup \italic "sul pont."#} noteB ))
+             #{\clef "bass"#})
+        #(function 'db 
+            (if (zero? (random 6))
+                (jetteTwo noteA noteB #{ <c, f,> #})
+                (stringTrem #{ \transpose c' $pitchB \giveDur $noteA <c f\harmonic> ^\markup \italic "sul pont."#} noteB ))
                         #{\clef "bass_8"#})
     >>
     #}))

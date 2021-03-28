@@ -1,8 +1,11 @@
 \include "./gestures.ily"
+\include "./rows.ly"
+
 \include "./instrument-names.ily"
 \version "2.20.0"
 
 phraseZero = {
+	#(set! autoSig #f)
 	<< 
 		\context Staff = "fl" {
 			\makeTimeSig { s2. s2 s2. }
@@ -30,23 +33,24 @@ phraseZero = {
 		}
 		{
 			%m1
-			\hiss #'(cl tbn vn vc)  f2. f2
-			\hiss #'(cl tbn vn vc)  f2.
+			\rests #'(cl tbn vn vc) r2 \hiss #'(cl tbn vn vc)  f2.
+			f2.
 			%m2
-			c2. \hiss #'(cl tbn vn vc)  c2. c1
+			\hiss #'(cl tbn vn vc)  f2. c2. \hiss #'(cl tbn vn vc)  c1
 			%m3
-			\hiss #'(cl tbn vn vc)  aes1..
-			%m4
-			d1.
-			%m5
-			\hiss #'(cl tbn vn vc)  es1. es2.
+			c2. \hiss #'(cl tbn vn vc)  aes1
+			%m4 1.
+			d1 \hiss #'(cl tbn vn vc)  es2
+			%m5 1. 2. 2.
+			es2. \hiss #'(cl tbn vn vc) bes2. bes2.
 			\hiss #'(cl tbn vn vc)  es2.
-			%m6
+			%m6 1. 2 2.
 			ges1. \hiss #'(cl tbn vn vc) ges2 ges2.
 		}
 	>>
  }
 phraseOne = {
+	\time 4/4
 	<<
 		\context Staff = "bn" {
 			r16 c32 dih32 f2..~ | f2.\glissando e4\< |
@@ -71,8 +75,7 @@ phraseOne = {
 			\clap #'(fl) f4 \clap #'(cl db) a4 \clap #'(tbn vc) c'4 \clap #'(fl vn db) e4
 				\clap #'(cl tbn va vc) a4 \clap #'(fl vn db) f4 \clap #'(fl cl tbn down) c4 \clap #'(down vn va vc db) f4
 		}
-	>> 
-	\bar "||" %m7->
+	>> \bar "||" %m7->
 	<<
 		\context Staff = "cl" {
 			s1 s1 |
@@ -121,8 +124,7 @@ phraseOne = {
 			>>
 		}
 		\rests #(sans bn (sans db)) { s1 | s1 | s1 | s2.\< s4\! } 
-	>>
-	\bar "||" %m11->
+	>> \bar "||" %m11->
 	<<
 		\context Staff = "cl" \relative c' { 
 			\tuplet 3/2 { f8 8 8 } f2.~ f1 |
@@ -190,8 +192,7 @@ phraseOne = {
 			}
 			>>
 		}
-	>>
-	\bar "||"
+	>> \bar "||"
 	<<
 		{ %flute
 			\context Staff = "fl" { d'''4:32\> r2.\! } | \pluck #'(fl) g8 g2 \crackle #'(fl) f'8 f'2 |
@@ -241,7 +242,8 @@ phraseOne = {
 			c1~ c1 |
 			\n a2\> r2\! R1 | }
 		}
-	>> \bar "||"}
+	>> \bar "||"
+}
 phraseTwo = {
 	<<
 		\context Staff = "vc" {
@@ -254,11 +256,56 @@ phraseTwo = {
 		}
 	>>}
 
+phraseF = { 
+	#(define p1s (row (list-elems #{ f f f f f d c bes a g #} 'pitch)))
+	#(define p2s (row (list-elems #{ a bes a g f e #} 'pitch)))
+	#(define ds (row (list-elems #{ 4 2 4 4 2 4 4 2  #} 'duration)))
+	#(define next1 (lambda ()(make-note (p1s left) (ds left))))
+	#(define next2 (lambda ()(make-note (p1s left) (ds left))))
+	<<
+		{
+			#(set! autoSig #f)
+			#(if (zero? (random 2))
+				 #{ \makeTimeSig { \clap #(next1) \rests #(make-rest (ds left)) } #}
+				 #{ \makeTimeSig \buzz #(next1) #(next1) #})
+			#(if (zero? (random 2))
+				 #{ \makeTimeSig { \clap #(next1) \rests #(make-rest (ds left)) } #}
+				 #{ \makeTimeSig \buzz #(next1) #(next1) #})
+			#(if (zero? (random 2))
+				 #{ \makeTimeSig { \clap #(next1) \rests #(make-rest (ds left)) } #}
+				 #{ \makeTimeSig \buzz #(next1) #(next1) #})
+			#(if (zero? (random 2))
+				 #{ \makeTimeSig { \clap #(next1) \rests #(make-rest (ds left)) } #}
+				 #{ \makeTimeSig \buzz #(next1) #(next1) #})
+			#(if (zero? (random 2))
+				 #{ \makeTimeSig { \clap #(next1) \rests #(make-rest (ds left)) } #}
+				 #{ \makeTimeSig \buzz #(next1) #(next1) #})
+						#(set! autoSig #f)
+			#(if (zero? (random 2))
+				 #{ \makeTimeSig { \clap #(next1) \rests #(make-rest (ds left)) } #}
+				 #{ \makeTimeSig \buzz #(next1) #(next1) #})
+			#(if (zero? (random 2))
+				 #{ \makeTimeSig { \clap #(next1) \rests #(make-rest (ds left)) } #}
+				 #{ \makeTimeSig \buzz #(next1) #(next1) #})
+			#(if (zero? (random 2))
+				 #{ \makeTimeSig { \clap #(next1) \rests #(make-rest (ds left)) } #}
+				 #{ \makeTimeSig \buzz #(next1) #(next1) #})
+			#(if (zero? (random 2))
+				 #{ \makeTimeSig { \clap #(next1) \rests #(make-rest (ds left)) } #}
+				 #{ \makeTimeSig \buzz #(next1) #(next1) #})
+			#(if (zero? (random 2))
+				 #{ \makeTimeSig { \clap #(next1) \rests #(make-rest (ds left)) } #}
+				 #{ \makeTimeSig \buzz #(next1) #(next1) #})
+		}
+	>>
+}
+
 arrangement = 
 	\removeWithTag #'part 
 	\removeWithTag #'verbose
 {
-	\phraseZero
-	% \phraseOne
-	% \phraseTwo
+	\phraseZero 
+	#(set! autoSig #f)
+	\phraseOne
+	\phraseF
 }

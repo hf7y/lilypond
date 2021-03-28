@@ -26,25 +26,33 @@
 % getTactus
 % pitchFill
 
+%trem
+
 
 % frac->durs 
 #(define* (frac->durs frac #:optional (depth -1))
-	(if (or (zero? frac) (zero? depth)) '()
-		(let* ((nume-mag (integer-length (numerator frac)))
-			   (compl (logxor (numerator frac) (- (expt 2 nume-mag) 1))))
-			  (if (zero? compl) 
-			  	  (let ((dot-count (- nume-mag 1))
-			  			(log (- (integer-length (denominator frac)) nume-mag)))
-			  	  		;assumes (denominator frac) has form 2^n 
-			  	  	   (list (ly:make-duration log dot-count)))
-			  	  (let* ((compl-mag (integer-length compl))
-			    		 (dot-count (- (- nume-mag compl-mag) 1))
-			    		 (log (- (- (integer-length (denominator frac)) dot-count) 3)))
-			  	  		;assumes (denominator frac) has form 2^n
-			 			(cons (ly:make-duration log dot-count) 
-			 	 			  (frac->durs (/ (logxor compl (- (expt 2 compl-mag) 1))
-			 	 	   							 (denominator frac))
-			 	 	   					   (- depth 1))))))))
+	(cond ((or (zero? frac) (zero? depth)) '())
+		  ((>= frac 2) (let ((remainder (frac->durs (- frac 1))))
+		  					(if (ly:duration<? (ly:make-duration 0) (car remainder))
+		  						(cons (car remainder)
+		  							  (cons (ly:make-duration 0) (cdr remainder)))
+		  						(cons (ly:make-duration 0) remainder))))		  	
+		  (#t (let* ((nume-mag (integer-length (numerator frac)))
+				   (compl (logxor (numerator frac)
+				   				  (- (expt 2 nume-mag) 1))))
+				  (if (zero? compl) 
+				  	  (let ((dot-count (- nume-mag 1))
+				  			(log (- (integer-length (denominator frac)) nume-mag)))
+				  	  		;assumes (denominator frac) has form 2^n 
+				  	  	   (list (ly:make-duration log dot-count)))
+				  	  (let* ((compl-mag (integer-length compl))
+				    		 (dot-count (- (- nume-mag compl-mag) 1))
+				    		 (log (- (integer-length (denominator frac)) nume-mag)))
+				  	  		;assumes (denominator frac) has form 2^n
+				 			(cons (ly:make-duration log dot-count) 
+				 	 			  (frac->durs (/ (logxor compl (- (expt 2 compl-mag) 1))
+				 	 	   							 (denominator frac))
+				 	 	   					   (- depth 1)))))))))
 
 
 #(define (mome2dur mome)
@@ -157,15 +165,39 @@ tuplet-q = #(define-music-function
 				#{ \tuplet #(cons (/ (car frac) 2) (/ (cdr frac) 2)) $music #}
 				#{ \tuplet $frac $music #})))
 
+
+
+% getTactus = #(define-scheme-function
+% 	;returns base duration and number of base durations that fit into music
+% 	(min dur music)
+% 	((number? 1) (ly:duration?) ly:music?)
+% 	(let* ((mome (ly:music-length music))
+% 		   (nume (ly:moment-main-numerator mome))
+% 		   (den  (ly:moment-main-denominator mome)))
+% 		(cond ((< nume min) (let ((x (getTactus (/ min 2) (shiftDurations 1 0 music))))
+% 							  (cons (car x) (* 2 (cdr x))))
+% 			(cons (ly:make-duration (- (integer-length den) 1)) nume))))
+
 getTactus = #(define-scheme-function
-	(min music)
-	((number? 1) ly:music?)
-	(let* ((mome (ly:music-length music))
-		   (nume (ly:moment-main-numerator mome))
-		   (den  (ly:moment-main-denominator mome)))
-		(if (< nume min) (let ((x (getTactus (/ min 2) (shiftDurations 1 0 music))))
-							  (cons (car x) (* 2 (cdr x))))
-			(cons (ly:make-duration (- (integer-length den) 1)) nume))))
+	(min-count min-dur music)
+	((number? 1) (ly:duration? (ly:make-duration 4)) ly:music?)
+	(letrec ((log (ly:duration-log min-dur))
+			 (unreduce (lambda (pair nume den)
+							(if (or (< (car pair) nume) (< (cdr pair) den))
+								(unreduce (cons (* 2 (car pair))
+												(* 2 (cdr pair)))
+										  nume
+										  den)
+								pair))))
+			(let* ((prefrac (ly:moment-main (ly:music-length music)))
+				   (frac (unreduce (cons (numerator prefrac) 
+				  						 (denominator prefrac))
+			 					  min-count
+			 					  (expt 2 log))))
+				(cons (ly:make-duration (- (integer-length (cdr frac)) 1)) (car frac)))))
+
+
+
 
 pitchFill = #(define-music-function
 	(min init final semis)
@@ -181,3 +213,25 @@ pitchFill = #(define-music-function
 				'elements
 				(function (cdr tactus) (* 2 semis) (changeDur (car tactus) init) 
 							  (changeDur (car tactus) final)))))
+
+#(define (trem dur)
+    (let ((log (ly:duration-log dur)))
+        (make-music 'TremoloEvent 'tremolo-type
+                    (expt 2 (+ (+ 3 log) (max (- 2 log) 0))))))
+
+
+%testing
+% \include "./rows.ly"
+% #(define a (row '(6 7 8 9 10 11 12 13 14 15)))
+% #(define b (row '(0 1 2 3)))
+
+% #(define (test depth)
+% 		 (display-scheme-music (frac->durs (/ (a left) 8)))
+% 	 		(if (zero? depth)
+% 	 			(display "done")
+% 	 		 	(test (- depth 1))))
+% #(test 9)
+
+% #(display-scheme-music (mome3dur (ly:make-moment 9/8)))
+% #(display-scheme-music (frac->durs 12/8))
+% #(display-scheme-music (mome3dur (ly:music-length #{ c2. c4. #})))

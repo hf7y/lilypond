@@ -38,8 +38,8 @@ pluck = #(define-music-function
                             \context Lyrics = #(symbol->string inst) 
                                 \lyricsto #(symbol->string inst) { $lyrics } >> #}))))
 	#{
+	\autoTimeSig
     <<
-   		\autoTimeSig { $noteB $noteB }
 		#(function 'fl #{ \retrograde \transpose c c''
 			\repeatMath #(+ randA (quotient (- base 2) 2)) #(car (numFits noteA noteB)) $noteA #} #{\clef "treble"#})
 		#(function 'cl #{ \retrograde \transpose c c' 

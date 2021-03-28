@@ -67,8 +67,8 @@ crackle = #(define-music-function
                             \context Lyrics = #(symbol->string inst) 
                                 \lyricsto #(symbol->string inst) { $lyrics } >> #}))))
 	#{
+    \autoTimeSig
     <<
-   		\autoTimeSig { $noteB }
 		#(function 'fl #{  \transpose c c' \threeNoteRandom $noteA $noteB { \once \override NoteHead.style = #'cross $noteA }
 		    #(momentToRests (cdr (numFits noteA noteB))) #} #{\clef "treble"#} #{ \lyricmode {k t k k t k t k k t k t k k t} #})
 		#(function 'cl #{  \transpose c c' #(threeNoteRandom noteA noteB #{ \once \override NoteHead.style = #'cross $noteA #})

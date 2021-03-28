@@ -4,12 +4,136 @@
 		"selected_items":
 		[
 			[
-				"pitch",
-				"pitch-list"
+				"Staff",
+				"StaffGroup"
+			],
+			[
+				"make-",
+				"make-elements"
+			],
+			[
+				"ele",
+				"elements"
+			],
+			[
+				"wrap",
+				"wrap-music-in-function"
+			],
+			[
+				"harm",
+				"harmony-get"
+			],
+			[
+				"dur",
+				"dur1"
+			],
+			[
+				"n",
+				"n-lefts"
+			],
+			[
+				"ran",
+				"rand-lefts"
+			],
+			[
+				"nu",
+				"num-pitches"
+			],
+			[
+				"mak",
+				"make-elements"
+			],
+			[
+				"tup",
+				"tup-notes"
+			],
+			[
+				"du",
+				"durs-left-over-right"
+			],
+			[
+				"durs",
+				"durs-left-over-right"
 			],
 			[
 				"make",
+				"make-duration"
+			],
+			[
+				"pit",
+				"pitches"
+			],
+			[
+				"ha",
+				"harmony-durations"
+			],
+			[
+				"ste",
+				"step-through-range"
+			],
+			[
+				"step",
+				"step-sum"
+			],
+			[
+				"ne",
+				"next-pitch"
+			],
+			[
+				"harmo",
+				"harmony-durations"
+			],
+			[
+				"Time",
+				"TimeSig"
+			],
+			[
+				"up",
+				"uphands"
+			],
+			[
+				"har",
+				"harmony-durations"
+			],
+			[
+				"pitch",
+				"pitch-transpose"
+			],
+			[
+				"harmony",
+				"harmony-pitches"
+			],
+			[
+				"sta",
+				"stacc-durs"
+			],
+			[
+				"duration",
+				"duration-dot-count"
+			],
+			[
+				"duration-",
+				"duration-log"
+			],
+			[
+				"make-p",
 				"make-pitch"
+			],
+			[
+				"harmon",
+				"harmony-pitches"
+			],
+			[
+				"octave",
+				"octave-fit"
+			],
+			[
+				"oct",
+				"octave-fit"
+			],
+			[
+				"make-music",
+				"make-music-list"
 			],
 			[
 				"music",
@@ -42,10 +166,6 @@
 			[
 				"fi",
 				"fill-rests"
-			],
-			[
-				"du",
-				"durs"
 			],
 			[
 				"ch",
@@ -92,16 +212,8 @@
 				"shiftDurations"
 			],
 			[
-				"mak",
-				"make-moment"
-			],
-			[
 				"int",
 				"integer-length"
-			],
-			[
-				"dur",
-				"duration-length"
 			],
 			[
 				"dr",
@@ -112,20 +224,12 @@
 				"moment-main-numerator"
 			],
 			[
-				"make-",
-				"make-moment"
-			],
-			[
 				"leng",
 				"music-length"
 			],
 			[
 				"trim",
 				"trimDot"
-			],
-			[
-				"duration",
-				"duration-dot-count"
 			],
 			[
 				"mom",
@@ -160,10 +264,6 @@
 				"applyContext"
 			],
 			[
-				"duration-",
-				"duration-dot-count"
-			],
-			[
 				"SHARP",
 				"DOUBLE-SHARP"
 			]
@@ -175,34 +275,16 @@
 			"file": "arrangement.ly",
 			"settings":
 			{
-				"buffer_size": 10371,
+				"buffer_size": 4442,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "Recursive Dream.ly",
+			"file": "main.ly",
 			"settings":
 			{
-				"buffer_size": 2451,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "rows.ly",
-			"settings":
-			{
-				"buffer_size": 1041,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "gestures/clap.ly",
-			"settings":
-			{
-				"buffer_size": 2810,
+				"buffer_size": 2147,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -252,38 +334,46 @@
 	},
 	"expanded_folders":
 	[
-		"/home/zach/lilypond/linea",
-		"/home/zach/lilypond/linea/gestures"
+		"/home/zach/lilypond/yw"
 	],
 	"file_history":
 	[
-		"/home/zach/lilypond/linea/rows.ly",
-		"/home/zach/lilypond/linea/gestures/hiss.ly",
-		"/home/zach/lilypond/linea/Recursive Dream.ly",
+		"/home/zach/lilypond/yw/pf-lib.ly",
+		"/home/zach/lilypond/yw/pc-lib.ly",
+		"/home/zach/lilypond/yw/rows.ly",
+		"/home/zach/lilypond/yw/harmony.ly",
+		"/home/zach/lilypond/yw/arrangement.ly",
+		"/home/zach/lilypond/yw/math.ly",
+		"/home/zach/lilypond/yw/main.ly",
 		"/home/zach/lilypond/introit/math.ly",
 		"/home/zach/lilypond/linea/math.ly",
+		"/home/zach/lilypond/yw/staff.ily",
+		"/home/zach/lilypond/z/list.ily",
+		"/home/zach/lilypond/z/timesignature.ily",
+		"/home/zach/lilypond/yw/ye.sublime-project",
+		"/home/zach/lilypond/linea/linea.sublime-project",
+		"/home/zach/lilypond/linea/gestures/clap.ly",
+		"/home/zach/lilypond/linea/rows.ly",
+		"/home/zach/lilypond/linea/Recursive Dream.ly",
+		"/home/zach/lilypond/linea/arrangement.ly",
+		"/home/zach/lilypond/linea/gestures/hiss.ly",
 		"/home/zach/lilypond/linea/gestures/buzz.ly",
 		"/home/zach/lilypond/linea/gestures/crackle.ly",
 		"/home/zach/lilypond/linea/gestures/pluck.ly",
 		"/home/zach/lilypond/linea/rows.pdf",
 		"/home/zach/lilypond/linea/test-math.ly",
 		"/home/zach/lilypond/linea/gestures.ily",
-		"/home/zach/lilypond/linea/arrangement.ly",
-		"/home/zach/lilypond/linea/gestures/clap.ly",
 		"/home/zach/lilypond/linea/instrument-names.ily",
 		"/home/zach/lilypond/linea/multiphonics.ily",
 		"/home/zach/lilypond/z/paper.ily",
 		"/home/zach/lilypond/linea/cited.html",
 		"/home/zach/lilypond/linea/math.pdf",
-		"/home/zach/lilypond/linea/linea.sublime-project",
 		"/home/zach/lilypond/linea/data",
-		"/home/zach/lilypond/z/timesignature.ily",
 		"/home/zach/lilypond/linea/instrumentation.txt",
 		"/home/zach/lilypond/z/TimeSignature.ily",
 		"/home/zach/lilypond/linea/palette.ly",
 		"/home/zach/lilypond/linea/repeat-test.ly",
 		"/home/zach/lilypond/durations-example.ly",
-		"/home/zach/lilypond/z/list.ily",
 		"/home/zach/lilypond/fixed-test.ly",
 		"/home/zach/lilypond/z/definitions.ily",
 		"/home/zach/lilypond/z/pizz.ily",
@@ -316,7 +406,7 @@
 	],
 	"find":
 	{
-		"height": 42.0
+		"height": 41.0
 	},
 	"find_in_files":
 	{
@@ -330,6 +420,27 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"skip",
+			"set",
+			"n-tuplet",
+			"play",
+			"left-o",
+			"CRP",
+			"3",
+			"time",
+			"\\\\no-line ",
+			"\\no-line ",
+			"#\\(f\\)",
+			"crp",
+			"6",
+			"staccato",
+			"#s",
+			"#\\(next\\)",
+			"#s",
+			"#\\(next\\)",
+			"altO",
+			"#>>",
+			"#<<",
 			"oage",
 			"tactus",
 			"left",
@@ -393,6 +504,19 @@
 		"regex": true,
 		"replace_history":
 		[
+			"chord",
+			"(car (harmony-pitches h))",
+			"",
+			"#m",
+			"(car (harmony-pitches h))",
+			"#m",
+			"#(f)",
+			"#s",
+			"#space",
+			"#s",
+			"alto",
+			"#}",
+			"#{",
 			"page",
 			"right",
 			"leftrights",
@@ -435,7 +559,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -444,15 +568,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10371,
+						"buffer_size": 4442,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								10359,
-								10359
+								2448,
+								2490
 							]
 						],
 						"settings":
@@ -461,98 +585,38 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "Recursive Dream.ly",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2451,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								316,
-								316
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/SubLilyPond/LilyPond.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2933.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "rows.ly",
+					"buffer": 1,
+					"file": "main.ly",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1041,
+						"buffer_size": 2147,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1024,
-								1024
+								1364,
+								1364
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/SubLilyPond/LilyPond.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/SubLilyPond/LilyPond.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 25.0,
+						"translation.y": 399.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "gestures/clap.ly",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2810,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1738,
-								1738
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/SubLilyPond/LilyPond.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 614.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -591,17 +655,17 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 272.0
+		"height": 338.0
 	},
 	"output.find_results":
 	{
 		"height": 0.0
 	},
-	"pinned_build_system": "Recursive Dream.ly",
-	"project": "linea.sublime-project",
+	"pinned_build_system": "main",
+	"project": "ye.sublime-project",
 	"replace":
 	{
-		"height": 75.0
+		"height": 73.0
 	},
 	"save_all_on_build": true,
 	"select_file":

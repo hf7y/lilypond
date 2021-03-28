@@ -1,0 +1,18 @@
+{
+	"build_systems":
+	[
+		{
+			"name": "main.ly",
+			"shell_cmd": "lilypond main.ly"
+		}
+	],
+	"folders":
+	[
+		{
+			"path": "."
+		},
+		{
+			"path": "/home/zach/lilypond/z"
+		}
+	]
+}

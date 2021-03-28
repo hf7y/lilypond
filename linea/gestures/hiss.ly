@@ -1,4 +1,5 @@
 \version "2.20.0"
+\include "../math.ly"
 
 % firstHalf = #(define-music-function
 %     (noteX)
@@ -35,12 +36,6 @@ secondHalfFifth = #(define-music-function
     (ly:music? ly:music?)
     #{ \n \giveDur \trimDot $noteY \transpose c #(ly:music-property noteY 'pitch) $chord \>^\markup \italic "sul pont." \giveDot $noteY r1\!  #})
 
-#(define (trem dur)
-    (let ((log (ly:duration-log dur)))
-        (make-music 'TremoloEvent 'tremolo-type
-                    (expt 2 (+ (+ 3 log) (max (- 2 log) 0))))))
-    
-
 hiss = #(define-music-function
     (instruments noteA noteB)
     ((list? tutti) ly:music? ly:music?)
@@ -62,11 +57,18 @@ hiss = #(define-music-function
                                 \lyricsto #(symbol->string inst) { $lyrics } >> #}))))
    #{ \autoTimeSig
     <<
-    	#(function 'fl #{ \fixed c'' { \firstHalf $noteA #tie \secondHalf $noteB } #} #{#} #{ ⟨s⟩ #} )
+    	#(function 'fl 
+                    #{ \fixed c'' { \firstHalf $noteA #tie \secondHalf $noteB } #} 
+                    #{#} 
+                    (if (= 1 (random 3))
+                        #{ ⟨f⟩ #} 
+                        #{ ⟨s⟩ #} ))
 		#(function 'cl #{ \fixed c'  { \firstHalf $noteA #tie \secondHalf $noteB } #} )
         #(function 'bn #{ \fixed c   { \firstHalf $noteA #tie \secondHalf $noteB } #} )
-        #(function 'tbn #{ \no-line <<  \tag #'verbose \footnote #'(0 . 0) "air" \hide \giveDur $noteA r1 
-                               \transpose $pitchA d \square { \firstHalf $noteA ~ \secondHalf \giveDur $noteB $noteA } >> #} )
+        #(function 'tbn (if (= 1 (random 2))
+                            #{ \no-line <<  \tag #'verbose \footnote #'(0 . 0) "air" \hide \giveDur $noteA r1 
+                               \transpose $pitchA d \square { \firstHalf $noteA ~ \secondHalf \giveDur $noteB $noteA } >> #}
+                             #{ \fixed c   { \firstHalf $noteA #tie \secondHalf $noteB } #} ))
 
 		#(function 'up   #{ \giveDur $noteA r1 \giveDur $noteB r1 #} )
 		#(function 'down #{ \giveDur $noteA r1 \giveDur $noteB r1 #} )
