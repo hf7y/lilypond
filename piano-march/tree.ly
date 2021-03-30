@@ -77,6 +77,24 @@
 		(cons (distribute proc (car forest))
 			  (distribute-forest proc (cdr forest)))))
 
+#(define (distribute-leaves-first proc tree)
+	;takes tree does proc to each tree! not datum
+	(if (leaf? tree)
+		(proc tree)
+		(let ((processed-forest
+				(distribute-forest-leaves-first
+					proc
+					(children tree))))
+			 (proc (make-node
+				 	(datum tree)
+				 	processed-forest)))))
+
+#(define* (distribute-forest-leaves-first proc forest)
+	(if (null? forest)
+		'()
+		(cons (distribute-leaves-first proc (car forest))
+			  (distribute-forest-leaves-first proc (cdr forest)))))
+
 %based on elaborate, of lower order (i.e. proc on datum)
 #(define elaborate
 	;gives leaves two children

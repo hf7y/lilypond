@@ -36,3 +36,33 @@
 		(cons
 			(car as)
 			(concat (cdr as) bs))))
+
+#(define (moment->duration moment)
+	(let* ((frac (ly:moment-main moment))
+		   (nume-mag (integer-length (numerator frac)))
+		   (compl (logxor (numerator frac)
+		   				  (- (expt 2 nume-mag)
+		   				  	 1)))
+		   (dot-count (- (- nume-mag
+		   					(integer-length compl))
+		   				 1))
+		   (log (- (integer-length (denominator frac))
+		   		   nume-mag)))
+		  (ly:make-duration log dot-count)))
+
+#(define (moment->durations moment)
+	(define max (ly:make-duration 0))
+	(let ((max-moment (ly:duration-length max)))
+		(cond ((equal? moment (ly:make-moment 0))
+			   '())
+			  ((ly:moment<? max-moment moment)
+			   (cons max
+			   		 (moment->durations
+			   		 	(ly:moment-sub moment max-moment))))
+			  (#t
+			  	(let ((dur (moment->duration moment)))
+			  		 (cons dur
+			  		 	   (moment->durations
+			  		 	   	(ly:moment-sub
+				  		 	   	moment
+				  		 	   	(ly:duration-length dur)))))))))

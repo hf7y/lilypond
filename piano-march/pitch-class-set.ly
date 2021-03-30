@@ -37,22 +37,22 @@
 				  	  (cons (+ right0 shift) num0)
 				  	  recursive-call)))))
 
-#(define (int->pset n)
+#(define (int->pitch-list n)
 	(define length (integer-length n))
 	(cond ((zero? n) '())
-		  ((> length 7) (int->pset (ash n -1)))
+		  ((> length 7) (int->pitch-list (ash n -1)))
 		  (#t (cons 
 		  		(ly:make-pitch 0 
   							   (- length 1)) ;so 1 corresponds to C
-				(int->pset
+				(int->pitch-list
 					(- n (expt 2 (- length 1))))))))
 
-#(define (int->pset-normed num)
+#(define (int->pitch-list-normed num)
 	;converts a number into a set of pitches up to 6, thus diatonic
-	(let* ((proto-pset (int->pset num))
+	(let* ((proto-pitch-list (int->pitch-list num))
 		   (normalize-tranposition (transpose-for-normal num)))
 		  (if (zero? (cdr normalize-tranposition))
-			  proto-pset
+			  proto-pitch-list
 			  (map (lambda (p)
 						   (ly:pitch-transpose
 								p
@@ -61,7 +61,7 @@
 										0 
 										(+ (car normalize-tranposition)
 										   (cdr normalize-tranposition))))))
-				   proto-pset))))
+				   proto-pitch-list))))
 
-#(define (random-pset)
-	(int->pset (random (integer-expt 2 7))))
+#(define (random-pitch-list)
+	(int->pitch-list (random (integer-expt 2 7))))
