@@ -1,0 +1,15 @@
+{
+	"build_systems":
+	[
+		{
+			"name": "main",
+			"shell_cmd": "lilypond /home/zach/lilypond/linea2/main.ly"
+		},
+	],
+	"folders":
+	[
+		{
+			"path": "."
+		}
+	]
+}
