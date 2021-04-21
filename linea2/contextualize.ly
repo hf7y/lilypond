@@ -37,6 +37,25 @@
 			 (car (range id))
 			 (cdr (range id)))))
 
+#(define (pitch-fit-by-id pitch id)
+	(let ((lower (car (range id)))
+		  (upper (cdr (range id))))
+		(cond ((ly:pitch<?	pitch lower)
+	   			(pitch-fit-by-id
+					(ly:pitch-transpose
+						pitch
+						(ly:make-pitch 1 0))
+					id))
+	  		   ((ly:pitch<? upper pitch)
+	  		   	(pitch-fit-by-id
+					(ly:pitch-transpose
+						pitch
+						(ly:make-pitch -1 0))
+					id))
+	  		   (#t pitch))))
+
+#(define print-id "vn")
+
 contextualize = #(define-music-function
 	(type id music)((symbol? 'Staff) string? ly:music?)
 		(make-music

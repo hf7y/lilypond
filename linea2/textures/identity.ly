@@ -5,14 +5,6 @@
 %chorale->texture calls a proc that takes chorale and list
 %this is one of those procs
 
-%turn music into bigger moments
-#(define (map-to-bars proc melody)
-	(if (or (null? melody) (empty-melody? melody))
-		melody
-		(melody-add
-			(proc (first-bar melody))
-			(map-to-bars proc (butfirst-bars melody)))))
-
 #(define (identity pitch duration)
 	;simplest form of buzz
 	(make-note pitch duration))

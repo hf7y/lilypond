@@ -17,14 +17,6 @@
 	(lambda (chorale id)
 		(fit-range-by-id (first-voice chorale) id)))
 
-%turn music into bigger moments
-#(define (map-to-bars proc melody)
-	(if (or (null? melody) (empty-melody? melody))
-		melody
-		(melody-add
-			(proc (first-bar melody))
-			(map-to-bars proc (butfirst-bars melody)))))
-
 #(define (buzz pitch duration)
 	;simplest form of buzz
 	(make-note pitch duration))

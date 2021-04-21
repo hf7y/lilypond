@@ -1,5 +1,12 @@
 \version "2.20.0"
 
+\header {
+  title = "Tresse"
+  composer = "Z. V. Pine"
+  tagline = "April 2021"
+}
+
+
 %For Ensemble Linea
 
 %Outline
@@ -16,136 +23,77 @@
 \include "./texture.ly"
 \include "./textures/buzz.ly"
 \include "./textures/identity.ly"
-
+\include "./textures/chance-rest.ly"
+\include "./arrangement.ly"
+% \include "./static.ly"
 
 % BONUS
 % shaped-function init
 %	--- returns function that goes to chorale->texture
 %	--- uses some scoped/closed variables to modify the function a little every time it's called
 
-#(define (super-chroma oct step max)
-	;gives all chromatic pitches in range
-	(cond ((> step 7)
-		   (super-chroma (+ oct 1) 0 max))
-		  ((> oct max) '())
-		  (#t
-			(append 
-				(list
-					(ly:make-pitch
-						oct
-						step
-						-1/2)
-					(ly:make-pitch
-						oct
-						step
-						0)
-					(ly:make-pitch
-						oct
-						step
-						1/2))
-				(super-chroma
-					oct
-					(+ step 1)
-					max)))))
-#(define chroma-chorale
-	#{
-		<<
-			#(make-music
-				'SequentialMusic
-				'elements
-				(map 
-					(lambda (p)
-						(make-note
-							p
-							(ly:make-duration 1)))
-					(super-chroma -4 0 4)))
-			% { cis1 dis eis fis }
-		>>
-	#})
-
-#(define my-chorale
-	#{
-		<<
-			{e2. d4  | e4 g4 | b4 c'4 | d'4 e'2. | e'2 | d'4 | c'4 | g4 }
-			{c2. b,4 | c4 e4 | g4 g4  | g4  g2.  | g2  | f4  | e4  | e4 }
-		>>
-	#})
-
-#(define range
-	;place to define ranges for insts
-	(lambda (id)
-		(cond ((equal? id "fl")
-			   (cons (ly:make-pitch 0 0) (ly:make-pitch 4 0)))
-			  ((equal? id "cl")
-			   (cons (ly:make-pitch -1 1) (ly:make-pitch 3 6 -1/2)))
-			  ((equal? id "bn")
-			   (cons (ly:make-pitch -3 6 -1/2) (ly:make-pitch 1 1)))
-			  ((equal? id "tbn")
-			   (cons (ly:make-pitch -2 2) (ly:make-pitch 1 2)))
-			  ((equal? id "vn")
-			   (cons (ly:make-pitch -1 4) (ly:make-pitch 4 5)))
-			  ((equal? id "va")
-			   (cons (ly:make-pitch -1 0) (ly:make-pitch 3 2)))
-			  ((equal? id "vc")
-			   (cons (ly:make-pitch -2 0) (ly:make-pitch 2 3)))
-			  ((equal? id "db")
-			   (cons (ly:make-pitch -3 2) (ly:make-pitch 0 4)))
-			  (#t
-			   (cons (ly:make-pitch -9 0) (ly:make-pitch 9 0))))))
+\layout {
+	\context {
+		\Staff
+		\numericTimeSignature
+	}
+}
 
 \score {
 	<<
-		\numericTimeSignature
 		\new GrandStaff <<
-			\new Staff = "fl" {
+			\new Staff = "fl" \with {
+				instrumentName = "Flute" }
+			{
+				\tempo 4=120
 				\clef "treble"
+				%#timecode
 			}
-			\new Staff = "cl" {
+			\new Staff = "cl" \with {
+				instrumentName = "Clarinet" }
+			{
 				\clef "treble"
+				%#timecode
 			}
-			\new Staff = "bn" {
+			\new Staff = "bn" \with {
+				instrumentName = "Basson" }
+			{
 				\clef "bass"
+				%#timecode
 			}
-			\new Staff = "tbn" {
+			\new Staff = "tbn" \with {
+				instrumentName = "Trombone" }
+			{
 				\clef "bass"
+				%#timecode
 			}
 		>>
 		\new GrandStaff <<
-			\new Staff = "vn" {
+			\new Staff = "vn" \with {
+				instrumentName = "Violin" }
+			{
 				\clef "treble"
+				%#timecode
 			}
-			\new Staff = "va" {
+			\new Staff = "va" \with {
+				instrumentName = "Viola" }
+			{
 				\clef "alto"
+				%#timecode
 			}
-			\new Staff = "vc" {
+			\new Staff = "vc" \with {
+				instrumentName = "Cello" }
+			{
 				\clef "bass"
+				%#timecode
 			}
-			\new Staff = "db" {
+			\new Staff = "db" \with {
+				instrumentName = "Bass" }
+			{
 				\clef "bass_8"
+				%#timecode
 			}
 		>>
-		{ << #(chorale->texture identity-proc chroma-chorale (list "fl" "cl" "bn" "tbn"))
-			 #(chorale->texture buzz-proc chroma-chorale (list "vn" "va" "vc" "db")) >>
-		  << #(chorale->texture identity-proc my-chorale (list "fl" "cl" "bn" "tbn"))
-			 #(chorale->texture buzz-proc my-chorale (list "vn" "va" "vc" "db")) >> }
+		\arrangement
 	>>
 }
-
-#(define my-chorale
-;	(make-music
-;		'SequentialMusic
-;		'elements
-;		(list
-;			(make-music
-;				'SequentialMusic
-;				'elements
-;				(list
-;					(make-note
-;						(ly:make-pitch 0 0)
-;						(ly:make-duration 0)))))))
-	#{<<
-		<< c'1 | d1 >>
-	>>#})
-
-% #(display-scheme-music
-% 	(first-voice my-chorale))
