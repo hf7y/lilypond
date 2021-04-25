@@ -10,6 +10,7 @@
 \include "./textures/chance-zing.ly"
 \include "./textures/chance-bloom.ly"
 \include "./textures/chance-air.ly"
+\include "./textures/center-line.ly"
 \include "./textures/identity.ly"
 \include "./dot-play.ly"
 \include "./max-voices.ly"

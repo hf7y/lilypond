@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"uk",
+				"ukulele-tuning"
+			],
+			[
+				"perm",
+				"permutations"
+			],
+			[
+				"fing",
+				"finger-spacing"
+			],
+			[
+				"elem",
+				"element-wrap"
+			],
+			[
 				"count",
 				"countup"
 			],
@@ -78,10 +94,6 @@
 			[
 				"pitch",
 				"pitch-countdown3"
-			],
-			[
-				"elem",
-				"element"
 			],
 			[
 				"bloo",
@@ -502,39 +514,40 @@
 			[
 				"ele",
 				"elements"
-			],
-			[
-				"wrap",
-				"wrap-music-in-function"
-			],
-			[
-				"harm",
-				"harmony-get"
-			],
-			[
-				"nu",
-				"num-pitches"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "flute.ly",
+			"contents": "\\version \"2.20.0\"\n\n%Donald Knuth's Literate Programming Paradigm\n%https://en.wikipedia.org/wiki/Literate_programming\n\n%The notation *is* the data structure\n\n%Trying to capture a sense of ergonomics, fingering on the ukulele\n\n%Ergonomics *noun*\n%the study of people's efficiency in their working environment.\n\nopen-strings = \\relative c'' { a\\1 e\\2 c\\3 g'\\4 }\n\n#(define (music-property prop)\n\t;returns a single arg function of music\n\t(lambda (music)\n\t\t(ly:music-property music prop)))\n\n#(define (equal-music? mu zic)\n\t(let ((comparisons \n\t\t\t(list (music-property 'name)\n\t\t\t\t  ly:music-length\n\t\t\t\t  (lambda (x) (length ((music-property 'elements) x)))\n\t\t\t\t  (lambda (x) ((music-property 'name) ((music-property 'element) x))))))\n\t\t (letrec ((recursive-compare\n\t\t \t\t\t(lambda (list)\n\t\t\t\t\t \t(if (null? list)\n\t\t\t\t\t \t\t#t\n\t\t\t\t\t \t\t(and\n\t\t\t\t\t \t\t\t(equal? ((car list) mu)\t\n\t\t\t\t\t \t\t\t\t\t((car list) zic))\n\t\t\t\t\t \t\t\t(recursive-compare (cdr list)))))))\n\t\t \t\t (recursive-compare comparisons))))\n\n%structure of open-strings inside lilypond\n% #(display\n% \t(equal-music?\n% \t\topen-strings\n% \t\t(make-music\n% \t\t  'RelativeOctaveMusic\n% \t\t  'element\n% \t\t  (make-music\n% \t\t    'SequentialMusic\n% \t\t    'elements\n% \t\t    (list (make-music\n% \t\t            'NoteEvent\n% \t\t            'articulations\n% \t\t            (list (make-music\n% \t\t                    'StringNumberEvent\n% \t\t                    'string-number\n% \t\t                    1))\n% \t\t            'duration\n% \t\t            (ly:make-duration 2)\n% \t\t            'pitch\n% \t\t            (ly:make-pitch 0 5))\n% \t\t          (make-music\n% \t\t            'NoteEvent\n% \t\t            'articulations\n% \t\t            (list (make-music\n% \t\t                    'StringNumberEvent\n% \t\t                    'string-number\n% \t\t                    2))\n% \t\t            'duration\n% \t\t            (ly:make-duration 2)\n% \t\t            'pitch\n% \t\t            (ly:make-pitch 0 2))\n% \t\t          (make-music\n% \t\t            'NoteEvent\n% \t\t            'articulations\n% \t\t            (list (make-music\n% \t\t                    'StringNumberEvent\n% \t\t                    'string-number\n% \t\t                    3))\n% \t\t            'duration\n% \t\t            (ly:make-duration 2)\n% \t\t            'pitch\n% \t\t            (ly:make-pitch 0 0))\n% \t\t          (make-music\n% \t\t            'NoteEvent\n% \t\t            'articulations\n% \t\t            (list (make-music\n% \t\t                    'StringNumberEvent\n% \t\t                    'string-number\n% \t\t                    4))\n% \t\t            'duration\n% \t\t            (ly:make-duration 2)\n% \t\t            'pitch\n% \t\t            (ly:make-pitch 0 4)))))\n% \t\t))\n\n\n%Literate programming is thinking as you type?\n%Linear verbal programming, right.\n\n\n%The 1234 Rule: Left Hand Technique\n%http://ukulelehunt.com/2020/02/19/the-1234-rule-left-hand-technique/\n\n% 1st finger on 1st fret\n% 2nd finger on 2nd fret\n% 3rd finger on 3rd fret\n% 4th finger on 4th fret\n\n%Lilypond TabStaff behavior\n%https://lilypond.org/doc/v2.19/Documentation/notation/common-notation-for-fretted-strings\n\n% By default pitches are assigned to the lowest playing position on the \n% fret-board (first position). Open strings are automatically preferred. \n% If you would like a certain pitch to be played on a specific string \n% you can add a string number indication to the pitch name. If you don’t \n% want to have string number indications appear in traditional notation, \n% you can override the respective stencil. Usually it will be more \n% comfortable to define the playing position by using the value of \n% minimumFret. The default value for minimumFret is 0.\n\n%build a chord, finger by finger\n\n% #(display-scheme-music\n% \tukulele-tuning)\n\npitch-equal? = #(define-scheme-function\n\t(pitchA pitchB)(ly:pitch? ly:pitch?)\n\t(and\n\t\t(ly:pitch-))\n\n#(define (rm x lst)\n\t(if (null? lst)\n\t\t'()\n\t\t(if (ly:pitch-diff x (car lst))\n\t\t\t(remove x (cdr lst))\n\t\t\t(cons\n\t\t\t\t(car lst)\n\t\t\t\t(rm x (cdr lst))))))\n\n% #(define permute\n% \t(lambda (lst)\n% \t\t(if (= 1 (length lst))\n% \t\t\tlst\n% \t\t\t(map \n% \t\t\t\t(lambda (i)\n% \t\t\t\t\t(map\n% \t\t\t\t\t\t(lambda (j)\n% \t\t\t\t\t\t\t(append\n% \t\t\t\t\t\t\t\t(list i)\n% \t\t\t\t\t\t\t\tj))\n% \t\t\t\t\t\t(permute (rm i lst))))\n% \t\t\t\tlst))))\n\t\t\n#(display (rm (ly:make-pitch 0 0) (list (ly:make-pitch 0 1) (ly:make-pitch 0 0))))\n\n% #(display (permute (list \"a\" \"b\" \"c\")))\n\n% %frets/semitones by finger, in order\n% #(define fingers-frets\n% \t(list\n% \t\t(ly:make-pitch 0 0)\n% \t\t(ly:make-pitch 0 0 1/2)\n% \t\t(ly:make-pitch 0 1)\n% \t\t(ly:make-pitch 0 1 1/2)))\n\n% #(define (pitch-lists-add psa psb)\n% \t(if (or (null? psa) (null? psb))\n% \t\t'()\n% \t\t(cons\n% \t\t\t(ly:pitch-add \n% \t\t\t\t(car psa)\n% \t\t\t\t(car psb))\n% \t\t\t(pitch-lists-add\n% \t\t\t\t(cdr psa)\n% \t\t\t\t(cdr psb)))))\n\n% #(define generate-random-chord\n% \t(lambda (strings fingers)\n% \t\t(let ((permss (permute strings))\n% \t\t\t  (permsf (permute fingers)))\n% \t\t\t (pitch-lists-add\n% \t\t\t \t(list-ref\n% \t\t\t \t\tpermss\n% \t\t\t \t\t(random (length permss)))\n% \t\t\t \t(list-ref\n% \t\t\t \t\tpermsf\n% \t\t\t \t\t(random (length permsf)))))))\n\n\n% #(display-scheme-music\n% \t(generate-random-chord\n% \t\tukulele-tuning\n% \t\tfingers-frets))\n\n% #(define mynotes open-strings)\n\nfirst-note = #(define-music-function\n\t(music)(ly:music?)\n\t(letrec ((element-wrap\n\t\t\t\t(lambda (lst)\n\t\t\t\t\t(if (null? lst)\n\t\t\t\t\t\t'()\n\t\t\t\t\t\t(if (equal? (ly:music-property\n\t\t\t\t\t\t\t\t\t\t(car lst)\n\t\t\t\t\t\t\t\t\t\t'name)\n\t\t\t\t\t\t\t\t\t 'NoteEvent)\n\t\t\t\t\t\t\t(list (car lst))\n\t\t\t\t\t\t\t(cons\n\t\t\t\t\t\t\t\t(car lst)\n\t\t\t\t\t\t\t\t(element-wrap (cdr lst))))))))\n\t\t\t(let ((return (ly:music-deep-copy music)))\n\t\t\t\t(begin\n\t\t\t\t\t(ly:music-set-property! return 'elements (element-wrap (ly:music-property return 'elements)))\n\t\t\t\t\treturn))))\nbutfirst-notes = #(define-music-function\n\t(music)(ly:music?)\n\t(letrec ((element-wrap\n\t\t\t\t(lambda (lst)\n\t\t\t\t\t(if (null? lst)\n\t\t\t\t\t\t'()\n\t\t\t\t\t\t(if (equal? (ly:music-property\n\t\t\t\t\t\t\t\t\t\t(car lst)\n\t\t\t\t\t\t\t\t\t\t'name)\n\t\t\t\t\t\t\t\t\t 'NoteEvent)\n\t\t\t\t\t\t\t(cdr lst)\n\t\t\t\t\t\t\t(element-wrap (cdr lst)))))))\n\t\t\t(let ((return (ly:music-deep-copy music)))\n\t\t\t\t(begin\n\t\t\t\t\t(ly:music-set-property! return 'elements (element-wrap (ly:music-property return 'elements)))\n\t\t\t\t\treturn))))\n\ntest-motif = { c d e f g a b c\\4 }\n\nmynotes = {\n\t% \\displayMusic\n\t#(first-note test-motif)\n\t#(butfirst-notes test-motif)\n}\n\n\\score { \n\t<<\n\t\t\t\n\t\\new Staff {\n\t\t% \\time 6/8\t\n\t\t\\clef treble\n\t\t% \\key aes \\major\n\t\t\\relative c' { \t\n\t\t % Type notes here \n\t\t  \\mynotes\t\t\t\n\t\t}\t\n\t}\n\t\n\t\n\t\\addlyrics {\n\t\t%verse 1\n\t}\n\t\\addlyrics{\n\t\t%verse 2\n\t}\n\t\\addlyrics {\n\t\t%verse 3\n\t}\n\t\\new TabStaff {\n\t\t\\set TabStaff.stringTunings = #ukulele-tuning\n\t\t\\relative c'{\n\t\t\t\\mynotes\n\t\t\t\n\t\t}\n\t}\n>>\n%end score\n}\n",
+			"file": "main.ly",
+			"file_size": 6389,
+			"file_write_time": 132635169019351617,
 			"settings":
 			{
-				"buffer_size": 3858,
+				"buffer_size": 6488,
 				"encoding": "UTF-8",
+				"line_ending": "Unix",
+				"name": "main.ly"
+			}
+		},
+		{
+			"file": "main.pdf",
+			"settings":
+			{
+				"buffer_size": 53314,
+				"encoding": "Western (Windows 1252)",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "parts/exposition.ly",
+			"file": "A Poor Wayfaring Man of Grief.ly",
 			"settings":
 			{
-				"buffer_size": 10350,
+				"buffer_size": 2803,
 				"encoding": "UTF-8",
-				"line_ending": "Unix"
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -577,18 +590,15 @@
 		"show_minimap": false,
 		"show_open_files": false,
 		"show_tabs": false,
-		"side_bar_visible": false,
+		"side_bar_visible": true,
 		"status_bar_visible": false
 	},
 	"expanded_folders":
 	[
-		"/home/zach/lilypond/linea2",
-		"/home/zach/lilypond/linea2/parts",
-		"/home/zach/lilypond/linea2/textures"
+		"/home/zach/lilypond/uke"
 	],
 	"file_history":
 	[
-		"/home/zach/lilypond/linea2/parts/flute.ly",
 		"/home/zach/lilypond/linea2/parts/extract.ly",
 		"/home/zach/lilypond/linea2/flute.pdf",
 		"/home/zach/lilypond/linea2/flute.ly",
@@ -596,6 +606,7 @@
 		"/home/zach/lilypond/linea2/partII.ly",
 		"/home/zach/lilypond/linea2/vn.ly",
 		"/home/zach/lilypond/linea2/arrangement.ly",
+		"/home/zach/lilypond/linea2/parts/flute.ly",
 		"/home/zach/lilypond/linea2/recapitulation.ly",
 		"/home/zach/lilypond/linea2/exposition.ly",
 		"/home/zach/lilypond/linea2/dot-play.ly",
@@ -697,11 +708,11 @@
 	],
 	"find":
 	{
-		"height": 30.0
+		"height": 52.0
 	},
 	"find_in_files":
 	{
-		"height": 105.0,
+		"height": 109.0,
 		"where_history":
 		[
 		]
@@ -711,6 +722,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"display",
+			"ukulele-tuning",
 			"export",
 			"range",
 			"40",
@@ -836,9 +849,7 @@
 			"\\\\repeat unfold",
 			")))\n",
 			"dur",
-			"pitch",
-			"note",
-			"molto "
+			"pitch"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -927,28 +938,28 @@
 			[
 				{
 					"buffer": 0,
-					"file": "flute.ly",
+					"file": "main.ly",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3858,
+						"buffer_size": 6488,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1377,
-								1377
+								975,
+								975
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/SubLilyPond/LilyPond.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"auto_name": "main.ly",
+							"syntax": "Packages/SubLilyPond/LilyPond.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1187.0,
+						"translation.y": 189.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -956,19 +967,47 @@
 				},
 				{
 					"buffer": 1,
-					"file": "parts/exposition.ly",
+					"file": "main.pdf",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10350,
+						"buffer_size": 53314,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								195,
-								195
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "A Poor Wayfaring Man of Grief.ly",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2803,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2727,
+								2727
 							]
 						],
 						"settings":
@@ -980,7 +1019,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -988,7 +1027,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 30.0
+		"height": 39.0
 	},
 	"input":
 	{
@@ -1019,17 +1058,17 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 328.0
+		"height": 309.0
 	},
 	"output.find_results":
 	{
 		"height": 0.0
 	},
 	"pinned_build_system": "Packages/User/Lilypond.sublime-build",
-	"project": "linea2.sublime-project",
+	"project": "uke.sublime-project",
 	"replace":
 	{
-		"height": 56.0
+		"height": 77.0
 	},
 	"save_all_on_build": true,
 	"select_file":

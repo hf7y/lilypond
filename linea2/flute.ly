@@ -56,27 +56,28 @@
 % 	}
 % }
 
-% \bookpart {
-% 	\header {
-% 	  title = "Tresse"
-% 	  subtitle = "clarinet"
-% 	  composer = "Z. V. Pine"
-% 	  tagline = "April 2021"
-% 	}
+\bookpart {
+	\header {
+	  title = "Tresse"
+	  subtitle = "clarinet"
+	  composer = "Z. V. Pine"
+	  tagline = "April 2021"
+	}
 
-% 	\score {
-% 		<<
-% 			\new Staff = "cl" \with {
-% 				instrumentName = "Clarinet" }
-% 			{
-% 				\tempo 4=120
-% 				\clef "treble"
-% 				%#timecode
-% 			}
-% 			{ #(export arrangement "cl") \bar "|." }
-% 		>>
-% 	}
-% }
+	\score {
+		<<
+			\new Staff = "cl" \with {
+				instrumentName = \markup { \column { "Clarinet"
+										 	\line { "in B" \small \flat } } } }
+			{
+				\tempo 4=120
+				\clef "treble"
+				%#timecode
+			}
+			{ \transpose bes, c #(export arrangement "cl") \bar "|." }
+		>>
+	}
+}
 
 % \bookpart {
 % 	\header {
@@ -103,7 +104,7 @@
 % \bookpart {
 % 	\header {
 % 	  title = "Tresse"
-% 	  subtitle = "bassoon"
+% 	  subtitle = "trombone"
 % 	  composer = "Z. V. Pine"
 % 	  tagline = "April 2021"
 % 	}
@@ -122,27 +123,27 @@
 % 	}
 % }
 
-\bookpart {
-	\header {
-	  title = "Tresse"
-	  subtitle = "violin"
-	  composer = "Z. V. Pine"
-	  tagline = "April 2021"
-	}
+% \bookpart {
+% 	\header {
+% 	  title = "Tresse"
+% 	  subtitle = "violin"
+% 	  composer = "Z. V. Pine"
+% 	  tagline = "April 2021"
+% 	}
 
-	\score {
-		<<
-			\new Staff = "vn" \with {
-				instrumentName = "Violin" }
-			{
-				\tempo 4=120
-				\clef "treble"
-				%#timecode
-			}
-			{ #(export arrangement "vn") \bar "|." }
-		>>
-	}
-}
+% 	\score {
+% 		<<
+% 			\new Staff = "vn" \with {
+% 				instrumentName = "Violin" }
+% 			{
+% 				\tempo 4=120
+% 				\clef "treble"
+% 				%#timecode
+% 			}
+% 			{ #(export arrangement "vn") \bar "|." }
+% 		>>
+% 	}
+% }
 
 % \bookpart {
 % 	\header {

@@ -37,7 +37,7 @@ phraseZero = {
 		(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db"))
 
 	$(define pitch-countdown (countdown 100))
-	$(chorale->texture* 
+	$(chorale->texture 
 		(chance-rest-proc 30)
 		(pre-intro-chorale
 				#{ << { 
@@ -45,12 +45,9 @@ phraseZero = {
 					c8 r4 | g8 r8 | e4 r8 | 
 					aes8. r8 | f8 r8 | e8 r16 | 
 					} >> #})
-		(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db")
-		(list #{\<#})
-		(list #{\!#}))
+		(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db"))
 
-	<<
-	$(chorale->texture* 
+	$(chorale->texture 
 		(chance-zing-proc 30)
 		(chorale-add-w-bar
 			(descent-music
@@ -60,14 +57,7 @@ phraseZero = {
 					#{ { es,8 f, bes,,2 } #} 8 80)
 				(descent-music
 					#{ { es,,4 f,, bes,,,2 } #} 8 90)))
-		(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db")
-		(list #{\sp#}))
-
-		 #(chorale->texture
-			identity-proc
-			#{ << { s2.\tempo "agitato" } >> #}
-			(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db" ))
-	>>
+		(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db"))
 
 	#(chorale->texture
 		identity-proc
@@ -80,19 +70,10 @@ phraseOne = {
 	$(define pitch-countdown2 (countdown 5))
 	$(define decoherence (countdown 100))
 
-
-
-	<<
-		$(chorale->texture
-			(chance-rest-proc 0)
-			(pre-intro-chorale #{ << { aes4 r4 } >> #})
-			(list "bn" "vn"))
-
-		 #(chorale->texture
-			identity-proc
-			#{ << { \tempo "Tempo I" s1\mf| } >> #}
-			(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db" ))
-	>>
+	$(chorale->texture 
+		(chance-rest-proc 0)
+		(pre-intro-chorale #{ << { aes4 r4 } >> #})
+		(list "bn" "vn"))
 
 	$(chorale->texture 
 		(chance-rest-proc 70)
@@ -121,13 +102,11 @@ phraseOne = {
 
 	$(define pitch-countdown (countdown 50))
 	$(define pitch-countdown2 (countdown 15))
-	$(chorale->texture* 
+	$(chorale->texture 
 		(chance-rest-proc 50)
 		(pre-intro-chorale
 			#{ << { aes2 r4 | f4 r8 | f4 r8 | es4 r4 | } >> #})
-		(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db")
-		(list #{\<#})
-		(list #{\!#}))
+		(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db"))
 
 	<< 
 		$(chorale->texture 
@@ -141,11 +120,6 @@ phraseOne = {
 			(descent-music
 				#{ { es8 ges bes,2. es8 ges bes,2. } #} 8 15)
 			(list "fl" "tbn" "vc" "db"))
-
-		#(chorale->texture
-			identity-proc
-			#{ << { \tempo "agitato" s1\sp s1 | } >> #}
-			(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db"))
 	>>
 
 	$(chorale->texture 
@@ -185,21 +159,14 @@ phraseOne = {
 
 	$(define pitch-countdown (countup 100))
 	$(define decoherence (countup 100))
-	<<
-		$(chorale->texture* 
-			(chance-rest-proc 0)
-			(pre-intro-chorale
-				#{ << { 
-					aes4 r8 | f4 r4. | es'8. r8 | 
-					c4 r8 | g4 r8 |
-					} >> #})
-			(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db")
-			(list #{\pp#}))
-		$(chorale->texture
-			identity-proc
-			#{ << { \tempo "Tempo I" s4. } >> #}
-			(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db"))
-	>>
+	$(chorale->texture 
+		(chance-rest-proc 0)
+		(pre-intro-chorale
+			#{ << { 
+				aes4 r8 | f4 r4. | es'8. r8 | 
+				c4 r8 | g4 r8 |
+				} >> #})
+		(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db"))
 
 	$(chorale->texture 
 		(chance-zing-proc 40)
@@ -227,35 +194,20 @@ phraseOne = {
 		(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db"))
 	
 	$(define decoherence (countdown 50))
-	<<
-		$(chorale->texture 
-			(chance-rest-proc 0)
-			(pre-intro-chorale
-				#{ << { 
-					aes4 r8 | f4 r8 | es'8 r8 | 
-					c8 r8 | g8 r8 | b8 r8 | ges8 f8 |
-					} >> #})
-			(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db"))
-		$(chorale->texture
-			identity-proc
-			#{ << { \override TextSpanner.bound-details.left.text =
- 						 \markup { "accellerando" }
-				    s4.\startTextSpan | s4. | s4 |
-				    s4\< | s4 | s4 | s8 s8\stopTextSpan\! } >> #}
-			(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db"))
-	>>
-	<<
-	$(chorale->texture* 
+	$(chorale->texture 
+		(chance-rest-proc 0)
+		(pre-intro-chorale
+			#{ << { 
+				aes4 r8 | f4 r8 | es'8 r8 | 
+				c8 r8 | g8 r8 | b8 r8 | ges8 f8 |
+				} >> #})
+		(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db"))
+
+	$(chorale->texture 
 		(chance-rest-proc 0)
 		(descent-music
 			#{ { es,,8 f b,2 } #} 2)
-		(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db")
-		(list #{\f#}))
-	$(chorale->texture
-		identity-proc
-		#{ << { \tempo "agitato" s2. } >> #}
 		(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db"))
-	>>
 
 	$(chorale->texture 
 		(chance-rest-proc 30)
@@ -282,42 +234,24 @@ phraseTwo = {
 	$(define pitch-countdown2 (countdown 5))
 	$(define decoherence (countdown 150))
 
-	<<
-		$(chorale->texture* 
-			(chance-zing-proc 10)
-			(pre-intro-chorale
-				#{ << { f2. r8 | es1 r4 | e4. r8 | d2 r4 |  } >> #})
-			(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db")
-			(list #{\fp#} #{--#}))
-		$(chorale->texture
-			identity-proc
-			#{ << { \tempo "Tempo I" s2.. } >> #}
-			(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db"))
-	>>
+	$(chorale->texture 
+		(chance-zing-proc 10)
+		(pre-intro-chorale
+			#{ << { f2. r8 | es1 r4 | e4. r8 | d2 r4 |  } >> #})
+		(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db"))
 
-	<<
 	$(chorale->texture 
 		(chance-rest-proc 20)
 		(pre-intro-chorale
 			#{ << { f2. r4 | es1 r4 | e1 r2. | d2. r8 |  } >> #})
 		(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db"))
-		$(chorale->texture
-			identity-proc
-			#{ << {  s1 | s1 s4 | s1.. | \tempo "più animato" s2..\pp } >> #}
-			(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db"))
-	>>
 
-	<<
-		$(chorale->texture 
-			(chance-zing-proc 10)
-			(pre-intro-chorale
-				#{ << { f2. r4 | es1 r4 | e2 r8 |  } >> #})
-			(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db"))
-		$(chorale->texture
-			identity-proc
-			#{ << {  s1 | s1 s4 | s2 s8 } >> #}
-			(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db"))
-	>>
+
+	$(chorale->texture 
+		(chance-zing-proc 10)
+		(pre-intro-chorale
+			#{ << { f2. r4 | es1 r4 | e2 r8 |  } >> #})
+		(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db"))
 
 	<<
 		$(chorale->texture 
@@ -325,64 +259,50 @@ phraseTwo = {
 			(pre-intro-chorale
 				#{ << { d'4 r1 r2. | } >> #})
 			(list "fl" "cl" "bn" "tbn" "vn" "db"))
-		$(chorale->texture* 
+		$(chorale->texture 
 			(chance-rest-proc 0)
 			(descent-music
-				#{ { d8 c, b,1.. } #} 8 15)
-			(list "va" "vc")
-			(list #{\<#})
-			(list #{\mp#}))
+						#{ { d8 c, b,1.. } #} 8 15)
+			(list "va" "vc"))
 	>>
 
 	<<
-		$(chorale->texture* 
+		$(chorale->texture 
 			(chance-zing-proc 40)
 			(descent-music
-				#{ { d8 c, b,1. } #} 8 25)
-			(list "fl" "cl" "bn" "tbn" "vn" "db")
-			(list #{\mp#} #{\>#})
-			(list #{\!#}))
-		$(chorale->texture* 
+					#{ { d8 c, b,1. } #} 8 25)
+			(list "fl" "cl" "bn" "tbn" "vn" "db"))
+		$(chorale->texture 
 			(chance-rest-proc 0)
 			(descent-music
-				#{ { d8 c, b,1. } #} 1 5)
-			(list "va" "vc")
-			(list #{\>#})
-			(list #{\!#}))
+						#{ { d8 c, b,1. } #} 1 5)
+			(list "va" "vc"))
 	>>
 
 	$(define decoherence (countdown 50))
 	$(define pitch-countdown (countdown 1))
-	$(chorale->texture* 
+	$(chorale->texture 
 		(chance-rest-proc 50)
 		(pre-intro-chorale
 			#{ << { aes2 r8 | f2. r8 |
 					e2. r8 | es2 r4 | d4 r4 | } >> #})
-		(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db")
-		(list #{\pp#}))
+		(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db"))
 
 	$(define decoherence (countdown 3))
 	<<
 		$(chorale->texture 
 			(chance-zing-proc 100)
 			(pre-intro-chorale
-				#{ << { e2. r4 | es'1 r1 |  } >> #})
+				#{ << { e2. r4 | es'1 r1|  } >> #})
 			(list "vn" "va" "vc" "db"))
-		$(chorale->texture* 
+		$(chorale->texture 
 			(chance-rest-proc 0)
 			(chorale-add-w-bar
 				(descent-music
 					#{ { d8 g, b,2. } #} 5)
 				(descent-music
 					#{ { c8 g, bes,1.. } #} 2))
-			(list "fl" "cl" "bn" "tbn" )
-			(list #{\p#}))
-		$(chorale->texture
-			identity-proc
-			#{ << { \override TextSpanner.bound-details.left.text =
- 						 \markup { "accellerando" }
- 					s1\startTextSpan | s1 s1\stopTextSpan } >> #}
-			(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db"))
+			(list "fl" "cl" "bn" "tbn" ))
 	>>
 
 	<<
@@ -391,16 +311,14 @@ phraseTwo = {
 			(pre-intro-chorale
 				#{ << { e2. r4 | es'1 r1|  } >> #})
 			(list "va" "vc" "db"))
-		$(chorale->texture* 
+		$(chorale->texture 
 			(chance-rest-proc 10)
 			(chorale-add-w-bar
 				(descent-music
 					#{ { c8 aes, b,2. } #} 5)
 				(descent-music
 					#{ { c8 a, bes,1.. } #} 2))
-			(list "cl" "bn" "tbn" "vn")
-			(list #{\>#})
-			(list #{\pp#}))
+			(list "cl" "bn" "tbn" "vn"))
 	>>
 
 	<<
@@ -417,12 +335,6 @@ phraseTwo = {
 				(descent-music
 					#{ { c8 b,1 } #} 2))
 			(list "bn" "tbn" "vn" "va" ))
-		$(chorale->texture
-			identity-proc
-			#{ << { \override TextSpanner.bound-details.left.text =
- 						 \markup { "rallentando" }
- 					s1\startTextSpan | s1\stopTextSpan | \tempo 4=144 s1 } >> #}
-			(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db"))
 	>>
 
 		% $(chorale->texture 
@@ -431,90 +343,77 @@ phraseTwo = {
 		% 		#{ { c8 bes,1 } #} 5)
 		% 	(list "bn" "tbn" "vn" "va" ))
 
-	$(chorale->texture*
+	$(chorale->texture
 		(chance-rest-proc 0)
 		(chorale-add-w-bar
 			(descent-music
 				#{ { es8 aes, des'2 } #} 1 60)
 			(descent-music
 				#{ { c8 g, d'2 } #} 1 55))
-		(list "bn" "tbn" "vn" "va")
-		(list #{\<#})
-		(list #{\!#}))
+		(list "bn" "tbn" "vn" "va"))
 
-	$(chorale->texture*
+	$(chorale->texture
 		(chance-rest-proc 20)
 		(chorale-add-w-bar
 			(descent-music
 				#{ { es8 bes des2 } #} 3 40)
 			(descent-music
 				#{ { c8 a des2 } #} 1 35))
-		(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db")
-		(list #{\fp#})
-		(list #{\!#}))
+		(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db"))
 
-	$(chorale->texture*
+	$(chorale->texture
 		(chance-zing-proc 30)
 		(chorale-add-w-bar
 			(descent-music
 				#{ { es8 c, d2 } #} 2 30)
 			(descent-music
 				#{ { c8 a b2 } #} 4 25))
-		(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db")
-		(list #{\<#})
-		(list #{\!#}))
+		(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db"))
 
-	$(chorale->texture*
+	$(chorale->texture
 		(chance-rest-proc 0)
 		(chorale-add-w-bar
 			(descent-music
 				#{ { es8 des d2 } #} 6 20)
 			(descent-music
 				#{ { c8 b des2 } #} 8 15))
-		(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db")
-		(list #{\fp#}))
+		(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db"))
 
-	$(chorale->texture*
+	$(chorale->texture
 		(chance-zing-proc 25)
 		(chorale-add-w-bar
 			(descent-music
 				#{ { es8 aes, des'2 } #} 7 50)
 			(descent-music
 				#{ { c8 g, d'2 } #} 6 45))
-		(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db")
-		(list #{\<#})
-		(list #{\mp#}))
+		(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db"))
 
-	$(chorale->texture*
+	$(chorale->texture
 		(chance-zing-proc 40)
 		(chorale-add-w-bar
 			(descent-music
 				#{ { es8 bes des2 } #} 5 40)
 			(descent-music
 				#{ { c8 a des2 } #} 4 35))
-		(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db")
-		(list #{\mf#}))
+		(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db"))
 
-	$(chorale->texture*
+	$(chorale->texture
 		(chance-zing-proc 65)
 		(chorale-add-w-bar
 			(descent-music
 				#{ { es8 c, d2 } #} 3 30)
 			(descent-music
 				#{ { c8 a b2 } #} 2 25))
-		(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db")
-		(list #{\mp#} #{\<#})
-		(list #{\f#}))
+		(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db"))
 
-	$(chorale->texture*
+	$(chorale->texture
 		(chance-zing-proc 70)
 		(chorale-add-w-bar
 			(descent-music
 				#{ { es8 des d2 } #} 1 20)
 			(descent-music
 				#{ { c8 b des2 } #} 1 15))
-		(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db")
-		(list #{\f#}))
+		(list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db"))
 
 	% #(chorale->texture
 	% 	identity-proc

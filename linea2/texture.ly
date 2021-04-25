@@ -70,6 +70,40 @@
 					(wrapped-fxn proc chorale ids)
 					(wrapped-fxn rest-proc chorale (handle-absence chorale ids (list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db")))))))
 
+#(define* (chorale->texture** proc chorale ids #:optional first-dynamics last-dynamics)
+	;this version handles dynamics
+	(letrec ((wrapped-fxn 
+				(lambda (proc chorale ids)
+					(if (null? ids)
+						'()
+						(cons (contextualize
+								(car ids)
+								(add-dynamics**
+									(proc
+										chorale
+										(car ids))
+									first-dynamics
+									last-dynamics))
+							  (wrapped-fxn
+							  	proc
+							  	(rotate chorale)
+							  	(cdr ids))))))
+			 (handle-absence ;so missing instruments get a skip sent to the score engraver
+				(lambda (chorale ids all-instruments)
+					(cond ((null? all-instruments)
+						  '())
+						  ((element? (car all-instruments) ids)
+						   (handle-absence chorale ids (cdr all-instruments)))
+						  (#t
+						   (cons (car all-instruments)
+						   		 (handle-absence chorale ids (cdr all-instruments))))))))
+			(make-music
+				'SimultaneousMusic
+				'elements
+				(append
+					(wrapped-fxn proc chorale ids)
+					(wrapped-fxn rest-proc chorale (handle-absence chorale ids (list "fl" "cl" "bn" "tbn" "vn" "va" "vc" "db")))))))
+
 #(define (note? x)
 	(equal? (ly:music-property x 'name) 'NoteEvent))
 
@@ -80,10 +114,33 @@
 			elements
 			(first-note* (cdr elements)))))
 
+#(define note?**
+	(lambda (x)
+		(or (equal? (ly:music-property x 'name) 'NoteEvent)
+			(or (equal? (ly:music-property x 'name) 'RestEvent)
+				(equal? (ly:music-property x 'name) 'SkipEvent)))))
+
+#(define (first-note** elements)
+	(if (null? elements)
+		'()
+		(if (note?** (car elements))
+			elements
+			(first-note* (cdr elements)))))
+
+
 #(define (before-first-note* elements)
 	(if (null? elements)
 		'()
 		(if (note? (car elements))
+			'()
+			(cons
+				(car elements)
+				(before-first-note* (cdr elements))))))
+
+#(define (before-first-note** elements)
+	(if (null? elements)
+		'()
+		(if (note?** (car elements))
 			'()
 			(cons
 				(car elements)
@@ -128,6 +185,25 @@
 								note-and-beyond)))))
 			melody)))
 
+#(define add-first-dynamics**
+	;first anything, not just note
+	(lambda (melody dynamics)
+		(if dynamics
+			(let ((note-and-beyond (first-note** (list-elems melody))))
+				(if (null? note-and-beyond)
+					melody
+					(begin
+						(ly:music-set-property! (car note-and-beyond) 'articulations 
+							(append
+								(ly:music-property (car note-and-beyond) 'articulations)
+								dynamics))
+						(make-melody
+							(append
+								(before-first-note** (list-elems melody))
+								note-and-beyond)))))
+			melody)))
+
+
 #(define add-last-dynamics
 	(lambda (melody dynamics)
 		(if dynamics
@@ -145,6 +221,10 @@
 #(define add-dynamics
 	(lambda (melody first-dynamics last-dynamics)
 		(add-last-dynamics (add-first-dynamics melody first-dynamics) last-dynamics)))
+
+#(define add-dynamics**
+	(lambda (melody first-dynamics last-dynamics)
+		(add-last-dynamics (add-first-dynamics** melody first-dynamics) last-dynamics)))
 
 #(define chain
 	(lambda (proc1 proc2)
