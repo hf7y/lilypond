@@ -1,4 +1,13 @@
-\version "2.19.82"
+\version "2.24.0"
+%%% frameEngraver.ily -- graphical frame notation (boxes / repeat-barline frames
+%%% with an extender line and bracket). Self-contained, instrument-agnostic.
+%%% Activate with `\consists \frameEngraver` in a \layout context; the frame
+%%% vocabulary is \frameStart ... \frameEnd and \frameExtenderEnd.
+%%%
+%%% Updated for LilyPond 2.24 and made re-include-safe (idempotent): the event
+%%% classes and grob properties are now guarded so including this file more than
+%%% once in a single session no longer aborts. This lifts the old "process .ly
+%%% files individually rather than in a batch" restriction.
 
 % Uncomment the following line to show the skylines.
 %#(ly:set-option 'debug-skylines)
@@ -11,8 +20,16 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%% CREATE NEW EVENT CLASSES %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-#(define-event-class 'frame-event 'span-event)
-#(define-event-class 'frame-extender-event 'span-event)
+% NOTE: The following definitions work as of version 2.17.22.  If you are using
+% an earlier version, please see
+% https://codereview.appspot.com/10965043/diff/8001/input/regression/scheme-text-spanner.ly
+% to make necessary changes.
+
+#(unless (ly:make-event-class 'frame-event)   ; idempotent guard (was fatal on re-include)
+   (define-event-class 'frame-event 'span-event))
+
+#(unless (ly:make-event-class 'frame-extender-event)
+   (define-event-class 'frame-extender-event 'span-event))
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% MUSIC DESCRIPTIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -79,11 +96,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%% CREATE NEW GROB PROPERTIES %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #(define (define-grob-property symbol type? description)
-  (if (not (equal? (object-property symbol 'backend-doc) #f))
-      (ly:error (_ "symbol ~S redefined") symbol))
-
-  (set-object-property! symbol 'backend-type? type?)
-  (set-object-property! symbol 'backend-doc description)
+  ;; idempotent: set only if not already defined.  (Was: ly:error on redefine,
+  ;; which -- like the event classes above -- made re-including this file in a
+  ;; single lilypond session fatal.)
+  (if (equal? (object-property symbol 'backend-doc) #f)
+      (begin
+        (set-object-property! symbol 'backend-type? type?)
+        (set-object-property! symbol 'backend-doc description)))
   symbol)
 
 #(map
@@ -270,13 +289,6 @@ a box or repeat barlines encompassing the contents."
              (+ (cdr width) box-padding)
              X))))
     stencil))
-
-#(define (layout-line-thickness grob)
-  "Get the line thickness of the @var{grob}'s corresponding layout."
-  (let* ((layout (ly:grob-layout grob))
-         (line-thickness (ly:output-def-lookup layout 'line-thickness)))
-
-    line-thickness))
 
 #(define (ly:frame-extender::print grob)
 "Draw an extender line with optional arrow for use in frame notation."
@@ -472,8 +484,9 @@ a box or repeat barlines encompassing the contents."
      (set! ifaces-entry (uniq-list (sort ifaces-entry symbol<?)))
      (set! ifaces-entry (cons 'grob-interface ifaces-entry))
      (set! meta-entry (assoc-set! meta-entry 'name grob-name))
-     (set! meta-entry (assoc-set! meta-entry 'interfaces
-                                  ifaces-entry))
+     (set! meta-entry (assoc-set! meta-entry 'interfaces ifaces-entry))
+     ;; 2.24+ requires a 'classes key mirroring 'class as a list
+     (set! meta-entry (assoc-set! meta-entry 'classes (list class)))
      (set! grob-entry (assoc-set! grob-entry 'meta meta-entry))
      (set! all-grob-descriptions
            (cons (cons grob-name grob-entry)
@@ -498,15 +511,6 @@ a box or repeat barlines encompassing the contents."
     (meta . ((class . Spanner)
              (interfaces . (frame-extender-interface
                             line-interface))))))
-%
-%#(define (grob::unpure-Y-extent-from-stencil pure-function)
-%  "The unpure height will come from a stencil whereas the pure
-%   height will come from @code{pure-function}."
-%  (ly:make-unpure-pure-container ly:grob::stencil-height pure-function))
-%
-%#(define grob::always-vertical-skylines-from-stencil
-%  (ly:make-unpure-pure-container
-%   ly:grob::vertical-skylines-from-stencil))
 
 #(add-grob-definition
   'FrameBracket
@@ -517,8 +521,8 @@ a box or repeat barlines encompassing the contents."
     (padding . 1.0)
     (side-axis . ,Y)
     (stencil . ,ly:frame-bracket::print)
-    ;(vertical-skylines . ,grob::always-vertical-skylines-from-stencil)
-    ;(Y-extent . ,(grob::unpure-Y-extent-from-stencil frame-bracket-interface::pure-height))
+    (vertical-skylines . ,grob::always-vertical-skylines-from-stencil)
+    (Y-extent . ,(grob::unpure-Y-extent-from-stencil frame-bracket-interface::pure-height))
     (Y-offset . ,ly:side-position-interface::y-aligned-side)
     (meta . ((class . Spanner)
              (interfaces . (frame-bracket-interface
@@ -528,7 +532,7 @@ a box or repeat barlines encompassing the contents."
 #(add-grob-definition
   'FrameStub
   `((X-extent . ,frame-stub::width)
-    ;(Y-extent . ,axis-group-interface::height)
+    (Y-extent . ,axis-group-interface::height)
     (meta . ((class . Item)
              (object-callbacks . ((pure-Y-common . ,ly:axis-group-interface::calc-pure-y-common)
                                   (pure-relevant-grobs . ,ly:axis-group-interface::calc-pure-relevant-grobs)))
@@ -721,5 +725,23 @@ frameEnd =
 % There is no `frameExtenderStart' because extender is begun with \frameEnd
 frameExtenderEnd =
 #(make-span-event 'FrameExtenderEvent STOP)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SELF-ACTIVATION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The add-grob-definition calls above only APPEND to the Scheme variable
+% all-grob-descriptions -- they don't make those new grob types (Frame,
+% FrameBracket, FrameExtender, FrameStub) usable on their own. LilyPond
+% only picks up new entries in that list once something re-applies it to
+% the \Global context via \grobdescriptions. Without this, \frameStart
+% fails with "No grob definition found for `Frame'." Doing it here (once,
+% as part of loading this file) keeps this extension genuinely
+% self-activating -- consists \frameEngraver in your own \layout is still
+% required (that's the per-score choice of where frames render), but
+% nothing else.
+\layout {
+  \context {
+    \Global
+    \grobdescriptions #all-grob-descriptions
+  }
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
